@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>903714D7-9CBB-4B6F-9D78-E024B98314FF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>emw_demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EB55483A3942DC394D076747AD9E2061B2ADD11A</key>
+		<string>ssh://git.oschina.net/thomaspaine/emw_app.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>emw_demo/emw_demo.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EB55483A3942DC394D076747AD9E2061B2ADD11A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://git.oschina.net/thomaspaine/emw_app.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EB55483A3942DC394D076747AD9E2061B2ADD11A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EB55483A3942DC394D076747AD9E2061B2ADD11A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>emw_app</string>
+		</dict>
+	</array>
+</dict>
+</plist>
