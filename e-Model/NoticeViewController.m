@@ -9,6 +9,7 @@
 #import "NoticeViewController.h"
 #import "NoticeTableViewCell.h"
 #import "NoticeDetailViewController.h"
+#import "MyNoticeViewController.h"
 @interface NoticeViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UISegmentedControl *_segment;
@@ -117,9 +118,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NoticeDetailViewController *dvc = [[NoticeDetailViewController alloc]init];
-    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:dvc animated:NO];
+    if (tableView.tag == 0) {
+        MyNoticeViewController *mvc = [[MyNoticeViewController alloc]init];
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mvc animated:NO];
+    }else{
+        NoticeDetailViewController *dvc = [[NoticeDetailViewController alloc]init];
+        [self.navigationController pushViewController:dvc animated:NO];
+    }
+    
 }
 - (void)rightItemClick
 {

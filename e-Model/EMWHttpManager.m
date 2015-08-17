@@ -52,27 +52,27 @@
 }
 + (void)getRequestWithUserName:(NSString *)userName WithUserId:(NSString *)userId WithEmail:(NSString *)email WithIsEmailCheck:(NSString *)isEmailCheck WithisMobileCheck:(NSString *)isMobileCheck WithUserTypeId:(NSString *)userTypeId BaseClassBlock:(void(^)(EMWUser *baseData))block
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString *url = [NSString stringWithFormat:@"http://192.168.1.239:5000/user"];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"-------  %@",operation.responseString);
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
-        NSDictionary *userDict = [dict objectForKey:@"data"];
-        for (NSArray *array in userDict) {
-            NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:0];
-            [arr addObject:array];
-//            NSLog(@"_____%@222222222222",arr);
-        }
-//        NSLog(@"1111111111111111222222%@3333333344444",userId);
-        
-        EMWUser *baseData = [EMWUser parseUserWithDictionary:userDict];
-//        NSLog(@"______%@____",userDict);
-        block(baseData);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"+++++++  %@",error);
-    }];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    NSString *url = [NSString stringWithFormat:@"http://192.168.1.239:5000/user"];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+//    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"-------  %@",operation.responseString);
+//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
+//        NSDictionary *userDict = [dict objectForKey:@"data"];
+//        for (NSArray *array in userDict) {
+//            NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:0];
+//            [arr addObject:array];
+////            NSLog(@"_____%@222222222222",arr);
+//        }
+////        NSLog(@"1111111111111111222222%@3333333344444",userId);
+//        
+//        EMWUser *baseData = [EMWUser parseUserWithDictionary:userDict];
+////        NSLog(@"______%@____",userDict);
+//        block(baseData);
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"+++++++  %@",error);
+//    }];
 }
 
 

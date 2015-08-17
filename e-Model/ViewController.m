@@ -34,7 +34,7 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1];
     _imageView.alpha = 0;
-//    [ViewController gotoMain];
+    [ViewController gotoMain];
         if ([EMWHttpManager isLogin])
     {
         [ViewController gotoMain2];
@@ -54,13 +54,13 @@
 //    MainViewController *main = [[MainViewController alloc] init];
 //    main.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"news@2x"] tag:0];
 //    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:main];
+    NoticeViewController *notice = [[NoticeViewController alloc] init];
+    notice.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"通告" image:[UIImage imageNamed:@"file@2x"] tag:0];
+    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:notice];
     MessageViewController *message = [[MessageViewController alloc] init];
     message.title = @"我的会话";
-    message.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息" image:[UIImage imageNamed:@"main@2x"] tag:0];
-    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:message];
-    NoticeViewController *notice = [[NoticeViewController alloc] init];
-    notice.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"通告" image:[UIImage imageNamed:@"file@2x"] tag:1];
-    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:notice];
+    message.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息" image:[UIImage imageNamed:@"main@2x"] tag:1];
+    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:message];
     PersonViewController *person = [[PersonViewController alloc] init];
     person.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"我" image:[UIImage imageNamed:@"person@2x"] tag:2];
     UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:person];

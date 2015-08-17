@@ -12,6 +12,8 @@
 		250C24C81B734779006EF48C /* EMWBusinessData.m in Sources */ = {isa = PBXBuildFile; fileRef = 250C24C61B734779006EF48C /* EMWBusinessData.m */; };
 		250C687A1B70AA6400A112A0 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 250C68781B70AA6400A112A0 /* MessageTableViewCell.m */; };
 		250C687B1B70AA6400A112A0 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 250C68791B70AA6400A112A0 /* MessageTableViewCell.xib */; };
+		255B9CBD1B787F0C00161C5A /* OrderData.m in Sources */ = {isa = PBXBuildFile; fileRef = 255B9CB91B787F0C00161C5A /* OrderData.m */; };
+		255B9CBE1B787F0C00161C5A /* OrderOrderBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 255B9CBC1B787F0C00161C5A /* OrderOrderBC.m */; };
 		256C1A8C1B5CEC6D00461B84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 256C1A8B1B5CEC6D00461B84 /* main.m */; };
 		256C1A8F1B5CEC6D00461B84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256C1A8E1B5CEC6D00461B84 /* AppDelegate.m */; };
 		256C1A921B5CEC6D00461B84 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256C1A911B5CEC6D00461B84 /* ViewController.m */; };
@@ -106,6 +108,16 @@
 		25B228CF1B5DF203001B450C /* OldModelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B228CD1B5DF203001B450C /* OldModelViewController.xib */; };
 		25B2A1B41B6F49160044D93A /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B2A1B21B6F49160044D93A /* MainCollectionViewCell.m */; };
 		25B2A1B51B6F49160044D93A /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B2A1B31B6F49160044D93A /* MainCollectionViewCell.xib */; };
+		25DC9D331B743D1300CEC864 /* BaseInfoBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D2F1B743D1300CEC864 /* BaseInfoBC.m */; };
+		25DC9D341B743D1300CEC864 /* BaseInfoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D311B743D1300CEC864 /* BaseInfoData.m */; };
+		25DC9D431B74411100CEC864 /* UserIDBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D371B74411100CEC864 /* UserIDBaseInfo.m */; };
+		25DC9D441B74411100CEC864 /* UserIDBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D391B74411100CEC864 /* UserIDBC.m */; };
+		25DC9D451B74411100CEC864 /* UserIDBodyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D3B1B74411100CEC864 /* UserIDBodyInfo.m */; };
+		25DC9D461B74411100CEC864 /* UserIDBusinessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D3D1B74411100CEC864 /* UserIDBusinessInfo.m */; };
+		25DC9D471B74411100CEC864 /* UserIDData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D3F1B74411100CEC864 /* UserIDData.m */; };
+		25DC9D481B74411100CEC864 /* UserIDMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D421B74411100CEC864 /* UserIDMedia.m */; };
+		25DC9D4C1B748F0500CEC864 /* MyNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D4A1B748F0500CEC864 /* MyNoticeViewController.m */; };
+		25DC9D4D1B748F0500CEC864 /* MyNoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25DC9D4B1B748F0500CEC864 /* MyNoticeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +141,11 @@
 		250C68771B70AA6400A112A0 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		250C68781B70AA6400A112A0 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		250C68791B70AA6400A112A0 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		255B9CB81B787F0C00161C5A /* OrderData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderData.h; sourceTree = "<group>"; };
+		255B9CB91B787F0C00161C5A /* OrderData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderData.m; sourceTree = "<group>"; };
+		255B9CBA1B787F0C00161C5A /* OrderDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDataModels.h; sourceTree = "<group>"; };
+		255B9CBB1B787F0C00161C5A /* OrderOrderBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderOrderBC.h; sourceTree = "<group>"; };
+		255B9CBC1B787F0C00161C5A /* OrderOrderBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderOrderBC.m; sourceTree = "<group>"; };
 		256C1A861B5CEC6D00461B84 /* e-Model.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-Model.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		256C1A8A1B5CEC6D00461B84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		256C1A8B1B5CEC6D00461B84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -282,6 +299,27 @@
 		25B2A1B11B6F49160044D93A /* MainCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionViewCell.h; sourceTree = "<group>"; };
 		25B2A1B21B6F49160044D93A /* MainCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollectionViewCell.m; sourceTree = "<group>"; };
 		25B2A1B31B6F49160044D93A /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
+		25DC9D2E1B743D1300CEC864 /* BaseInfoBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInfoBC.h; sourceTree = "<group>"; };
+		25DC9D2F1B743D1300CEC864 /* BaseInfoBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInfoBC.m; sourceTree = "<group>"; };
+		25DC9D301B743D1300CEC864 /* BaseInfoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInfoData.h; sourceTree = "<group>"; };
+		25DC9D311B743D1300CEC864 /* BaseInfoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInfoData.m; sourceTree = "<group>"; };
+		25DC9D321B743D1300CEC864 /* BaseInfoDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInfoDataModels.h; sourceTree = "<group>"; };
+		25DC9D361B74411100CEC864 /* UserIDBaseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDBaseInfo.h; sourceTree = "<group>"; };
+		25DC9D371B74411100CEC864 /* UserIDBaseInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDBaseInfo.m; sourceTree = "<group>"; };
+		25DC9D381B74411100CEC864 /* UserIDBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDBC.h; sourceTree = "<group>"; };
+		25DC9D391B74411100CEC864 /* UserIDBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDBC.m; sourceTree = "<group>"; };
+		25DC9D3A1B74411100CEC864 /* UserIDBodyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDBodyInfo.h; sourceTree = "<group>"; };
+		25DC9D3B1B74411100CEC864 /* UserIDBodyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDBodyInfo.m; sourceTree = "<group>"; };
+		25DC9D3C1B74411100CEC864 /* UserIDBusinessInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDBusinessInfo.h; sourceTree = "<group>"; };
+		25DC9D3D1B74411100CEC864 /* UserIDBusinessInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDBusinessInfo.m; sourceTree = "<group>"; };
+		25DC9D3E1B74411100CEC864 /* UserIDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDData.h; sourceTree = "<group>"; };
+		25DC9D3F1B74411100CEC864 /* UserIDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDData.m; sourceTree = "<group>"; };
+		25DC9D401B74411100CEC864 /* UserIDDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDDataModels.h; sourceTree = "<group>"; };
+		25DC9D411B74411100CEC864 /* UserIDMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDMedia.h; sourceTree = "<group>"; };
+		25DC9D421B74411100CEC864 /* UserIDMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDMedia.m; sourceTree = "<group>"; };
+		25DC9D491B748F0500CEC864 /* MyNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNoticeViewController.h; sourceTree = "<group>"; };
+		25DC9D4A1B748F0500CEC864 /* MyNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNoticeViewController.m; sourceTree = "<group>"; };
+		25DC9D4B1B748F0500CEC864 /* MyNoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNoticeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +360,18 @@
 				250C24C61B734779006EF48C /* EMWBusinessData.m */,
 			);
 			path = EMWBusiness;
+			sourceTree = "<group>";
+		};
+		255B9CB71B787F0C00161C5A /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				255B9CB81B787F0C00161C5A /* OrderData.h */,
+				255B9CB91B787F0C00161C5A /* OrderData.m */,
+				255B9CBA1B787F0C00161C5A /* OrderDataModels.h */,
+				255B9CBB1B787F0C00161C5A /* OrderOrderBC.h */,
+				255B9CBC1B787F0C00161C5A /* OrderOrderBC.m */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 		256C1A7D1B5CEC6D00461B84 = {
@@ -539,6 +589,9 @@
 				257148251B71E90C005F6E17 /* NoticeDetailViewController.h */,
 				257148261B71E90C005F6E17 /* NoticeDetailViewController.m */,
 				257148271B71E90C005F6E17 /* NoticeDetailViewController.xib */,
+				25DC9D491B748F0500CEC864 /* MyNoticeViewController.h */,
+				25DC9D4A1B748F0500CEC864 /* MyNoticeViewController.m */,
+				25DC9D4B1B748F0500CEC864 /* MyNoticeViewController.xib */,
 			);
 			name = NoticeDetails;
 			sourceTree = "<group>";
@@ -569,6 +622,9 @@
 		25B228801B5DD2B5001B450C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				255B9CB71B787F0C00161C5A /* Order */,
+				25DC9D351B74411100CEC864 /* UserID */,
+				25DC9D2D1B743D1300CEC864 /* BaseInfo */,
 				250C24C11B734779006EF48C /* EMWBusiness */,
 				2571482A1B71FAEB005F6E17 /* EMWUser.h */,
 				2571482B1B71FAEB005F6E17 /* EMWUser.m */,
@@ -680,6 +736,38 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		25DC9D2D1B743D1300CEC864 /* BaseInfo */ = {
+			isa = PBXGroup;
+			children = (
+				25DC9D2E1B743D1300CEC864 /* BaseInfoBC.h */,
+				25DC9D2F1B743D1300CEC864 /* BaseInfoBC.m */,
+				25DC9D301B743D1300CEC864 /* BaseInfoData.h */,
+				25DC9D311B743D1300CEC864 /* BaseInfoData.m */,
+				25DC9D321B743D1300CEC864 /* BaseInfoDataModels.h */,
+			);
+			path = BaseInfo;
+			sourceTree = "<group>";
+		};
+		25DC9D351B74411100CEC864 /* UserID */ = {
+			isa = PBXGroup;
+			children = (
+				25DC9D361B74411100CEC864 /* UserIDBaseInfo.h */,
+				25DC9D371B74411100CEC864 /* UserIDBaseInfo.m */,
+				25DC9D381B74411100CEC864 /* UserIDBC.h */,
+				25DC9D391B74411100CEC864 /* UserIDBC.m */,
+				25DC9D3A1B74411100CEC864 /* UserIDBodyInfo.h */,
+				25DC9D3B1B74411100CEC864 /* UserIDBodyInfo.m */,
+				25DC9D3C1B74411100CEC864 /* UserIDBusinessInfo.h */,
+				25DC9D3D1B74411100CEC864 /* UserIDBusinessInfo.m */,
+				25DC9D3E1B74411100CEC864 /* UserIDData.h */,
+				25DC9D3F1B74411100CEC864 /* UserIDData.m */,
+				25DC9D401B74411100CEC864 /* UserIDDataModels.h */,
+				25DC9D411B74411100CEC864 /* UserIDMedia.h */,
+				25DC9D421B74411100CEC864 /* UserIDMedia.m */,
+			);
+			path = UserID;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -774,6 +862,7 @@
 				257148221B71DEC3005F6E17 /* 1.png in Resources */,
 				256C1AB51B5CEE6D00461B84 /* LoginViewController.xib in Resources */,
 				25B228CF1B5DF203001B450C /* OldModelViewController.xib in Resources */,
+				25DC9D4D1B748F0500CEC864 /* MyNoticeViewController.xib in Resources */,
 				25B228C51B5DF1C4001B450C /* ForeignWomanModelViewController.xib in Resources */,
 				256C1AC71B5D19CA00461B84 /* SMS_SDKLocalizable.strings in Resources */,
 				257148161B71B6F1005F6E17 /* bubbleSelf.png in Resources */,
@@ -822,13 +911,17 @@
 				257148061B71AA0B005F6E17 /* AFURLRequestSerialization.m in Sources */,
 				257148021B71AA0B005F6E17 /* AFHTTPSessionManager.m in Sources */,
 				256C1ABF1B5CFB0100461B84 /* MainViewController.m in Sources */,
+				25DC9D441B74411100CEC864 /* UserIDBC.m in Sources */,
+				25DC9D341B743D1300CEC864 /* BaseInfoData.m in Sources */,
 				256C1A921B5CEC6D00461B84 /* ViewController.m in Sources */,
 				2571480F1B71AA17005F6E17 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				257148051B71AA0B005F6E17 /* AFURLConnectionOperation.m in Sources */,
+				25DC9D331B743D1300CEC864 /* BaseInfoBC.m in Sources */,
 				257147DF1B71A9E8005F6E17 /* SDWebImageCompat.m in Sources */,
 				257147DE1B71A9E8005F6E17 /* SDImageCache.m in Sources */,
 				250C24C81B734779006EF48C /* EMWBusinessData.m in Sources */,
 				257147E71B71A9E8005F6E17 /* UIImage+MultiFormat.m in Sources */,
+				25DC9D481B74411100CEC864 /* UserIDMedia.m in Sources */,
 				257147E61B71A9E8005F6E17 /* UIImage+GIF.m in Sources */,
 				250C24C01B733FFA006EF48C /* EMWBusinessInfo.m in Sources */,
 				257147E11B71A9E8005F6E17 /* SDWebImageDownloader.m in Sources */,
@@ -836,6 +929,7 @@
 				257147EA1B71A9E8005F6E17 /* UIImageView+WebCache.m in Sources */,
 				257148101B71AA17005F6E17 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				257148071B71AA0B005F6E17 /* AFURLResponseSerialization.m in Sources */,
+				255B9CBD1B787F0C00161C5A /* OrderData.m in Sources */,
 				257147E51B71A9E8005F6E17 /* UIButton+WebCache.m in Sources */,
 				256C1A8F1B5CEC6D00461B84 /* AppDelegate.m in Sources */,
 				25B2289B1B5DD80F001B450C /* PersonViewController.m in Sources */,
@@ -844,6 +938,7 @@
 				257148011B71AA0B005F6E17 /* AFHTTPRequestOperationManager.m in Sources */,
 				25B228BC1B5DF164001B450C /* ChildModelViewController.m in Sources */,
 				25B228861B5DD386001B450C /* EMWHttpManager.m in Sources */,
+				25DC9D461B74411100CEC864 /* UserIDBusinessInfo.m in Sources */,
 				25B228A91B5DED4B001B450C /* SeachViewController.m in Sources */,
 				257147E21B71A9E8005F6E17 /* SDWebImageDownloaderOperation.m in Sources */,
 				25B2A1B41B6F49160044D93A /* MainCollectionViewCell.m in Sources */,
@@ -853,10 +948,12 @@
 				257147E81B71A9E8005F6E17 /* UIImage+WebP.m in Sources */,
 				2571481A1B71CBEE005F6E17 /* NoticeTableViewCell.m in Sources */,
 				257147E31B71A9E8005F6E17 /* SDWebImageManager.m in Sources */,
+				25DC9D431B74411100CEC864 /* UserIDBaseInfo.m in Sources */,
 				257147DD1B71A9E8005F6E17 /* NSData+ImageContentType.m in Sources */,
 				25B2288B1B5DD748001B450C /* MessageViewController.m in Sources */,
 				257148031B71AA0B005F6E17 /* AFNetworkReachabilityManager.m in Sources */,
 				25B228C41B5DF1C4001B450C /* ForeignWomanModelViewController.m in Sources */,
+				25DC9D4C1B748F0500CEC864 /* MyNoticeViewController.m in Sources */,
 				257147B81B719CE9005F6E17 /* ChatTableViewCell.m in Sources */,
 				257148281B71E90C005F6E17 /* NoticeDetailViewController.m in Sources */,
 				25B228B41B5DF10C001B450C /* ManModelViewController.m in Sources */,
@@ -864,8 +961,11 @@
 				257147EB1B71A9E8005F6E17 /* UIView+WebCacheOperation.m in Sources */,
 				257147E91B71A9E8005F6E17 /* UIImageView+HighlightedWebCache.m in Sources */,
 				25B228AF1B5DF0F5001B450C /* WomanModelViewController.m in Sources */,
+				25DC9D471B74411100CEC864 /* UserIDData.m in Sources */,
 				257148081B71AA0B005F6E17 /* AFURLSessionManager.m in Sources */,
 				250C24C71B734779006EF48C /* EMWBusinessBaseClass.m in Sources */,
+				25DC9D451B74411100CEC864 /* UserIDBodyInfo.m in Sources */,
+				255B9CBE1B787F0C00161C5A /* OrderOrderBC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

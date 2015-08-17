@@ -18,9 +18,7 @@
 @interface LoginViewController ()
 {
     EMWHttpManager *manager;
-    NSMutableArray *array;
-    NSMutableArray *_arr;
-    NSMutableArray *_Arr;
+    
 }
 @property (nonatomic,strong)EMWUser *baseClass;
 @property (nonatomic,copy)NSString *applyUserTypeld,*email,*userId,*isEmailCheck,*isMobileCheck,*mobile,*userTypeId,*username;
@@ -75,96 +73,7 @@
 //        NSLog(@"========%@=======",array);
     }];
     
-    AFHTTPRequestOperationManager *manager1 = [AFHTTPRequestOperationManager manager];
-    NSString *url = [NSString stringWithFormat:@"http://192.168.1.239:5000/user"];
-    manager1.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    [manager1 GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"-------  %@ -----------",operation.responseString);
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
-        NSArray *array222 = [dict objectForKey:@"data"];
-//        NSLog(@"___++++%ld++++____",array222.count);
-        for (NSArray *arr in array222) {
-            array = [[NSMutableArray alloc]initWithCapacity:0];
-//             NSLog(@"____%@_++++++______",dict);
-//            EMWUser *user = [EMWUser parseUserWithDictionary:dict];
-            [array addObject:arr];
-//            NSLog(@"+++++++%@+++++++",[array objectAtIndex:0]);
-            AFHTTPRequestOperationManager *manager2 = [AFHTTPRequestOperationManager manager];
-            NSString *url1 = [NSString stringWithFormat:@"http://192.168.1.239:5000/user/%@",[array objectAtIndex:0]];
-            manager2.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-            [manager2 GET:url1 parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                NSLog(@"-------  %@ 646656565",operation.responseString);
-                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
-                NSArray *array111 = [dict objectForKey:@"data"];
-                for (NSArray *arr in array111) {
-                    _arr = [[NSMutableArray alloc]initWithCapacity:0];
-                    [_arr addObject:arr];
-//                    NSLog(@"_______%@_______",[_arr objectAtIndex:0]);
-                    AFHTTPRequestOperationManager *manager2 = [AFHTTPRequestOperationManager manager];
-                    NSString *url1 = [NSString stringWithFormat:@"http://192.168.1.239:5000/user/%@/baseinfo",[array objectAtIndex:0]];
-                    manager2.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-                    [manager2 GET:url1 parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                        NSLog(@"-------  %@ 646656565",operation.responseString);
-                        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
-                        NSArray *array333 = [dict objectForKey:@"data"];
-                        for (NSArray *arr111 in array333) {
-                            _Arr = [[NSMutableArray alloc]initWithCapacity:0];
-                            [_Arr addObject:arr111];
-//                            NSLog(@"_______%@_______",[_Arr objectAtIndex:0]);
-                        }
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        NSLog(@"+++++++  %@+++++++++++",error);
-                    }];
-                    AFHTTPRequestOperationManager *manager3 = [AFHTTPRequestOperationManager manager];
-                    NSString *url2 = [NSString stringWithFormat:@"http://192.168.1.239:5000/user/%@/bodyinfo",[array objectAtIndex:0]];
-                    manager3.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-                    [manager3 GET:url2 parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                        NSLog(@"-------  %@ 646656565",operation.responseString);
-                        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
-                        NSArray *array444 = [dict objectForKey:@"data"];
-                        for (NSArray *arr444 in array444) {
-                            _Arr = [[NSMutableArray alloc]initWithCapacity:0];
-                            [_Arr addObject:arr444];
-//                            NSLog(@"_______%@_______",[_Arr objectAtIndex:0]);
-                        }
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        NSLog(@"+++++++  %@+++++++++++",error);
-                    }];
-                    AFHTTPRequestOperationManager *manager4 = [AFHTTPRequestOperationManager manager];
-                    NSString *url3 = [NSString stringWithFormat:@"http://192.168.1.239:5000/user/%@/businessinfo",[array objectAtIndex:0]];
-                    manager4.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-                    [manager4 GET:url3 parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"-------  %@ 646656565",operation.responseString);
-                        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
-                        NSArray *array555 = [dict objectForKey:@"data"];
-                        NSLog(@"+++++++%@_______",array555);
-                        for (NSDictionary *dict1 in array555) {
-                            _Arr = [[NSMutableArray alloc]initWithCapacity:0];
-                            NSLog(@"___________________%@+++++++++",dict1);
-                            EMWBusinessBaseClass *baseClass = [[EMWBusinessBaseClass alloc]initWithDictionary:dict];;
-                            NSLog(@"!!!!!!!!!!!!!!!!!!%@!!!!!!!!!!!!!!",baseClass);
-                            [_Arr addObject:baseClass];
-                            NSLog(@"_______%ld_______",_Arr.count);
-                            NSLog(@"++++++++++%lf___+++_+_+_+_+",baseClass.data.inPrice);
-                        }
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        NSLog(@"+++++++  %@+++++++++++",error);
-                    }];
-
-
-                }
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"+++++++  %@+++++++++++",error);
-            }];
-        }
-
-        _userId = [array objectAtIndex:0];
         
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"+++++++  %@+++++++++++",error);
-    }];
-    
     
     
     

@@ -27,7 +27,7 @@ static NSString *cellIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = [NSString stringWithFormat:@"与%@交谈中",self.userName];
+    self.title = [NSString stringWithFormat:@"第一视觉"];
     // 数组用来装 所有的气泡
     _bubbleArray = [[NSMutableArray alloc] init];
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-40)];
