@@ -23,7 +23,7 @@
 #import "ForeignWomanModelViewController.h"
 #import "OldModelViewController.h"
 #define GETACCESSTOKEN  [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCESSTOKEN]
-#define SHOWALERT(messageString)    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:messageString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];[alert show];[alert release];
-#define KEY_ACCESSTOKEN @"access_token"
+#define SHOWALERT(messageString)    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:messageString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];[alert show];
+#define KEY_ACCESSTOKEN @"token"
 #define KEY_EXPIREDATE @"date"
 #endif

@@ -15,6 +15,10 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "EMWBusinessInfo.h"
 #import "DataModels.h"
+
+#define SHOW_ALERT(msg) UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];\
+[alert show];
+
 @interface LoginViewController ()
 {
     EMWHttpManager *manager;
@@ -60,30 +64,72 @@
 */
 
 - (IBAction)loginButton:(UIButton *)sender {
-    ViewController *vc = [[ViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    [EMWHttpManager getRequestWithUserName:_username WithUserId:_userId WithEmail:_email WithIsEmailCheck:_isEmailCheck WithisMobileCheck:_isMobileCheck WithUserTypeId:_userTypeId BaseClassBlock:^(EMWUser *baseClass){
-        self.baseClass = baseClass;
-//        NSArray *firstArr = self.baseClass.data;
-//        if (array.count == 0) {
-//            for (EMWUser* data in firstArr) {
-//                [array addObject:data];
-//            }
-//        }
-//        NSLog(@"========%@=======",array);
-    }];
     
+//      ViewController *vc = [[ViewController alloc]init];
+//      [self.navigationController pushViewController:vc animated:YES];
+        NSString *strURL1 = [NSString stringWithFormat:@"http://api.emwcn.com/user/login"];
+        NSString *post1 =  [NSString stringWithFormat:@"username=%@&password=%@&autoLogin=%ld",self.phoneNumber.text,self.passWord.text, [self.isAutoLogin.text integerValue]];
+        //    strURL1 = [strURL1 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url1 = [NSURL URLWithString:strURL1];
+        NSData *postData1 = [post1 dataUsingEncoding:NSUTF8StringEncoding];
+        NSMutableURLRequest *request1 = [NSMutableURLRequest requestWithURL:url1];
+        [request1 setHTTPMethod:@"POST"];
+        [request1 setHTTPBody:postData1];
+        AFHTTPRequestOperation* operation1 = [[AFHTTPRequestOperation alloc]initWithRequest:request1];
+        [operation1 setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation1,id responseObjecy){
+            NSLog(@"-------  %@ *********",operation1.responseString);
+            NSDictionary *dict1 = [NSJSONSerialization JSONObjectWithData:operation1.responseData options:NSJSONReadingAllowFragments error:nil];
+            NSLog(@"%@",dict1);
+            if ([[dict1 objectForKey:@"status"]integerValue] == 200) {
+               
+                [LoginViewController gotoMain];
+            }
+    
+        }
+         
+            failure:^(AFHTTPRequestOperation *operation,NSError *error)
+        {
+        if (error.code != NSURLErrorTimedOut)
+        {
+            NSLog(@"error: %@", error);
         
-    
-    
-    
-    
+            SHOW_ALERT(@"用户名/密码不正确");
+            
+
+            
+        }
+                                              
+        }];
+        
+        [operation1 start];
+
 
 }
 
 - (IBAction)registButton:(UIButton *)sender {
     RegistViewController *rv = [[RegistViewController alloc]init];
     [self.navigationController pushViewController:rv animated:YES ];
+}
++ (void)gotoMain
+{
+    //    MainViewController *main = [[MainViewController alloc] init];
+    //    main.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"news@2x"] tag:0];
+    //    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:main];
+    NoticeViewController *notice = [[NoticeViewController alloc] init];
+    notice.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"通告" image:[UIImage imageNamed:@"file@2x"] tag:0];
+    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:notice];
+    MessageViewController *message = [[MessageViewController alloc] init];
+    message.title = @"我的会话";
+    message.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息" image:[UIImage imageNamed:@"main@2x"] tag:1];
+    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:message];
+    PersonViewController *person = [[PersonViewController alloc] init];
+    person.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"我" image:[UIImage imageNamed:@"person@2x"] tag:2];
+    UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:person];
+    UITabBarController *tabBarVC = [[UITabBarController alloc] init];
+    tabBarVC.viewControllers = @[nav2,nav3,nav4];
+    [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVC;
+    tabBarVC.tabBar.tintColor = [UIColor colorWithRed:1.0f green:0.2f blue:0.7f alpha:1.0];
+    tabBarVC.selectedIndex = 0;
 }
 
 - (IBAction)pwsButton:(id)sender {

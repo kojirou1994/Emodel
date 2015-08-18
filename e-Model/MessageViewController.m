@@ -128,7 +128,7 @@
     UserIDBC *Data = [_arr objectAtIndex:indexPath.row];
     [cell.headerImageView sd_setImageWithURL:[NSURL URLWithString:Data.data.baseInfo.avatar]];
     cell.headerImageView.clipsToBounds = YES;
-    cell.headerImageView.layer.cornerRadius = 10;
+    cell.headerImageView.layer.cornerRadius = 35;
     cell.userName.text = Data.data.baseInfo.nickName;
 //    NSLog(@"---------");
     cell.messageLabel.text = @"你好！！！！";

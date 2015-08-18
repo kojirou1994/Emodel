@@ -18,6 +18,8 @@ typedef void(^RequestBlock)(BOOL isSuccessed,NSString *errorMessage);
 @property (weak, nonatomic) IBOutlet UIImageView *lockImageView;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *passWord;
+@property (weak, nonatomic) IBOutlet UITextField *isAutoLogin;
+
 - (IBAction)loginButton:(UIButton *)sender;
 - (IBAction)registButton:(UIButton *)sender;
 - (IBAction)pwsButton:(id)sender;

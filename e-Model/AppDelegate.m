@@ -9,9 +9,10 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import <SMS_SDK/SMS_SDK.h>
-
+#import "YunBaService.h"
 #define appKey @"8f102d47baa0"
 #define appSecret @"e644edcfc6df5e03e4f1ad0df89c513c"
+#define AppKey @"55d178869477ebf524695a1c"
 @interface AppDelegate ()
 
 @end
@@ -27,6 +28,14 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     [SMS_SDK registerApp:appKey withSecret:appSecret];
+    [YunBaService setupWithAppkey:AppKey];
+//    [YunBaService subscribe: resultBlock:^(BOOL succ,NSError *error){
+//        if (succ) {
+//            NSLog(@"[result] subscribe to topic(%@) succeed",topic);
+//        }else{
+//            NSLog(@"[result] subscibe to topic(%@) failed:%@,recovery suggestion:%@",topic,error,[error localizedRecoverySuggestion]);
+//        }
+//    }];
     return YES;
 }
 

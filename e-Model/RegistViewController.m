@@ -13,7 +13,7 @@
 #import "EMWHttpManager.h"
 #define SHOW_ALERT(msg) UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];\
 [alert show];
-@interface RegistViewController ()
+@interface RegistViewController ()<NSURLConnectionDataDelegate,NSURLConnectionDelegate>
 {
     NSMutableData *_data;
 }
@@ -25,8 +25,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"会员注册";
-    _data = [[NSMutableData alloc]init];
-    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -60,29 +58,73 @@
         SHOW_ALERT(@"两次密码不一致");
         return;
     }
-    [EMWHttpManager signUpWithUserName:(NSString*)_phoneNumber WithPassWord:(NSString *)_pws WithConfirm_tocken:(NSString *)_phoneIdentifying WithConfirm:(NSString *)_surePassWord BaseClassBlock:^(EMWUser *baseData){
-        self.baseClass = baseData;
+    NSString *strURL2 = [NSString stringWithFormat:@"http://api.emwcn.com/user/signup"];
+    NSString *post2 =  [NSString stringWithFormat:@"mobile=%@&password=%@&confirm_token=%@&confirm=%@",self.phoneNumber.text,self.pws.text,self.phoneIdentifying.text,self.surePassWord.text];
+    //    strURL1 = [strURL1 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url2 = [NSURL URLWithString:strURL2];
+    NSData *postData2 = [post2 dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request2 = [NSMutableURLRequest requestWithURL:url2];
+    [request2 setHTTPMethod:@"POST"];
+    [request2 setHTTPBody:postData2];
+    AFHTTPRequestOperation* operation2 = [[AFHTTPRequestOperation alloc]initWithRequest:request2];
+    [operation2 setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation2,id responseObjecy){
+        NSLog(@"-------  %@ *********",operation2.responseString);
+        NSDictionary *dict1 = [NSJSONSerialization JSONObjectWithData:operation2.responseData options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"%@",dict1);
+        
+    }
+                                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                                          if (error.code != NSURLErrorTimedOut) {
+                                              NSLog(@"error: %@", error);
+                                          }
+                                          
+                                      }];
     
-    
-    }];
+    [operation2 start];
 }
 - (IBAction)confirm_tockenBtn:(UIButton *)sender
 {
+    [RegistViewController isValidateTelNumber:_phoneNumber.text];
+    [self isMobileNumber:_phoneNumber.text];
+    NSString *post = [NSString stringWithFormat:@"mobile=%@",self.phoneNumber.text];
+    NSString *strURL = @"http://api.emwcn.com/user/confirm";
+    NSURL *url = [NSURL URLWithString:strURL];
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:postData];
+    NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    if (connection) {
+        _data = [NSMutableData new];
+    }
     
-    // 获取验证码
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString *url = [NSString stringWithFormat:@"http://191.168.1.239:5000/user"];
-    NSDictionary *parameters = @{@"mobile":_phoneNumber,@"confirm_tocken":_pws,@"confirm":_phoneIdentifying};
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"-------  %@",operation.responseString);
-        [RegistViewController isValidateTelNumber:_phoneNumber.text];
-        [self isMobileNumber:_phoneNumber.text];
-//        EMWUser *baseData = [EMWUser parseUserWithDictionary:responseObject];
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"+++++++  %@",error);
-    }];
+    
 }
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [_data appendData:data];
+    
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"%@",[error localizedDescription]);
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"请求完成");
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@",dict);
+    NSString *message;
+    NSNumber *resultCodeObj = [dict objectForKey:@"status"];
+    if ([resultCodeObj integerValue]==200) {
+        message = @"操作成功";
+    }
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示信息" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
+    
+    
+}
+
 //是否是有效的正则表达式
 
 +(BOOL)isValidateRegularExpression:(NSString *)strDestination byExpression:(NSString *)strExpression{

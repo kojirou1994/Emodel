@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PersonViewController : UIViewController
+{
+    UITableView *_tableView;
+}
 
 @end

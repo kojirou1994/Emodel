@@ -32,27 +32,34 @@
     _segment.tintColor = [UIColor colorWithRed:1.0f green:0.2f blue:0.7f alpha:1.0];
     _segment.frame = CGRectMake(0, 0, 120, 30);
     _segment.selectedSegmentIndex = 0;
-    [_segment addTarget:self action:@selector(segmentChanged) forControlEvents:UIControlEventValueChanged];
+    [_segment addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = _segment;
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, 375, 554)];
-    _scrollView.delegate = self;
-    _scrollView.contentSize = CGSizeMake(375 * 2, 667-64 );
-    _scrollView.pagingEnabled = YES;
-    _scrollView.showsHorizontalScrollIndicator = NO;
-    [self.view addSubview:_scrollView];
-    //右边的item
+    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,667-49)];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.tag = 0;
+    [tableView registerNib:[UINib nibWithNibName:@"NoticeTableViewCell" bundle:nil] forCellReuseIdentifier:@"noticeCell"];
+    tableView.rowHeight = 100;
+    [self.view addSubview:tableView];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(rightItemClick)];
     rightItem.tintColor = [UIColor colorWithRed:1.0f green:0.2f blue:0.7f alpha:1.0];
     self.navigationItem.rightBarButtonItem = rightItem;
-    for (int i = 0; i<2; i++) {
-        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(i*375, 0, self.view.frame.size.width,667-49)];
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        tableView.tag = i;
-        [tableView registerNib:[UINib nibWithNibName:@"NoticeTableViewCell" bundle:nil] forCellReuseIdentifier:@"noticeCell"];
-        tableView.rowHeight = 100;
-        [_scrollView addSubview:tableView];
-    }
+//    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, 375, 554)];
+//    _scrollView.delegate = self;
+//    _scrollView.contentSize = CGSizeMake(375 * 2, 667-64 );
+//    _scrollView.pagingEnabled = YES;
+//    _scrollView.showsHorizontalScrollIndicator = NO;
+//    [self.view addSubview:_scrollView];
+    //右边的item
+    //    for (int i = 0; i<2; i++) {
+//        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(i*375, 0, self.view.frame.size.width,667-49)];
+//        tableView.delegate = self;
+//        tableView.dataSource = self;
+//        tableView.tag = i;
+//        [tableView registerNib:[UINib nibWithNibName:@"NoticeTableViewCell" bundle:nil] forCellReuseIdentifier:@"noticeCell"];
+//        tableView.rowHeight = 100;
+//        [_scrollView addSubview:tableView];
+//    }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -90,14 +97,6 @@
     return headerView;
     
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (tableView.tag == 0 && indexPath.section == 0 &&indexPath.row == 0) {
-//        return 150;
-//    }else{
-//        return 100;
-//    }
-//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NoticeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"noticeCell"];
@@ -106,7 +105,7 @@
     }
     cell.photoImageView.backgroundColor = [UIColor redColor];
     cell.photoImageView.clipsToBounds = YES;
-    cell.photoImageView.layer.cornerRadius = 10;
+    cell.photoImageView.layer.cornerRadius = 40;
     cell.photoImageView.image = [UIImage imageNamed:@"123.png"];
     cell.titleLabel.text = @"皮草拍摄外拍50件";
     cell.dateLabel.text = @"7月10日上午";
@@ -132,11 +131,30 @@
 {
     
 }
-- (void)segmentChanged
+- (void)segmentChanged:(UISegmentedControl *)segment
 {
-    NSLog(@"当前选中了第 %ld 个",_segment.selectedSegmentIndex);
-    NSInteger i = _segment.selectedSegmentIndex;
-    [_scrollView setContentOffset:CGPointMake(self.view.frame.size.width * i, 0) animated:YES];
+//    NSLog(@"当前选中了第 %ld 个",_segment.selectedSegmentIndex);
+//    NSInteger i = _segment.selectedSegmentIndex;
+//    [_scrollView setContentOffset:CGPointMake(self.view.frame.size.width * i, 0) animated:YES];
+    if (segment.selectedSegmentIndex == 0) {
+        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width,667-49)];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.tag = 0;
+        [tableView registerNib:[UINib nibWithNibName:@"NoticeTableViewCell" bundle:nil] forCellReuseIdentifier:@"noticeCell"];
+        tableView.rowHeight = 100;
+        [self.view addSubview:tableView];
+
+        }else{
+        UITableView *tabelView1 = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-49)];
+        tabelView1.delegate = self;
+        tabelView1.dataSource = self;
+        tabelView1.tag = 1;
+        [tabelView1 registerNib:[UINib nibWithNibName:@"NoticeTableViewCell" bundle:nil] forCellReuseIdentifier:@"noticeCell"];
+        tabelView1.rowHeight = 100;
+        [self.view addSubview:tabelView1];
+
+    }
 }
 //- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 //{

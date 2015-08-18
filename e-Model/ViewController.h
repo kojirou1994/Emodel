@@ -14,8 +14,8 @@
     UIImageView *_imageView;
 }
 
-+ (void)gotoMain;
-+ (void)gotoMain2;
+//+ (void)gotoMain;
+//+ (void)gotoMain2;
 
 @end
 

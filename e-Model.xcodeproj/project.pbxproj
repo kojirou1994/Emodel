@@ -12,6 +12,10 @@
 		250C24C81B734779006EF48C /* EMWBusinessData.m in Sources */ = {isa = PBXBuildFile; fileRef = 250C24C61B734779006EF48C /* EMWBusinessData.m */; };
 		250C687A1B70AA6400A112A0 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 250C68781B70AA6400A112A0 /* MessageTableViewCell.m */; };
 		250C687B1B70AA6400A112A0 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 250C68791B70AA6400A112A0 /* MessageTableViewCell.xib */; };
+		254777401B81B13E00BDD606 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2547773F1B81B13E00BDD606 /* SystemConfiguration.framework */; };
+		254777441B81B16F00BDD606 /* libYunBa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 254777421B81B16F00BDD606 /* libYunBa.a */; };
+		254777461B81C56E00BDD606 /* 图标9.png in Resources */ = {isa = PBXBuildFile; fileRef = 254777451B81C56E00BDD606 /* 图标9.png */; };
+		254777481B81C57A00BDD606 /* 图标11.png in Resources */ = {isa = PBXBuildFile; fileRef = 254777471B81C57A00BDD606 /* 图标11.png */; };
 		255B9CBD1B787F0C00161C5A /* OrderData.m in Sources */ = {isa = PBXBuildFile; fileRef = 255B9CB91B787F0C00161C5A /* OrderData.m */; };
 		255B9CBE1B787F0C00161C5A /* OrderOrderBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 255B9CBC1B787F0C00161C5A /* OrderOrderBC.m */; };
 		256C1A8C1B5CEC6D00461B84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 256C1A8B1B5CEC6D00461B84 /* main.m */; };
@@ -141,6 +145,11 @@
 		250C68771B70AA6400A112A0 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		250C68781B70AA6400A112A0 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		250C68791B70AA6400A112A0 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		2547773F1B81B13E00BDD606 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		254777421B81B16F00BDD606 /* libYunBa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYunBa.a; sourceTree = "<group>"; };
+		254777431B81B16F00BDD606 /* YunBaService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YunBaService.h; sourceTree = "<group>"; };
+		254777451B81C56E00BDD606 /* 图标9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标9.png"; sourceTree = "<group>"; };
+		254777471B81C57A00BDD606 /* 图标11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标11.png"; sourceTree = "<group>"; };
 		255B9CB81B787F0C00161C5A /* OrderData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderData.h; sourceTree = "<group>"; };
 		255B9CB91B787F0C00161C5A /* OrderData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderData.m; sourceTree = "<group>"; };
 		255B9CBA1B787F0C00161C5A /* OrderDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDataModels.h; sourceTree = "<group>"; };
@@ -327,8 +336,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				254777401B81B13E00BDD606 /* SystemConfiguration.framework in Frameworks */,
 				256C1ADA1B5D1A9700461B84 /* AddressBookUI.framework in Frameworks */,
 				256C1AD81B5D1A9200461B84 /* AddressBook.framework in Frameworks */,
+				254777441B81B16F00BDD606 /* libYunBa.a in Frameworks */,
 				256C1AD61B5D1A8A00461B84 /* Security.framework in Frameworks */,
 				256C1AD41B5D1A8100461B84 /* MessageUI.framework in Frameworks */,
 				256C1AD21B5D1A7700461B84 /* libicucore.dylib in Frameworks */,
@@ -362,6 +373,32 @@
 			path = EMWBusiness;
 			sourceTree = "<group>";
 		};
+		2547773E1B81B0E900BDD606 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				2547773F1B81B13E00BDD606 /* SystemConfiguration.framework */,
+				256C1AC91B5D1A1B00461B84 /* Foundation.framework */,
+				256C1ACB1B5D1A3000461B84 /* UIKit.framework */,
+				256C1ACD1B5D1A4600461B84 /* CoreGraphics.framework */,
+				256C1ACF1B5D1A5200461B84 /* libz.dylib */,
+				256C1AD11B5D1A7700461B84 /* libicucore.dylib */,
+				256C1AD31B5D1A8100461B84 /* MessageUI.framework */,
+				256C1AD51B5D1A8A00461B84 /* Security.framework */,
+				256C1AD71B5D1A9200461B84 /* AddressBook.framework */,
+				256C1AD91B5D1A9700461B84 /* AddressBookUI.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		254777411B81B16F00BDD606 /* YunBaSDK */ = {
+			isa = PBXGroup;
+			children = (
+				254777421B81B16F00BDD606 /* libYunBa.a */,
+				254777431B81B16F00BDD606 /* YunBaService.h */,
+			);
+			path = YunBaSDK;
+			sourceTree = "<group>";
+		};
 		255B9CB71B787F0C00161C5A /* Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,15 +414,8 @@
 		256C1A7D1B5CEC6D00461B84 = {
 			isa = PBXGroup;
 			children = (
-				256C1AD91B5D1A9700461B84 /* AddressBookUI.framework */,
-				256C1AD71B5D1A9200461B84 /* AddressBook.framework */,
-				256C1AD51B5D1A8A00461B84 /* Security.framework */,
-				256C1AD31B5D1A8100461B84 /* MessageUI.framework */,
-				256C1AD11B5D1A7700461B84 /* libicucore.dylib */,
-				256C1ACF1B5D1A5200461B84 /* libz.dylib */,
-				256C1ACD1B5D1A4600461B84 /* CoreGraphics.framework */,
-				256C1ACB1B5D1A3000461B84 /* UIKit.framework */,
-				256C1AC91B5D1A1B00461B84 /* Foundation.framework */,
+				254777411B81B16F00BDD606 /* YunBaSDK */,
+				2547773E1B81B0E900BDD606 /* Framework */,
 				256C1A881B5CEC6D00461B84 /* e-Model */,
 				256C1AA21B5CEC6D00461B84 /* e-ModelTests */,
 				256C1A871B5CEC6D00461B84 /* Products */,
@@ -637,6 +667,8 @@
 		25B228811B5DD2C3001B450C /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				254777451B81C56E00BDD606 /* 图标9.png */,
+				254777471B81C57A00BDD606 /* 图标11.png */,
 				257148201B71DEC3005F6E17 /* 1.png */,
 				257148211B71DEC3005F6E17 /* 0.png */,
 				2571481E1B71D98C005F6E17 /* 456.png */,
@@ -861,6 +893,7 @@
 				2571481F1B71D98C005F6E17 /* 456.png in Resources */,
 				257148221B71DEC3005F6E17 /* 1.png in Resources */,
 				256C1AB51B5CEE6D00461B84 /* LoginViewController.xib in Resources */,
+				254777461B81C56E00BDD606 /* 图标9.png in Resources */,
 				25B228CF1B5DF203001B450C /* OldModelViewController.xib in Resources */,
 				25DC9D4D1B748F0500CEC864 /* MyNoticeViewController.xib in Resources */,
 				25B228C51B5DF1C4001B450C /* ForeignWomanModelViewController.xib in Resources */,
@@ -877,6 +910,7 @@
 				256C1A9A1B5CEC6D00461B84 /* LaunchScreen.xib in Resources */,
 				25B228A01B5DE201001B450C /* main@2x.png in Resources */,
 				257148141B71B6E8005F6E17 /* bubble.png in Resources */,
+				254777481B81C57A00BDD606 /* 图标11.png in Resources */,
 				25B2288C1B5DD748001B450C /* MessageViewController.xib in Resources */,
 				2571481D1B71D7CB005F6E17 /* 123.png in Resources */,
 				25B228A21B5DE239001B450C /* person@2x.png in Resources */,
@@ -1108,6 +1142,10 @@
 				);
 				INFOPLIST_FILE = "e-Model/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YunBaSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1122,6 +1160,10 @@
 				);
 				INFOPLIST_FILE = "e-Model/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YunBaSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -8,6 +8,7 @@
 
 #import "ChatViewController.h"
 #import "UIImageView+WebCache.h"
+#import "YunBaService.h"
 @interface ChatViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
     UITableView *_tableView;
@@ -64,7 +65,7 @@ static NSString *cellIdentifier = @"Cell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveDown) name:UIKeyboardWillHideNotification object:nil];
     [self showUnreadChatInfo];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUnreadChatInfo) name:@"newInfo" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMessageReceived:) name:kYBDidReceiveMessageNotification object:nil];
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
@@ -135,7 +136,11 @@ static NSString *cellIdentifier = @"Cell";
 //     }];
 
 }
-
+- (void)onMessageReceived:(NSNotification *)notification {
+    YBMessage *message = [notification object];
+    NSString *payloadString = [[NSString alloc] initWithData:[message data] encoding:NSUTF8StringEncoding];
+    NSLog(@"[Message] %@ => %@", [message topic], payloadString);
+}
 
 // 显示上个界面传过来  以及 在有新消息的时候及时显示 的未读消息
 - (void)showUnreadChatInfo
