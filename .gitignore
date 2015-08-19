@@ -1,1 +1,5 @@
 .DS_Store
+Pods/
+#Podfile.lock 
+# changed my mind on Podfile.lock
+emw_demo.xcworkspace
