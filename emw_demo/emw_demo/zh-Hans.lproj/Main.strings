@@ -1,0 +1,186 @@
+
+/* Class = "UILabel"; text = "密码"; ObjectID = "1BC-7R-foo"; */
+"1BC-7R-foo.text" = "密码";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "3Ix-ZY-zHQ"; */
+"3Ix-ZY-zHQ.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "设置"; ObjectID = "3io-Q5-jSG"; */
+"3io-Q5-jSG.text" = "设置";
+
+/* Class = "UITabBarController"; title = "mainTab"; ObjectID = "49e-Tb-3d3"; */
+"49e-Tb-3d3.title" = "mainTab";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5R5-kI-LP4"; */
+"5R5-kI-LP4.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "手机号码"; ObjectID = "6JA-en-L17"; */
+"6JA-en-L17.placeholder" = "手机号码";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "6SS-5b-FS5"; */
+"6SS-5b-FS5.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "6X4-aF-rhN"; */
+"6X4-aF-rhN.text" = "Price";
+
+/* Class = "UILabel"; text = "档期管理"; ObjectID = "9XS-Tr-ulK"; */
+"9XS-Tr-ulK.text" = "档期管理";
+
+/* Class = "UILabel"; text = "状态"; ObjectID = "9ue-Fp-7DJ"; */
+"9ue-Fp-7DJ.text" = "状态";
+
+/* Class = "UITableViewSection"; headerTitle = "功能"; ObjectID = "AWb-ez-hcJ"; */
+"AWb-ez-hcJ.headerTitle" = "功能";
+
+/* Class = "UILabel"; text = "危机处理"; ObjectID = "AwJ-2Y-PGS"; */
+"AwJ-2Y-PGS.text" = "危机处理";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "BuQ-Me-Ii7"; */
+"BuQ-Me-Ii7.normalTitle" = "登录";
+
+/* Class = "UILabel"; text = "     载入中"; ObjectID = "C1l-6t-1rp"; */
+"C1l-6t-1rp.text" = "     载入中";
+
+/* Class = "UITableViewSection"; headerTitle = "诚信体系"; ObjectID = "Cdt-Oe-A7c"; */
+"Cdt-Oe-A7c.headerTitle" = "诚信体系";
+
+/* Class = "UIButton"; normalTitle = "exit"; ObjectID = "DTx-au-Ok7"; */
+"DTx-au-Ok7.normalTitle" = "exit";
+
+/* Class = "UINavigationItem"; title = "作品管理"; ObjectID = "Ea6-IM-V3G"; */
+"Ea6-IM-V3G.title" = "作品管理";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "EiT-fk-Vsp"; */
+"EiT-fk-Vsp.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "上传头像"; ObjectID = "Evy-cX-xln"; */
+"Evy-cX-xln.normalTitle" = "上传头像";
+
+/* Class = "UITableViewSection"; headerTitle = "用户"; ObjectID = "GZS-Q4-Vue"; */
+"GZS-Q4-Vue.headerTitle" = "用户";
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "IbV-Ch-8sH"; */
+"IbV-Ch-8sH.text" = "Status";
+
+/* Class = "UILabel"; text = "62.8¥"; ObjectID = "KgW-FW-C4y"; */
+"KgW-FW-C4y.text" = "62.8¥";
+
+/* Class = "UILabel"; text = "专业度："; ObjectID = "L38-Qd-DHV"; */
+"L38-Qd-DHV.text" = "专业度：";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "LEC-lf-4OC"; */
+"LEC-lf-4OC.normalTitle" = "登录";
+
+/* Class = "UIBarButtonItem"; title = "报名"; ObjectID = "MEQ-dH-mc3"; */
+"MEQ-dH-mc3.title" = "报名";
+
+/* Class = "UINavigationItem"; title = "充值提现"; ObjectID = "N5j-8y-31L"; */
+"N5j-8y-31L.title" = "充值提现";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "O1J-ZM-Kcb"; */
+"O1J-ZM-Kcb.text" = "Title";
+
+/* Class = "UILabel"; text = "基本资料"; ObjectID = "Oay-aG-jll"; */
+"Oay-aG-jll.text" = "基本资料";
+
+/* Class = "UILabel"; text = "作品管理"; ObjectID = "Phq-qe-x7w"; */
+"Phq-qe-x7w.text" = "作品管理";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Pwc-jw-ddL"; */
+"Pwc-jw-ddL.text" = "Label";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "QfH-lO-6Sw"; */
+"QfH-lO-6Sw.text" = "Time";
+
+/* Class = "UINavigationItem"; title = "我的主页"; ObjectID = "Sep-gD-hli"; */
+"Sep-gD-hli.title" = "我的主页";
+
+/* Class = "UILabel"; text = "充值余额"; ObjectID = "UDb-Uz-Fy8"; */
+"UDb-Uz-Fy8.text" = "充值余额";
+
+/* Class = "UILabel"; text = "250$"; ObjectID = "Wsl-am-bge"; */
+"Wsl-am-bge.text" = "250$";
+
+/* Class = "UINavigationItem"; title = "设置"; ObjectID = "XAA-VA-92J"; */
+"XAA-VA-92J.title" = "设置";
+
+/* Class = "UINavigationItem"; title = "账户管理"; ObjectID = "Yli-HH-Tvl"; */
+"Yli-HH-Tvl.title" = "账户管理";
+
+/* Class = "UILabel"; text = "充值"; ObjectID = "ZFb-qU-uO5"; */
+"ZFb-qU-uO5.text" = "充值";
+
+/* Class = "UILabel"; text = "保证金"; ObjectID = "ZJ7-D8-s2x"; */
+"ZJ7-D8-s2x.text" = "保证金";
+
+/* Class = "UITabBarItem"; title = "通告"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "通告";
+
+/* Class = "UITabBarItem"; title = "消息"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "消息";
+
+/* Class = "UILabel"; text = "确认密码"; ObjectID = "cdc-k3-5WA"; */
+"cdc-k3-5WA.text" = "确认密码";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "d0O-cO-NiJ"; */
+"d0O-cO-NiJ.normalTitle" = "注册";
+
+/* Class = "UINavigationItem"; title = "相册列表"; ObjectID = "dGS-Kl-YcN"; */
+"dGS-Kl-YcN.title" = "相册列表";
+
+/* Class = "UILabel"; text = "电话"; ObjectID = "dGW-3p-F1N"; */
+"dGW-3p-F1N.text" = "电话";
+
+/* Class = "UINavigationItem"; title = "第一视觉"; ObjectID = "dnG-X3-Zwo"; */
+"dnG-X3-Zwo.title" = "第一视觉";
+
+/* Class = "UILabel"; text = "相册"; ObjectID = "e07-CQ-B7Q"; */
+"e07-CQ-B7Q.text" = "相册";
+
+/* Class = "UIButton"; normalTitle = "SEND"; ObjectID = "eF9-My-j2M"; */
+"eF9-My-j2M.normalTitle" = "SEND";
+
+/* Class = "UINavigationItem"; title = "我的会话"; ObjectID = "eR5-ax-Aga"; */
+"eR5-ax-Aga.title" = "我的会话";
+
+/* Class = "UITabBarItem"; title = "我"; ObjectID = "eTN-Hg-Mro"; */
+"eTN-Hg-Mro.title" = "我";
+
+/* Class = "UILabel"; text = "转出"; ObjectID = "f2a-pi-HPc"; */
+"f2a-pi-HPc.text" = "转出";
+
+/* Class = "UINavigationItem"; title = "档期管理"; ObjectID = "gYi-IJ-K0c"; */
+"gYi-IJ-K0c.title" = "档期管理";
+
+/* Class = "UILabel"; text = "验证码"; ObjectID = "goc-La-P4x"; */
+"goc-La-P4x.text" = "验证码";
+
+/* Class = "UIButton"; normalTitle = "已经注册辣"; ObjectID = "gq5-No-4EU"; */
+"gq5-No-4EU.normalTitle" = "已经注册辣";
+
+/* Class = "UILabel"; text = "账号绑定"; ObjectID = "hn4-5p-dls"; */
+"hn4-5p-dls.text" = "账号绑定";
+
+/* Class = "UINavigationItem"; title = "账号绑定"; ObjectID = "la0-Ql-c2M"; */
+"la0-Ql-c2M.title" = "账号绑定";
+
+/* Class = "UIButton"; normalTitle = "REGISTER"; ObjectID = "meg-pp-FRU"; */
+"meg-pp-FRU.normalTitle" = "REGISTER";
+
+/* Class = "UITextField"; placeholder = "密码"; ObjectID = "pvd-mg-BOf"; */
+"pvd-mg-BOf.placeholder" = "密码";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "q7Z-Mj-RJ2"; */
+"q7Z-Mj-RJ2.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "交易明细"; ObjectID = "qm9-v6-C77"; */
+"qm9-v6-C77.text" = "交易明细";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "u9X-oL-oNN"; */
+"u9X-oL-oNN.text" = "Location";
+
+/* Class = "UITableViewSection"; headerTitle = "账户信息"; ObjectID = "vlR-r4-d8m"; */
+"vlR-r4-d8m.headerTitle" = "账户信息";
+
+/* Class = "UILabel"; text = "余额"; ObjectID = "wV1-og-8yG"; */
+"wV1-og-8yG.text" = "余额";
