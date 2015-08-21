@@ -12,6 +12,7 @@
 		E30B30E11B7857CE00864989 /* dataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* dataInit.swift */; };
 		E334520E1B73191B004E6FD4 /* UserEditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* UserEditDataViewController.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
+		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
 		E36C6D151B787D3E00D47BC2 /* DataStorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C6D141B787D3E00D47BC2 /* DataStorStruct.swift */; };
 		E37AD5991B846BC8005DEC92 /* CalManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */; };
 		E38518871B7091B40063C2C2 /* starRank_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518711B7091B40063C2C2 /* starRank_0.png */; };
@@ -93,6 +94,7 @@
 		E334520D1B73191B004E6FD4 /* UserEditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEditDataViewController.swift; sourceTree = "<group>"; };
 		E334520F1B731CCB004E6FD4 /* XLForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLForm.framework; path = "Pods/../build/Debug-iphoneos/XLForm.framework"; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
+		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E36C6D141B787D3E00D47BC2 /* DataStorStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorStruct.swift; sourceTree = "<group>"; };
 		E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalManagerViewController.swift; sourceTree = "<group>"; };
 		E38518711B7091B40063C2C2 /* starRank_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_0.png; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		E3978F501B7ADF99002B54A3 /* 数据类 */ = {
 			isa = PBXGroup;
 			children = (
+				E36920B61B8700B900D8F345 /* Calendar.swift */,
 				E3978F511B7ADFC6002B54A3 /* BodyInfo.swift */,
 				E3978F5B1B7AE106002B54A3 /* ModelCard.swift */,
 				E3978F611B7AE3A1002B54A3 /* PUT.swift */,
@@ -581,6 +584,7 @@
 				E3C899901B7473A400286AC7 /* SignupViewController.swift in Sources */,
 				E3E9C2431B6CAF5000998937 /* SMSegmentView.swift in Sources */,
 				E3001B891B79DAD300F38CEC /* SwiftColors.swift in Sources */,
+				E36920B71B8700B900D8F345 /* Calendar.swift in Sources */,
 				E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */,
 				E3978F581B7AE09C002B54A3 /* AlbumInfo.swift in Sources */,
 				E3E9C2451B6CBE1500998937 /* Notice.swift in Sources */,
