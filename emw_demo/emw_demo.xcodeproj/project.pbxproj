@@ -52,6 +52,8 @@
 		E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3978F611B7AE3A1002B54A3 /* PUT.swift */; };
 		E3978F641B7AEAFD002B54A3 /* AlbumID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3978F631B7AEAFD002B54A3 /* AlbumID.swift */; };
 		E3978F661B7B1470002B54A3 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3978F651B7B1470002B54A3 /* AlbumView.swift */; };
+		E3AB7A921B8AF6B800962116 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A911B8AF6B800962116 /* bg.png */; };
+		E3AB7A961B8AFA1300962116 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A951B8AFA1300962116 /* logo.png */; };
 		E3B561701B7C90870051D125 /* PhotoThumbCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B5616F1B7C90870051D125 /* PhotoThumbCollectionViewCell.swift */; };
 		E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */; };
 		E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */; };
@@ -134,6 +136,8 @@
 		E3978F611B7AE3A1002B54A3 /* PUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PUT.swift; sourceTree = "<group>"; };
 		E3978F631B7AEAFD002B54A3 /* AlbumID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumID.swift; sourceTree = "<group>"; };
 		E3978F651B7B1470002B54A3 /* AlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
+		E3AB7A911B8AF6B800962116 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		E3AB7A951B8AFA1300962116 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		E3B5616F1B7C90870051D125 /* PhotoThumbCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3B73BFD1B71B92500E6AD96 /* JSONJoy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONJoy.framework; path = "Pods/../build/Debug-iphoneos/JSONJoy.framework"; sourceTree = "<group>"; };
 		E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 		E3C8999A1B749E0C00286AC7 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */,
 				E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */,
 				E3C8998F1B7473A400286AC7 /* SignupViewController.swift */,
 				E3C899911B7473AD00286AC7 /* LoginViewController.swift */,
@@ -345,7 +350,6 @@
 				E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */,
 				E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */,
 				E3978F651B7B1470002B54A3 /* AlbumView.swift */,
-				E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */,
 				E30B30E01B7857CE00864989 /* dataInit.swift */,
 				E36C6D141B787D3E00D47BC2 /* DataStorStruct.swift */,
 			);
@@ -355,6 +359,8 @@
 		E3E9C2191B6CA66200998937 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3AB7A951B8AFA1300962116 /* logo.png */,
+				E3AB7A911B8AF6B800962116 /* bg.png */,
 				E3001B881B79DAD300F38CEC /* SwiftColors.swift */,
 				E3E9C2521B6CE5D700998937 /* img.jpg */,
 				E3E9C21A1B6CA66200998937 /* Info.plist */,
@@ -440,6 +446,7 @@
 				TargetAttributes = {
 					E3E9C2151B6CA66200998937 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = LPAW9Y2YV2;
 					};
 					E3E9C22C1B6CA66200998937 = {
 						CreatedOnToolsVersion = 6.4;
@@ -475,6 +482,7 @@
 				E385188A1B7091B40063C2C2 /* starRank_2.png in Resources */,
 				E385189C1B7091B40063C2C2 /* 通告.png in Resources */,
 				E38518991B7091B40063C2C2 /* 设置图标-11.png in Resources */,
+				E3AB7A961B8AFA1300962116 /* logo.png in Resources */,
 				E38518961B7091B40063C2C2 /* 相册管理里.png in Resources */,
 				E38518871B7091B40063C2C2 /* starRank_0.png in Resources */,
 				E3E9C2231B6CA66200998937 /* Main.storyboard in Resources */,
@@ -488,6 +496,7 @@
 				E38518891B7091B40063C2C2 /* starRank_10.png in Resources */,
 				E385188E1B7091B40063C2C2 /* starRank_6.png in Resources */,
 				E38518951B7091B40063C2C2 /* 档期管理.png in Resources */,
+				E3AB7A921B8AF6B800962116 /* bg.png in Resources */,
 				E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */,
 				E3E9C2251B6CA66200998937 /* Images.xcassets in Resources */,
 				E385188B1B7091B40063C2C2 /* starRank_3.png in Resources */,
@@ -730,10 +739,14 @@
 			baseConfigurationReference = C04BBC078BC2E0637D81E084 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = emw_demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -742,10 +755,14 @@
 			baseConfigurationReference = F3D2F2A9A29A9CFB400AAA3D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = emw_demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

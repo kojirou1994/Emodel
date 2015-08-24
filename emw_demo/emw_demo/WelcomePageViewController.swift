@@ -23,6 +23,8 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginBtn.setBackgroundImage(UIImage(named: "登陆Pressed"), forState: UIControlState.Highlighted)
+        signupBtn.setBackgroundImage(UIImage(named: "注册Pressed"), forState: UIControlState.Highlighted)
         if isLogin {
             loginBtn.hidden = true
             signupBtn.hidden = true
@@ -59,6 +61,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             pageControll.currentPage = 0
             self.view.addSubview(pageControll)
             //按钮到上层来
+            self.view.sendSubviewToBack(pageControll)
             self.view.bringSubviewToFront(signupBtn)
             self.view.bringSubviewToFront(loginBtn)
         }
