@@ -125,7 +125,8 @@ static NSString *cellIdentifier = @"Cell";
         [_textField becomeFirstResponder];
         return;
     }
-
+    kYBLogLevel = kYBLogLevelDebug;
+    [YunBaService setupWithAppkey:AppKey];
     NSString *topic = _textField.text;
     NSData *data = [topic dataUsingEncoding:NSUTF8StringEncoding];
     [YunBaService subscribe:topic resultBlock:^(BOOL succ,NSError *error){
