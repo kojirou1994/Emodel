@@ -9,6 +9,7 @@
 #import "ChatViewController.h"
 #import "UIImageView+WebCache.h"
 #import "YunBaService.h"
+#define AppKey @"55d178869477ebf524695a1c"
 @interface ChatViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
     UITableView *_tableView;
@@ -119,7 +120,27 @@ static NSString *cellIdentifier = @"Cell";
     
     NSString *string = [NSString stringWithFormat:@"在%@说:\n%@",dateString,_textField.text];
     NSLog(@"string   %@",string);
-    
+    if (![_textField.text length]) {
+        [self alertWithContent:@"no pub topic set"];
+        [_textField becomeFirstResponder];
+        return;
+    }
+
+    NSString *topic = _textField.text;
+    NSData *data = [topic dataUsingEncoding:NSUTF8StringEncoding];
+    [YunBaService subscribe:topic resultBlock:^(BOOL succ,NSError *error){
+        if (succ) {
+            NSLog(@"[result] subscribe to topic(%@) succeed",topic);
+        }else{
+            NSLog(@"[result] subscibe to topic(%@) failed:%@,recovery suggestion:%@",topic,error,[error localizedRecoverySuggestion]);
+        }
+    }];
+    [YunBaService publish:topic data:data resultBlock:^(BOOL succ, NSError *error){
+        if (succ) {
+            [self showChatInfo:[NSString stringWithFormat:@"[result] publish to topic (%@) succeed",topic] isSelf:YES];
+        }
+    }];
+
     
 //    [ZYHttpManager sendChatRequestWithFriendName:self.userName chatInfo:string completionBlock:^(BOOL isSuccessed, NSString *errorMessage)
 //     {
@@ -134,12 +155,62 @@ static NSString *cellIdentifier = @"Cell";
 //             SHOWALERT(errorMessage)
 //         }
 //     }];
+    
 
 }
+- (void)addNotificationHandler {
+    NSLog(@"333333333333");
+    NSNotificationCenter *defaultNC = [NSNotificationCenter defaultCenter];
+    [defaultNC addObserver:self selector:@selector(onConnectionStateChanged:) name:kYBConnectionStatusChangedNotification object:nil];
+    [defaultNC addObserver:self selector:@selector(onMessageReceived:) name:kYBDidReceiveMessageNotification object:nil];
+    [defaultNC addObserver:self selector:@selector(onPresenceReceived:) name:kYBDidReceivePresenceNotification object:nil];
+}
+
+- (void)removeNotificationHandler {
+    NSNotificationCenter *defaultNC = [NSNotificationCenter defaultCenter];
+    [defaultNC removeObserver:self];
+}
+
+- (void)onConnectionStateChanged:(NSNotification *)notification {
+    NSLog(@"222222");
+    if ([YunBaService isConnected]) {
+        NSLog(@"didConnect");
+        NSString *prompt = [NSString stringWithFormat:@"[YunBaService] => didConnect"];
+        [self showChatInfo:prompt isSelf:YES];
+        //        _statusLabel.text = @"connected";
+    } else {
+        NSLog(@"didDisconnected");
+        NSString *prompt = [NSString stringWithFormat:@"[YunBaService] => disconnected"];
+        [self showChatInfo:prompt isSelf:YES];
+        //        _statusLabel.text = @"disconnected";
+    }
+}
+
+
+- (void)alertWithContent:(NSString *)contet {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"yunba-demo" message:contet delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    [alertView show];
+}
 - (void)onMessageReceived:(NSNotification *)notification {
+    NSLog(@"11111111");
     YBMessage *message = [notification object];
+    NSLog(@"new message, %zu bytes, topic=%@", (unsigned long)[[message data] length], [message topic]);
     NSString *payloadString = [[NSString alloc] initWithData:[message data] encoding:NSUTF8StringEncoding];
     NSLog(@"[Message] %@ => %@", [message topic], payloadString);
+    NSString *curMsg = [NSString stringWithFormat:@"[Message] %@ => %@", [message topic], payloadString];
+    [self showChatInfo:curMsg];
+}
+- (void)onPresenceReceived:(NSNotification *)notification {
+    NSLog(@"444444444444444");
+    YBPresenceEvent *presence = [notification object];
+    NSLog(@"new presence, action=%@, topic=%@, alias=%@, time=%lf", [presence action], [presence topic], [presence alias], [presence time]);
+    
+    NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
+    [self showChatInfo:curMsg isSelf:NO];
+}
+- (void)showChatInfo:(NSString *)message
+{
+    [self showChatInfo:message isSelf:NO];
 }
 
 // 显示上个界面传过来  以及 在有新消息的时候及时显示 的未读消息
@@ -169,8 +240,8 @@ static NSString *cellIdentifier = @"Cell";
     [_tableView reloadData];
     
     // 4,滚到最后一行
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_bubbleArray.count - 1 inSection:0];
-    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_bubbleArray.count - 1 inSection:0];
+//    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 // 创建气泡view
 - (UIView *)creatBubbleWithChatInfo:(NSString *)chatInfo isSelf:(BOOL)isSelf
@@ -247,8 +318,8 @@ static NSString *cellIdentifier = @"Cell";
          //  至少有一个单元格的时候 才滚动 ,没有单元格不需要滚动
          if (_bubbleArray.count > 0)
          {
-             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_bubbleArray.count - 1 inSection:0];
-             [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_bubbleArray.count - 1 inSection:0];
+//             [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
          }
          
      } completion:nil];

@@ -112,6 +112,8 @@
 		25B228CF1B5DF203001B450C /* OldModelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B228CD1B5DF203001B450C /* OldModelViewController.xib */; };
 		25B2A1B41B6F49160044D93A /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B2A1B21B6F49160044D93A /* MainCollectionViewCell.m */; };
 		25B2A1B51B6F49160044D93A /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B2A1B31B6F49160044D93A /* MainCollectionViewCell.xib */; };
+		25C1C3FF1B8C4E3500BFF391 /* MyNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C1C3FD1B8C4E3500BFF391 /* MyNoticeViewController.m */; };
+		25C1C4001B8C4E3500BFF391 /* MyNoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25C1C3FE1B8C4E3500BFF391 /* MyNoticeViewController.xib */; };
 		25DC9D331B743D1300CEC864 /* BaseInfoBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D2F1B743D1300CEC864 /* BaseInfoBC.m */; };
 		25DC9D341B743D1300CEC864 /* BaseInfoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D311B743D1300CEC864 /* BaseInfoData.m */; };
 		25DC9D431B74411100CEC864 /* UserIDBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D371B74411100CEC864 /* UserIDBaseInfo.m */; };
@@ -120,8 +122,6 @@
 		25DC9D461B74411100CEC864 /* UserIDBusinessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D3D1B74411100CEC864 /* UserIDBusinessInfo.m */; };
 		25DC9D471B74411100CEC864 /* UserIDData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D3F1B74411100CEC864 /* UserIDData.m */; };
 		25DC9D481B74411100CEC864 /* UserIDMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D421B74411100CEC864 /* UserIDMedia.m */; };
-		25DC9D4C1B748F0500CEC864 /* MyNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC9D4A1B748F0500CEC864 /* MyNoticeViewController.m */; };
-		25DC9D4D1B748F0500CEC864 /* MyNoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25DC9D4B1B748F0500CEC864 /* MyNoticeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,6 +308,9 @@
 		25B2A1B11B6F49160044D93A /* MainCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionViewCell.h; sourceTree = "<group>"; };
 		25B2A1B21B6F49160044D93A /* MainCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollectionViewCell.m; sourceTree = "<group>"; };
 		25B2A1B31B6F49160044D93A /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
+		25C1C3FC1B8C4E3500BFF391 /* MyNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNoticeViewController.h; sourceTree = "<group>"; };
+		25C1C3FD1B8C4E3500BFF391 /* MyNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNoticeViewController.m; sourceTree = "<group>"; };
+		25C1C3FE1B8C4E3500BFF391 /* MyNoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNoticeViewController.xib; sourceTree = "<group>"; };
 		25DC9D2E1B743D1300CEC864 /* BaseInfoBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInfoBC.h; sourceTree = "<group>"; };
 		25DC9D2F1B743D1300CEC864 /* BaseInfoBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInfoBC.m; sourceTree = "<group>"; };
 		25DC9D301B743D1300CEC864 /* BaseInfoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInfoData.h; sourceTree = "<group>"; };
@@ -326,9 +329,6 @@
 		25DC9D401B74411100CEC864 /* UserIDDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDDataModels.h; sourceTree = "<group>"; };
 		25DC9D411B74411100CEC864 /* UserIDMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserIDMedia.h; sourceTree = "<group>"; };
 		25DC9D421B74411100CEC864 /* UserIDMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserIDMedia.m; sourceTree = "<group>"; };
-		25DC9D491B748F0500CEC864 /* MyNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNoticeViewController.h; sourceTree = "<group>"; };
-		25DC9D4A1B748F0500CEC864 /* MyNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNoticeViewController.m; sourceTree = "<group>"; };
-		25DC9D4B1B748F0500CEC864 /* MyNoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNoticeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,9 +619,9 @@
 				257148251B71E90C005F6E17 /* NoticeDetailViewController.h */,
 				257148261B71E90C005F6E17 /* NoticeDetailViewController.m */,
 				257148271B71E90C005F6E17 /* NoticeDetailViewController.xib */,
-				25DC9D491B748F0500CEC864 /* MyNoticeViewController.h */,
-				25DC9D4A1B748F0500CEC864 /* MyNoticeViewController.m */,
-				25DC9D4B1B748F0500CEC864 /* MyNoticeViewController.xib */,
+				25C1C3FC1B8C4E3500BFF391 /* MyNoticeViewController.h */,
+				25C1C3FD1B8C4E3500BFF391 /* MyNoticeViewController.m */,
+				25C1C3FE1B8C4E3500BFF391 /* MyNoticeViewController.xib */,
 			);
 			name = NoticeDetails;
 			sourceTree = "<group>";
@@ -894,8 +894,8 @@
 				257148221B71DEC3005F6E17 /* 1.png in Resources */,
 				256C1AB51B5CEE6D00461B84 /* LoginViewController.xib in Resources */,
 				254777461B81C56E00BDD606 /* 图标9.png in Resources */,
+				25C1C4001B8C4E3500BFF391 /* MyNoticeViewController.xib in Resources */,
 				25B228CF1B5DF203001B450C /* OldModelViewController.xib in Resources */,
-				25DC9D4D1B748F0500CEC864 /* MyNoticeViewController.xib in Resources */,
 				25B228C51B5DF1C4001B450C /* ForeignWomanModelViewController.xib in Resources */,
 				256C1AC71B5D19CA00461B84 /* SMS_SDKLocalizable.strings in Resources */,
 				257148161B71B6F1005F6E17 /* bubbleSelf.png in Resources */,
@@ -936,6 +936,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				257147E01B71A9E8005F6E17 /* SDWebImageDecoder.m in Sources */,
+				25C1C3FF1B8C4E3500BFF391 /* MyNoticeViewController.m in Sources */,
 				256C1AB41B5CEE6D00461B84 /* LoginViewController.m in Sources */,
 				257148001B71AA0B005F6E17 /* AFHTTPRequestOperation.m in Sources */,
 				257147DC1B71A9E8005F6E17 /* MKAnnotationView+WebCache.m in Sources */,
@@ -987,7 +988,6 @@
 				25B2288B1B5DD748001B450C /* MessageViewController.m in Sources */,
 				257148031B71AA0B005F6E17 /* AFNetworkReachabilityManager.m in Sources */,
 				25B228C41B5DF1C4001B450C /* ForeignWomanModelViewController.m in Sources */,
-				25DC9D4C1B748F0500CEC864 /* MyNoticeViewController.m in Sources */,
 				257147B81B719CE9005F6E17 /* ChatTableViewCell.m in Sources */,
 				257148281B71E90C005F6E17 /* NoticeDetailViewController.m in Sources */,
 				25B228B41B5DF10C001B450C /* ManModelViewController.m in Sources */,

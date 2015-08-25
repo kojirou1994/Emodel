@@ -28,14 +28,16 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     [SMS_SDK registerApp:appKey withSecret:appSecret];
+    kYBLogLevel = kYBLogLevelDebug;
     [YunBaService setupWithAppkey:AppKey];
-//    [YunBaService subscribe: resultBlock:^(BOOL succ,NSError *error){
-//        if (succ) {
-//            NSLog(@"[result] subscribe to topic(%@) succeed",topic);
-//        }else{
-//            NSLog(@"[result] subscibe to topic(%@) failed:%@,recovery suggestion:%@",topic,error,[error localizedRecoverySuggestion]);
-//        }
-//    }];
+    NSString *topic;
+    [YunBaService subscribe:topic resultBlock:^(BOOL succ,NSError *error){
+        if (succ) {
+            NSLog(@"[result] subscribe to topic(%@) succeed",topic);
+        }else{
+            NSLog(@"[result] subscibe to topic(%@) failed:%@,recovery suggestion:%@",topic,error,[error localizedRecoverySuggestion]);
+        }
+    }];
     return YES;
 }
 
