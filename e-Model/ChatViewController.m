@@ -16,6 +16,7 @@
     NSMutableArray *_bubbleArray;
     UIView *_inputView;
     UITextField *_textField;
+    UITextField *_contentTextField;
 }
 @property (nonatomic, copy)NSString *userName;
 @property (nonatomic, retain)NSArray *headImageURLArray;
@@ -49,7 +50,14 @@ static NSString *cellIdentifier = @"Cell";
     _textField.backgroundColor = [UIColor whiteColor];
     _textField.clipsToBounds = YES;
     _textField.layer.cornerRadius = 10;
+    _textField.clearButtonMode = UITextFieldViewModeAlways;
     [_inputView addSubview:_textField];
+    _contentTextField = [[UITextField alloc]initWithFrame:CGRectMake(240, 5, 40, 30)];
+    _contentTextField.backgroundColor = [UIColor whiteColor];
+    _contentTextField.clipsToBounds = YES;
+    _contentTextField.layer.cornerRadius = 10;
+    _contentTextField.clearButtonMode = UITextFieldViewModeAlways;
+//    [_inputView addSubview:_contentTextField];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(275, 5, 50, 30);
     [button setTitle:@"发送" forState:UIControlStateNormal];
@@ -120,42 +128,55 @@ static NSString *cellIdentifier = @"Cell";
     
     NSString *string = [NSString stringWithFormat:@"在%@说:\n%@",dateString,_textField.text];
     NSLog(@"string   %@",string);
-    if (![_textField.text length]) {
-        [self alertWithContent:@"no pub topic set"];
-        [_textField becomeFirstResponder];
-        return;
-    }
+//    if (![_contentTextField.text length]) {
+//        [self alertWithContent:@"no pub topic set"];
+//        [_contentTextField becomeFirstResponder];
+//        return;
+//    }
     kYBLogLevel = kYBLogLevelDebug;
     [YunBaService setupWithAppkey:AppKey];
-    NSString *topic = _textField.text;
-    NSData *data = [topic dataUsingEncoding:NSUTF8StringEncoding];
-    [YunBaService subscribe:topic resultBlock:^(BOOL succ,NSError *error){
+    
+    
+//    NSString *topic1 = [topic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *topic2 = [NSString stringWithFormat:@"1"];
+    [YunBaService subscribe:topic2 resultBlock:^(BOOL succ,NSError *error){
         if (succ) {
-            NSLog(@"[result] subscribe to topic(%@) succeed",topic);
+            NSLog(@"[result] subscribe to topic(%@) succeed",topic2);
         }else{
-            NSLog(@"[result] subscibe to topic(%@) failed:%@,recovery suggestion:%@",topic,error,[error localizedRecoverySuggestion]);
-        }
-    }];
-    [YunBaService publish:topic data:data resultBlock:^(BOOL succ, NSError *error){
-        if (succ) {
-            [self showChatInfo:[NSString stringWithFormat:@"[result] publish to topic (%@) succeed",topic] isSelf:YES];
+            NSLog(@"[result] subscibe to topic(%@) failed:%@,recovery suggestion:%@",topic2,error,[error localizedRecoverySuggestion]);
         }
     }];
 
+        NSString *topic = [NSString stringWithFormat:@"1"];
+        //    NSString *topic1 = [topic stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"%@",topic);
+        NSData *data = [_textField.text dataUsingEncoding:NSUTF8StringEncoding];
+        UInt8 qoslevel = 2;
+        BOOL isRetained = NO;
+        [YunBaService publish:topic data:data option:[YBPublishOption optionWithQos:qoslevel retained:NO] resultBlock:^(BOOL succ, NSError *error){
+            if (succ) {
+                [self showChatInfo:[NSString stringWithFormat:@"[result] publish data(%@) to topic (%@) succeed",_textField.text,topic] isSelf:YES];
+            }else {
+                [self showChatInfo:[NSString stringWithFormat:@"[result] publish data(%@) to topic (%@) failed: %@, recovery suggestion: %@",_textField.text, topic, error, [error localizedRecoverySuggestion]] isSelf:YES];
+            }
+        }];
+        [self showChatInfo:[NSString stringWithFormat:@"[Demo] publish data %@ toTopic %@ atQos %hhu retainFlag %d", _textField.text, @"2",qoslevel ,isRetained] isSelf:YES];
+        
+        //    [ZYHttpManager sendChatRequestWithFriendName:self.userName chatInfo:string completionBlock:^(BOOL isSuccessed, NSString *errorMessage)
+        //     {
+        //         if (isSuccessed)
+        //         {
+        //             [self showChatInfo:string isSelf:YES];
+        //             // 清空字符串
+        //             _textField.text = @"";
+        //         }
+        //         else
+        //         {
+        //             SHOWALERT(errorMessage)
+        //         }
+        //     }];
+
     
-//    [ZYHttpManager sendChatRequestWithFriendName:self.userName chatInfo:string completionBlock:^(BOOL isSuccessed, NSString *errorMessage)
-//     {
-//         if (isSuccessed)
-//         {
-//             [self showChatInfo:string isSelf:YES];
-//             // 清空字符串
-//             _textField.text = @"";
-//         }
-//         else
-//         {
-//             SHOWALERT(errorMessage)
-//         }
-//     }];
     
 
 }
