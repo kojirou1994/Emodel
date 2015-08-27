@@ -12,20 +12,25 @@ import SwiftHTTP
 import Kingfisher
 
 var rank:Int?
-class UserViewController: UITableViewController {
+class UserViewController: UIViewController {
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var starRank: UIImageView!
     @IBOutlet weak var headImage: UIImageView!
+    
+    
+    @IBOutlet weak var avatar: UIButton!
+    
+    @IBAction func avatarBtnPressed(sender: AnyObject) {
+        println("change")
+    }
+    
     var ass = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.backgroundColor = UIColor.redColor()
         ass.center = CGPointMake(userNameLabel.frame.minX+10, userNameLabel.frame.maxY)
-        //        ass.frame = CGRectMake(100, 100, 100, 100)
         self.view.addSubview(ass)
-        //        ass.bounds = CGRectMake(100, 100, 100, 100)
-//        ass.color = UIColor.yellowColor()
         ass.startAnimating()
         
         var request = HTTPTask()
@@ -42,13 +47,16 @@ class UserViewController: UITableViewController {
                 println("realName is:\(resp.data!.realName!)")
                 baseInfo = resp.data
                 dispatch_async(dispatch_get_main_queue(),{
-                self.headImage.kf_setImageWithURL(NSURL(string: resp.data!.avatar!)!)
+                    var headView = UIImageView(frame: CGRectMake(0, 0, self.avatar.bounds.width, self.avatar.bounds.height))
+                    headView.kf_setImageWithURL(NSURL(string: resp.data!.avatar!)!)
+                    self.avatar.addSubview(headView)
                 self.userNameLabel.text = resp.data!.nickName!
                 self.ass.stopAnimating()
                 })
-//                self.starRank.image = UIImage(named: "starRank_\(resp.data?.!).png") 更新评分
+                
             }
         }
+        self.starRank.image = UIImage(named: "starRank_6.png")
         println("start get bodyinfo")
         request.GET(serverAddress + "/user/\(userId!)/bodyinfo", parameters: nil) { (response: HTTPResponse) -> Void in
             if let err = response.error {
@@ -84,8 +92,6 @@ class UserViewController: UITableViewController {
                 println("album count: \(album.count)")
                 println("album1 num: \(album[0].num)")
                 println("album2 ID: \(album[1].id)")
-                
-                
             }
         }
 
@@ -98,11 +104,9 @@ class UserViewController: UITableViewController {
     
 
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.tintColor = UIColor.purpleColor()
-        
     }
     override func viewDidAppear(animated: Bool) {
-        println("kingking")
+        println("Profile界面出现")
     }
     /*
     // MARK: - Navigation

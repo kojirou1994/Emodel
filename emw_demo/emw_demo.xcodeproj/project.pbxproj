@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		25CE5FB74C9AD9AE4E129F85 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796C19CCCCEFA6858136DF35 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E3001B891B79DAD300F38CEC /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3001B881B79DAD300F38CEC /* SwiftColors.swift */; };
+		E304C20D1B8EE33E00A40348 /* Album.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* Album.png */; };
+		E304C20F1B8EE90F00A40348 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E304C20E1B8EE90F00A40348 /* head.jpg */; };
 		E30B30E11B7857CE00864989 /* dataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* dataInit.swift */; };
 		E334520E1B73191B004E6FD4 /* UserEditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* UserEditDataViewController.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
@@ -92,6 +94,8 @@
 		796C19CCCCEFA6858136DF35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04BBC078BC2E0637D81E084 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E3001B881B79DAD300F38CEC /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColors.swift; sourceTree = "<group>"; };
+		E304C20C1B8EE33E00A40348 /* Album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Album.png; sourceTree = "<group>"; };
+		E304C20E1B8EE90F00A40348 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
 		E30B30E01B7857CE00864989 /* dataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataInit.swift; sourceTree = "<group>"; };
 		E334520D1B73191B004E6FD4 /* UserEditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEditDataViewController.swift; sourceTree = "<group>"; };
 		E334520F1B731CCB004E6FD4 /* XLForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLForm.framework; path = "Pods/../build/Debug-iphoneos/XLForm.framework"; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 		E3E9C2191B6CA66200998937 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E304C20C1B8EE33E00A40348 /* Album.png */,
+				E304C20E1B8EE90F00A40348 /* head.jpg */,
 				E3AB7A951B8AFA1300962116 /* logo.png */,
 				E3AB7A911B8AF6B800962116 /* bg.png */,
 				E3001B881B79DAD300F38CEC /* SwiftColors.swift */,
@@ -479,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E38518981B7091B40063C2C2 /* 设置.png in Resources */,
+				E304C20F1B8EE90F00A40348 /* head.jpg in Resources */,
 				E385188A1B7091B40063C2C2 /* starRank_2.png in Resources */,
 				E385189C1B7091B40063C2C2 /* 通告.png in Resources */,
 				E38518991B7091B40063C2C2 /* 设置图标-11.png in Resources */,
@@ -499,6 +506,7 @@
 				E3AB7A921B8AF6B800962116 /* bg.png in Resources */,
 				E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */,
 				E3E9C2251B6CA66200998937 /* Images.xcassets in Resources */,
+				E304C20D1B8EE33E00A40348 /* Album.png in Resources */,
 				E385188B1B7091B40063C2C2 /* starRank_3.png in Resources */,
 				E385188D1B7091B40063C2C2 /* starRank_5.png in Resources */,
 				E385188F1B7091B40063C2C2 /* starRank_7.png in Resources */,

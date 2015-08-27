@@ -9,7 +9,7 @@ import UIKit
 
 let serverAddress: String! = "http://api.emwcn.com"
 //api.emwcn.com
-var isLogin: Bool = false
+var isLogin: Bool = true
 var username: String?
 var password: String?
 var userId: String? = "55a7abda8a5da518db646c24"

@@ -21,8 +21,12 @@ var thumbs: NSMutableArray = []
 class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, MWPhotoBrowserDelegate {
     
     @IBOutlet weak var AlbumListCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        for i in AlbumListCollectionView.visibleCells() {
+            
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -39,6 +43,8 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = AlbumListCollectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! AlbumThumbCollectionViewCell
         cell.AlbumTitle.text = album[indexPath.row].name!
+        cell.ThumbImage.contentMode = UIViewContentMode.ScaleAspectFill
+        cell.ThumbImage.clipsToBounds = true
         cell.ThumbImage.kf_setImageWithURL(NSURL(string: album[indexPath.row].imgUri!)!)
         return cell
     }
@@ -62,9 +68,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
                     photos.addObject(MWPhoto(URL: NSURL(string: i.imgUri)!))
                     thumbs.addObject(MWPhoto(URL: NSURL(string: i.thumbUri!)!))
                 }
-//                println("AlbumData count: \(imgUri.count)")
-
-                
                 dispatch_async(dispatch_get_main_queue(),{
                     var pb = MWPhotoBrowser()
                     var pb2 = PhotoBrowserViewController(photos: photos as [AnyObject])
@@ -91,8 +94,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         self.navigationController?.pushViewController(browser, animated: true)
 
-    }
-    func editPressed(){
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
