@@ -3,3 +3,6 @@ Pods/
 #Podfile.lock 
 # changed my mind on Podfile.lock
 emw_demo.xcworkspace
+xcschememanagement.plist
+UserInterfaceState.xcuserstate
+e-Model.xcscheme

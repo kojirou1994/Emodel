@@ -4,8 +4,9 @@ use_frameworks!
 
 pod 'SwiftForms'
 pod 'XLForm', '~> 3.0.0'
-pod 'JTCalendar', '~> 2.0’
-pod 'JSONJoy-Swift', '~> 0.9.1’
+pod 'JTCalendar', '~> 2.0'
+pod 'JSONJoy-Swift', '~> 0.9.1'
 pod 'SwiftHTTP', '~> 0.9.4'
 pod 'Kingfisher', '~> 1.4'
 pod "MWPhotoBrowser"
+pod 'MBProgressHUD', '~> 0.9.1'

@@ -19,6 +19,7 @@ DEPENDENCIES:
   - JSONJoy-Swift (~> 0.9.1)
   - JTCalendar (~> 2.0)
   - Kingfisher (~> 1.4)
+  - MBProgressHUD (~> 0.9.1)
   - MWPhotoBrowser
   - SwiftForms
   - SwiftHTTP (~> 0.9.4)
