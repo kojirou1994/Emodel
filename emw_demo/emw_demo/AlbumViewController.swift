@@ -99,9 +99,9 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let picDimension :CGFloat = self.view.frame.width / 8.0 * 3
-        println(self.view.frame.width)
-        println(picDimension)
-        return CGSizeMake(picDimension, picDimension / 4 * 5)
+//        println(self.view.frame.width)
+//        println(picDimension)
+        return CGSizeMake(130, 130)
         
     }
     
