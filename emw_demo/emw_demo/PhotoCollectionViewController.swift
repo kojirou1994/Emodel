@@ -12,49 +12,33 @@ import SwiftHTTP
 import JSONJoy
 
 let reuseIdentifier = "PhotoCell"
-var imgUri = [String]()
+
 
 class PhotoCollectionViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var PhotoList: UICollectionView!
+    
+    var data:[AlbumListData]?
+    var count: Int! = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        var request = HTTPTask()
-        request.GET(serverAddress + "/album/\(album[selectedAlbumIndex].id!)/list", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                println("error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                println("以获取照片列表")
-                let resp = AlbumList(JSONDecoder(obj))
-                imgUri.removeAll(keepCapacity: false)
-                var temp:Array<AlbumListData>! = resp.data
-                
-                for (var i = 0; i < temp!.count; i++) {
-                    imgUri.append(temp[i].thumbUri!)
-                }
-                dispatch_async(dispatch_get_main_queue(), {self.PhotoList.reloadData()})
-                println("AlbumData count: \(imgUri.count)")
-            }
-        }
-
-//        println("\(selectedAlbum.data.)")
-        // Uncomment the following line to preserve selection between presentations
-//         self.clearsSelectionOnViewWillAppear = false
-
+        println("thumb")
+        var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
+//        self.navigationItem.title = "?????"
+        self.navigationItem.rightBarButtonItem = addBtn
         // Register cell classes
         // Do any additional setup after loading the view.
     }
-
+    func addAlbum(barButton: UIBarButtonItem) {
+        println("add pressed")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     override func viewWillDisappear(animated: Bool) {
-        imgUri.removeAll(keepCapacity: false)
-        self.PhotoList.reloadData()
+        
     }
     /*
     // MARK: - Navigation
@@ -68,32 +52,29 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
 
     // MARK: UICollectionViewDataSource
 
-//    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        //#warning Incomplete method implementation -- Return the number of sections
-//        return 0
-//    }
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        //#warning Incomplete method implementation -- Return the number of sections
+        return 1
+    }
 
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        
-        return imgUri.count
-        
+        println("count: \(count)")
+        return count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoThumbCollectionViewCell
-        cell.PhotoThumbImage.kf_setImageWithURL(NSURL(string: imgUri[indexPath.row])!)
-        // Configure the cell
-        println(imgUri[indexPath.row])
+        cell.PhotoThumbImage.kf_setImageWithURL(NSURL(string: data![indexPath.row].thumbUri!)!)
+        cell.PhotoThumbImage.clipsToBounds = true
+        println(indexPath)
         return cell
     }
     
+    //缩略图视图尺寸
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let picDimension :CGFloat = self.view.frame.width / 4.0
-//        println(self.view.frame.width)
-//        println(picDimension)
         return CGSizeMake(picDimension, picDimension)
         
     }
@@ -101,16 +82,15 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        
-        let leftRightInset = self.view.frame.size.width / 14.0
-        
-        let topInset = self.view.frame.height / 25.0
-        return UIEdgeInsetsMake(topInset, leftRightInset, topInset, leftRightInset)
-        
+        return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 40
+        return 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println("选择了照片: \(indexPath)")
     }
     // MARK: UICollectionViewDelegate
 

@@ -10,7 +10,7 @@ import Foundation
 import JSONJoy
 
 
-//数组
+//单个相册里的照片数据列表
 struct AlbumListData: JSONJoy {
     var albumId: String? = "000000000000000000000000"
     var created_at: String? = "Mon, 10 Jul 2015 00:00:00 -0000"

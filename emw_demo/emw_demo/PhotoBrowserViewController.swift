@@ -19,14 +19,8 @@ class PhotoBrowserViewController: MWPhotoBrowser, MWPhotoBrowserDelegate, UINavi
         super.viewDidLoad()
         self.enableGrid = true
         println("Photo Browser showed")
-        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(title: "delete", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("deleteBtnPressed:")), animated: false)
-        // Do any additional setup after loading the view.
-    }
 
-    func deleteBtnPressed(button: UINavigationItem){
-        println(self.currentIndex)
-        photos.removeObjectAtIndex(Int(self.currentIndex))
-        println(photos.count)
+        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
