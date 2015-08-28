@@ -1,13 +1,14 @@
 //
-//  UserData.swift
+//  BodyInfoEditViewController.swift
 //  emw_demo
 //
-//  Created by 王宇 on 15/8/6.
+//  Created by 王宇 on 15/8/28.
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
+
 import XLForm
 
-class UserEditDataViewController : XLFormViewController {
+class BodyInfoEditViewController : XLFormViewController {
     
     private enum Tags : String {
         case BloodType = "bloodType"
@@ -22,14 +23,6 @@ class UserEditDataViewController : XLFormViewController {
         case ClothesSize = "clothesSize"
         case ShoesSize = "shoeSize"
         case TrouserSize = "trousers"
-        case InPrice = "inPrice"
-        case OutPrice = "outPrice"
-        case UnderWearPrice = "underwearPrice"
-        case DayPrice = "dayPrice"
-        case StartCount = "startCount"
-        case Phone = "mobile"
-        case Email = "email"
-        case Wechat = "wechat"
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -102,62 +95,6 @@ class UserEditDataViewController : XLFormViewController {
         row.value = bodyInfo?.shoesSize
         section.addFormRow(row)
         
-        section = XLFormSectionDescriptor.formSectionWithTitle("基本信息")
-        section.footerTitle = "footer"
-        form.addFormSection(section)
-        
-        // 内景价位
-        row = XLFormRowDescriptor(tag: Tags.InPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "内景价位(元)")
-        row.value = businessInfo?.inPrice!
-        section.addFormRow(row)
-        
-        // 外景价格
-        row = XLFormRowDescriptor(tag: Tags.OutPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "外景价位")
-        row.value = businessInfo?.outPrice!
-        section.addFormRow(row)
-        
-        // 精拍价格
-        
-        /*
-        row = XLFormRowDescriptor(tag: Tags.Height.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "精拍价位")
-        row.value = nil
-        section.addFormRow(row)
-        */
-        
-        // 内衣价格
-        row = XLFormRowDescriptor(tag: Tags.UnderWearPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "内衣价位")
-        row.value = businessInfo?.underwearPrice!
-        section.addFormRow(row)
-        
-        // 包日价格
-        row = XLFormRowDescriptor(tag: Tags.DayPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "包日价格")
-        row.value = businessInfo?.dayPrice!
-        section.addFormRow(row)
-        
-        // 起拍件数
-        row = XLFormRowDescriptor(tag: Tags.StartCount.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "起拍件数")
-        row.value = businessInfo?.startCount!
-        section.addFormRow(row)
-        
-        
-        section = XLFormSectionDescriptor.formSectionWithTitle("联系方式")
-        section.footerTitle = "footer"
-        form.addFormSection(section)
-        
-        // 手机
-        row = XLFormRowDescriptor(tag: Tags.Height.rawValue, rowType: "phone", title: "手机")
-        row.value = baseInfo?.mobile!
-        section.addFormRow(row)
-        
-        // 邮箱
-        row = XLFormRowDescriptor(tag: Tags.Height.rawValue, rowType: "email", title: "邮箱")
-        row.value = baseInfo?.email!
-        section.addFormRow(row)
-        
-        // 微信
-        row = XLFormRowDescriptor(tag: Tags.Height.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "微信")
-        row.value = baseInfo?.wechat!
-        section.addFormRow(row)
         
         // 个人简介
         section = XLFormSectionDescriptor.formSectionWithTitle("个人简介")
@@ -168,7 +105,6 @@ class UserEditDataViewController : XLFormViewController {
         row.value = bodyInfo?.introduction!
         
         section.addFormRow(row)
-        
         
         self.form = form
     }

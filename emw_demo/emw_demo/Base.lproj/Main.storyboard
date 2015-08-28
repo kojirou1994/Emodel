@@ -107,7 +107,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noticeDetailTableCell" id="dxx-e1-osL" customClass="NoticeDetailTableCell" customModule="emw_demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dxx-e1-osL" id="Wys-n7-5pX">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -246,6 +246,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="3eh-1S-Fcn" kind="push" id="mSn-Tg-uKs"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Or9-4K-7Th">
                                 <rect key="frame" x="160" y="87" width="130" height="37"/>
@@ -269,6 +272,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="PwU-28-4ef" kind="push" id="3py-7T-7ZC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vYJ-zC-s2p">
                                 <rect key="frame" x="10" y="314" width="300" height="60"/>
@@ -310,10 +316,10 @@
             </objects>
             <point key="canvasLocation" x="858" y="569"/>
         </scene>
-        <!--User Edit Data View Controller-->
+        <!--Base Info Edit View Controller-->
         <scene sceneID="Sgo-0m-DFv">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="v1b-qh-kuU" customClass="UserEditDataViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="v1b-qh-kuU" customClass="BaseInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UIK-o7-pjF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,7 +330,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6V-pY-5RL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1495" y="569"/>
+            <point key="canvasLocation" x="1392" y="-141"/>
+        </scene>
+        <!--Body Info Edit View Controller-->
+        <scene sceneID="4Gb-vZ-Hrc">
+            <objects>
+                <viewController id="PwU-28-4ef" customClass="BodyInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sFu-VM-PtX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Agv-bb-6Qf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YGl-4B-66B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1392" y="481"/>
+        </scene>
+        <!--Price Info Edit View Controller-->
+        <scene sceneID="oHK-gn-MMo">
+            <objects>
+                <viewController id="3eh-1S-Fcn" customClass="PriceInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y8a-Nk-8Av">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zjE-vn-mxX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NiL-sv-Q5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1392" y="1089"/>
         </scene>
         <!--档期管理-->
         <scene sceneID="Spi-pC-iiH">
@@ -342,6 +378,20 @@
                             <view contentMode="scaleToFill" id="2fD-lN-364" customClass="JTHorizontalCalendarView">
                                 <rect key="frame" x="0.0" y="94" width="320" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="11K-v3-EiC">
+                                <rect key="frame" x="0.0" y="342" width="320" height="176"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本日无安排" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SWr-J5-htC">
+                                        <rect key="frame" x="86" y="55" width="149" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <color key="textColor" red="0.61176472902297974" green="0.92941182851791382" blue="0.81568634510040283" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -591,6 +641,13 @@
                                     <outlet property="delegate" destination="1Yx-qL-RrF" id="EOg-Ah-aOl"/>
                                 </connections>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gbe-54-bb4">
+                                <rect key="frame" x="0.0" y="474" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="edit" id="2Sa-xq-MvA"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -670,7 +727,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLv-VV-2oJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1344" y="1539"/>
+            <point key="canvasLocation" x="1776" y="2241"/>
+        </scene>
+        <!--Photo Browser View Controller-->
+        <scene sceneID="eOZ-wG-Qrq">
+            <objects>
+                <viewController id="kYc-29-dZg" customClass="PhotoBrowserViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NKl-lP-pf7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aJK-sX-E4G"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ouh-NS-xak" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2215" y="2241"/>
         </scene>
         <!--mainTab-->
         <scene sceneID="yl2-sM-qoP">
@@ -691,7 +763,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.866666666666667" y="43.546666666666667"/>
+            <point key="canvasLocation" x="-109" y="43"/>
         </scene>
         <!--通告-->
         <scene sceneID="Z20-U3-lrM">
@@ -819,7 +891,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIj-qX-099" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-228.26666666666665" y="43.546666666666667"/>
+            <point key="canvasLocation" x="-564" y="43"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="d4O-oc-GrR">
@@ -883,7 +955,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7UH-G9-nf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-359.46666666666664" y="721.36000000000001"/>
+            <point key="canvasLocation" x="-780" y="757"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="ru4-pX-lW0">
@@ -979,7 +1051,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IjB-Sr-1Th" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="721"/>
+            <point key="canvasLocation" x="-344" y="757"/>
         </scene>
     </scenes>
     <resources>

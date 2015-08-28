@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SwiftHTTP
 import JSONJoy
-
+import MWPhotoBrowser
 let reuseIdentifier = "PhotoCell"
 
 
@@ -24,10 +24,8 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         super.viewDidLoad()
         println("thumb")
         var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
-//        self.navigationItem.title = "?????"
         self.navigationItem.rightBarButtonItem = addBtn
         // Register cell classes
-        // Do any additional setup after loading the view.
     }
     func addAlbum(barButton: UIBarButtonItem) {
         println("add pressed")
@@ -40,17 +38,8 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     override func viewWillDisappear(animated: Bool) {
         
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
+    // MARK: － UICollectionViewDataSource
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         //#warning Incomplete method implementation -- Return the number of sections
@@ -90,6 +79,12 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var photos = [MWPhoto]()
+        for i in data! {
+            photos.append(MWPhoto(URL: NSURL(string: i.imgUri!)!))
+        }
+        var browse = PhotoBrowserViewController(photos: photos as [AnyObject]!)
+        self.navigationController?.pushViewController(browse, animated: true)
         println("选择了照片: \(indexPath)")
     }
     // MARK: UICollectionViewDelegate

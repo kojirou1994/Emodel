@@ -12,7 +12,9 @@
 		E304C20D1B8EE33E00A40348 /* Album.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* Album.png */; };
 		E304C20F1B8EE90F00A40348 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E304C20E1B8EE90F00A40348 /* head.jpg */; };
 		E30B30E11B7857CE00864989 /* dataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* dataInit.swift */; };
-		E334520E1B73191B004E6FD4 /* UserEditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* UserEditDataViewController.swift */; };
+		E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */; };
+		E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */; };
+		E33802BD1B9023C300A9ADD3 /* PriceInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
 		E36C6D151B787D3E00D47BC2 /* DataStorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C6D141B787D3E00D47BC2 /* DataStorStruct.swift */; };
@@ -97,8 +99,10 @@
 		E304C20C1B8EE33E00A40348 /* Album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Album.png; sourceTree = "<group>"; };
 		E304C20E1B8EE90F00A40348 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
 		E30B30E01B7857CE00864989 /* dataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataInit.swift; sourceTree = "<group>"; };
-		E334520D1B73191B004E6FD4 /* UserEditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEditDataViewController.swift; sourceTree = "<group>"; };
+		E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoEditViewController.swift; sourceTree = "<group>"; };
 		E334520F1B731CCB004E6FD4 /* XLForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLForm.framework; path = "Pods/../build/Debug-iphoneos/XLForm.framework"; sourceTree = "<group>"; };
+		E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyInfoEditViewController.swift; sourceTree = "<group>"; };
+		E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceInfoEditViewController.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E36C6D141B787D3E00D47BC2 /* DataStorStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorStruct.swift; sourceTree = "<group>"; };
@@ -299,7 +303,9 @@
 				E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */,
 				E3E9C23D1B6CA95100998937 /* UserViewController.swift */,
 				E38556721B7C62CD0015285F /* Album */,
-				E334520D1B73191B004E6FD4 /* UserEditDataViewController.swift */,
+				E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */,
+				E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */,
+				E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */,
 			);
 			name = "3rd Tab";
 			sourceTree = "<group>";
@@ -588,8 +594,9 @@
 				E3978F561B7AE017002B54A3 /* BaseInfo.swift in Sources */,
 				E3978F601B7AE372002B54A3 /* Login.swift in Sources */,
 				E3978F5E1B7AE12B002B54A3 /* ProductInfo.swift in Sources */,
-				E334520E1B73191B004E6FD4 /* UserEditDataViewController.swift in Sources */,
+				E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */,
 				E3978F541B7ADFF3002B54A3 /* BusinessInfo.swift in Sources */,
+				E33802BD1B9023C300A9ADD3 /* PriceInfoEditViewController.swift in Sources */,
 				E37AD5991B846BC8005DEC92 /* CalManagerViewController.swift in Sources */,
 				E38556761B7C63600015285F /* AlbumThumbCell.swift in Sources */,
 				E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */,
@@ -615,6 +622,7 @@
 				E30B30E11B7857CE00864989 /* dataInit.swift in Sources */,
 				E3978F5A1B7AE0E5002B54A3 /* VideoInfo.swift in Sources */,
 				E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */,
+				E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */,
 				E3978F521B7ADFC6002B54A3 /* BodyInfo.swift in Sources */,
 				E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */,
 				E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */,

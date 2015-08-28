@@ -21,7 +21,9 @@ var thumbs: NSMutableArray = []
 class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     
     @IBOutlet weak var AlbumListCollectionView: UICollectionView!
-    
+    func addAlbum(barButton: UIBarButtonItem) {
+        println("add pressed")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
