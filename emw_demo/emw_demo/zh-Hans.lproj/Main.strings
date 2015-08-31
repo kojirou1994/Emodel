@@ -138,7 +138,7 @@
 "e07-CQ-B7Q.text" = "相册";
 
 /* Class = "UIButton"; normalTitle = "SEND"; ObjectID = "eF9-My-j2M"; */
-"eF9-My-j2M.normalTitle" = "SEND";
+"eF9-My-j2M.normalTitle" = "发送验证码";
 
 /* Class = "UINavigationItem"; title = "我的会话"; ObjectID = "eR5-ax-Aga"; */
 "eR5-ax-Aga.title" = "我的会话";
@@ -165,7 +165,7 @@
 "la0-Ql-c2M.title" = "账号绑定";
 
 /* Class = "UIButton"; normalTitle = "REGISTER"; ObjectID = "meg-pp-FRU"; */
-"meg-pp-FRU.normalTitle" = "REGISTER";
+"meg-pp-FRU.normalTitle" = "注册";
 
 /* Class = "UITextField"; placeholder = "密码"; ObjectID = "pvd-mg-BOf"; */
 "pvd-mg-BOf.placeholder" = "密码";

@@ -10,7 +10,7 @@ import UIKit
 import SwiftHTTP
 import JSONJoy
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
     
     var countDownTimer:NSTimer?  //计时器
     var timeNum:Int = 60 //验证码重发60秒
@@ -18,6 +18,7 @@ class SignupViewController: UIViewController {
     var userId: String = ""
     var confirmToken:String = ""
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mobileInput: UITextField!
     
     @IBOutlet weak var codeInput: UITextField!
@@ -35,8 +36,11 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func sendMobileBtnPressed(sender: AnyObject) {
+        self.view.endEditing(true)
         if count(mobileInput.text) == 11 {
             var request = HTTPTask()
+            sendMobileBtn.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+            
             sendMobileBtn.userInteractionEnabled = false
             self.countDownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
             let params: Dictionary<String,AnyObject> = ["mobile": mobileInput.text]
@@ -84,6 +88,7 @@ class SignupViewController: UIViewController {
                 }
                 else if let obj: AnyObject = response.responseObject {
                     let resp = ConfirmResp(JSONDecoder(obj))
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
             })
         }
@@ -95,12 +100,12 @@ class SignupViewController: UIViewController {
             countDownTimer?.invalidate()
             timeNum = 60
             sendMobileBtn.userInteractionEnabled = true
-            self.sendMobileBtn.titleLabel?.text = "SEND"
-            self.sendMobileBtn.setTitle("SEND", forState: UIControlState.Normal)
+            self.sendMobileBtn.titleLabel?.text = "发送验证码"
+            self.sendMobileBtn.setTitle("发送验证码", forState: UIControlState.Normal)
         }
         else{
-            self.sendMobileBtn.titleLabel?.text = "SENDED\(timeNum)"
-            self.sendMobileBtn.setTitle("SENDED\(timeNum)", forState: UIControlState.Normal)
+            self.sendMobileBtn.titleLabel?.text = "验证码已发送\(timeNum)"
+            self.sendMobileBtn.setTitle("验证码已发送\(timeNum)", forState: UIControlState.Normal)
         }
         
     }
@@ -108,6 +113,10 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
+        mobileInput.delegate = self
+        passwordInput.delegate = self
+        passwordConfirmInput.delegate = self
         mobileInput.keyboardType = UIKeyboardType.PhonePad
         // Do any additional setup after loading the view.
     }
@@ -117,6 +126,8 @@ class SignupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: - TextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         println(textField.text)
@@ -124,20 +135,25 @@ class SignupViewController: UIViewController {
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
+        if textField.tag == 5 {
         UIView.beginAnimations("Animation", context: nil)
         UIView.setAnimationDuration(0.20)
         UIView.setAnimationBeginsFromCurrentState(true)
         self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y - 100, self.view.frame.size.width, self.view.frame.size.height)
         UIView.commitAnimations()
+        }
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
+        if textField.tag == 5 {
         UIView.beginAnimations("Animation", context: nil)
         UIView.setAnimationDuration(0.20)
         UIView.setAnimationBeginsFromCurrentState(true)
         self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + 100, self.view.frame.size.width, self.view.frame.size.height)
         UIView.commitAnimations()
+        }
     }
+
 
     /*
     // MARK: - Navigation

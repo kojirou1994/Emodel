@@ -9,6 +9,7 @@
 import UIKit
 import JSONJoy
 import SwiftHTTP
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -19,11 +20,19 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var mobileInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBAction func loginBtnPressed(sender: AnyObject) {
+        println("login pressed")
+        let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        notice.labelText = "登陆中"
         var request = HTTPTask()
         let params: Dictionary<String,AnyObject> = ["username": mobileInput.text, "password": passwordInput.text,"autoLogin": "1"]
         request.POST(serverAddress + "/user/login", parameters: params, completionHandler: {(response: HTTPResponse) in
             if let err = response.error {
                 println("error: \(err.localizedDescription)")
+                dispatch_async(dispatch_get_main_queue(), {
+                    notice.labelText = "登陆失败"
+                    notice.hide(true, afterDelay: 1)
+                })
                 return
             }
             if let obj: AnyObject = response.responseObject {
@@ -36,11 +45,28 @@ class LoginViewController: UIViewController {
                     println("token is:\(resp.data!.token!)")
                     userId = resp.data?.userId!
                     token = resp.data?.token!
-                    self.dismissViewControllerAnimated(false, completion: nil)
+                    let user = NSUserDefaults.standardUserDefaults()
+                    user.setObject(self.mobileInput.text, forKey: "UserName")
+                    user.setObject(self.passwordInput.text, forKey: "Password")
+                    user.setObject(userId, forKey: "UserID")
+                    user.setObject(token, forKey: "Token")
+                    dispatch_async(dispatch_get_main_queue(), {
+                        notice.labelText = "登陆成功"
+                        self.dismissViewControllerAnimated(false, completion: nil)
+                    })
+//
                 case 400:
                     println("error")
+                    dispatch_async(dispatch_get_main_queue(), {
+                        notice.labelText = "登陆成功"
+                        notice.hide(true, afterDelay: 5)
+                    })
                 default:
                     println("???")
+                    dispatch_async(dispatch_get_main_queue(), {
+                        notice.labelText = "登陆成功"
+                        notice.hide(true, afterDelay: 5)
+                    })
                 }
                 
             }

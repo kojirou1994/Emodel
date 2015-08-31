@@ -19,6 +19,9 @@ var selectedAlbumIndex:Int = 0
 var photos: NSMutableArray = []
 var thumbs: NSMutableArray = []
 class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
+    @IBAction func EditBtnPressed(sender: AnyObject) {
+        println("show删除相册界面")
+    }
     
     @IBOutlet weak var AlbumListCollectionView: UICollectionView!
     func addAlbum(barButton: UIBarButtonItem) {
@@ -36,11 +39,12 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //MARK: - CllectionViewDelegate
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return album.count
     }
     
-    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = AlbumListCollectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! AlbumThumbCollectionViewCell
         cell.AlbumTitle.text = album[indexPath.row].name!
@@ -72,14 +76,20 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         return 40
     }
     
+    //MARK: - shouldPerformSegue
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        
+        if identifier == "GoToAlbumDetail" {
+            println("ShouldPerformSegue")
+            sleep(2)
+            return true
+        }
         return true
     }
     
     // MARK: - prepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GoToAlbumDetail" {
+            println("prepareForSegue")
             let index = self.AlbumListCollectionView.indexPathsForSelectedItems()
             println("点击了相册 序号：")
             println(index)
@@ -98,10 +108,11 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
                         destinationViewController.navigationItem.title = album[index[0].row].name!
                         destinationViewController.count = resp.data!.count
                         destinationViewController.PhotoList.reloadData()
-                        println(resp.data![1].imgUri)
+//                        println(resp.data![0].imgUri)
                     })
                 }
             }
+            println("Request Sended")
         }
     }
 
