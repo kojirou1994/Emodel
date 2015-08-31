@@ -72,6 +72,11 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         return 40
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        
+        return true
+    }
+    
     // MARK: - prepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GoToAlbumDetail" {
@@ -82,7 +87,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
             var request = HTTPTask()
             request.GET(serverAddress + "/album/\(album[index[0].row].id!)/list", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
-                    println("error: \(err.localizedDescription)")
+                    println("get photo list error: \(err.localizedDescription)")
                     return
                 }
                 if let obj: AnyObject = response.responseObject {
