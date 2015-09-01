@@ -8,16 +8,6 @@
 
 import JSONJoy
 
-
-/*
-
-struct : JSONJoy {
-init(_ decoder: JSONDecoder) {
-}
-}
-
-*/
-
 //手机验证码 Confirm POST
 struct ConfirmResp: JSONJoy {
     var data: ConfirmRespData?

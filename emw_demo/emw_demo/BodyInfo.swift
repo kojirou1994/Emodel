@@ -10,19 +10,8 @@ import JSONJoy
 
 //
 //BodyInfo GET
-struct BodyInfoResp: JSONJoy {
-    var data: BodyInfoRespData?
-    var message: String?
-    var status: Int?
-    
-    init(_ decoder: JSONDecoder) {
-        data = BodyInfoRespData(decoder["data"])
-        message = decoder["message"].string
-        status = decoder["status"].integer
-    }
-}
 
-struct BodyInfoRespData: JSONJoy {
+struct BodyInfo: JSONJoy {
     
     var bloodType: String?//血型
     var height: Int?//身高

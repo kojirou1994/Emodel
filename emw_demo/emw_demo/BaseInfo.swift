@@ -9,17 +9,8 @@
 import JSONJoy
 
 //基本信息 BaseInfo GET
-struct BaseInfoResp: JSONJoy {
-    var data: BaseInfoRespData?
-    var status: Int?
-    
-    init(_ decoder: JSONDecoder) {
-        data = BaseInfoRespData(decoder["data"])
-        status = decoder["status"].integer
-    }
-}
 
-struct BaseInfoRespData: JSONJoy {
+struct BaseInfo: JSONJoy {
     var QQ: String? = "10000"
     var age: Int? = 0
     var avatar: String?  = ""//头像

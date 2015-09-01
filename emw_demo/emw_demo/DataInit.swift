@@ -8,24 +8,19 @@
 import UIKit
 import Foundation
 
+//MARK: - 全局变量
 let serverAddress: String! = "http://10.0.1.11"
 //api.emwcn.com
 var isLogin: Bool = false
 var username: String!
 var password: String!
-var userId: String? = "55a7abda8a5da518db646c24"
+var userId: String! = "55a7abda8a5da518db646c24"
 //55a7abda8a5da518db646c18"
 var token: String?
-var baseInfo: BaseInfoRespData?
-var bodyInfo: BodyInfoRespData?
-var businessInfo: BusinessInfoRespData?
-
+var localUser: UserData!
 var album :Array<Album>! = Array<Album>()
 
-/*
-从default读取
-
-*/
+//MARK: - 初始化
 
 func readUserData() {
     let user = NSUserDefaults.standardUserDefaults()

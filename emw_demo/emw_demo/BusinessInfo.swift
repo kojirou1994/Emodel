@@ -9,19 +9,8 @@
 import JSONJoy
 
 //BusinessInfo GET
-struct BusinessInfoResp: JSONJoy {
-    var data: BusinessInfoRespData?
-    var message: String?
-    var status: Int?
-    
-    init(_ decoder: JSONDecoder) {
-        data = BusinessInfoRespData(decoder["data"])
-        message = decoder["message"].string
-        status = decoder["status"].integer
-    }
-}
 
-struct BusinessInfoRespData: JSONJoy {
+struct BusinessInfo: JSONJoy {
     var dayPrice: Int?//包日价格
     var inPrice: Int?//内景价格
     var outPrice: Int?//外拍价格
