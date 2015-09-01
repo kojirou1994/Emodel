@@ -43,27 +43,27 @@ class PriceInfoEditViewController: XLFormViewController {
         
         // 内景价位
         row = XLFormRowDescriptor(tag: Tags.InPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "内景价位(元)")
-        row.value = businessInfo?.inPrice!
+        row.value = localUser?.businessInfo?.inPrice!
         section.addFormRow(row)
         
         // 外景价格
         row = XLFormRowDescriptor(tag: Tags.OutPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "外景价位")
-        row.value = businessInfo?.outPrice!
+        row.value = localUser?.businessInfo?.outPrice!
         section.addFormRow(row)
         
         // 内衣价格
         row = XLFormRowDescriptor(tag: Tags.UnderWearPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "内衣价位")
-        row.value = businessInfo?.underwearPrice!
+        row.value = localUser?.businessInfo?.underwearPrice!
         section.addFormRow(row)
         
         // 包日价格
         row = XLFormRowDescriptor(tag: Tags.DayPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "包日价格")
-        row.value = businessInfo?.dayPrice!
+        row.value = localUser?.businessInfo?.dayPrice!
         section.addFormRow(row)
         
         // 起拍件数
         row = XLFormRowDescriptor(tag: Tags.StartCount.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "起拍件数")
-        row.value = businessInfo?.startCount!
+        row.value = localUser?.businessInfo?.startCount!
         section.addFormRow(row)
         
 

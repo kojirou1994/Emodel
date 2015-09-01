@@ -11,13 +11,12 @@
 		E3001B891B79DAD300F38CEC /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3001B881B79DAD300F38CEC /* SwiftColors.swift */; };
 		E304C20D1B8EE33E00A40348 /* Album.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* Album.png */; };
 		E304C20F1B8EE90F00A40348 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E304C20E1B8EE90F00A40348 /* head.jpg */; };
-		E30B30E11B7857CE00864989 /* dataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* dataInit.swift */; };
+		E30B30E11B7857CE00864989 /* DataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* DataInit.swift */; };
 		E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */; };
 		E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */; };
 		E33802BD1B9023C300A9ADD3 /* PriceInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
-		E36C6D151B787D3E00D47BC2 /* DataStorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C6D141B787D3E00D47BC2 /* DataStorStruct.swift */; };
 		E37AD5991B846BC8005DEC92 /* CalManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */; };
 		E38518871B7091B40063C2C2 /* starRank_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518711B7091B40063C2C2 /* starRank_0.png */; };
 		E38518881B7091B40063C2C2 /* starRank_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518721B7091B40063C2C2 /* starRank_1.png */; };
@@ -59,6 +58,7 @@
 		E3AB7A921B8AF6B800962116 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A911B8AF6B800962116 /* bg.png */; };
 		E3AB7A961B8AFA1300962116 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A951B8AFA1300962116 /* logo.png */; };
 		E3B561701B7C90870051D125 /* PhotoThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B5616F1B7C90870051D125 /* PhotoThumbCell.swift */; };
+		E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA83741B95794400B39311 /* UserProfileViewController.swift */; };
 		E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */; };
 		E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */; };
 		E3C899901B7473A400286AC7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C8998F1B7473A400286AC7 /* SignupViewController.swift */; };
@@ -98,14 +98,13 @@
 		E3001B881B79DAD300F38CEC /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColors.swift; sourceTree = "<group>"; };
 		E304C20C1B8EE33E00A40348 /* Album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Album.png; sourceTree = "<group>"; };
 		E304C20E1B8EE90F00A40348 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
-		E30B30E01B7857CE00864989 /* dataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataInit.swift; sourceTree = "<group>"; };
+		E30B30E01B7857CE00864989 /* DataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInit.swift; sourceTree = "<group>"; };
 		E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoEditViewController.swift; sourceTree = "<group>"; };
 		E334520F1B731CCB004E6FD4 /* XLForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLForm.framework; path = "Pods/../build/Debug-iphoneos/XLForm.framework"; sourceTree = "<group>"; };
 		E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyInfoEditViewController.swift; sourceTree = "<group>"; };
 		E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceInfoEditViewController.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
-		E36C6D141B787D3E00D47BC2 /* DataStorStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorStruct.swift; sourceTree = "<group>"; };
 		E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalManagerViewController.swift; sourceTree = "<group>"; };
 		E38518711B7091B40063C2C2 /* starRank_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_0.png; sourceTree = "<group>"; };
 		E38518721B7091B40063C2C2 /* starRank_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_1.png; sourceTree = "<group>"; };
@@ -148,6 +147,7 @@
 		E3AB7A951B8AFA1300962116 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		E3B5616F1B7C90870051D125 /* PhotoThumbCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbCell.swift; sourceTree = "<group>"; };
 		E3B73BFD1B71B92500E6AD96 /* JSONJoy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONJoy.framework; path = "Pods/../build/Debug-iphoneos/JSONJoy.framework"; sourceTree = "<group>"; };
+		E3BA83741B95794400B39311 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFeatureViewController.swift; sourceTree = "<group>"; };
 		E3C8998F1B7473A400286AC7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -262,17 +262,17 @@
 		E3978F501B7ADF99002B54A3 /* 数据类 */ = {
 			isa = PBXGroup;
 			children = (
-				E36920B61B8700B900D8F345 /* Calendar.swift */,
+				E3978F571B7AE09C002B54A3 /* AlbumInfo.swift */,
+				E3978F551B7AE017002B54A3 /* BaseInfo.swift */,
 				E3978F511B7ADFC6002B54A3 /* BodyInfo.swift */,
+				E3978F531B7ADFF3002B54A3 /* BusinessInfo.swift */,
+				E36920B61B8700B900D8F345 /* Calendar.swift */,
 				E3978F5B1B7AE106002B54A3 /* ModelCard.swift */,
 				E3978F611B7AE3A1002B54A3 /* PUT.swift */,
 				E3978F591B7AE0E5002B54A3 /* VideoInfo.swift */,
-				E3978F571B7AE09C002B54A3 /* AlbumInfo.swift */,
 				E3978F631B7AEAFD002B54A3 /* AlbumID.swift */,
 				E38556701B7C622B0015285F /* AlbumList.swift */,
-				E3978F551B7AE017002B54A3 /* BaseInfo.swift */,
 				E3978F5D1B7AE12B002B54A3 /* ProductInfo.swift */,
-				E3978F531B7ADFF3002B54A3 /* BusinessInfo.swift */,
 				E3978F5F1B7AE372002B54A3 /* Login.swift */,
 				E3F7CC3C1B704F79001D82D3 /* Signup.swift */,
 				E3FBE9BC1B845C5500EA6440 /* User.swift */,
@@ -301,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */,
+				E3BA83741B95794400B39311 /* UserProfileViewController.swift */,
 				E3E9C23D1B6CA95100998937 /* UserViewController.swift */,
 				E38556721B7C62CD0015285F /* Album */,
 				E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */,
@@ -360,8 +361,7 @@
 				E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */,
 				E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */,
 				E3978F651B7B1470002B54A3 /* AlbumView.swift */,
-				E30B30E01B7857CE00864989 /* dataInit.swift */,
-				E36C6D141B787D3E00D47BC2 /* DataStorStruct.swift */,
+				E30B30E01B7857CE00864989 /* DataInit.swift */,
 			);
 			path = emw_demo;
 			sourceTree = "<group>";
@@ -617,11 +617,11 @@
 				E3978F5C1B7AE106002B54A3 /* ModelCard.swift in Sources */,
 				E3E9C2421B6CAF5000998937 /* SMSegment.swift in Sources */,
 				E38556791B7C79D00015285F /* PhotoCollectionViewController.swift in Sources */,
-				E36C6D151B787D3E00D47BC2 /* DataStorStruct.swift in Sources */,
 				E3E9C21E1B6CA66200998937 /* PublicNoticeViewController.swift in Sources */,
-				E30B30E11B7857CE00864989 /* dataInit.swift in Sources */,
+				E30B30E11B7857CE00864989 /* DataInit.swift in Sources */,
 				E3978F5A1B7AE0E5002B54A3 /* VideoInfo.swift in Sources */,
 				E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */,
+				E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */,
 				E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */,
 				E3978F521B7ADFC6002B54A3 /* BodyInfo.swift in Sources */,
 				E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */,

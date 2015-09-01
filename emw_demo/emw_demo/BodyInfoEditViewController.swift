@@ -52,47 +52,47 @@ class BodyInfoEditViewController : XLFormViewController {
         
         // 身高
         row = XLFormRowDescriptor(tag: Tags.Height.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "身高(CM)")
-        row.value = bodyInfo?.height
+        row.value = localUser?.bodyInfo?.height
         section.addFormRow(row)
         
         // 体重
         row = XLFormRowDescriptor(tag: Tags.Weight.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "体重")
-        row.value = bodyInfo?.weight
+        row.value = localUser?.bodyInfo?.weight
         section.addFormRow(row)
         
         // 罩杯
         row = XLFormRowDescriptor(tag: Tags.CupSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "罩杯")
-        row.value = bodyInfo?.cupSize
+        row.value = localUser?.bodyInfo?.cupSize
         section.addFormRow(row)
         
         // 胸围
         row = XLFormRowDescriptor(tag: Tags.Bust.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "胸围")
-        row.value = bodyInfo?.bust!
+        row.value = localUser?.bodyInfo?.bust!
         section.addFormRow(row)
         
         // 腰围
         row = XLFormRowDescriptor(tag: Tags.Waist.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "腰围")
-        row.value = bodyInfo?.waist!
+        row.value = localUser?.bodyInfo?.waist!
         section.addFormRow(row)
         
         // 臀围
         row = XLFormRowDescriptor(tag: Tags.Hip.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "臀围")
-        row.value = bodyInfo?.hip!
+        row.value = localUser?.bodyInfo?.hip!
         section.addFormRow(row)
         
         // 衣服尺寸
         row = XLFormRowDescriptor(tag: Tags.ClothesSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "衣服尺寸")
-        row.value = bodyInfo?.clothesSize
+        row.value = localUser?.bodyInfo?.clothesSize
         section.addFormRow(row)
         
         // 裤子尺寸
         row = XLFormRowDescriptor(tag: Tags.TrouserSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "裤子尺寸")
-        row.value = bodyInfo?.trousersSize
+        row.value = localUser?.bodyInfo?.trousersSize
         section.addFormRow(row)
         
         // 鞋子尺寸
         row = XLFormRowDescriptor(tag: Tags.ShoesSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "鞋子尺寸")
-        row.value = bodyInfo?.shoesSize
+        row.value = localUser?.bodyInfo?.shoesSize
         section.addFormRow(row)
         
         
@@ -102,7 +102,7 @@ class BodyInfoEditViewController : XLFormViewController {
         
         row = XLFormRowDescriptor(tag: Tags.Introduction.rawValue, rowType: XLFormRowDescriptorTypeTextView)
         row.cellConfigAtConfigure["textView.placeholder"] = "Introduction"
-        row.value = bodyInfo?.introduction!
+        row.value = localUser?.bodyInfo?.introduction!
         
         section.addFormRow(row)
         
