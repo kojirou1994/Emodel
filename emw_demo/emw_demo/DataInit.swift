@@ -9,8 +9,11 @@ import UIKit
 import Foundation
 
 //MARK: - 全局变量
-let serverAddress: String! = "http://10.0.1.11"
-//api.emwcn.com
+let testServer: String! = "http://10.0.1.11"
+let publicServer: String! = "http://api.emwcn.com"
+
+let serverAddress: String! = publicServer
+
 var isLogin: Bool = false
 var username: String!
 var password: String!

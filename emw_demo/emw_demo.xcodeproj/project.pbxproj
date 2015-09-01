@@ -12,6 +12,7 @@
 		E304C20D1B8EE33E00A40348 /* Album.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* Album.png */; };
 		E304C20F1B8EE90F00A40348 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E304C20E1B8EE90F00A40348 /* head.jpg */; };
 		E30B30E11B7857CE00864989 /* DataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* DataInit.swift */; };
+		E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E22361B960B6300BC0A0D /* ConfigViewController.swift */; };
 		E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */; };
 		E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */; };
 		E33802BD1B9023C300A9ADD3 /* PriceInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */; };
@@ -70,7 +71,6 @@
 		E3E9C2251B6CA66200998937 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2241B6CA66200998937 /* Images.xcassets */; };
 		E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2261B6CA66200998937 /* LaunchScreen.xib */; };
 		E3E9C2341B6CA66200998937 /* emw_demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2331B6CA66200998937 /* emw_demoTests.swift */; };
-		E3E9C23E1B6CA95100998937 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C23D1B6CA95100998937 /* UserViewController.swift */; };
 		E3E9C2421B6CAF5000998937 /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2401B6CAF5000998937 /* SMSegment.swift */; };
 		E3E9C2431B6CAF5000998937 /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2411B6CAF5000998937 /* SMSegmentView.swift */; };
 		E3E9C2451B6CBE1500998937 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2441B6CBE1500998937 /* Notice.swift */; };
@@ -99,6 +99,7 @@
 		E304C20C1B8EE33E00A40348 /* Album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Album.png; sourceTree = "<group>"; };
 		E304C20E1B8EE90F00A40348 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
 		E30B30E01B7857CE00864989 /* DataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInit.swift; sourceTree = "<group>"; };
+		E32E22361B960B6300BC0A0D /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoEditViewController.swift; sourceTree = "<group>"; };
 		E334520F1B731CCB004E6FD4 /* XLForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLForm.framework; path = "Pods/../build/Debug-iphoneos/XLForm.framework"; sourceTree = "<group>"; };
 		E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyInfoEditViewController.swift; sourceTree = "<group>"; };
@@ -163,7 +164,6 @@
 		E3E9C22D1B6CA66200998937 /* emw_demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emw_demoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E9C2321B6CA66200998937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3E9C2331B6CA66200998937 /* emw_demoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emw_demoTests.swift; sourceTree = "<group>"; };
-		E3E9C23D1B6CA95100998937 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		E3E9C2401B6CAF5000998937 /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
 		E3E9C2411B6CAF5000998937 /* SMSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentView.swift; sourceTree = "<group>"; };
 		E3E9C2441B6CBE1500998937 /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
@@ -301,8 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */,
+				E32E22361B960B6300BC0A0D /* ConfigViewController.swift */,
 				E3BA83741B95794400B39311 /* UserProfileViewController.swift */,
-				E3E9C23D1B6CA95100998937 /* UserViewController.swift */,
 				E38556721B7C62CD0015285F /* Album */,
 				E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */,
 				E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */,
@@ -587,7 +587,6 @@
 			files = (
 				E3E9C2201B6CA66200998937 /* ChatViewController.swift in Sources */,
 				E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */,
-				E3E9C23E1B6CA95100998937 /* UserViewController.swift in Sources */,
 				E38556741B7C63110015285F /* AlbumViewController.swift in Sources */,
 				E3978F661B7B1470002B54A3 /* AlbumView.swift in Sources */,
 				E3B561701B7C90870051D125 /* PhotoThumbCell.swift in Sources */,
@@ -597,6 +596,7 @@
 				E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */,
 				E3978F541B7ADFF3002B54A3 /* BusinessInfo.swift in Sources */,
 				E33802BD1B9023C300A9ADD3 /* PriceInfoEditViewController.swift in Sources */,
+				E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */,
 				E37AD5991B846BC8005DEC92 /* CalManagerViewController.swift in Sources */,
 				E38556761B7C63600015285F /* AlbumThumbCell.swift in Sources */,
 				E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */,
