@@ -32,7 +32,7 @@ class UserProfileViewController: UITableViewController {
         self.view.addSubview(nameLoadingAnime)
 
         self.clearsSelectionOnViewWillAppear = true
-        updateUserProfile()
+        updateInterface()
 
 //         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -43,12 +43,14 @@ class UserProfileViewController: UITableViewController {
     }
 
     
-    func updateUserProfile() {
+    func updateInterface() {
         var userAvatar = UIImageView(frame: CGRectMake(0, 0, Avatar.bounds.width, Avatar.bounds.height))
         userAvatar.contentMode = UIViewContentMode.ScaleAspectFill
         userAvatar.kf_setImageWithURL(NSURL(string: localUser.baseInfo!.avatar!)!)
         println(localUser.baseInfo!.avatar!)
         Avatar.addSubview(userAvatar)
+        UserNameLabel.text = localUser.baseInfo?.nickName
+        StarRankImage.image = UIImage(named: "starRank_\(localUser.star).png")
     }
     // MARK: - Table view data source
     /*

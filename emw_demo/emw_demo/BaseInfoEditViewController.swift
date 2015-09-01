@@ -47,12 +47,12 @@ class BaseInfoEditViewController : XLFormViewController {
         
         // QQ
         row = XLFormRowDescriptor(tag: Tags.QQ.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "QQ")
-        row.value = localUser?.baseInfo?.QQ!
+        row.value = localUser?.baseInfo?.QQ
         section.addFormRow(row)
         
         // 年龄
         row = XLFormRowDescriptor(tag: Tags.Age.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "年龄")
-        row.value = localUser?.baseInfo?.age!
+        row.value = localUser?.baseInfo?.age
         section.addFormRow(row)
         
         // 生日
@@ -62,12 +62,12 @@ class BaseInfoEditViewController : XLFormViewController {
         
         // 邮箱
         row = XLFormRowDescriptor(tag: Tags.Email.rawValue, rowType: XLFormRowDescriptorTypeEmail, title: "邮箱")
-        row.value = localUser?.baseInfo?.email!
+        row.value = localUser?.baseInfo?.email
         section.addFormRow(row)
         
         // 个人简介
         row = XLFormRowDescriptor(tag: Tags.Introduction.rawValue, rowType: XLFormRowDescriptorTypeTextView, title: "个人简介")
-        row.value = localUser?.baseInfo?.introduction!
+        row.value = localUser?.baseInfo?.introduction
         section.addFormRow(row)
         
         // 手机号
@@ -77,28 +77,28 @@ class BaseInfoEditViewController : XLFormViewController {
         
         // 用户名
         row = XLFormRowDescriptor(tag: Tags.NickName.rawValue, rowType: XLFormRowDescriptorTypeText, title: "用户名")
-        row.value = localUser?.baseInfo?.nickName!
+        row.value = localUser?.baseInfo?.nickName
         section.addFormRow(row)
         
         // 真实姓名
         row = XLFormRowDescriptor(tag: Tags.RealName.rawValue, rowType: XLFormRowDescriptorTypeText, title: "真实姓名")
-        row.value = localUser?.baseInfo?.realName!
+        row.value = localUser.baseInfo?.realName
         section.addFormRow(row)
         
         // 个人服务
         row = XLFormRowDescriptor(tag: Tags.Service.rawValue, rowType: XLFormRowDescriptorTypeText, title: "个人服务")
-        row.value = localUser?.baseInfo?.service!
+        row.value = localUser.baseInfo?.service
         section.addFormRow(row)
         
         
         // 性别
         row = XLFormRowDescriptor(tag: Tags.Sex.rawValue, rowType: XLFormRowDescriptorTypeText, title: "性别")
-        row.value = localUser?.baseInfo?.sex!
+        row.value = localUser.baseInfo?.sex
         section.addFormRow(row)
         
         // 微信账号
         row = XLFormRowDescriptor(tag: Tags.Wechat.rawValue, rowType: XLFormRowDescriptorTypeText, title: "微信账号")
-        row.value = localUser?.baseInfo?.wechat!
+        row.value = localUser?.baseInfo?.wechat
         section.addFormRow(row)
         
         self.form = form
