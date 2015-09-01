@@ -11,7 +11,7 @@ import JSONJoy
 import SwiftHTTP
 import Kingfisher
 
-var rank:Int?
+
 class UserViewController: UIViewController {
 
     @IBOutlet weak var userNameLabel: UILabel!
@@ -41,16 +41,14 @@ class UserViewController: UIViewController {
                 return
             }
             if let obj: AnyObject = response.responseObject {
-                let resp = BaseInfoResp(JSONDecoder(obj))
-                println("status is: \(resp.status!)")
-                println("QQ is:\(resp.data!.QQ!)")
-                println("realName is:\(resp.data!.realName!)")
-                baseInfo = resp.data
+                let resp = BaseInfo(JSONDecoder(obj))
+                println("QQ is:\(resp.QQ!)")
+                println("realName is:\(resp.realName!)")
                 dispatch_async(dispatch_get_main_queue(),{
                     var headView = UIImageView(frame: CGRectMake(0, 0, self.avatar.bounds.width, self.avatar.bounds.height))
-                    headView.kf_setImageWithURL(NSURL(string: resp.data!.avatar!)!)
+                    headView.kf_setImageWithURL(NSURL(string: resp.avatar!)!)
                     self.avatar.addSubview(headView)
-                self.userNameLabel.text = resp.data!.nickName!
+                self.userNameLabel.text = resp.nickName!
                 self.ass.stopAnimating()
                 })
                 
@@ -58,42 +56,10 @@ class UserViewController: UIViewController {
         }
         self.starRank.image = UIImage(named: "starRank_6.png")
         println("start get bodyinfo")
-        request.GET(serverAddress + "/user/\(userId!)/bodyinfo", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                println("error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                let resp = BodyInfoResp(JSONDecoder(obj))
-                bodyInfo = resp.data
-                println("bodyinfo.height:\(bodyInfo?.height)")
-            }
-        }
+
         println("start get businessinfo")
-        request.GET(serverAddress + "/user/\(userId!)/businessinfo", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                println("error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                let resp = BusinessInfoResp(JSONDecoder(obj))
-                businessInfo = resp.data
-            }
-        }
+
         println("start get albuminfo")
-        request.GET(serverAddress + "/user/\(userId!)/albuminfo", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                println("error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                let resp = AlbumInfoResp(JSONDecoder(obj))
-                album = resp.data
-                println("album count: \(album.count)")
-                println("album1 num: \(album[0].num)")
-                println("album2 ID: \(album[1].id)")
-            }
-        }
 
     }
 

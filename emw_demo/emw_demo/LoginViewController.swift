@@ -58,13 +58,13 @@ class LoginViewController: UIViewController {
                 case 400:
                     println("error")
                     dispatch_async(dispatch_get_main_queue(), {
-                        notice.labelText = "登陆成功"
+                        notice.labelText = "登陆失败"
                         notice.hide(true, afterDelay: 5)
                     })
                 default:
                     println("???")
                     dispatch_async(dispatch_get_main_queue(), {
-                        notice.labelText = "登陆成功"
+                        notice.labelText = "登陆失败"
                         notice.hide(true, afterDelay: 5)
                     })
                 }

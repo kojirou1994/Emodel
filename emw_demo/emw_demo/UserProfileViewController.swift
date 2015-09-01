@@ -7,17 +7,34 @@
 //
 
 import UIKit
+import JSONJoy
+import SwiftHTTP
+import Kingfisher
 
 class UserProfileViewController: UITableViewController {
-
+    @IBOutlet weak var Avatar: UIButton!
+    @IBOutlet weak var UserNameLabel: UILabel!
+    @IBOutlet weak var StarRankImage: UIImageView!
+    @IBAction func AvatarBtnPressed(sender: AnyObject) {
+        println("改变头像")
+    }
+    var nameLoadingAnime = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        Avatar.layer.masksToBounds = true
+        Avatar.layer.cornerRadius = Avatar.frame.height / 2
+        Avatar.layer.borderColor = UIColor.whiteColor().CGColor
+//        Avatar.layer.borderWidth = 5
+        nameLoadingAnime.center = CGPointMake(UserNameLabel.frame.minX+15, UserNameLabel.center.y)
+        
+        nameLoadingAnime.startAnimating()
+        self.view.addSubview(nameLoadingAnime)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = true
+        updateUserProfile()
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+//         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,8 +42,16 @@ class UserProfileViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func updateUserProfile() {
+        var userAvatar = UIImageView(frame: CGRectMake(0, 0, Avatar.bounds.width, Avatar.bounds.height))
+        userAvatar.contentMode = UIViewContentMode.ScaleAspectFill
+        userAvatar.kf_setImageWithURL(NSURL(string: localUser.baseInfo!.avatar!)!)
+        println(localUser.baseInfo!.avatar!)
+        Avatar.addSubview(userAvatar)
+    }
     // MARK: - Table view data source
-
+    /*
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
@@ -38,8 +63,9 @@ class UserProfileViewController: UITableViewController {
         // Return the number of rows in the section.
         return 0
     }
+    
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
 

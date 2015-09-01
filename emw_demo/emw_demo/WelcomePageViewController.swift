@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import SwiftHTTP
+import MBProgressHUD
+import JSONJoy
 
 class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     var pageControll: UIPageControl!
@@ -75,9 +77,33 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         println("出现啦\n \(isLogin)是否登录了")
-        if isLogin {
+        if isLogin || true {
         //弄个动画
-            self.performSegueWithIdentifier("showMainTab", sender: self)
+            let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            
+            notice.labelText = "获取数据中"
+            var request = HTTPTask()
+            request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
+                if let err = response.error {
+                    println("error: \(err.localizedDescription)")
+                    
+                    return
+                }
+                if let obj: AnyObject = response.responseObject {
+                    let resp = User(JSONDecoder(obj))
+                    switch (resp.status!) {
+                    case 200:
+                        println("success")
+                        localUser = resp.data
+                        println(localUser!.star)
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.performSegueWithIdentifier("showMainTab", sender: self)
+                        })
+                    default:
+                        println("get user info failed")
+                    }
+                }
+            }
         }
     }
     
