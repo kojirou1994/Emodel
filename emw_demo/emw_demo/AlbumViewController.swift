@@ -11,6 +11,7 @@ import Kingfisher
 import SwiftHTTP
 import JSONJoy
 import MWPhotoBrowser
+import MBProgressHUD
 
 var AlbumData: Array<AlbumList> = Array<AlbumList>()
 var selectedAlbum: AlbumList = AlbumList()
@@ -18,15 +19,13 @@ var selectedAlbum: AlbumList = AlbumList()
 var selectedAlbumIndex:Int = 0
 var photos: NSMutableArray = []
 var thumbs: NSMutableArray = []
-class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
+class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIAlertViewDelegate {
     @IBAction func EditBtnPressed(sender: AnyObject) {
         println("show删除相册界面")
     }
     
     @IBOutlet weak var AlbumListCollectionView: UICollectionView!
-    func addAlbum(barButton: UIBarButtonItem) {
-        println("add pressed")
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
@@ -39,8 +38,39 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: - Func
     
-    //MARK: - CllectionViewDelegate
+    func addAlbum(barButton: UIBarButtonItem) {
+        println("add pressed")
+        
+        var addAlert = UIAlertView(title: "添加相册", message: "请输入相册标题", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
+        addAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
+        addAlert.tag = 1
+        addAlert.show()
+    }
+    
+    func newAlbum(title: String) {
+        var request = HTTPTask()
+        request.requestSerializer = HTTPRequestSerializer()
+        request.requestSerializer.headers["Token"] = token!
+        let params: Dictionary<String,AnyObject> = ["name": title, "userId": userId]
+        request.POST(serverAddress + "/album", parameters: params, completionHandler: {(response: HTTPResponse) in
+            if let err = response.error {
+                println("error: \(err.localizedDescription)")
+                dispatch_async(dispatch_get_main_queue(), {
+                    let alert = UIAlertView(title: "添加失败", message: "请重新添加", delegate: nil, cancelButtonTitle: "确定")
+                    alert.show()
+                })
+                return
+            }
+            if let obj: AnyObject = response.responseObject {
+                println("相册添加成功")
+            }
+        })
+
+    }
+    //MARK: - CllectionViewDataSource
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return album.count
     }
@@ -53,6 +83,8 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         cell.ThumbImage.kf_setImageWithURL(NSURL(string: album[indexPath.row].imgUri!)!)
         return cell
     }
+    
+    //MARK: - CllectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println("did Select\(indexPath)")
@@ -76,7 +108,43 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         return 40
     }
     
-    //MARK: - shouldPerformSegue
+    //MARK: - AlertViewDelegate
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        println(buttonIndex)
+        if (alertView.tag == 1 && buttonIndex == 1) {
+            
+            let newAlbumName = alertView.textFieldAtIndex(0)?.text
+            
+            if  newAlbumName == ""{
+                let alert = UIAlertView(title: "输入错误", message: "标题不可为空！", delegate: nil, cancelButtonTitle: "确定")
+                alert.show()
+                println("alert show")
+            }
+            else {
+                println("New Album Name: \(newAlbumName)")
+                newAlbum(newAlbumName!)
+            }
+        }
+    }
+    /*
+    // Called when a button is clicked. The view will be automatically dismissed after this call returns
+    optional func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
+    
+    // Called when we cancel a view (eg. the user clicks the Home button). This is not called when the user clicks the cancel button.
+    // If not defined in the delegate, we simulate a click in the cancel button
+    optional func alertViewCancel(alertView: UIAlertView)
+    
+    optional func willPresentAlertView(alertView: UIAlertView) // before animation and showing view
+    optional func didPresentAlertView(alertView: UIAlertView) // after animation
+    
+    optional func alertView(alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) // before animation and hiding view
+    optional func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) // after animation
+    
+    // Called after edits in any of the default fields added by the style
+    optional func alertViewShouldEnableFirstOtherButton(alertView: UIAlertView) -> Bool
+*/
+    //MARK: - Navigation
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == "GoToAlbumDetail" {
             println("ShouldPerformSegue")
@@ -86,7 +154,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         return true
     }
     
-    // MARK: - prepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GoToAlbumDetail" {
             println("prepareForSegue")

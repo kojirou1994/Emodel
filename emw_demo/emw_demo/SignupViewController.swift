@@ -14,14 +14,16 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     var countDownTimer:NSTimer?  //计时器
     var timeNum:Int = 60 //验证码重发60秒
-    var token: String = ""
-    var userId: String = ""
-    var confirmToken:String = ""
+    
+    var confirmToken:String?
     
     @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var mobileInput: UITextField!
     
     @IBOutlet weak var codeInput: UITextField!
+    
+    @IBOutlet weak var userNameInput: UITextField!
     
     @IBOutlet weak var passwordInput: UITextField!
     
@@ -61,7 +63,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             })
         }
         else{
-            //send phone number error
             var alert = UIAlertController(title: "号码不正确", message: "请输入正确的手机号", preferredStyle: UIAlertControllerStyle.Alert)
             var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
             alert.addAction(actionYes)
@@ -79,8 +80,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         }
         else{
             var request = HTTPTask()
-            let params: Dictionary<String,AnyObject> = ["mobile": mobileInput.text, "password": passwordInput.text, "confirm_token": self.confirmToken, "confirm": codeInput.text]
-
+            let params: Dictionary<String,String!> = ["mobile": mobileInput.text, "password": passwordInput.text, "confirm_token": self.confirmToken, "confirm": codeInput.text, "username": userNameInput.text]
+            
             request.POST("\(serverAddress)/user/signup", parameters: params, completionHandler: {(response: HTTPResponse) in
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")

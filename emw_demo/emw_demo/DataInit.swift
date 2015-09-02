@@ -32,6 +32,7 @@ func readUserData() {
         username = user.objectForKey("UserName") as? String
         password = (user.objectForKey("Password") as! String)
         userId = (user.objectForKey("UserID") as! String)
+        token = user.objectForKey("Token") as? String
         println("read username: \(username)")
         println("read password \(password)")
         isLogin = true
