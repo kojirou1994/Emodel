@@ -9,7 +9,7 @@
 import UIKit
 import XLForm
 
-class PriceInfoEditViewController: XLFormViewController {
+class BusinessInfoEditViewController: XLFormViewController {
     private enum Tags : String {
         case InPrice = "inPrice"
         case OutPrice = "outPrice"

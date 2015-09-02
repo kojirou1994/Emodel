@@ -20,16 +20,19 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     var data:[AlbumListData]?
     var count: Int! = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         println("thumb")
-        var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
+        var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "uploadPhoto:")
         self.navigationItem.rightBarButtonItem = addBtn
         // Register cell classes
     }
-    func addAlbum(barButton: UIBarButtonItem) {
+    
+    func uploadPhoto(barButton: UIBarButtonItem) {
         println("add pressed")
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,6 +55,9 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         return count
     }
 
+    
+    //MARK: - CollectionViewDelegate
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoThumbCollectionViewCell
         cell.PhotoThumbImage.kf_setImageWithURL(NSURL(string: data![indexPath.row].thumbUri!)!)
@@ -60,15 +66,12 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         return cell
     }
     
-    //缩略图视图尺寸
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let picDimension :CGFloat = self.view.frame.width / 4.0
         return CGSizeMake(picDimension, picDimension)
         
     }
-    
-    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 0, 0, 0)

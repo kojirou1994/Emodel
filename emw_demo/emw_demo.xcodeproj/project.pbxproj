@@ -15,7 +15,8 @@
 		E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E22361B960B6300BC0A0D /* ConfigViewController.swift */; };
 		E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */; };
 		E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */; };
-		E33802BD1B9023C300A9ADD3 /* PriceInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */; };
+		E33802BD1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */; };
+		E34CC6461B96DD7F0089EED1 /* Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34CC6451B96DD7F0089EED1 /* Confirm.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
 		E37AD5991B846BC8005DEC92 /* CalManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */; };
@@ -103,7 +104,8 @@
 		E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoEditViewController.swift; sourceTree = "<group>"; };
 		E334520F1B731CCB004E6FD4 /* XLForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLForm.framework; path = "Pods/../build/Debug-iphoneos/XLForm.framework"; sourceTree = "<group>"; };
 		E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyInfoEditViewController.swift; sourceTree = "<group>"; };
-		E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceInfoEditViewController.swift; sourceTree = "<group>"; };
+		E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessInfoEditViewController.swift; sourceTree = "<group>"; };
+		E34CC6451B96DD7F0089EED1 /* Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalManagerViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E34CC6471B96E4300089EED1 /* InfoEdit */ = {
+			isa = PBXGroup;
+			children = (
+				E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */,
+				E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */,
+				E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */,
+			);
+			name = InfoEdit;
+			sourceTree = "<group>";
+		};
 		E38518701B7091B40063C2C2 /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,7 +271,7 @@
 			name = Album;
 			sourceTree = "<group>";
 		};
-		E3978F501B7ADF99002B54A3 /* 数据类 */ = {
+		E3978F501B7ADF99002B54A3 /* API数据 */ = {
 			isa = PBXGroup;
 			children = (
 				E3978F571B7AE09C002B54A3 /* AlbumInfo.swift */,
@@ -276,8 +288,9 @@
 				E3978F5F1B7AE372002B54A3 /* Login.swift */,
 				E3F7CC3C1B704F79001D82D3 /* Signup.swift */,
 				E3FBE9BC1B845C5500EA6440 /* User.swift */,
+				E34CC6451B96DD7F0089EED1 /* Confirm.swift */,
 			);
-			name = "数据类";
+			name = "API数据";
 			sourceTree = "<group>";
 		};
 		E3C899931B748B1500286AC7 /* 1st Tab */ = {
@@ -304,9 +317,7 @@
 				E32E22361B960B6300BC0A0D /* ConfigViewController.swift */,
 				E3BA83741B95794400B39311 /* UserProfileViewController.swift */,
 				E38556721B7C62CD0015285F /* Album */,
-				E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */,
-				E33802BC1B9023C300A9ADD3 /* PriceInfoEditViewController.swift */,
-				E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */,
+				E34CC6471B96E4300089EED1 /* InfoEdit */,
 			);
 			name = "3rd Tab";
 			sourceTree = "<group>";
@@ -346,7 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				E3E9C21B1B6CA66200998937 /* AppDelegate.swift */,
-				E3978F501B7ADF99002B54A3 /* 数据类 */,
+				E3978F501B7ADF99002B54A3 /* API数据 */,
 				E3C8999A1B749E0C00286AC7 /* Welcome */,
 				E3C899931B748B1500286AC7 /* 1st Tab */,
 				E3C899981B749DC500286AC7 /* 2nd Tab */,
@@ -593,9 +604,10 @@
 				E3978F561B7AE017002B54A3 /* BaseInfo.swift in Sources */,
 				E3978F601B7AE372002B54A3 /* Login.swift in Sources */,
 				E3978F5E1B7AE12B002B54A3 /* ProductInfo.swift in Sources */,
+				E34CC6461B96DD7F0089EED1 /* Confirm.swift in Sources */,
 				E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */,
 				E3978F541B7ADFF3002B54A3 /* BusinessInfo.swift in Sources */,
-				E33802BD1B9023C300A9ADD3 /* PriceInfoEditViewController.swift in Sources */,
+				E33802BD1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift in Sources */,
 				E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */,
 				E37AD5991B846BC8005DEC92 /* CalManagerViewController.swift in Sources */,
 				E38556761B7C63600015285F /* AlbumThumbCell.swift in Sources */,
