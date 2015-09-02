@@ -77,7 +77,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         println("出现啦\n \(isLogin)是否登录了")
-        if isLogin || true {
+        if isLogin {
         //弄个动画
             let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             
@@ -95,6 +95,8 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                     case 200:
                         println("success")
                         localUser = resp.data
+                        album = localUser.albumInfo!
+                        println(album.count)
                         println(localUser!.star)
                         dispatch_async(dispatch_get_main_queue(), {
                             self.performSegueWithIdentifier("showMainTab", sender: self)
