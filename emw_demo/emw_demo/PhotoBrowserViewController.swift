@@ -15,9 +15,7 @@ class PhotoBrowserViewController: MWPhotoBrowser, MWPhotoBrowserDelegate, UINavi
     
     override func viewDidLoad() {
         println("MWPhotoBrowser Loaded")
-        self.displaySelectionButtons = true
         super.viewDidLoad()
-        self.enableGrid = true
         println("Photo Browser showed")
         // Do any additional setup after loading the view.
     }
@@ -30,13 +28,7 @@ class PhotoBrowserViewController: MWPhotoBrowser, MWPhotoBrowserDelegate, UINavi
     // MARK: - MWPhotoBrowserDelegate
     
     func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
-        if let count = UInt(photodata.count) {
-            println("MW count")
-            return count
-        }
-        else {
-            return 0
-        }
+        return UInt(photodata.count)
     }
     func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
         let i: Int = Int(bitPattern: index)
