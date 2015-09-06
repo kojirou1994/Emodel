@@ -77,9 +77,6 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
                 myDayView.dotView.backgroundColor = UIColor.redColor()
                 myDayView.textLabel.textColor = UIColor.blackColor()
             }
-            
-            
-//            if (self.)
         }
         
         

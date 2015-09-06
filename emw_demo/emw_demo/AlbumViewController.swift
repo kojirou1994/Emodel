@@ -18,7 +18,7 @@ var selectedAlbum: AlbumList = AlbumList()
 
 var selectedAlbumIndex:Int = 0
 var photos: NSMutableArray = []
-var thumbs: NSMutableArray = []
+//var thumbs: NSMutableArray = []
 class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIAlertViewDelegate {
     @IBAction func EditBtnPressed(sender: AnyObject) {
         println("show删除相册界面")
@@ -68,9 +68,40 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
             }
             if let obj: AnyObject = response.responseObject {
                 println("相册添加成功")
+                self.updateUserInfo()
             }
         })
 
+    }
+    
+    func updateUserInfo() {
+        var request = HTTPTask()
+        request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
+            if let err = response.error {
+                println("error: \(err.localizedDescription)")
+                return
+            }
+            if let obj: AnyObject = response.responseObject {
+                let resp = User(JSONDecoder(obj))
+                switch (resp.status!) {
+                case 200:
+                    println("update UserInfo success")
+                    localUser = resp.data
+                    println(localUser!.star)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.updateInterface()
+                    })
+                default:
+                    println("get user info failed")
+                }
+            }
+        }
+        
+    }
+    
+    func updateInterface() {
+        album = localUser.albumInfo!
+        self.AlbumListCollectionView.reloadData()
     }
     //MARK: - UICllectionViewDataSource
     

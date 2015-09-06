@@ -65,8 +65,10 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
 
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println("count: \(count)")
-        return count
+        if (data == nil) {
+            return 0
+        }
+        return data!.count
     }
 
     
@@ -100,8 +102,12 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         for i in data! {
             photos.append(MWPhoto(URL: NSURL(string: i.imgUri!)!))
         }
+        var te = PhotoBrowserViewController()
+        te.photodata = self.data!
+        te.reloadData()
+        te.setCurrentPhotoIndex(UInt(indexPath.row))
         var browse = PhotoBrowserViewController(photos: photos as [AnyObject]!)
-        self.navigationController?.pushViewController(browse, animated: true)
+        self.navigationController?.pushViewController(te, animated: true)
         println("选择了照片: \(indexPath)")
     }
     
@@ -176,13 +182,30 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     notice.labelText = "上传成功"
                     notice.hide(true, afterDelay: 0.5)
+                    self.updatePhotoList()
                 })
             }
             println(response)
         }
         dataTask.resume()
-        println("uploading avatar")
+        println("uploading photo")
     }
-
+    
+    func updatePhotoList() {
+        var request = HTTPTask()
+        request.GET(serverAddress + "/album/\(albumID!)/list", parameters: nil) { (response: HTTPResponse) -> Void in
+            if let err = response.error {
+                println("error: \(err.localizedDescription)")
+                return
+            }
+            if let obj: AnyObject = response.responseObject {
+                println("已获取照片列表地址")
+                self.data = AlbumList(JSONDecoder(obj)).data!
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.PhotoList.reloadData()
+                })
+            }
+        }
+    }
     
 }

@@ -72,7 +72,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                     localUser = resp.data
                     println(localUser!.star)
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.performSegueWithIdentifier("showMainTab", sender: self)
+                        self.updateInterface()
                     })
                 default:
                     println("get user info failed")

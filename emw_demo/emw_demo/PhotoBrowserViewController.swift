@@ -11,14 +11,14 @@ import MWPhotoBrowser
 
 
 class PhotoBrowserViewController: MWPhotoBrowser, MWPhotoBrowserDelegate, UINavigationBarDelegate {
-    var startIndex: UInt! = 0
+    var photodata:[AlbumListData] = []
     
     override func viewDidLoad() {
+        println("MWPhotoBrowser Loaded")
         self.displaySelectionButtons = true
         super.viewDidLoad()
         self.enableGrid = true
         println("Photo Browser showed")
-        self.setCurrentPhotoIndex(startIndex)
         // Do any additional setup after loading the view.
     }
     
@@ -30,15 +30,18 @@ class PhotoBrowserViewController: MWPhotoBrowser, MWPhotoBrowserDelegate, UINavi
     // MARK: - MWPhotoBrowserDelegate
     
     func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
-        return UInt(photos.count)
+        if let count = UInt(photodata.count) {
+            println("MW count")
+            return count
+        }
+        else {
+            return 0
+        }
     }
     func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
-        
-        var single = MWPhoto(URL: NSURL(string: ""))
-        if ((Int)(index) < photos.count) {
-            return photos.objectAtIndex(Int(index)) as! MWPhoto
-        }
-        return nil
+        let i: Int = Int(bitPattern: index)
+        let single = MWPhoto(URL: NSURL(string: photodata[i].imgUri)!)
+        return single
     }
     /*
     // MARK: - Navigation
