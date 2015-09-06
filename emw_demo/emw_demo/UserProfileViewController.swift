@@ -10,13 +10,27 @@ import UIKit
 import JSONJoy
 import SwiftHTTP
 import Kingfisher
+import MBProgressHUD
 
-class UserProfileViewController: UITableViewController {
+class UserProfileViewController: UITableViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var Avatar: UIButton!
     @IBOutlet weak var UserNameLabel: UILabel!
     @IBOutlet weak var StarRankImage: UIImageView!
     @IBAction func AvatarBtnPressed(sender: AnyObject) {
         println("改变头像")
+        
+        var sheet: UIActionSheet = UIActionSheet()
+        let title: String = "选择照片"
+        sheet.title  = title
+        sheet.delegate = self
+        sheet.addButtonWithTitle("取消")
+        sheet.addButtonWithTitle("从相册选择")
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            sheet.addButtonWithTitle("拍照")
+        }
+        sheet.cancelButtonIndex = 0
+        sheet.showInView(self.view)
+        sheet.tag = 255
     }
     var nameLoadingAnime = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
@@ -52,6 +66,105 @@ class UserProfileViewController: UITableViewController {
         UserNameLabel.text = localUser.baseInfo?.nickName
         StarRankImage.image = UIImage(named: "starRank_\(localUser.star).png")
     }
+    
+    //MARK: - UIActionSheetDelegate
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if actionSheet.tag == 255 {
+            let imagePicker:UIImagePickerController = UIImagePickerController();
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+                switch (buttonIndex) {
+                case 0:
+                    return
+                case 1:
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                case 2:
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                    imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+                default:
+                    break;
+                }
+            }
+            else {
+                if (buttonIndex == 0) {
+                    return
+                }
+                else {
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                }
+            }
+            println("button Index: \(buttonIndex)")
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        
+    }
+    
+    //MARK: - UIImagePickerControllerDelegate
+    var imageData: NSData?
+    let newAvatarPath:String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent("newAvatar.jpg")
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            imageData = UIImageJPEGRepresentation(pickedImage, 0.5)
+            imageData!.writeToFile(newAvatarPath, atomically: false)
+            println(newAvatarPath)
+            println("already 保存")
+        }
+        dismissViewControllerAnimated(true, completion: nil)
+        uploadAvatar()
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //MARK: - Func
+    func uploadAvatar() {
+        let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        notice.labelText = "上传中"
+        println("地址")
+        println(serverAddress + "/user/" + userId + "/avatar")
+        println("token:\n" + token!)
+        let boundary = Web.multipartBoundary()
+        let request = Web.multipartRequest("PUT", NSURL(string: serverAddress + "/user/" + userId + "/avatar")!, boundary)
+        request.setValue(token, forHTTPHeaderField: "Token")
+        let fields = ["userId": userId as String]
+        let data = Web.multipartData(boundary, fields, NSData(contentsOfFile: newAvatarPath)!)
+        let dataTask = NSURLSession.sharedSession().uploadTaskWithRequest(request, fromData: data) { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if (error != nil) {
+                println(error)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    notice.labelText = "上传失败，请重试！"
+                    notice.hide(true, afterDelay: 1)
+                })
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    notice.labelText = "上传成功"
+                    notice.hide(true, afterDelay: 0.5)
+                })
+            }
+            println(response)
+        }
+        dataTask.resume()
+        println("uploading avatar")
+    }
+    
+    func ajustAvatar(source: UIImage) -> UIImage {
+        println(source.size.height)
+        println(source.size.width)
+        return source
+    }
+    // 没用
+    func saveImage(currentImage: UIImage, imageName: NSString) {
+        var imageData:NSData = UIImageJPEGRepresentation(currentImage, 0.5)
+        var fullPath:NSString = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent(imageName as String)
+        imageData.writeToFile(fullPath as String, atomically: false)
+        println("already 保存")
+        
+    }
+
     // MARK: - Table view data source
     /*
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
