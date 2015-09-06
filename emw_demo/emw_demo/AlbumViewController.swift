@@ -174,6 +174,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
                         destinationViewController.data = resp.data!
                         destinationViewController.navigationItem.title = album[index[0].row].name!
                         destinationViewController.count = resp.data!.count
+                        destinationViewController.albumID = album[index[0].row].id!
                         destinationViewController.PhotoList.reloadData()
 //                        println(resp.data![0].imgUri)
                     })

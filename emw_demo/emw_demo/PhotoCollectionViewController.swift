@@ -14,23 +14,37 @@ import MWPhotoBrowser
 let reuseIdentifier = "PhotoCell"
 
 
-class PhotoCollectionViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+class PhotoCollectionViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate{
     
     @IBOutlet weak var PhotoList: UICollectionView!
     
     var data:[AlbumListData]?
     var count: Int! = 0
+    var albumID: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println("thumb")
-        var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "uploadPhoto:")
+        var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addPhotoBtnPressed:")
         self.navigationItem.rightBarButtonItem = addBtn
         // Register cell classes
     }
     
-    func uploadPhoto(barButton: UIBarButtonItem) {
+    func addPhotoBtnPressed(barButton: UIBarButtonItem) {
         println("add pressed")
+        
+        var sheet: UIActionSheet = UIActionSheet()
+        let title: String = "选择照片"
+        sheet.title  = title
+        sheet.delegate = self
+        sheet.addButtonWithTitle("取消")
+        sheet.addButtonWithTitle("从相册选择")
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            sheet.addButtonWithTitle("拍照")
+        }
+        sheet.cancelButtonIndex = 0
+        sheet.showInView(self.view)
+        sheet.tag = 255
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,7 +56,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         
     }
 
-    // MARK: － UICollectionViewDataSource
+    //MARK: － UICollectionViewDataSource
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         //#warning Incomplete method implementation -- Return the number of sections
@@ -56,7 +70,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     }
 
     
-    //MARK: - CollectionViewDelegate
+    //MARK: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoThumbCollectionViewCell
@@ -90,35 +104,85 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         self.navigationController?.pushViewController(browse, animated: true)
         println("选择了照片: \(indexPath)")
     }
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
+    //MARK: - UIActionSheetDelegate
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if actionSheet.tag == 255 {
+            let imagePicker:UIImagePickerController = UIImagePickerController();
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = false
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+                switch (buttonIndex) {
+                case 0:
+                    return
+                case 1:
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                case 2:
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                    imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+                default:
+                    break;
+                }
+            }
+            else {
+                if (buttonIndex == 0) {
+                    return
+                }
+                else {
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                }
+            }
+            println("button Index: \(buttonIndex)")
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        
     }
-    */
+    
+    //MARK: - UIImagePickerControllerDelegate
+    var imageData: NSData?
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageData = UIImageJPEGRepresentation(pickedImage, 0.5)
+        }
+        dismissViewControllerAnimated(true, completion: nil)
+        uploadPhoto()
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //MARK: - Func
+    func uploadPhoto() {
+        let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        notice.labelText = "上传中"
+        println("地址")
+        println(serverAddress + "/photo")
+        let boundary = Web.multipartBoundary()
+        let request = Web.multipartRequest("POST", NSURL(string: serverAddress + "/photo")!, boundary)
+        request.setValue(token, forHTTPHeaderField: "Token")
+        let fields = ["userId": userId as String, "albumId": albumID as String]
+        let data = Web.multipartData(boundary, fields, imageData!)
+        let dataTask = NSURLSession.sharedSession().uploadTaskWithRequest(request, fromData: data) { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if (error != nil) {
+                println(error)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    notice.labelText = "上传失败，请重试！"
+                    notice.hide(true, afterDelay: 1)
+                })
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    notice.labelText = "上传成功"
+                    notice.hide(true, afterDelay: 0.5)
+                })
+            }
+            println(response)
+        }
+        dataTask.resume()
+        println("uploading avatar")
+    }
+
     
 }
