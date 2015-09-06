@@ -21,7 +21,7 @@ var userId: String! = "55a7abda8a5da518db646c24"
 //55a7abda8a5da518db646c18"
 var token: String?
 var localUser: UserData!
-var album :Array<Album>! = Array<Album>()
+//var album :Array<Album>! = Array<Album>()
 
 //MARK: - 初始化
 

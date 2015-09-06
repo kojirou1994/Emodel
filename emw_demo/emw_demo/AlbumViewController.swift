@@ -26,11 +26,14 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     @IBOutlet weak var AlbumListCollectionView: UICollectionView!
     
+    var album :Array<Album>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
         self.navigationItem.rightBarButtonItem = addBtn
-        // Do any additional setup after loading the view.
+        album = localUser.albumInfo!
+        self.AlbumListCollectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,9 +72,12 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         })
 
     }
-    //MARK: - CllectionViewDataSource
+    //MARK: - UICllectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (album == nil) {
+            return 0
+        }
         return album.count
     }
     
@@ -84,7 +90,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         return cell
     }
     
-    //MARK: - CllectionViewDelegate
+    //MARK: - UICllectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println("did Select\(indexPath)")
@@ -127,23 +133,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
             }
         }
     }
-    /*
-    // Called when a button is clicked. The view will be automatically dismissed after this call returns
-    optional func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     
-    // Called when we cancel a view (eg. the user clicks the Home button). This is not called when the user clicks the cancel button.
-    // If not defined in the delegate, we simulate a click in the cancel button
-    optional func alertViewCancel(alertView: UIAlertView)
-    
-    optional func willPresentAlertView(alertView: UIAlertView) // before animation and showing view
-    optional func didPresentAlertView(alertView: UIAlertView) // after animation
-    
-    optional func alertView(alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) // before animation and hiding view
-    optional func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) // after animation
-    
-    // Called after edits in any of the default fields added by the style
-    optional func alertViewShouldEnableFirstOtherButton(alertView: UIAlertView) -> Bool
-*/
     //MARK: - Navigation
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == "GoToAlbumDetail" {
@@ -172,9 +162,9 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
                     dispatch_async(dispatch_get_main_queue(),{
                         let resp = AlbumList(JSONDecoder(obj))
                         destinationViewController.data = resp.data!
-                        destinationViewController.navigationItem.title = album[index[0].row].name!
+                        destinationViewController.navigationItem.title = self.album[index[0].row].name!
                         destinationViewController.count = resp.data!.count
-                        destinationViewController.albumID = album[index[0].row].id!
+                        destinationViewController.albumID = self.album[index[0].row].id!
                         destinationViewController.PhotoList.reloadData()
 //                        println(resp.data![0].imgUri)
                     })

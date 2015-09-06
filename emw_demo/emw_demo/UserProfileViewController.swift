@@ -32,22 +32,23 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         sheet.showInView(self.view)
         sheet.tag = 255
     }
-    var nameLoadingAnime = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //圆形头像
         Avatar.layer.masksToBounds = true
         Avatar.layer.cornerRadius = Avatar.frame.height / 2
         Avatar.layer.borderColor = UIColor.whiteColor().CGColor
-//        Avatar.layer.borderWidth = 5
-        nameLoadingAnime.center = CGPointMake(UserNameLabel.frame.minX+15, UserNameLabel.center.y)
         
-        nameLoadingAnime.startAnimating()
-        self.view.addSubview(nameLoadingAnime)
-
         self.clearsSelectionOnViewWillAppear = true
-        updateInterface()
-
+        //加载用户头像
+        var userAvatar = UIImageView(frame: CGRectMake(0, 0, Avatar.bounds.width, Avatar.bounds.height))
+        userAvatar.contentMode = UIViewContentMode.ScaleAspectFill
+        userAvatar.kf_setImageWithURL(NSURL(string: localUser.baseInfo!.avatar!)!)
+        Avatar.addSubview(userAvatar)
+        //更新用户名、评级
+        UserNameLabel.text = localUser.baseInfo?.nickName
+        StarRankImage.image = UIImage(named: "starRank_\(localUser.star).png")
 //         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
@@ -56,6 +57,30 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         // Dispose of any resources that can be recreated.
     }
 
+    func updateUserInfo() {
+        var request = HTTPTask()
+        request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
+            if let err = response.error {
+                println("error: \(err.localizedDescription)")
+                return
+            }
+            if let obj: AnyObject = response.responseObject {
+                let resp = User(JSONDecoder(obj))
+                switch (resp.status!) {
+                case 200:
+                    println("update UserInfo success")
+                    localUser = resp.data
+                    println(localUser!.star)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.performSegueWithIdentifier("showMainTab", sender: self)
+                    })
+                default:
+                    println("get user info failed")
+                }
+            }
+        }
+
+    }
     
     func updateInterface() {
         var userAvatar = UIImageView(frame: CGRectMake(0, 0, Avatar.bounds.width, Avatar.bounds.height))

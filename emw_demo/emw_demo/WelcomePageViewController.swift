@@ -95,8 +95,6 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                     case 200:
                         println("success")
                         localUser = resp.data
-                        album = localUser.albumInfo!
-                        println(album.count)
                         println(localUser!.star)
                         dispatch_async(dispatch_get_main_queue(), {
                             self.performSegueWithIdentifier("showMainTab", sender: self)
