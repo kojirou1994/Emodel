@@ -18,21 +18,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     @IBOutlet weak var PhotoList: UICollectionView!
     
-    var data:[AlbumListData]?
-    var count: Int! = 0
-    var albumID: String!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        println("thumb")
-        var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addPhotoBtnPressed:")
-        self.navigationItem.rightBarButtonItem = addBtn
-        // Register cell classes
-    }
-    
-    func addPhotoBtnPressed(barButton: UIBarButtonItem) {
-        println("add pressed")
-        
+    @IBAction func uploadPhotoBtnPressed(sender: AnyObject) {
         var sheet: UIActionSheet = UIActionSheet()
         let title: String = "选择照片"
         sheet.title  = title
@@ -45,6 +31,34 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         sheet.cancelButtonIndex = 0
         sheet.showInView(self.view)
         sheet.tag = 255
+    }
+    var data:[AlbumListData]?
+    var count: Int! = 0
+    var albumID: String!
+    var deleteMode: Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        println("thumb")
+        var addBtn = UIBarButtonItem(title: "edit", style: UIBarButtonItemStyle.Plain, target: self, action: "changeEditMode:")
+//        (barButtonSystemItem: UIBarButtonItemSt, target: self, action: "addPhotoBtnPressed:")
+        self.navigationItem.rightBarButtonItem = addBtn
+        // Register cell classes
+    }
+    
+    func changeEditMode(barButton: UIBarButtonItem) {
+        if (deleteMode) {
+            deleteMode = false
+            for cell in PhotoList.visibleCells() as! [PhotoThumbCollectionViewCell] {
+                cell.deleteButton.hidden = true
+            }
+        }
+        else {
+            deleteMode = true
+            for cell in PhotoList.visibleCells() as! [PhotoThumbCollectionViewCell] {
+                cell.deleteButton.hidden = false
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,17 +112,22 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var photos = [MWPhoto]()
-        for i in data! {
-            photos.append(MWPhoto(URL: NSURL(string: i.imgUri!)!))
+        if (deleteMode) {
+            
         }
-        var te = PhotoBrowserViewController()
-        te.photodata = self.data!
-        te.reloadData()
-        te.setCurrentPhotoIndex(UInt(indexPath.row))
-        var browse = PhotoBrowserViewController(photos: photos as [AnyObject]!)
-        self.navigationController?.pushViewController(te, animated: true)
-        println("选择了照片: \(indexPath)")
+        else {
+            var photos = [MWPhoto]()
+            for i in data! {
+                photos.append(MWPhoto(URL: NSURL(string: i.imgUri!)!))
+            }
+            var te = PhotoBrowserViewController()
+            te.photodata = self.data!
+            //        te.reloadData()
+            //        te.setCurrentPhotoIndex(UInt(indexPath.row))
+            var browse = PhotoBrowserViewController(photos: photos as [AnyObject]!)
+            self.navigationController?.pushViewController(te, animated: true)
+            println("选择了照片: \(indexPath)")
+        }
     }
     
     //MARK: - UIActionSheetDelegate

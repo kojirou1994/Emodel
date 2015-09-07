@@ -11,5 +11,6 @@ import UIKit
 class PhotoThumbCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var PhotoThumbImage: UIImageView!
+    @IBOutlet weak var deleteButton: UIImageView!
     
 }

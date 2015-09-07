@@ -32,7 +32,7 @@ class PhotoBrowserViewController: MWPhotoBrowser, MWPhotoBrowserDelegate, UINavi
     }
     func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
         let i: Int = Int(bitPattern: index)
-        let single = MWPhoto(URL: NSURL(string: photodata[i].imgUri)!)
+        var single = MWPhoto(URL: NSURL(string: photodata[i].imgUri)!)
         return single
     }
     /*
