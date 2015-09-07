@@ -79,6 +79,8 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         println("出现啦\n \(isLogin)是否登录了")
         if isLogin {
         //弄个动画
+            var getUserInfo: Bool = false
+            var getBaseInfo: Bool = false
             let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             
             notice.labelText = "获取数据中"
@@ -94,16 +96,56 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                     switch (resp.status!) {
                     case 200:
                         println("success")
-                        localUser = resp.data
+                        getUserInfo = true
+
+                        if (getBaseInfo) {
+                            var temp = localUser.baseInfo
+                            localUser = resp.data
+                            localUser.baseInfo = temp
+                        }
+                        else {
+                            localUser = resp.data
+                        }
                         println(localUser!.star)
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.performSegueWithIdentifier("showMainTab", sender: self)
-                        })
+                        if (getBaseInfo && getUserInfo) {
+                            println("从user进入")
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.performSegueWithIdentifier("showMainTab", sender: self)
+                            })
+                        }
                     default:
                         println("get user info failed")
                     }
                 }
             }
+            // baseinfo额外获取一次
+            request.requestSerializer = HTTPRequestSerializer()
+            request.requestSerializer.headers["Token"] = token
+            request.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
+                if let err = response.error {
+                    println("error: \(err.localizedDescription)")
+                    return
+                }
+                if let obj: AnyObject = response.responseObject {
+                    println("获取到的baseinfo")
+                    println(obj)
+                    let resp = BaseInfoResp(JSONDecoder(obj))
+                    if (resp.status == 200) {
+                        println("success")
+                        getBaseInfo = true
+                        localUser.baseInfo = resp.data
+                        println("update baseinfo ok")
+                        println("birthday \(localUser.baseInfo?.birthday)")
+                        if (getBaseInfo && getUserInfo) {
+                            println("从base进入")
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.performSegueWithIdentifier("showMainTab", sender: self)
+                            })
+                        }
+                    }
+                }
+            }
+            
         }
     }
     

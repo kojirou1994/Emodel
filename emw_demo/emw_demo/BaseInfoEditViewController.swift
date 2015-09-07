@@ -6,10 +6,12 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 import XLForm
+import SwiftHTTP
+import MBProgressHUD
 
 class BaseInfoEditViewController : XLFormViewController {
     
-    private enum Tags : String {
+    private enum BaseInfoTag : String {
         case QQ = "QQ"
         case Age = "age"
         case Birthday = "birthday"

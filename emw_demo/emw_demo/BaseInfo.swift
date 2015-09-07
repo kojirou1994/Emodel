@@ -41,3 +41,12 @@ struct BaseInfo: JSONJoy {
         wechat = decoder["wechat"].string
     }
 }
+
+struct BaseInfoResp: JSONJoy {
+    var status: Int?
+    var data: BaseInfo?
+    init(_ decoder: JSONDecoder) {
+        status = decoder["status"].integer
+        data = BaseInfo(decoder["data"])
+    }
+}
