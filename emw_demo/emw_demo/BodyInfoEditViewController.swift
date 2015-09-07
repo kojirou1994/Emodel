@@ -10,7 +10,7 @@ import XLForm
 
 class BodyInfoEditViewController : XLFormViewController {
     
-    private enum Tags : String {
+    private enum BodyInfo : String {
         case BloodType = "bloodType"
         case Height = "height"
         case Weight = "weight"
@@ -51,48 +51,57 @@ class BodyInfoEditViewController : XLFormViewController {
         form.addFormSection(section)
         
         // 身高
-        row = XLFormRowDescriptor(tag: Tags.Height.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "身高(CM)")
-        row.value = localUser?.bodyInfo?.height
+        row = XLFormRowDescriptor(tag: BodyInfo.Height.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "身高(CM)")
+        row.value = localUser.bodyInfo?.height
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 体重
-        row = XLFormRowDescriptor(tag: Tags.Weight.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "体重")
-        row.value = localUser?.bodyInfo?.weight
+        row = XLFormRowDescriptor(tag: BodyInfo.Weight.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "体重")
+        row.value = localUser.bodyInfo?.weight
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 罩杯
-        row = XLFormRowDescriptor(tag: Tags.CupSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "罩杯")
-        row.value = localUser?.bodyInfo?.cupSize
+        row = XLFormRowDescriptor(tag: BodyInfo.CupSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "罩杯")
+        row.value = localUser.bodyInfo?.cupSize
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 胸围
-        row = XLFormRowDescriptor(tag: Tags.Bust.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "胸围")
-        row.value = localUser?.bodyInfo?.bust!
+        row = XLFormRowDescriptor(tag: BodyInfo.Bust.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "胸围")
+        row.value = localUser.bodyInfo?.bust!
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 腰围
-        row = XLFormRowDescriptor(tag: Tags.Waist.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "腰围")
-        row.value = localUser?.bodyInfo?.waist!
+        row = XLFormRowDescriptor(tag: BodyInfo.Waist.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "腰围")
+        row.value = localUser.bodyInfo?.waist!
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 臀围
-        row = XLFormRowDescriptor(tag: Tags.Hip.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "臀围")
-        row.value = localUser?.bodyInfo?.hip!
+        row = XLFormRowDescriptor(tag: BodyInfo.Hip.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "臀围")
+        row.value = localUser.bodyInfo?.hip!
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 衣服尺寸
-        row = XLFormRowDescriptor(tag: Tags.ClothesSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "衣服尺寸")
-        row.value = localUser?.bodyInfo?.clothesSize
+        row = XLFormRowDescriptor(tag: BodyInfo.ClothesSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "衣服尺寸")
+        row.value = localUser.bodyInfo?.clothesSize
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 裤子尺寸
-        row = XLFormRowDescriptor(tag: Tags.TrouserSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "裤子尺寸")
-        row.value = localUser?.bodyInfo?.trousersSize
+        row = XLFormRowDescriptor(tag: BodyInfo.TrouserSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "裤子尺寸")
+        row.value = localUser.bodyInfo?.trousersSize
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 鞋子尺寸
-        row = XLFormRowDescriptor(tag: Tags.ShoesSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "鞋子尺寸")
-        row.value = localUser?.bodyInfo?.shoesSize
+        row = XLFormRowDescriptor(tag: BodyInfo.ShoesSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "鞋子尺寸")
+        row.value = localUser.bodyInfo?.shoesSize
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         
@@ -100,9 +109,9 @@ class BodyInfoEditViewController : XLFormViewController {
         section = XLFormSectionDescriptor.formSectionWithTitle("个人简介")
         form.addFormSection(section)
         
-        row = XLFormRowDescriptor(tag: Tags.Introduction.rawValue, rowType: XLFormRowDescriptorTypeTextView)
+        row = XLFormRowDescriptor(tag: BodyInfo.Introduction.rawValue, rowType: XLFormRowDescriptorTypeTextView)
         row.cellConfigAtConfigure["textView.placeholder"] = "Introduction"
-        row.value = localUser?.bodyInfo?.introduction!
+        row.value = localUser.bodyInfo?.introduction!
         
         section.addFormRow(row)
         
