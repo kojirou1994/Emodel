@@ -122,16 +122,16 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
             deletePhoto(indexPath.row)
         }
         else {
-            var photos = [MWPhoto]()
+            var photoSource = [MWPhoto]()
             for i in data! {
-                photos.append(MWPhoto(URL: NSURL(string: i.imgUri!)!))
+                photoSource.append(MWPhoto(URL: NSURL(string: i.imgUri!)!))
             }
             var te = PhotoBrowserViewController()
             te.photodata = self.data!
             //        te.reloadData()
             //        te.setCurrentPhotoIndex(UInt(indexPath.row))
-            var browse = PhotoBrowserViewController(photos: photos as [AnyObject]!)
-            self.navigationController?.pushViewController(te, animated: true)
+            var browse = PhotoBrowserViewController(photos: photoSource as [AnyObject]!)
+            self.navigationController?.pushViewController(MWPhotoBrowser(photos: photoSource), animated: true)
             println("选择了照片: \(indexPath)")
         }
     }

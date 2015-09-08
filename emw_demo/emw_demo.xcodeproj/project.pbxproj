@@ -19,7 +19,7 @@
 		E34CC6461B96DD7F0089EED1 /* Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34CC6451B96DD7F0089EED1 /* Confirm.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
-		E37AD5991B846BC8005DEC92 /* CalManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */; };
+		E37AD5991B846BC8005DEC92 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */; };
 		E38518871B7091B40063C2C2 /* starRank_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518711B7091B40063C2C2 /* starRank_0.png */; };
 		E38518881B7091B40063C2C2 /* starRank_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518721B7091B40063C2C2 /* starRank_1.png */; };
 		E38518891B7091B40063C2C2 /* starRank_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518731B7091B40063C2C2 /* starRank_10.png */; };
@@ -111,7 +111,7 @@
 		E34CC6451B96DD7F0089EED1 /* Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
-		E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalManagerViewController.swift; sourceTree = "<group>"; };
+		E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E38518711B7091B40063C2C2 /* starRank_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_0.png; sourceTree = "<group>"; };
 		E38518721B7091B40063C2C2 /* starRank_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_1.png; sourceTree = "<group>"; };
 		E38518731B7091B40063C2C2 /* starRank_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_10.png; sourceTree = "<group>"; };
@@ -229,9 +229,9 @@
 		E34CC6471B96E4300089EED1 /* InfoEdit */ = {
 			isa = PBXGroup;
 			children = (
+				E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */,
 				E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */,
 				E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */,
-				E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */,
 			);
 			name = InfoEdit;
 			sourceTree = "<group>";
@@ -321,9 +321,9 @@
 		E3C899991B749DD300286AC7 /* 3rd Tab */ = {
 			isa = PBXGroup;
 			children = (
-				E37AD5981B846BC8005DEC92 /* CalManagerViewController.swift */,
-				E32E22361B960B6300BC0A0D /* ConfigViewController.swift */,
 				E3BA83741B95794400B39311 /* UserProfileViewController.swift */,
+				E32E22361B960B6300BC0A0D /* ConfigViewController.swift */,
+				E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */,
 				E38556721B7C62CD0015285F /* Album */,
 				E34CC6471B96E4300089EED1 /* InfoEdit */,
 			);
@@ -619,7 +619,7 @@
 				E3978F541B7ADFF3002B54A3 /* BusinessInfo.swift in Sources */,
 				E33802BD1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift in Sources */,
 				E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */,
-				E37AD5991B846BC8005DEC92 /* CalManagerViewController.swift in Sources */,
+				E37AD5991B846BC8005DEC92 /* CalendarViewController.swift in Sources */,
 				E38556761B7C63600015285F /* AlbumThumbCell.swift in Sources */,
 				E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */,
 				E3978F641B7AEAFD002B54A3 /* AlbumID.swift in Sources */,

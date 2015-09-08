@@ -9,58 +9,42 @@
 import Foundation
 import JSONJoy
 
-struct Calendar: JSONJoy {
+struct CalendarResp: JSONJoy {
     var status: Int?
     var message: String?
-    var data: NSDictionary?
-    
-    var eventDate = NSDateFormatter()
-    
+    var data: [Calendar]?
+
     init(_ decoder: JSONDecoder) {
-        eventDate.dateFormat = "yyyy-MM-dd"
         status = decoder["status"].integer
         message = decoder["message"].string
-        data = decoder["data"].dictionary
-    }
-    
-    func haveEventForDate(date: NSDate) -> Bool {
-        if let res: AnyObject? = data!.objectForKey(eventDate.stringFromDate(date)) {
-            return true
+        if let cal = decoder["data"].array {
+            data = Array<Calendar>()
+            for item in cal {
+                data?.append(Calendar(item))
+            }
         }
-        return true
     }
     
-    func getScheduleForDate(date: NSDate) -> Schedule{
-        var schedule = Schedule(JSONDecoder(data!.objectForKey(eventDate.stringFromDate(date))!))
-        return schedule
+}
+
+struct Calendar: JSONJoy {
+    var date: String!
+    var schedule: Schedule!
+    var timeBucket: String!
+    init(_ decoder: JSONDecoder) {
+        date = decoder["date"].string
+        schedule = Schedule(decoder["schedule"])
+        
     }
 }
 
 struct Schedule: JSONJoy {
-    var event: Array<Event>?
-    var count: Int = 0
-    init(_ decoder: JSONDecoder) {
-        if let eve = decoder["schedule"].array {
-            event = Array<Event>()
-            for i in eve {
-                event?.append(Event(i))
-            }
-            count = eve.count
-        }
-    }
-}
-
-struct Event: JSONJoy {
-    var body: String?
-    var timeBucket: String?
-    var title: String?
-    var type: String?
-    init(){}
+    var body: String!
+    var title: String!
+    var type: String!
     init(_ decoder: JSONDecoder) {
         body = decoder["body"].string
-        timeBucket = decoder["timeBucket"].string
         title = decoder["title"].string
         type = decoder["type"].string
     }
-    
 }

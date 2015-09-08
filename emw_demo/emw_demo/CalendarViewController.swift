@@ -27,15 +27,10 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         println("\(todayDate)")
-        println("\(minDate)")
-        println("\(maxDate)")
-        
         calendarManager.delegate = self
         calendarManager.menuView = calendarMenuView
         calendarManager.contentView = calendarContentView
         calendarManager.setDate(NSDate())
-        calendarManager.dateHelper.calendar().timeZone = NSTimeZone(abbreviation: "GMT+0900")!
-        calendarManager.dateHelper.calendar().locale = NSLocale(localeIdentifier: "zh")
         minDate = calendarManager.dateHelper.addToDate(todayDate, months: -3)
         maxDate = calendarManager.dateHelper.addToDate(todayDate, months: 3)
         println("\(todayDate)")
@@ -78,13 +73,16 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
                 myDayView.textLabel.textColor = UIColor.blackColor()
             }
         }
-        
-        
     }
+    
+//     NSTimeZone *localZone=[NSTimeZone localTimeZone]; NSInteger interval=[localZone secondsFromGMTForDate:date]; NSDate *mydate=[date dateByAddingTimeInterval:interval]; NSLog(@"Date: %@", mydate); } 
+    
     func calendar(calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {
         if let myDayView = dayView as? JTCalendarDayView {
-            dateSelected = myDayView.date
-            println("\(myDayView.date)")
+            var localZone = NSTimeZone.localTimeZone()
+            var interval: NSInteger = localZone.secondsFromGMTForDate(myDayView.date)
+            dateSelected = myDayView.date.dateByAddingTimeInterval(NSTimeInterval(interval))
+            println("\(dateSelected)")
             //Animation
             myDayView.circleView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.1, 0.1)
             UIView.transitionWithView(myDayView.circleView, duration: 0.3, options: nil, animations: { () -> Void in

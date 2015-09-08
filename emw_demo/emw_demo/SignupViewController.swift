@@ -49,7 +49,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             //        ["param": "param1", "array": ["first array element","second","third"], "num": 23, "dict": ["someKey": "someVal"]]
             println("\(serverAddress)/user/confirm")
             request.POST("\(serverAddress)/user/confirm", parameters: params, completionHandler: {(response: HTTPResponse) in
-                //do things...
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")
                     return //also notify app of failure as needed
@@ -101,6 +100,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             countDownTimer?.invalidate()
             timeNum = 60
             sendMobileBtn.userInteractionEnabled = true
+            sendMobileBtn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             self.sendMobileBtn.titleLabel?.text = "发送验证码"
             self.sendMobileBtn.setTitle("发送验证码", forState: UIControlState.Normal)
         }

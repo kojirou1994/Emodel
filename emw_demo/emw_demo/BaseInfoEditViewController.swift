@@ -48,7 +48,7 @@ class BaseInfoEditViewController : XLFormViewController {
         form.addFormSection(section)
         
         // QQ
-        row = XLFormRowDescriptor(tag: BaseInfoTag.QQ.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "QQ")
+        row = XLFormRowDescriptor(tag: BaseInfoTag.QQ.rawValue, rowType: XLFormRowDescriptorTypeInteger, title: "QQ")
         row.value = localUser.baseInfo?.QQ
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
@@ -57,7 +57,7 @@ class BaseInfoEditViewController : XLFormViewController {
         row = XLFormRowDescriptor(tag: BaseInfoTag.Age.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "年龄")
         row.value = localUser.baseInfo?.age
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
-        section.addFormRow(row)
+//        section.addFormRow(row)
         
         // 转换生日string to nsdate
         var format = NSDateFormatter()
@@ -77,11 +77,11 @@ class BaseInfoEditViewController : XLFormViewController {
         // 个人简介
         row = XLFormRowDescriptor(tag: BaseInfoTag.Introduction.rawValue, rowType: XLFormRowDescriptorTypeTextView, title: "个人简介")
         row.value = localUser.baseInfo?.introduction
-        section.addFormRow(row)
+//        section.addFormRow(row)
         
         // 手机号
-        row = XLFormRowDescriptor(tag: BaseInfoTag.Mobile.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "手机号")
-        row.value = localUser.baseInfo?.mobile!
+        row = XLFormRowDescriptor(tag: BaseInfoTag.Mobile.rawValue, rowType: XLFormRowDescriptorTypeInteger, title: "手机号")
+        row.value = localUser.baseInfo?.mobile
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
@@ -94,12 +94,13 @@ class BaseInfoEditViewController : XLFormViewController {
         // 真实姓名
         row = XLFormRowDescriptor(tag: BaseInfoTag.RealName.rawValue, rowType: XLFormRowDescriptorTypeText, title: "真实姓名")
         row.value = localUser.baseInfo?.realName
+        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         section.addFormRow(row)
         
         // 个人服务
         row = XLFormRowDescriptor(tag: BaseInfoTag.Service.rawValue, rowType: XLFormRowDescriptorTypeText, title: "个人服务")
         row.value = localUser.baseInfo?.service
-        section.addFormRow(row)
+//        section.addFormRow(row)
         
         
         // 性别
@@ -123,98 +124,195 @@ class BaseInfoEditViewController : XLFormViewController {
         println(self.httpParameters())
     }
     
+    func prepareForPUTBody() -> String {
+        var body = ""
+        if let sex = form.formRowWithTag(BaseInfoTag.Sex.rawValue)!.value as? String {
+            body += "sex=\(sex)&"
+        }
+        else {
+            body += "sex=&"
+        }
+        
+        if let nickName = form.formRowWithTag(BaseInfoTag.NickName.rawValue)!.value as? String {
+            body += "nickName=\(nickName)&"
+        }
+        else {
+            body += "nickName=&"
+        }
+        
+        if let realName = form.formRowWithTag(BaseInfoTag.RealName.rawValue)!.value as? String {
+            body += "realName=\(realName)&"
+        }
+        else {
+            body += "realName=&"
+        }
+        
+        if let QQ = form.formRowWithTag(BaseInfoTag.QQ.rawValue)!.value as? String {
+            body += "QQ=\(QQ)&"
+        }
+        else {
+            body += "QQ=&"
+        }
+        
+        if let wechat = form.formRowWithTag(BaseInfoTag.Wechat.rawValue)!.value as? String {
+            body += "wechat=\(wechat)&"
+        }
+        else {
+            body += "wechat=&"
+        }
+        
+        if let email = form.formRowWithTag(BaseInfoTag.Email.rawValue)!.value as? String {
+            body += "email=\(email)&"
+        }
+        else {
+            body += "email=&"
+        }
+        
+        if let birthday = form.formRowWithTag(BaseInfoTag.Birthday.rawValue)!.value as? NSDate {
+            var format = NSDateFormatter()
+            format.dateFormat = "yyyy-MM-dd"
+            body += "birthday=\(format.stringFromDate(birthday))&"
+        }
+        else {
+            body += "birthday=&"
+        }
+        
+        if let mobile = form.formRowWithTag(BaseInfoTag.Mobile.rawValue)!.value as? String {
+            body += "mobile=\(mobile)"
+        }
+        else {
+            body += "mobile="
+        }
+        return body
+    }
+    
+    
     func savePressed(button: UIBarButtonItem) {
         //提交更新PUT
-        let validationErrors : Array<NSError> = self.formValidationErrors() as! Array<NSError>
-        if (validationErrors.count > 0) {
-            self.showFormValidationError(validationErrors.first)
-            return
-        }
-        self.tableView.endEditing(true)
-        println(self.httpParameters())
+        println(prepareForPUTBody())
+//        let validationErrors : Array<NSError> = self.formValidationErrors() as! Array<NSError>
+//        if (validationErrors.count > 0) {
+//            self.showFormValidationError(validationErrors.first)
+//            return
+//        }
+//        self.tableView.endEditing(true)
+//        println(self.httpParameters())
+        
         var re = NSMutableURLRequest(URL: NSURL(string: serverAddress + "/user/" + userId + "/baseinfo")!)
         re.setValue(token, forHTTPHeaderField: "Token")
         re.HTTPMethod = "PUT"
+        var str = "sex=男&nickName=king&realName=孝诚&QQ=1234567&wechat=&email=test@qq.com&birthday=1992-09-01&mobile=13916530237"
+        re.HTTPBody = str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
         
-        let params: Dictionary = self.formValues()
-        println("params:")
-        println(params)
-        var format = NSDateFormatter()
-        format.dateFormat = "yyyy-MM-dd"
-        
-        var results = [String: String?]()
-        results[BaseInfoTag.QQ.rawValue] = form.formRowWithTag(BaseInfoTag.QQ.rawValue)!.value as? String
-        
-        if let value = form.formRowWithTag(BaseInfoTag.Age.rawValue)!.value as? Int {
-            results[BaseInfoTag.Age.rawValue] = String(value)
-        }
-        
-        if let value = form.formRowWithTag(BaseInfoTag.Birthday.rawValue)!.value as? NSDate {
-            results[BaseInfoTag.Birthday.rawValue] = format.stringFromDate(value)
-        }
-        if let value = form.formRowWithTag(BaseInfoTag.Email.rawValue)!.value as? String {
-            results[BaseInfoTag.Email.rawValue] = value
-        }
-        if let value = form.formRowWithTag(BaseInfoTag.Introduction.rawValue)!.value as? String {
-            results[BaseInfoTag.Introduction.rawValue] = value
-        }
-        if let value = form.formRowWithTag(BaseInfoTag.Mobile.rawValue)!.value as? String {
-            results[BaseInfoTag.Mobile.rawValue] = value
-        }
-        if let value = form.formRowWithTag(BaseInfoTag.NickName.rawValue)!.value as? String {
-            results[BaseInfoTag.NickName.rawValue] = value
-        }
-        if let value = form.formRowWithTag(BaseInfoTag.RealName.rawValue)!.value as? String {
-            results[BaseInfoTag.RealName.rawValue] = value
-        }
-        if let value = form.formRowWithTag(BaseInfoTag.Service.rawValue)!.value as? String {
-            results[BaseInfoTag.Service.rawValue] = value
-        }
-        if let value = form.formRowWithTag(BaseInfoTag.Sex.rawValue)!.value as? String {
-            results[BaseInfoTag.Sex.rawValue] = value
-        }
-        if let value = form.formRowWithTag(BaseInfoTag.Wechat.rawValue)!.value as? String {
-            results[BaseInfoTag.Wechat.rawValue] = value
-        }
-        println("result: \(results)")
-        
-//        println("birthday: \(pa)")
-//        var jsondata = NSJSONSerialization.dataWithJSONObject(results, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
-        var bodyData = ""
-        for (key,value) in results {
-            if (value == nil) {
-                continue
-            }
-            let scapedKey = key.stringByAddingPercentEncodingWithAllowedCharacters(
-                .URLHostAllowedCharacterSet())!
-            let scapedValue = value!.stringByAddingPercentEncodingWithAllowedCharacters(
-                .URLHostAllowedCharacterSet())!
-            bodyData += "\(scapedKey)=\(scapedValue)&"
-        }
-        re.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-//            bodyString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
         var task = NSURLSession.sharedSession().dataTaskWithRequest(re, completionHandler: { (data, response, error) -> Void in
-            if (error == nil) {
-                println("更新成功")
-                println(response)
-            }
-            else {
-                println("更新失败")
-            }
+            println(response)
         })
-        task.resume()
-        let alertView = UIAlertView(title: "更新成功", message: "okokokok", delegate: self, cancelButtonTitle: "OK")
-        alertView.show()
+//        task.resume()
+        sendRequest()
+//
+//        let params: Dictionary = self.formValues()
+//        println("params:")
+//        println(params)
+//        var format = NSDateFormatter()
+//        format.dateFormat = "yyyy-MM-dd"
+//        
+//
+//        var update = HTTPTask()
+//        update.requestSerializer = HTTPRequestSerializer()
+//        update.requestSerializer.headers["Token"] = token
+//        let para: Dictionary<String, AnyObject> = ["realName": form.formRowWithTag("realName")!.value!, "nickName": form.formRowWithTag("nickName")!.value!,"birthday": form.formRowWithTag("birthday")!.value!, "QQ": form.formRowWithTag("QQ")!.value!, "wechat": form.formRowWithTag("wechat")!.value!, "sex": form.formRowWithTag("sex")!.value!, "email": form.formRowWithTag("email")!.value!, "mobile": form.formRowWithTag("mobile")!.value!]
+//        update.PUT(serverAddress + "/user/" + userId + "/baseinfo", parameters: para) { (response: HTTPResponse) -> Void in
+//            if let err = response.error {
+//                println("delete photo error \(err)")
+//                return
+//            }
+//            if let obj: AnyObject = response.responseObject {
+//                println(obj)
+//            }
+//        }
+//
+//        let alertView = UIAlertView(title: "更新成功", message: "okokokok", delegate: self, cancelButtonTitle: "OK")
+//        alertView.show()
+
     }
 }
 
-func stringFromQueryParameters(queryParameters : Dictionary<String, String>) -> String {
-    var parts: [String] = []
-    for (name, value) in queryParameters {
-        var part = NSString(format: "%@=%@",
-            name.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!,
-            value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
-        parts.append(part as String)
+
+    func sendRequest() {
+        /* Configure session, choose between:
+        * defaultSessionConfiguration
+        * ephemeralSessionConfiguration
+        * backgroundSessionConfigurationWithIdentifier:
+        And set session-wide properties, such as: HTTPAdditionalHeaders,
+        HTTPCookieAcceptPolicy, requestCachePolicy or timeoutIntervalForRequest.
+        */
+        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        
+        /* Create session, and optionally set a NSURLSessionDelegate. */
+        let session = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        /* Create the Request:
+        BaseInfo Duplicate (PUT http://10.0.1.11/user/55a7abda8a5da518db646c18/baseinfo)
+        */
+        
+        var URL = NSURL(string: "http://10.0.1.11/user/55a7abda8a5da518db646c18/baseinfo")
+        let request = NSMutableURLRequest(URL: URL!)
+        request.HTTPMethod = "PUT"
+        
+        // Headers
+        
+        request.addValue("eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ0MjI5NzI0NSwiaWF0IjoxNDQxNjkyNDQ1fQ.eyJ1c2VySWQiOiI1NWE3YWJkYThhNWRhNTE4ZGI2NDZjMTgifQ.VhKQHfGkOSqQuDEnsqFIhSkIZ51CjR38MzxrVsFIyDk", forHTTPHeaderField: "Token")
+        
+        // Form URL-Encoded Body
+        
+        let bodyParameters = [
+            "email": "Ios@qq.com",
+            "QQ": "123",
+            "realName": "iOS",
+        ]
+        let bodyString = stringFromQueryParameters(bodyParameters)
+        request.HTTPBody = bodyString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        
+        /* Start a new Task */
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data : NSData!, response : NSURLResponse!, error : NSError!) -> Void in
+            if (error == nil) {
+                // Success
+                let statusCode = (response as! NSHTTPURLResponse).statusCode
+                println("URL Session Task Succeeded: HTTP \(statusCode)")
+            }
+            else {
+                // Failure
+                println("URL Session Task Failed: %@", error.localizedDescription);
+            }
+        })
+        task.resume()
     }
-    return "&".join(parts)
-}
+    
+    /**
+    This creates a new query parameters string from the given NSDictionary. For
+    example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
+    string will be @"day=Tuesday&month=January".
+    @param queryParameters The input dictionary.
+    @return The created parameters string.
+    */
+    func stringFromQueryParameters(queryParameters : Dictionary<String, String>) -> String {
+        var parts: [String] = []
+        for (name, value) in queryParameters {
+            var part = NSString(format: "%@=%@",
+                name.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!,
+                value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+            parts.append(part as String)
+        }
+        return "&".join(parts)
+    }
+    
+    /**
+    Creates a new URL by adding the given query parameters.
+    @param URL The input URL.
+    @param queryParameters The query parameter dictionary to add.
+    @return A new NSURL.
+    */
+    func NSURLByAppendingQueryParameters(URL : NSURL!, queryParameters : Dictionary<String, String>) -> NSURL {
+        let URLString : NSString = NSString(format: "%@?%@", URL.absoluteString!, stringFromQueryParameters(queryParameters))
+        return NSURL(string: URLString as String)!
+    }
