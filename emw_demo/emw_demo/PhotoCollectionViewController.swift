@@ -11,8 +11,8 @@ import Kingfisher
 import SwiftHTTP
 import JSONJoy
 import MWPhotoBrowser
-let reuseIdentifier = "PhotoCell"
 
+let reuseIdentifier = "PhotoCell"
 
 class PhotoCollectionViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate{
     
@@ -40,7 +40,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         println("thumb")
-        var addBtn = UIBarButtonItem(title: "edit", style: UIBarButtonItemStyle.Plain, target: self, action: "changeEditMode:")
+        var addBtn = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: "changeEditMode:")
 //        (barButtonSystemItem: UIBarButtonItemSt, target: self, action: "addPhotoBtnPressed:")
         self.navigationItem.rightBarButtonItem = addBtn
         // Register cell classes
@@ -48,12 +48,14 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     func changeEditMode(barButton: UIBarButtonItem) {
         if (deleteMode) {
+            barButton.title = "编辑"
             deleteMode = false
             for cell in PhotoList.visibleCells() as! [PhotoThumbCollectionViewCell] {
                 cell.deleteButton.hidden = true
             }
         }
         else {
+            barButton.title = "完成"
             deleteMode = true
             for cell in PhotoList.visibleCells() as! [PhotoThumbCollectionViewCell] {
                 cell.deleteButton.hidden = false
@@ -92,6 +94,9 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoThumbCollectionViewCell
         cell.PhotoThumbImage.kf_setImageWithURL(NSURL(string: data![indexPath.row].thumbUri!)!)
         cell.PhotoThumbImage.clipsToBounds = true
+        if (deleteMode) {
+            cell.deleteButton.hidden = false
+        }
         println(indexPath)
         return cell
     }
@@ -113,7 +118,8 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if (deleteMode) {
-            
+            println("开始删除 \(indexPath)")
+            deletePhoto(indexPath.row)
         }
         else {
             var photos = [MWPhoto]()
@@ -227,4 +233,31 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         }
     }
     
+    func deletePhoto(index: Int) {
+        var delete = HTTPTask()
+        let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        notice.labelText = "删除中"
+        delete.requestSerializer = HTTPRequestSerializer()
+        delete.requestSerializer.headers["Token"] = token
+        var str = data![index].id
+        delete.DELETE(serverAddress + "/photo/\(str!)", parameters: nil) { (response: HTTPResponse) -> Void in
+            if let err = response.error {
+                println("delete photo error \(err.localizedDescription)")
+                dispatch_async(dispatch_get_main_queue(),{
+                    notice.labelText = "删除失败"
+                    notice.hide(true, afterDelay: 0.3)
+                })
+                return
+            }
+            if let obj: AnyObject = response.responseObject {
+                println(obj)
+                self.data!.removeAtIndex(index)
+                dispatch_async(dispatch_get_main_queue(),{
+                    notice.labelText = "删除成功"
+                    notice.hide(true, afterDelay: 0.3)
+                    self.PhotoList.reloadData()
+                })
+            }
+        }
+    }
 }

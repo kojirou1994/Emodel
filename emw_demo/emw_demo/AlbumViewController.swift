@@ -45,7 +45,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func addAlbum(barButton: UIBarButtonItem) {
         println("add pressed")
-        
         var addAlert = UIAlertView(title: "添加相册", message: "请输入相册标题", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
         addAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
         addAlert.tag = 1
@@ -169,7 +168,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == "GoToAlbumDetail" {
             println("ShouldPerformSegue")
-            sleep(2)
+//            sleep(2)
             return true
         }
         return true
