@@ -28,13 +28,45 @@ struct CalendarResp: JSONJoy {
 }
 
 struct Calendar: JSONJoy {
-    var date: String!
-    var schedule: Schedule!
-    var timeBucket: String!
+    var date: String?
+    var schedule: Schedule?
+    var timeBucket: Int!
+    var isMorning: Bool! = false
+    var isAfternoon: Bool! = false
+    var isNight: Bool! = false
     init(_ decoder: JSONDecoder) {
         date = decoder["date"].string
         schedule = Schedule(decoder["schedule"])
-        
+        timeBucket = decoder["timeBucket"].integer
+        var time = String(timeBucket)
+        var count = 0
+        for cha in time {
+            if (count == 4) {
+                if (cha == "0") {
+                    isMorning = false
+                }
+                else {
+                    isMorning = true
+                }
+            }
+            else if (count == 5) {
+                if (cha == "0") {
+                    isAfternoon = false
+                }
+                else {
+                    isAfternoon = true
+                }
+            }
+            else if (count == 6) {
+                if (cha == "0") {
+                    isNight = false
+                }
+                else {
+                    isNight = true
+                }
+            }
+            count++
+        }
     }
 }
 
