@@ -97,11 +97,11 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                     case 200:
                         println("success")
                         getUserInfo = true
-
                         if (getBaseInfo) {
                             var temp = localUser.baseInfo
                             localUser = resp.data
                             localUser.baseInfo = temp
+                            println(localUser.baseInfo?.QQ)
                         }
                         else {
                             localUser = resp.data
@@ -119,22 +119,24 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
             // baseinfo额外获取一次
-            request.requestSerializer = HTTPRequestSerializer()
-            request.requestSerializer.headers["Token"] = token
-            request.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
+            var base = HTTPTask()
+            base.requestSerializer = HTTPRequestSerializer()
+            base.requestSerializer.headers["Token"] = token
+            base.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")
                     return
                 }
                 if let obj: AnyObject = response.responseObject {
                     println("获取到的baseinfo")
-                    println(obj)
+                    println(response.description)
                     let resp = BaseInfoResp(JSONDecoder(obj))
                     if (resp.status == 200) {
                         println("success")
                         getBaseInfo = true
                         localUser.baseInfo = resp.data
                         println("update baseinfo ok")
+                        println(resp.data!.QQ)
                         println("birthday \(localUser.baseInfo?.birthday)")
                         if (getBaseInfo && getUserInfo) {
                             println("从base进入")

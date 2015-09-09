@@ -8,6 +8,7 @@
 
 import UIKit
 import XLForm
+import Alamofire
 
 class BusinessInfoEditViewController: XLFormViewController {
     private enum Tags : String {
@@ -89,16 +90,73 @@ class BusinessInfoEditViewController: XLFormViewController {
     }
     
     func savePressed(button: UIBarButtonItem) {
-        //提交更新PUT
-        let validationErrors : Array<NSError> = self.formValidationErrors() as! Array<NSError>
-        if (validationErrors.count > 0) {
-            self.showFormValidationError(validationErrors.first)
-            return
+        var inPrice,outPrice,underwearPrice,dayPrice,startCount: Int
+        if let temp = (form.formRowWithTag(Tags.InPrice.rawValue)!.value as? Int) {
+            inPrice = temp
         }
-        self.tableView.endEditing(true)
-        println(self.httpParameters())
-        let alertView = UIAlertView(title: "Valid Form", message: "No errors found", delegate: self, cancelButtonTitle: "OK")
-        alertView.show()
+        else {
+            inPrice = 0
+        }
+        if let temp = (form.formRowWithTag(Tags.OutPrice.rawValue)!.value as? Int) {
+            outPrice = temp
+        }
+        else {
+            outPrice = 0
+        }
+        if let temp = (form.formRowWithTag(Tags.UnderWearPrice.rawValue)!.value as? Int) {
+            underwearPrice = temp
+        }
+        else {
+            underwearPrice = 0
+        }
+        if let temp = (form.formRowWithTag(Tags.DayPrice.rawValue)!.value as? Int) {
+            dayPrice = temp
+        }
+        else {
+            dayPrice = 0
+        }
+        if let temp = (form.formRowWithTag(Tags.StartCount.rawValue)!.value as? Int) {
+            startCount = temp
+        }
+        else {
+            startCount = 0
+        }
+        
+        let para = [
+            "inPrice": inPrice,
+            "outPrice": outPrice,
+            "underwearPrice": underwearPrice,
+            "dayPrice": dayPrice,
+            "startCount": startCount,
+        ]
+        println(para)
+        
+        var manager = Manager.sharedInstance
+        // Add Headers
+        manager.session.configuration.HTTPAdditionalHeaders = [
+            "Token":token!,
+        ]
+        let encoding = Alamofire.ParameterEncoding.URL
+        
+        // Fetch Request
+        Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/businessinfo", parameters: para, encoding: encoding)
+            .responseJSON { _, _, JSON, error in
+                if (error == nil) {
+                    println("HTTP Response Body: \(JSON)")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        let alertView = UIAlertView(title: "更新成功", message: "okokokok", delegate: self, cancelButtonTitle: "OK")
+                        alertView.show()
+                    })
+                }
+                else {
+                    println("HTTP HTTP Request failed: \(error)")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        let alertView = UIAlertView(title: "失败", message: "byebye", delegate: self, cancelButtonTitle: "OK")
+                        alertView.show()
+                    })
+                }
+        }
+
     }
     /*
     // MARK: - Navigation

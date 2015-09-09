@@ -14,8 +14,8 @@ import JSONJoy
 struct BodyInfo: JSONJoy {
     
     var bloodType: String?//血型
-    var height: Int?//身高
-    var weight: Int?//体重
+    var height: String?//身高
+    var weight: String?//体重
     var bust: Int?//胸围
     var waist: Int?//腰围
     var hip: Int?//臀围
@@ -23,7 +23,7 @@ struct BodyInfo: JSONJoy {
     var introduction: String?//简介
     var service: String?//服务
     var clothesSize: String?//衣服尺寸
-    var shoesSize: Int?//鞋子尺寸
+    var shoesSize: String?//鞋子尺寸
     var trousersSize: String?//裤子尺寸
     
     init(){}
@@ -33,13 +33,13 @@ struct BodyInfo: JSONJoy {
         bust = decoder["bust"].integer
         clothesSize = decoder["clothesSize"].string
         cupSize = decoder["cup"].string
-        height = decoder["height"].integer
+        height = decoder["height"].string
         hip = decoder["hips"].integer
         introduction = decoder["introduction"].string
         service = decoder["service"].string
-        shoesSize = decoder["shoeSize"].integer
+        shoesSize = decoder["shoeSize"].string
         trousersSize = decoder["trousers"].string
         waist = decoder["waistline"].integer
-        weight = decoder["weight"].integer
+        weight = decoder["weight"].string
     }
 }
