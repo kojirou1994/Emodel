@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyNoticeViewController : UIViewController
-
+@property (nonatomic,copy)NSString *id;
 @end

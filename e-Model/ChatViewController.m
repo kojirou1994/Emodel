@@ -9,6 +9,9 @@
 #import "ChatViewController.h"
 #import "UIImageView+WebCache.h"
 #import "YunBaService.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "searchUserDataModels.h"
+#import "ChatTableViewCell.h"
 #define AppKey @"55d178869477ebf524695a1c"
 @interface ChatViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
@@ -17,6 +20,8 @@
     UIView *_inputView;
     UITextField *_textField;
     UITextField *_contentTextField;
+    searchUserBaseClass *searchBC;
+    YBMessage *message;
 }
 @property (nonatomic, copy)NSString *userName;
 @property (nonatomic, retain)NSArray *headImageURLArray;
@@ -30,16 +35,19 @@ static NSString *cellIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = [NSString stringWithFormat:@"第一视觉"];
+//    self.title = [NSString stringWithFormat:@"第一视觉"];
     // 数组用来装 所有的气泡
-    _bubbleArray = [[NSMutableArray alloc] init];
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-40)];
+    _bubbleArray = [[NSMutableArray alloc] initWithCapacity:0];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     _tableView.separatorStyle = UITableViewCellAccessoryNone;
     //拖动表格 键盘下去
+    _tableView.dataSource =self;
+    _tableView.delegate =self;
     _tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     // 注册单元格用什么类型 已经重用标示符
     // 告诉系统帮我创建单元格的时候 用哪种类型
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+//    [_tableView registerNib:[UINib nibWithNibName:@"ChatTableViewCell" bundle:nil] forCellReuseIdentifier:@"chatCell"];
     [self.view addSubview:_tableView];
     _inputView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height+26, self.view.frame.size.width, 40)];
     [self.view addSubview:_inputView];
@@ -57,7 +65,7 @@ static NSString *cellIdentifier = @"Cell";
     _contentTextField.clipsToBounds = YES;
     _contentTextField.layer.cornerRadius = 10;
     _contentTextField.clearButtonMode = UITextFieldViewModeAlways;
-//    [_inputView addSubview:_contentTextField];
+    //    [_inputView addSubview:_contentTextField];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(275, 5, 50, 30);
     [button setTitle:@"发送" forState:UIControlStateNormal];
@@ -68,7 +76,7 @@ static NSString *cellIdentifier = @"Cell";
     addbtn.frame = CGRectMake(335, 5, 30, 30);
     addbtn.tintColor = [UIColor colorWithRed:1.0f green:0.2f blue:0.7f alpha:1.0];
     [_inputView addSubview:addbtn];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveUp:) name:UIKeyboardWillShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveDown) name:UIKeyboardWillHideNotification object:nil];
@@ -76,13 +84,116 @@ static NSString *cellIdentifier = @"Cell";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMessageReceived:) name:kYBDidReceiveMessageNotification object:nil];
 }
+- (void)onMessageReceived:(NSNotification *)notification {
+   
+    message = [notification object];
+    NSLog(@"new message, %zu bytes, topic=%@", (unsigned long)[[message data] length], [message topic]);
+    NSString *payloadString = [[NSString alloc] initWithData:[message data] encoding:NSUTF8StringEncoding];
+    NSLog(@"[Message] %@ => %@", [message topic], payloadString);
+    NSString *curMsg = [NSString stringWithFormat:@"[Message] %@ => %@", [message topic], payloadString];
+    [self showChatInfo:curMsg isSelf:YES];
+}
+- (void)onPresenceReceived:(NSNotification *)notification {
+    NSLog(@"444444444444444");
+    YBPresenceEvent *presence = [notification object];
+    NSLog(@"new presence, action=%@, topic=%@, alias=%@, time=%lf", [presence action], [presence topic], [presence alias], [presence time]);
+    
+    NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
+    [self showChatInfo:curMsg isSelf:YES];
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     return NO;
 }
+
+- (void)showChatInfo:(NSString *)message1
+{
+    [self showChatInfo:message1 isSelf:NO];
+}
+
+// 显示上个界面传过来  以及 在有新消息的时候及时显示 的未读消息
+- (void)showUnreadChatInfo
+{
+    // 从大字典中 获取 当前聊天的这个人所发来的未读消息
+    NSMutableArray *unreadArray = [self.unreadDictionary objectForKey:self.userName];
+    
+    for (NSString *string in unreadArray)
+    {
+        [self showChatInfo:string isSelf:NO];
+    }
+    
+    // 显示之后就清空掉
+    [unreadArray removeAllObjects];
+}
+// 把 文字  显示到表中
+- (void)showChatInfo:(NSString *)chatInfo isSelf:(BOOL)isSelf
+{
+    // 1,根据所说的话 去创建气泡 view
+    UIView *bubbleView = [self creatBubbleWithChatInfo:chatInfo isSelf:isSelf];
+    
+    // 2,把气泡这个view 放数组中
+    [_bubbleArray addObject:bubbleView];
+    NSLog(@"_bubbleArray:%ld",_bubbleArray.count);
+    // 3,刷新表
+    [_tableView reloadData];
+    
+    // 4,滚到最后一行
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_bubbleArray.count -1 inSection:0];
+    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+// 创建气泡view
+- (UIView *)creatBubbleWithChatInfo:(NSString *)chatInfo isSelf:(BOOL)isSelf
+{
+    // 计算文字的高度
+    CGRect rect = [chatInfo boundingRectWithSize:CGSizeMake(160, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
+    float height = ceilf(rect.size.height);
+    
+    // label
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake( 20, 15, 190, height)];
+    label.font = [UIFont systemFontOfSize:14];
+    label.text = [[NSString alloc]initWithData:[message data] encoding:NSUTF8StringEncoding];
+    NSLog(@"chatinfo:%@",label.text);
+    label.numberOfLines = 0;
+    // imageView
+    NSString *imageName = isSelf ? @"bubbleSelf" : @"bubble";
+    UIImage *oldImage = [UIImage imageNamed:imageName];
+    
+    // 可拉伸的图片
+    UIImage *newImage = [oldImage stretchableImageWithLeftCapWidth:25 topCapHeight:20];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(isSelf ? 0 : 50, 5, 230, height + 20)];
+    imageView.image = newImage;
+    
+    // 头像
+    NSString *str = [NSString stringWithFormat:@"http://cdn.avatar.emwcn.com/20150824172238964179.jpg"];
+    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(isSelf ? 230 : 5, 5, 40, 40)];
+    [headImageView sd_setImageWithURL:[NSURL URLWithString:isSelf ? str: self.avatar] placeholderImage:[UIImage imageNamed:@"head"]];
+    headImageView.layer.cornerRadius = 20;
+    headImageView.clipsToBounds = YES;
+    
+    // 最外层的容器view
+    UIView *bubbleView = [[UIView alloc] initWithFrame:CGRectMake(isSelf ? 90 : 0, 0, 300, height + 30)];
+    bubbleView.tag = 10;
+    [imageView addSubview:label];
+    [bubbleView addSubview:headImageView];
+    [bubbleView addSubview:imageView];
+    return bubbleView;
+}
+// 点击键盘上return键  让输入框结束编辑
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
 #pragma mark -
 #pragma mark UITableView
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _bubbleArray.count;
@@ -91,25 +202,31 @@ static NSString *cellIdentifier = @"Cell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIView *bubbleView = [_bubbleArray objectAtIndex:indexPath.row];
+//    NSLog(@"%f",bubbleView.frame.size.height);
     return bubbleView.frame.size.height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 出列一个可以重用的单元格,如果又可以重用的,那么就直接重用,如果没有,系统会按照你注册时填写的类型帮你创建一个
+  
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     // 如果有老的  就把老的气泡移除掉
     [[cell viewWithTag:10] removeFromSuperview];
-    
+   
     UIView *bubbleView = [_bubbleArray objectAtIndex:indexPath.row];
+    NSLog(@"%@''''''''''",_bubbleArray);
+//    cell.textLabel.text = _textField.text;
+    NSLog(@"%@",cell.textLabel.text);
     [cell addSubview:bubbleView];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 - (void)sendButtonClick:(UIButton *)button
 {
     //发送聊天信息
@@ -147,21 +264,23 @@ static NSString *cellIdentifier = @"Cell";
         }
     }];
 
-        NSString *topic = [NSString stringWithFormat:@"1"];
+        NSString *topic = [NSString stringWithFormat:@"2"];
         //    NSString *topic1 = [topic stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"%@",topic);
         NSData *data = [_textField.text dataUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@".............%@",data);
         UInt8 qoslevel = 2;
         BOOL isRetained = NO;
-        [YunBaService publish:topic data:data option:[YBPublishOption optionWithQos:qoslevel retained:NO] resultBlock:^(BOOL succ, NSError *error){
+        [YunBaService publish:topic data:data option:[YBPublishOption optionWithQos:qoslevel retained:isRetained] resultBlock:^(BOOL succ, NSError *error){
             if (succ) {
                 [self showChatInfo:[NSString stringWithFormat:@"[result] publish data(%@) to topic (%@) succeed",_textField.text,topic] isSelf:YES];
+                _textField.text = @"";
             }else {
                 [self showChatInfo:[NSString stringWithFormat:@"[result] publish data(%@) to topic (%@) failed: %@, recovery suggestion: %@",_textField.text, topic, error, [error localizedRecoverySuggestion]] isSelf:YES];
             }
         }];
-        [self showChatInfo:[NSString stringWithFormat:@"[Demo] publish data %@ toTopic %@ atQos %hhu retainFlag %d", _textField.text, @"2",qoslevel ,isRetained] isSelf:YES];
-        
+//        [self showChatInfo:[NSString stringWithFormat:@"[Demo] publish data %@ toTopic %@ atQos %hhu retainFlag %d", _textField.text, @"2",qoslevel ,isRetained] isSelf:NO];
+    
         //    [ZYHttpManager sendChatRequestWithFriendName:self.userName chatInfo:string completionBlock:^(BOOL isSuccessed, NSString *errorMessage)
         //     {
         //         if (isSuccessed)
@@ -175,7 +294,32 @@ static NSString *cellIdentifier = @"Cell";
         //             SHOWALERT(errorMessage)
         //         }
         //     }];
-
+//    searchUserResult *result = [searchBC.data.result objectAtIndex:0];
+//    
+//    NSString *alias = result.name;
+//    [YunBaService subscribePresence:alias resultBlock:^(BOOL succ, NSError *error) {
+//        if (succ) {
+//            [self showChatInfo:[NSString stringWithFormat:@"[result] subscribe presence to alias(%@) succeed", alias]];
+//        } else {
+//            [self showChatInfo: [NSString stringWithFormat:@"[result] subscribe presence to alias(%@) failed: %@, recovery suggestion: %@",alias, error, [error localizedRecoverySuggestion]]];
+//        }
+//    }];
+//    [self showChatInfo:[NSString stringWithFormat:@"[Demo]  subscribe presence to alias %@", alias]];
+//    
+//    NSData *dataAlias = [_textField.text dataUsingEncoding:NSUTF8StringEncoding];
+//    UInt8 qoslevelAlias = 2;
+//    BOOL isRetainedAlias = NO;
+//    [YunBaService publishToAlias:alias data:dataAlias option:[YBPublishOption optionWithQos:qoslevelAlias retained:NO] resultBlock:^(BOOL succ, NSError *error){
+//        if (succ) {
+//            [self showChatInfo:[NSString stringWithFormat:@"[result] publish data(%@) to alias(%@) succeed", [_textField text], alias]];
+//        } else {
+//            [self showChatInfo:[NSString stringWithFormat:@"[result] publish data(%@) to alias(%@) failed: %@, recovery suggestion: %@", [_textField text], alias, error, [error localizedRecoverySuggestion]]];
+//        }
+//    }];
+//    
+//    [self showChatInfo:[NSString stringWithFormat:@"[Demo] publish data %@ to alias %@ atQos %hhu retainFlag %d", [_textField text], alias, qoslevelAlias, isRetainedAlias]];
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    [userDefault setValue:_textField.text forKey:@"text"];
     
     
 
@@ -213,104 +357,7 @@ static NSString *cellIdentifier = @"Cell";
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"yunba-demo" message:contet delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
     [alertView show];
 }
-- (void)onMessageReceived:(NSNotification *)notification {
-    NSLog(@"11111111");
-    YBMessage *message = [notification object];
-    NSLog(@"new message, %zu bytes, topic=%@", (unsigned long)[[message data] length], [message topic]);
-    NSString *payloadString = [[NSString alloc] initWithData:[message data] encoding:NSUTF8StringEncoding];
-    NSLog(@"[Message] %@ => %@", [message topic], payloadString);
-    NSString *curMsg = [NSString stringWithFormat:@"[Message] %@ => %@", [message topic], payloadString];
-    [self showChatInfo:curMsg];
-}
-- (void)onPresenceReceived:(NSNotification *)notification {
-    NSLog(@"444444444444444");
-    YBPresenceEvent *presence = [notification object];
-    NSLog(@"new presence, action=%@, topic=%@, alias=%@, time=%lf", [presence action], [presence topic], [presence alias], [presence time]);
-    
-    NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
-    [self showChatInfo:curMsg isSelf:NO];
-}
-- (void)showChatInfo:(NSString *)message
-{
-    [self showChatInfo:message isSelf:NO];
-}
 
-// 显示上个界面传过来  以及 在有新消息的时候及时显示 的未读消息
-- (void)showUnreadChatInfo
-{
-    // 从大字典中 获取 当前聊天的这个人所发来的未读消息
-    NSMutableArray *unreadArray = [self.unreadDictionary objectForKey:self.userName];
-    
-    for (NSString *string in unreadArray)
-    {
-        [self showChatInfo:string isSelf:NO];
-    }
-    
-    // 显示之后就清空掉
-    [unreadArray removeAllObjects];
-}
-// 把 文字  显示到表中
-- (void)showChatInfo:(NSString *)chatInfo isSelf:(BOOL)isSelf
-{
-    // 1,根据所说的话 去创建气泡 view
-    UIView *bubbleView = [self creatBubbleWithChatInfo:chatInfo isSelf:isSelf];
-    
-    // 2,把气泡这个view 放数组中
-    [_bubbleArray addObject:bubbleView];
-    
-    // 3,刷新表
-    [_tableView reloadData];
-    
-    // 4,滚到最后一行
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_bubbleArray.count - 1 inSection:0];
-//    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-}
-// 创建气泡view
-- (UIView *)creatBubbleWithChatInfo:(NSString *)chatInfo isSelf:(BOOL)isSelf
-{
-    // 计算文字的高度
-    CGRect rect = [chatInfo boundingRectWithSize:CGSizeMake(160, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
-    float height = ceilf(rect.size.height);
-    
-    // label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(isSelf ? 10 : 60, 15, 160, height)];
-    label.font = [UIFont systemFontOfSize:14];
-    label.text = chatInfo;
-    label.numberOfLines = 0;
-    
-    // imageView
-    NSString *imageName = isSelf ? @"bubbleSelf" : @"bubble";
-    UIImage *oldImage = [UIImage imageNamed:imageName];
-    
-    // 可拉伸的图片
-    UIImage *newImage = [oldImage stretchableImageWithLeftCapWidth:25 topCapHeight:20];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(isSelf ? 0 : 50, 5, 180, height + 20)];
-    imageView.image = newImage;
-    
-    // 头像
-    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(isSelf ? 185 : 5, 5, 40, 40)];
-
-    [headImageView sd_setImageWithURL:[NSURL URLWithString:isSelf ? self.headImageURLArray[0] : self.headImageURLArray[1]] placeholderImage:[UIImage imageNamed:@"head"]];
-    headImageView.layer.cornerRadius = 20;
-    headImageView.clipsToBounds = YES;
-    
-    // 最外层的容器view
-    UIView *bubbleView = [[UIView alloc] initWithFrame:CGRectMake(isSelf ? 90 : 0, 0, 230, height + 30)];
-    bubbleView.tag = 10;
-    return bubbleView;
-}
-// 点击键盘上return键  让输入框结束编辑
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self.view endEditing:YES];
-    
-    
-    
-    
-    
-    return YES;
-}
 
 // 系统在给我们发通知的时候 会传一个参数过来
 - (void)moveUp:(NSNotification *)notification
@@ -340,8 +387,8 @@ static NSString *cellIdentifier = @"Cell";
          //  至少有一个单元格的时候 才滚动 ,没有单元格不需要滚动
          if (_bubbleArray.count > 0)
          {
-//             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_bubbleArray.count - 1 inSection:0];
-//             [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_bubbleArray.count-2  inSection:0];
+             [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
          }
          
      } completion:nil];

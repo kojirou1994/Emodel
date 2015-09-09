@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *chatImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *buddleImageView;
+@property (weak, nonatomic) IBOutlet UILabel *mesageLabel;
 
 @end

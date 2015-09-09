@@ -15,14 +15,14 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "EMWBusinessInfo.h"
 #import "DataModels.h"
-
+#import "tockenDataModels.h"
 #define SHOW_ALERT(msg) UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];\
 [alert show];
 
 @interface LoginViewController ()
 {
     EMWHttpManager *manager;
-    
+    userTockenuserTocken *tocken;
 }
 @property (nonatomic,strong)EMWUser *baseClass;
 @property (nonatomic,copy)NSString *applyUserTypeld,*email,*userId,*isEmailCheck,*isMobileCheck,*mobile,*userTypeId,*username;
@@ -67,7 +67,7 @@
     
 //      ViewController *vc = [[ViewController alloc]init];
 //      [self.navigationController pushViewController:vc animated:YES];
-        NSString *strURL1 = [NSString stringWithFormat:@"http://api.emwcn.com/user/login"];
+        NSString *strURL1 = [NSString stringWithFormat:@"http://10.0.1.11/user/login"];
         NSString *post1 =  [NSString stringWithFormat:@"username=%@&password=%@&autoLogin=%ld",self.phoneNumber.text,self.passWord.text, [self.isAutoLogin.text integerValue]];
         //    strURL1 = [strURL1 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *url1 = [NSURL URLWithString:strURL1];
@@ -80,9 +80,28 @@
             NSLog(@"-------  %@ *********",operation1.responseString);
             NSDictionary *dict1 = [NSJSONSerialization JSONObjectWithData:operation1.responseData options:NSJSONReadingAllowFragments error:nil];
             NSLog(@"%@",dict1);
+            tocken = [[userTockenuserTocken alloc]initWithDictionary:dict1];
+            NSLog(@"''''''%@''''",tocken.data.userId);
             if ([[dict1 objectForKey:@"status"]integerValue] == 200) {
                
                 [LoginViewController gotoMain];
+                NoticeViewController *notice = [[NoticeViewController alloc] init];
+                notice.userId = tocken.data.userId;
+                notice.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"通告" image:[UIImage imageNamed:@"file@2x"] tag:0];
+                UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:notice];
+                MessageViewController *message = [[MessageViewController alloc] init];
+                message.title = @"我的会话";
+                message.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息" image:[UIImage imageNamed:@"main@2x"] tag:1];
+                UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:message];
+                PersonViewController *person = [[PersonViewController alloc] init];
+                person.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"我" image:[UIImage imageNamed:@"person@2x"] tag:2];
+                UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:person];
+                UITabBarController *tabBarVC = [[UITabBarController alloc] init];
+                tabBarVC.viewControllers = @[nav2,nav3,nav4];
+                [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVC;
+                tabBarVC.tabBar.tintColor = [UIColor colorWithRed:1.0f green:0.2f blue:0.7f alpha:1.0];
+                tabBarVC.selectedIndex = 0;
+
             }
     
         }
@@ -115,22 +134,7 @@
     //    MainViewController *main = [[MainViewController alloc] init];
     //    main.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"news@2x"] tag:0];
     //    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:main];
-    NoticeViewController *notice = [[NoticeViewController alloc] init];
-    notice.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"通告" image:[UIImage imageNamed:@"file@2x"] tag:0];
-    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:notice];
-    MessageViewController *message = [[MessageViewController alloc] init];
-    message.title = @"我的会话";
-    message.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息" image:[UIImage imageNamed:@"main@2x"] tag:1];
-    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:message];
-    PersonViewController *person = [[PersonViewController alloc] init];
-    person.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"我" image:[UIImage imageNamed:@"person@2x"] tag:2];
-    UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:person];
-    UITabBarController *tabBarVC = [[UITabBarController alloc] init];
-    tabBarVC.viewControllers = @[nav2,nav3,nav4];
-    [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVC;
-    tabBarVC.tabBar.tintColor = [UIColor colorWithRed:1.0f green:0.2f blue:0.7f alpha:1.0];
-    tabBarVC.selectedIndex = 0;
-}
+   }
 
 - (IBAction)pwsButton:(id)sender {
     

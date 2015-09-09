@@ -14,6 +14,7 @@
 #import "BaseInfoDataModels.h"
 #import "UserID/UserIDDataModels.h"
 #import "UIImageView+WebCache.h"
+#import "searchUserDataModels.h"
 @interface MessageViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -24,6 +25,7 @@
     NSMutableArray *_Arr2;
     MessageTableViewCell *cell;
     UserIDBC *baseBc;
+    searchUserBaseClass *searchBC;
     
 }
 @property (nonatomic,strong)UserIDBC *userID;
@@ -48,52 +50,26 @@
     _Arr = [[NSMutableArray alloc]initWithCapacity:0];
     _arr = [[NSMutableArray alloc]initWithCapacity:0];
     NSLog(@"-------%@++++++------",array);
-    
+
     
 }
 - (void)GETinformation
 {
     AFHTTPRequestOperationManager *manager1 = [AFHTTPRequestOperationManager manager];
-    NSString *url = [NSString stringWithFormat:@"http://api.emwcn.com/user"];
+    NSString *url = [NSString stringWithFormat:@"http://10.0.1.11/search"];
     manager1.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager1 GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        NSLog(@"-------  %@ -----------",operation.responseString);
+        NSLog(@"-------  %@ -----------",operation.responseString);
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
-        NSArray *array222 = [dict objectForKey:@"data"];
-        //        NSLog(@"___++++%ld++++____",array222.count);
-        for (NSArray *arr in array222) {
-             array = [[NSMutableArray alloc]initWithCapacity:0];
-            //            NSLog(@"____%@_++++++______",dict);
-            //            EMWUser *user = [EMWUser parseUserWithDictionary:dict];
-            [array addObject:arr];
-            [_Arr addObject:array];
-            NSLog(@"------%@=======",array);
-            NSLog(@"+++++++%@+++++++",[array objectAtIndex:0]);
-            AFHTTPRequestOperationManager *manager2 = [AFHTTPRequestOperationManager manager];
-            NSString *url1 = [NSString stringWithFormat:@"http://api.emwcn.com/user/%@",[array objectAtIndex:0]];
-            manager2.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-            [manager2 GET:url1 parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
-             {
-                 NSLog(@"-------  %@ 646656565",operation.responseString);
-                 NSDictionary *dict1 = [NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingAllowFragments error:nil];
-                 
-                 baseBc = [[UserIDBC alloc]initWithDictionary:dict1];
-                 [_arr addObject:baseBc];
-                 NSLog(@"_______%@_______",_arr);
-                 NSLog(@"--==%@==---",baseBc.data.baseInfo.qQ);
-                 NSLog(@"--++%lf==",baseBc.data.businessInfo.inPrice);
-                 NSLog(@"-----------%@-------------",baseBc.data.baseInfo.nickName);
-                 _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-49)];
-                 _tableView.delegate = self;
-                 _tableView.dataSource = self;
-                 [_tableView registerNib:[UINib nibWithNibName:@"MessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"messageCell"];
-                 _tableView.rowHeight = 100;
-                 [self.view addSubview:_tableView];
-                 
-             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 NSLog(@"+++++++  %@+++++++++++",error);
-             }];
-       }
+        
+        searchBC = [[searchUserBaseClass alloc]initWithDictionary:dict];
+        NSLog(@"%@........",searchBC.data.result[0]);
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49)];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [_tableView registerNib:[UINib nibWithNibName:@"MessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"messageCell"];
+        _tableView.rowHeight = 100;
+        [self.view addSubview:_tableView];
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -115,7 +91,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _arr.count;
+    return searchBC.data.result.count ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,11 +101,13 @@
     if (cell!=nil) {
         [cell removeFromSuperview];
     }
-    UserIDBC *Data = [_arr objectAtIndex:indexPath.row];
-    [cell.headerImageView sd_setImageWithURL:[NSURL URLWithString:Data.data.baseInfo.avatar]];
+//    UserIDBC *Data = [_arr objectAtIndex:indexPath.row];
+    searchUserResult *result = [searchBC.data.result objectAtIndex:indexPath.row];
+    NSLog(@"????%@????",result.avatar);
+    [cell.headerImageView sd_setImageWithURL:[NSURL URLWithString:result.avatar]];
     cell.headerImageView.clipsToBounds = YES;
     cell.headerImageView.layer.cornerRadius = 35;
-    cell.userName.text = Data.data.baseInfo.nickName;
+    cell.userName.text = result.name;
 //    NSLog(@"---------");
     cell.messageLabel.text = @"你好！！！！";
     cell.dataLabel.text = @"15:00";
@@ -140,6 +118,9 @@
 {
     ChatViewController *cvc = [[ChatViewController alloc]init];
     self.hidesBottomBarWhenPushed = YES;
+    searchUserResult *result = [searchBC.data.result objectAtIndex:indexPath.row];
+    cvc.title = [NSString stringWithFormat:@"与%@交谈中",result.name];
+    cvc.avatar = result.avatar;
     [self.navigationController pushViewController:cvc animated:NO];
     
 }
