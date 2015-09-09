@@ -33,6 +33,9 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         sheet.tag = 255
     }
     
+    @IBAction func updateBtnPressed(sender: AnyObject) {
+        updateUserInfo()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         //圆形头像
@@ -58,6 +61,9 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     }
 
     func updateUserInfo() {
+        var getUserInfo: Bool = false
+        var getBaseInfo: Bool = false
+        
         var request = HTTPTask()
         request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
             if let err = response.error {
@@ -69,13 +75,45 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                 switch (resp.status!) {
                 case 200:
                     println("update UserInfo success")
-                    localUser = resp.data
+                    if (getBaseInfo) {
+                        var temp = localUser.baseInfo
+                        localUser = resp.data
+                        localUser.baseInfo = temp
+                        println(localUser.baseInfo?.QQ)
+                    }
+                    else {
+                        localUser = resp.data
+                    }
                     println(localUser!.star)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.updateInterface()
                     })
                 default:
                     println("get user info failed")
+                }
+            }
+        }
+        
+        // baseinfo额外获取一次
+        var base = HTTPTask()
+        base.requestSerializer = HTTPRequestSerializer()
+        base.requestSerializer.headers["Token"] = token
+        base.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
+            if let err = response.error {
+                println("error: \(err.localizedDescription)")
+                return
+            }
+            if let obj: AnyObject = response.responseObject {
+                println("获取到的baseinfo")
+                println(response.description)
+                let resp = BaseInfoResp(JSONDecoder(obj))
+                if (resp.status == 200) {
+                    println("success")
+                    getBaseInfo = true
+                    localUser.baseInfo = resp.data
+                    println("update baseinfo ok")
+                    println(resp.data!.QQ)
+                    println("birthday \(localUser.baseInfo?.birthday)")
                 }
             }
         }

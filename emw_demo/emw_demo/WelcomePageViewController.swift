@@ -54,7 +54,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                     CGFloat(0), CGFloat(pageWidth), CGFloat(pageHeight))
                 scrollView.addSubview(myViewController.view)
             }
-            self.view.addSubview(scrollView)
+//            self.view.addSubview(scrollView)
             
             println("\(scrollView.contentOffset)")
             
