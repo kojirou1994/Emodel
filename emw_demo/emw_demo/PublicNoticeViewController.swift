@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SwiftHTTP
+import JSONJoy
 
 class PublicNoticeViewController: UIViewController, UINavigationControllerDelegate, SMSegmentViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var tableView: UITableView!
     
     var notices = [Notice]()
+    var taskData: [Task]?
     
     var segmentView: SMSegmentView!
     var margin: CGFloat = 10.0
@@ -33,19 +36,6 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         self.navigationItem.titleView = segmentView
         segmentView.selectSegmentAtIndex(0)
         
-//        self.hidesBottomBarWhenPushed = true
-        
-        /*
-        self.tableView.addPullToRefreshWithAction {
-            NSOperationQueue().addOperationWithBlock {
-                sleep(2)
-                NSOperationQueue.mainQueue().addOperationWithBlock {
-                    self.tableView.stopPullToRefresh()
-                }
-            }
-        }
-*/
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,8 +49,21 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
             Notice(title: "皮草拍摄外拍50件", thumbnails: "img.jpg", status: "已结束", time: "7月10日上午", price: "80元/件", location: "杭州"),
             Notice(title: "皮草拍摄外拍50件", thumbnails: "img.jpg", status: "已结束", time: "7月10日上午", price: "80元/件", location: "杭州"),
             Notice(title: "皮草拍摄外拍50件", thumbnails: "img.jpg", status: "已结束", time: "7月10日上午", price: "80元/件", location: "杭州")]
-        self.tableView?.reloadData()
-        
+        var getTask = HTTPTask()
+        getTask.GET(serverAddress + "/task", parameters: nil) { (response: HTTPResponse) -> Void in
+            println(response.description)
+            if let err = response.error {
+                println("get task list error: \(err.localizedDescription)")
+                return
+            }
+            if let obj: AnyObject = response.responseObject {
+                println("task list get")
+                self.taskData = TaskResp(JSONDecoder(obj)).data
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView?.reloadData()
+                })
+            }
+        }
     }
     // SMSegment Delegate
     func segmentView(segmentView: SMSegmentView, didSelectSegmentAtIndex index: Int) {
@@ -89,14 +92,22 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
             cell = NoticeTableCell(style: UITableViewCellStyle.Value1, reuseIdentifier: identifier)
         }
         
-        cell.configurateTheCell(notices[indexPath.row])
+//        cell.configurateTheCell(notices[indexPath.row])
+        cell.config(taskData![indexPath.row])
         println(cell.timeLabel?.text)
         return cell!
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         println("count\(notices.count)")
-        return notices.count
+        if (taskData == nil) {
+            println("task count 0")
+            return 0
+        }
+        else {
+            println("task count \(taskData!.count)")
+            return taskData!.count
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -112,46 +123,14 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "noticeDetail" {
-            let indexPath = self.tableView!.indexPathForSelectedRow
+            let indexPath = self.tableView!.indexPathForSelectedRow()
             let destinationViewController: NoticeDetailViewController = segue.destinationViewController as! NoticeDetailViewController
-
+            destinationViewController.taskData = taskData![indexPath!.row]
+//            destinationViewController.tableView.reloadData()
 //            destinationViewController.prepString = recipes[indexPath()!.row].prepTime
 //            destinationViewController.nameString = recipes[indexPath()!.row].name
 //            destinationViewController.imageName = recipes[indexPath()!.row].thumbnails
         }
     }
-    
-    /*
-    隐藏tabbar
-    func makeTabBarHidden(hide: BOOL) {
-        if self.tabBarController.view.subviews.count <2 {
-            return
-        }
-        var contentView:UIView!
-        if self.tabBarController.view.subviews.
-    if ( [[self.tabBarController.view.subviews objectAtIndex:0] isKindOfClass:[UITabBar class]] )
-    {
-    contentView = [self.tabBarController.view.subviews objectAtIndex:1];
-    }
-    else
-    {
-    contentView = [self.tabBarController.view.subviews objectAtIndex:0];
-    }
-    //    [UIView beginAnimations:@"TabbarHide" context:nil];
-    if ( hide )
-    {
-    contentView.frame = self.tabBarController.view.bounds;
-    }
-    else
-    {
-    contentView.frame = CGRectMake(self.tabBarController.view.bounds.origin.x,
-    self.tabBarController.view.bounds.origin.y,
-    self.tabBarController.view.bounds.size.width,
-    self.tabBarController.view.bounds.size.height - self.tabBarController.tabBar.frame.size.height);
-    }
-    
-    self.tabBarController.tabBar.hidden = hide;
-    }
-*/
 }
 

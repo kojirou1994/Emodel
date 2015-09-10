@@ -9,13 +9,6 @@
 import UIKit
 
 class NoticeDetailTableCell: UITableViewCell {
-
-    @IBOutlet var titleLabel: UILabel?
-    @IBOutlet var propLabel: UILabel?
-
     
-    func configurateTheCell(detail: NoticeDetailForm) {
-        self.titleLabel?.text = detail.title
-        self.propLabel?.text = detail.prop
-    }
+    @IBOutlet weak var enrollBtn: UIButton!
 }

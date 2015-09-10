@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Kingfisher
 class NoticeTableCell: UITableViewCell {
     
     @IBOutlet var titleLabel: UILabel?
@@ -26,5 +26,22 @@ class NoticeTableCell: UITableViewCell {
         self.locationLabel?.text = notice.location
         self.statusLabel?.text = notice.status
         self.thumbnailImageView?.image = UIImage(named: notice.thumbnails)
+    }
+    func config(task: Task) {
+        self.thumbnailImageView?.contentMode = UIViewContentMode.ScaleAspectFill
+        self.thumbnailImageView?.clipsToBounds = true
+        self.titleLabel?.text = task.title
+        self.timeLabel?.text = task.workTime
+        self.priceLabel?.text = task.price
+        self.locationLabel?.text = task.address
+        if (task.isAllowed) {
+            self.statusLabel?.text = "报名中"
+        }
+        else {
+            self.statusLabel?.text = "已结束"
+        }
+        if (task.imgUri != nil){
+            self.thumbnailImageView?.kf_setImageWithURL(NSURL(string: task.imgUri!)!)
+        }
     }
 }

@@ -20,30 +20,17 @@ class NoticeDetailForm: NSObject {
 
 
 class NoticeDetailViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
-
-    var statusString: String?
-    var workString: String?
-    var timeString: String?
-    var locationString: String?
-    var modelString: String?
-    var peopleString: String?
-    var salaryString: String?
-    var otherString: String?
+    
+    var taskData: Task?
     
     @IBOutlet weak var tableView: UITableView!
-    var details:[NoticeDetailForm] = []
 
     @IBAction func submitBtnPressed(sender: AnyObject) {
-        var alert = UIAlertController(title: "报名成功", message: "报名成功", preferredStyle: UIAlertControllerStyle.Alert)
-        var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(actionYes)
-        self.presentViewController(alert, animated: true, completion: nil)
+
     }
-    @IBOutlet weak var submitBtnPressed: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "人鱼大片儿创作"
-        initializeTheNotices()
+        self.navigationItem.title = taskData?.title
         // Do any additional setup after loading the view.
     }
 
@@ -52,46 +39,80 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
-    func initializeTheNotices() {
-        self.details = [NoticeDetailForm(title: "状态", prop: "报名中"),
-            NoticeDetailForm(title: "工作", prop: "服装拍摄"),
-            NoticeDetailForm(title: "时间", prop: "7月10日上午"),
-            NoticeDetailForm(title: "地点", prop: "杭州市"),
-            NoticeDetailForm(title: "模特", prop: "外籍女模 外籍男模"),
-            NoticeDetailForm(title: "人数", prop: "各2人"),
-            NoticeDetailForm(title: "报酬", prop: "800元/小时左右"),
-            NoticeDetailForm(title: "其他要求", prop: "略"),
-            NoticeDetailForm(title: "已报名", prop: "4人")
-        ]
-        self.tableView?.reloadData()
-        
+    func enrollBtnPressed() {
+        println("报名")
+        var alert = UIAlertController(title: "报名成功", message: "报名成功", preferredStyle: UIAlertControllerStyle.Alert)
+        var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(actionYes)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
     // MARK: - UITableView DataSource Methods
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier: String = "noticeDetailTableCell"
         
-        var cell: NoticeDetailTableCell! = tableView.dequeueReusableCellWithIdentifier(identifier) as? NoticeDetailTableCell
-        
-        if cell == nil {
-            cell = NoticeDetailTableCell(style: UITableViewCellStyle.Value1, reuseIdentifier: identifier)
+        if (indexPath.row == 10) {
+            let identifier: String = "button"
+            var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTableCell
+            cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
+            return cell
+        }
+        else {
+            let identifier: String = "detail"
+            var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
+            switch (indexPath.row) {
+            case 0:
+                cell.textLabel?.text = "状态"
+                cell.detailTextLabel?.text = taskData?.price
+            case 1:
+                cell.textLabel?.text = "工作类型"
+                cell.detailTextLabel?.text = taskData?.workType
+            case 2:
+                cell.textLabel?.text = "工作时间"
+                cell.detailTextLabel?.text = taskData?.workTime
+            case 3:
+                cell.textLabel?.text = "需要人数"
+                cell.detailTextLabel?.text = String(taskData!.workersCount!)
+            case 4:
+                cell.textLabel?.text = taskData?.title
+                cell.detailTextLabel?.text = taskData?.price
+            case 5:
+                cell.textLabel?.text = "预算报价"
+                cell.detailTextLabel?.text = taskData?.price
+            case 6:
+                cell.textLabel?.text = "工作地址"
+                cell.detailTextLabel?.text = taskData?.address
+            case 7:
+                cell.textLabel?.text = "模特要求"
+                cell.detailTextLabel?.text = taskData?.modelDemand
+            case 8:
+                cell.textLabel?.text = "其他要求"
+                cell.detailTextLabel?.text = taskData?.otherDemand
+            case 9:
+                cell.textLabel?.text = "发布时间"
+                cell.detailTextLabel?.text = taskData?.created_at
+            default:
+                cell.textLabel?.text = "null"
+                cell.detailTextLabel?.text = "default"
+            }
+            return cell
         }
         
-        cell.configurateTheCell(details[indexPath.row])
-//        println(cell.timeLabel?.text)
-        return cell!
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        println("count\(notices.count)")
-        return details.count
+        if (taskData == nil) {
+            return 0
+        }
+        else {
+            return 11
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 45.0
     }
-    
     
     //MARK: - UITableView Delegate Method
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
