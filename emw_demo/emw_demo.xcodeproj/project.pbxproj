@@ -79,11 +79,11 @@
 		E3E9C2341B6CA66200998937 /* emw_demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2331B6CA66200998937 /* emw_demoTests.swift */; };
 		E3E9C2421B6CAF5000998937 /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2401B6CAF5000998937 /* SMSegment.swift */; };
 		E3E9C2431B6CAF5000998937 /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2411B6CAF5000998937 /* SMSegmentView.swift */; };
-		E3E9C2451B6CBE1500998937 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2441B6CBE1500998937 /* Notice.swift */; };
 		E3E9C2471B6CC73600998937 /* NoticeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */; };
 		E3E9C2511B6CE4A200998937 /* NoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2501B6CE4A200998937 /* NoticeDetailViewController.swift */; };
 		E3E9C2531B6CE5D700998937 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2521B6CE5D700998937 /* img.jpg */; };
 		E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */; };
+		E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */; };
 		E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F7CC3C1B704F79001D82D3 /* Signup.swift */; };
 		E3FBE9BD1B845C5500EA6440 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FBE9BC1B845C5500EA6440 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -178,11 +178,11 @@
 		E3E9C2331B6CA66200998937 /* emw_demoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emw_demoTests.swift; sourceTree = "<group>"; };
 		E3E9C2401B6CAF5000998937 /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
 		E3E9C2411B6CAF5000998937 /* SMSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentView.swift; sourceTree = "<group>"; };
-		E3E9C2441B6CBE1500998937 /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeTableCell.swift; sourceTree = "<group>"; };
 		E3E9C2501B6CE4A200998937 /* NoticeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailViewController.swift; sourceTree = "<group>"; };
 		E3E9C2521B6CE5D700998937 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTableCell.swift; sourceTree = "<group>"; };
+		E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTextTableViewCell.swift; sourceTree = "<group>"; };
 		E3F7CC3C1B704F79001D82D3 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		E3F7CC3E1B704FAF001D82D3 /* JSONJoy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONJoy.framework; path = "Pods/../build/Debug-iphoneos/JSONJoy.framework"; sourceTree = "<group>"; };
 		E3F83E4C1B82FD47005AD24C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -310,8 +310,8 @@
 		E3C899931B748B1500286AC7 /* 1st Tab */ = {
 			isa = PBXGroup;
 			children = (
-				E3E9C2441B6CBE1500998937 /* Notice.swift */,
 				E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */,
+				E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */,
 				E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */,
 				E3E9C21D1B6CA66200998937 /* PublicNoticeViewController.swift */,
 				E3E9C2501B6CE4A200998937 /* NoticeDetailViewController.swift */,
@@ -643,7 +643,6 @@
 				E36920B71B8700B900D8F345 /* Calendar.swift in Sources */,
 				E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */,
 				E3978F581B7AE09C002B54A3 /* AlbumInfo.swift in Sources */,
-				E3E9C2451B6CBE1500998937 /* Notice.swift in Sources */,
 				E3E9C21C1B6CA66200998937 /* AppDelegate.swift in Sources */,
 				E3E9C2511B6CE4A200998937 /* NoticeDetailViewController.swift in Sources */,
 				E3978F5C1B7AE106002B54A3 /* ModelCard.swift in Sources */,
@@ -654,6 +653,7 @@
 				E3978F5A1B7AE0E5002B54A3 /* VideoInfo.swift in Sources */,
 				E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */,
 				E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */,
+				E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */,
 				E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */,
 				E3978F521B7ADFC6002B54A3 /* BodyInfo.swift in Sources */,
 				E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */,

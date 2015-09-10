@@ -229,7 +229,7 @@ class BodyInfoEditViewController : XLFormViewController {
         let encoding = Alamofire.ParameterEncoding.URL
         
         // Fetch Request
-        Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/bodyinfo", parameters: para as! [String : AnyObject], encoding: encoding)
+        Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/bodyinfo", parameters: (para as! [String : AnyObject]), encoding: encoding)
             .responseJSON { _, _, JSON, error in
                 if (error == nil) {
                     println("HTTP Response Body: \(JSON)")

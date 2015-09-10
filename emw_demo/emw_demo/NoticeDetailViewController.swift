@@ -14,13 +14,10 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     var taskData: Task?
     
     @IBOutlet weak var tableView: UITableView!
-
-    @IBAction func submitBtnPressed(sender: AnyObject) {
-
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = taskData?.title
+        println("have sign up ?")
         // Do any additional setup after loading the view.
     }
 
@@ -55,7 +52,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
 
     }
 
-    // MARK: - UITableView DataSource Methods
+    // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -63,6 +60,23 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             let identifier: String = "button"
             var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTableCell
             cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
+            return cell
+        }
+        else if (indexPath.row == 7) {
+            let identifier: String = "text"
+            var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTextTableViewCell
+            cell.title.text = "模特要求"
+            cell.detailText.text = taskData?.modelDemand
+            cell.detailText.clipsToBounds = true
+            
+            return cell
+        }
+        else if (indexPath.row == 8) {
+            let identifier: String = "text"
+            var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTextTableViewCell
+            cell.title.text = "其他要求"
+            cell.detailText.text = taskData?.otherDemand
+            cell.detailText.clipsToBounds = true
             return cell
         }
         else {
@@ -82,7 +96,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
                 cell.textLabel?.text = "需要人数"
                 cell.detailTextLabel?.text = String(taskData!.workersCount!)
             case 4:
-                cell.textLabel?.text = taskData?.title
+                cell.textLabel?.text = "价格"
                 cell.detailTextLabel?.text = taskData?.price
             case 5:
                 cell.textLabel?.text = "预算报价"
@@ -90,12 +104,6 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             case 6:
                 cell.textLabel?.text = "工作地址"
                 cell.detailTextLabel?.text = taskData?.address
-            case 7:
-                cell.textLabel?.text = "模特要求"
-                cell.detailTextLabel?.text = taskData?.modelDemand
-            case 8:
-                cell.textLabel?.text = "其他要求"
-                cell.detailTextLabel?.text = taskData?.otherDemand
             case 9:
                 cell.textLabel?.text = "发布时间"
                 cell.detailTextLabel?.text = taskData?.created_at
@@ -109,7 +117,6 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        println("count\(notices.count)")
         if (taskData == nil) {
             return 0
         }
@@ -119,22 +126,16 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (indexPath.row == 7 || indexPath.row == 8) {
+            return 180
+        }
         return 45.0
     }
     
-    //MARK: - UITableView Delegate Method
+    //MARK: - UITableViewDelegate
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

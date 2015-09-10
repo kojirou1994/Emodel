@@ -18,15 +18,6 @@ class NoticeTableCell: UITableViewCell {
     @IBOutlet var statusLabel: UILabel?
     @IBOutlet var thumbnailImageView: UIImageView?
     
-    
-    func configurateTheCell(notice: Notice) {
-        self.titleLabel?.text = notice.title
-        self.timeLabel?.text = notice.time
-        self.priceLabel?.text = notice.price
-        self.locationLabel?.text = notice.location
-        self.statusLabel?.text = notice.status
-        self.thumbnailImageView?.image = UIImage(named: notice.thumbnails)
-    }
     func config(task: Task) {
         self.thumbnailImageView?.contentMode = UIViewContentMode.ScaleAspectFill
         self.thumbnailImageView?.clipsToBounds = true

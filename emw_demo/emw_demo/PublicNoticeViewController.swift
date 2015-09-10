@@ -14,7 +14,6 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
 
     @IBOutlet var tableView: UITableView!
     
-    var notices = [Notice]()
     var taskData: [Task]?
     
     var segmentView: SMSegmentView!
@@ -35,7 +34,8 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         self.segmentView.addSegmentWithTitle("我的通告", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
         self.navigationItem.titleView = segmentView
         segmentView.selectSegmentAtIndex(0)
-        
+
+        updateTaskInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,12 +43,12 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(animated: Bool) {
+
+    }
     
-    func initializeTheNotices() {
-        self.notices = [Notice(title: "皮草拍摄外拍50件", thumbnails: "img.jpg", status: "报名中", time: "7月10日上午", price: "80元/件", location: "杭州"),
-            Notice(title: "皮草拍摄外拍50件", thumbnails: "img.jpg", status: "已结束", time: "7月10日上午", price: "80元/件", location: "杭州"),
-            Notice(title: "皮草拍摄外拍50件", thumbnails: "img.jpg", status: "已结束", time: "7月10日上午", price: "80元/件", location: "杭州"),
-            Notice(title: "皮草拍摄外拍50件", thumbnails: "img.jpg", status: "已结束", time: "7月10日上午", price: "80元/件", location: "杭州")]
+    func updateTaskInfo() {
+        
         var getTask = HTTPTask()
         getTask.GET(serverAddress + "/task", parameters: nil) { (response: HTTPResponse) -> Void in
             println(response.description)
@@ -68,13 +68,11 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     // SMSegment Delegate
     func segmentView(segmentView: SMSegmentView, didSelectSegmentAtIndex index: Int) {
         if index == 0 {
-            initializeTheNotices()
+//            initializeTheNotices()
             //通告广场
         }
         else {
             //我的通告
-            println(notices[0].title)
-            println(notices.count)
         }
 
         println("Select segment at index: \(index)")
@@ -99,7 +97,6 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("count\(notices.count)")
         if (taskData == nil) {
             println("task count 0")
             return 0
@@ -124,7 +121,9 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "noticeDetail" {
             let indexPath = self.tableView!.indexPathForSelectedRow()
-            let destinationViewController: NoticeDetailViewController = segue.destinationViewController as! NoticeDetailViewController
+            println("点击了通告\(indexPath)")
+            let destinationViewController = segue.destinationViewController as! NoticeDetailViewController
+            println("taskData transfer")
             destinationViewController.taskData = taskData![indexPath!.row]
 //            destinationViewController.tableView.reloadData()
 //            destinationViewController.prepString = recipes[indexPath()!.row].prepTime
