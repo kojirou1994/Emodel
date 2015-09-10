@@ -7,17 +7,7 @@
 //
 
 import UIKit
-
-class NoticeDetailForm: NSObject {
-    let title: String
-    let prop: String
-
-    init(title: String, prop: String) {
-        self.title = title
-        self.prop = prop
-    }
-}
-
+import SwiftHTTP
 
 class NoticeDetailViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -39,12 +29,30 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
+    //报名
     func enrollBtnPressed() {
         println("报名")
-        var alert = UIAlertController(title: "报名成功", message: "报名成功", preferredStyle: UIAlertControllerStyle.Alert)
-        var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(actionYes)
-        self.presentViewController(alert, animated: true, completion: nil)
+        var enroll = HTTPTask()
+        enroll.requestSerializer = HTTPRequestSerializer()
+        enroll.requestSerializer.headers["Token"] = token
+        enroll.POST(serverAddress + "/task/" + self.taskData!.id! + "/join", parameters: nil) { (response) -> Void in
+            println(response.description)
+            if (response.statusCode == 200) {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    var alert = UIAlertController(title: "报名成功", message: "报名成功", preferredStyle: UIAlertControllerStyle.Alert)
+                    var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
+                    alert.addAction(actionYes)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
+            }
+            else {
+                var alert = UIAlertController(title: "报名失败", message: "报名失败", preferredStyle: UIAlertControllerStyle.Alert)
+                var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
+                alert.addAction(actionYes)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+
     }
 
     // MARK: - UITableView DataSource Methods
