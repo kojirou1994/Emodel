@@ -13,6 +13,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     
     var taskData: Task?
     
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,9 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             let identifier: String = "button"
             var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTableCell
             cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
+            if (taskData!.userHaveSignedUp(userId)) {
+                cell.enrollBtn.setTitle("你已经参加", forState: UIControlState.Normal)
+            }
             return cell
         }
         else if (indexPath.row == 7) {

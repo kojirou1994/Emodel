@@ -26,7 +26,8 @@ struct AlbumListData: JSONJoy {
         imgUri = decoder["imgUri"].string
         albumId = decoder["albumId"].string
         userId = decoder["userId"].string
-        thumbUri = imgUri! + "?imageView2/0/h/200"
+        thumbUri = imgUri! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250"
+//        "?imageView2/0/h/200"
     }
 }
 

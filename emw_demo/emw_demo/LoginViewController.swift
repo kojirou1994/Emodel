@@ -21,6 +21,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordInput: UITextField!
     @IBAction func loginBtnPressed(sender: AnyObject) {
         println("login pressed")
+        
+        
+        if (mobileInput.text == "" || passwordInput.text == "") {
+//            mobileInput.text = "请输入信息"
+            let ala = UIAlertView(title: "fuck u", message: "shit", delegate: nil, cancelButtonTitle: "ok")
+            ala.show()
+            return
+        }
         let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         notice.labelText = "登陆中"

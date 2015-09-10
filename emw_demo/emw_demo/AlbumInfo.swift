@@ -25,7 +25,7 @@ struct Album: JSONJoy {
         //        date = decoder["created_at"].string
         id = decoder["id"].string
         imgId = decoder["imgId"].string
-        imgUri = decoder["imgUri"].string
+        imgUri = decoder["imgUri"].string! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250"
         name = decoder["name"].string
         num = decoder["num"].integer
         updateTime = decoder["updated_at"].string

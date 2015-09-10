@@ -19,6 +19,7 @@
 		E34CC6461B96DD7F0089EED1 /* Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34CC6451B96DD7F0089EED1 /* Confirm.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
+		E36937031BA16D4E00F0F04E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */; };
 		E37AD5991B846BC8005DEC92 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */; };
 		E38518871B7091B40063C2C2 /* starRank_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518711B7091B40063C2C2 /* starRank_0.png */; };
 		E38518881B7091B40063C2C2 /* starRank_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518721B7091B40063C2C2 /* starRank_1.png */; };
@@ -113,6 +114,7 @@
 		E34CC6451B96DD7F0089EED1 /* Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E38518711B7091B40063C2C2 /* starRank_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_0.png; sourceTree = "<group>"; };
 		E38518721B7091B40063C2C2 /* starRank_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_1.png; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */,
 				E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */,
 				E3E9C21D1B6CA66200998937 /* PublicNoticeViewController.swift */,
+				E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */,
 				E3E9C2501B6CE4A200998937 /* NoticeDetailViewController.swift */,
 			);
 			name = "1st Tab";
@@ -614,6 +617,7 @@
 			files = (
 				E3E9C2201B6CA66200998937 /* ChatViewController.swift in Sources */,
 				E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */,
+				E36937031BA16D4E00F0F04E /* ButtonTableViewCell.swift in Sources */,
 				E38556741B7C63110015285F /* AlbumViewController.swift in Sources */,
 				E3978F661B7B1470002B54A3 /* AlbumView.swift in Sources */,
 				E3CED34C1BA1169000B0B248 /* Task.swift in Sources */,
