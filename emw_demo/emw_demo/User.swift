@@ -25,6 +25,7 @@ struct UserData: JSONJoy {
     var baseInfo: BaseInfo?
     var bodyInfo: BodyInfo?
     var businessInfo: BusinessInfo?
+    var like: Like?
 //    var calendar
     var cityID: Int?
     var userID: String?
@@ -50,6 +51,7 @@ struct UserData: JSONJoy {
         baseInfo = BaseInfo(decoder["baseinfo"])
         bodyInfo = BodyInfo(decoder["bodyinfo"])
         businessInfo = BusinessInfo(decoder["businessinfo"])
+        like = Like(decoder["like"])
         
     }
     

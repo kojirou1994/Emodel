@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		25CE5FB74C9AD9AE4E129F85 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796C19CCCCEFA6858136DF35 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E3001B891B79DAD300F38CEC /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3001B881B79DAD300F38CEC /* SwiftColors.swift */; };
-		E304C20D1B8EE33E00A40348 /* Album.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* Album.png */; };
+		E304C20D1B8EE33E00A40348 /* AlbumCover.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* AlbumCover.png */; };
 		E304C20F1B8EE90F00A40348 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E304C20E1B8EE90F00A40348 /* head.jpg */; };
 		E30B30E11B7857CE00864989 /* DataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* DataInit.swift */; };
 		E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E22361B960B6300BC0A0D /* ConfigViewController.swift */; };
@@ -66,6 +66,8 @@
 		E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */; };
 		E3C899901B7473A400286AC7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C8998F1B7473A400286AC7 /* SignupViewController.swift */; };
 		E3C899921B7473AD00286AC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899911B7473AD00286AC7 /* LoginViewController.swift */; };
+		E3CED34A1BA10F7300B0B248 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CED3491BA10F7300B0B248 /* Like.swift */; };
+		E3CED34C1BA1169000B0B248 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CED34B1BA1169000B0B248 /* Task.swift */; };
 		E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4E4841B9D2E2B00016080 /* PhotoScrollViewController.swift */; };
 		E3D4E4871B9D2E2B00016080 /* PhotoScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D4E4851B9D2E2B00016080 /* PhotoScrollViewController.xib */; };
 		E3E9C21C1B6CA66200998937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C21B1B6CA66200998937 /* AppDelegate.swift */; };
@@ -100,7 +102,7 @@
 		796C19CCCCEFA6858136DF35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04BBC078BC2E0637D81E084 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E3001B881B79DAD300F38CEC /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColors.swift; sourceTree = "<group>"; };
-		E304C20C1B8EE33E00A40348 /* Album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Album.png; sourceTree = "<group>"; };
+		E304C20C1B8EE33E00A40348 /* AlbumCover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlbumCover.png; sourceTree = "<group>"; };
 		E304C20E1B8EE90F00A40348 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
 		E30B30E01B7857CE00864989 /* DataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInit.swift; sourceTree = "<group>"; };
 		E32E22361B960B6300BC0A0D /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,8 @@
 		E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFeatureViewController.swift; sourceTree = "<group>"; };
 		E3C8998F1B7473A400286AC7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E3C899911B7473AD00286AC7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E3CED3491BA10F7300B0B248 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		E3CED34B1BA1169000B0B248 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E3D4E4841B9D2E2B00016080 /* PhotoScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoScrollViewController.swift; sourceTree = "<group>"; };
 		E3D4E4851B9D2E2B00016080 /* PhotoScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoScrollViewController.xib; sourceTree = "<group>"; };
 		E3E9C2161B6CA66200998937 /* emw_demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emw_demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,6 +287,8 @@
 			isa = PBXGroup;
 			children = (
 				E3978F571B7AE09C002B54A3 /* AlbumInfo.swift */,
+				E3CED34B1BA1169000B0B248 /* Task.swift */,
+				E3CED3491BA10F7300B0B248 /* Like.swift */,
 				E3978F551B7AE017002B54A3 /* BaseInfo.swift */,
 				E3978F511B7ADFC6002B54A3 /* BodyInfo.swift */,
 				E3978F531B7ADFF3002B54A3 /* BusinessInfo.swift */,
@@ -304,6 +310,9 @@
 		E3C899931B748B1500286AC7 /* 1st Tab */ = {
 			isa = PBXGroup;
 			children = (
+				E3E9C2441B6CBE1500998937 /* Notice.swift */,
+				E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */,
+				E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */,
 				E3E9C21D1B6CA66200998937 /* PublicNoticeViewController.swift */,
 				E3E9C2501B6CE4A200998937 /* NoticeDetailViewController.swift */,
 			);
@@ -376,9 +385,6 @@
 				E3E9C2261B6CA66200998937 /* LaunchScreen.xib */,
 				E3E9C23F1B6CAF5000998937 /* SMSegmentView */,
 				E3E9C2191B6CA66200998937 /* Supporting Files */,
-				E3E9C2441B6CBE1500998937 /* Notice.swift */,
-				E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */,
-				E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */,
 				E3978F651B7B1470002B54A3 /* AlbumView.swift */,
 				E30B30E01B7857CE00864989 /* DataInit.swift */,
 			);
@@ -388,7 +394,7 @@
 		E3E9C2191B6CA66200998937 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E304C20C1B8EE33E00A40348 /* Album.png */,
+				E304C20C1B8EE33E00A40348 /* AlbumCover.png */,
 				E390121C1B9BD0F400CABB9E /* Networking.swift */,
 				E304C20E1B8EE90F00A40348 /* head.jpg */,
 				E3AB7A951B8AFA1300962116 /* logo.png */,
@@ -532,7 +538,7 @@
 				E3AB7A921B8AF6B800962116 /* bg.png in Resources */,
 				E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */,
 				E3E9C2251B6CA66200998937 /* Images.xcassets in Resources */,
-				E304C20D1B8EE33E00A40348 /* Album.png in Resources */,
+				E304C20D1B8EE33E00A40348 /* AlbumCover.png in Resources */,
 				E3D4E4871B9D2E2B00016080 /* PhotoScrollViewController.xib in Resources */,
 				E385188B1B7091B40063C2C2 /* starRank_3.png in Resources */,
 				E385188D1B7091B40063C2C2 /* starRank_5.png in Resources */,
@@ -610,6 +616,7 @@
 				E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */,
 				E38556741B7C63110015285F /* AlbumViewController.swift in Sources */,
 				E3978F661B7B1470002B54A3 /* AlbumView.swift in Sources */,
+				E3CED34C1BA1169000B0B248 /* Task.swift in Sources */,
 				E3B561701B7C90870051D125 /* PhotoThumbCell.swift in Sources */,
 				E3978F561B7AE017002B54A3 /* BaseInfo.swift in Sources */,
 				E3978F601B7AE372002B54A3 /* Login.swift in Sources */,
@@ -630,6 +637,7 @@
 				E3FBE9BD1B845C5500EA6440 /* User.swift in Sources */,
 				E38556711B7C622B0015285F /* AlbumList.swift in Sources */,
 				E3C899901B7473A400286AC7 /* SignupViewController.swift in Sources */,
+				E3CED34A1BA10F7300B0B248 /* Like.swift in Sources */,
 				E3E9C2431B6CAF5000998937 /* SMSegmentView.swift in Sources */,
 				E3001B891B79DAD300F38CEC /* SwiftColors.swift in Sources */,
 				E36920B71B8700B900D8F345 /* Calendar.swift in Sources */,

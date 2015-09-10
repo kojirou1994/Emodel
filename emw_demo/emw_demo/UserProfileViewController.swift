@@ -16,6 +16,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     @IBOutlet weak var Avatar: UIButton!
     @IBOutlet weak var UserNameLabel: UILabel!
     @IBOutlet weak var StarRankImage: UIImageView!
+    @IBOutlet weak var likeCountLabel: UILabel!
     @IBAction func AvatarBtnPressed(sender: AnyObject) {
         println("改变头像")
         
@@ -44,15 +45,8 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         Avatar.layer.borderColor = UIColor.whiteColor().CGColor
         
         self.clearsSelectionOnViewWillAppear = true
-        //加载用户头像
-        var userAvatar = UIImageView(frame: CGRectMake(0, 0, Avatar.bounds.width, Avatar.bounds.height))
-        userAvatar.contentMode = UIViewContentMode.ScaleAspectFill
-        userAvatar.kf_setImageWithURL(NSURL(string: localUser.baseInfo!.avatar!)!)
-        Avatar.addSubview(userAvatar)
-        //更新用户名、评级
-        UserNameLabel.text = localUser.baseInfo?.nickName
-        StarRankImage.image = UIImage(named: "starRank_\(localUser.star).png")
-//         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //更新界面元素
+        updateInterface()
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,6 +121,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         println(localUser.baseInfo!.avatar!)
         Avatar.addSubview(userAvatar)
         UserNameLabel.text = localUser.baseInfo?.nickName
+        likeCountLabel.text = String(localUser.like!.count!)
         StarRankImage.image = UIImage(named: "starRank_\(localUser.star).png")
     }
     

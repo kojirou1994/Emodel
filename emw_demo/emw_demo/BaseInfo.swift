@@ -9,8 +9,8 @@
 import JSONJoy
 
 //基本信息 BaseInfo GET
-
 struct BaseInfo: JSONJoy {
+    //QQ
     var QQ: String? = "10000"
     var age: Int? = 0
     var avatar: String?  = ""//头像
