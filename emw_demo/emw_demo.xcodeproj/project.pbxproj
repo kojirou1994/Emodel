@@ -62,6 +62,26 @@
 		E3AB7A921B8AF6B800962116 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A911B8AF6B800962116 /* bg.png */; };
 		E3AB7A961B8AFA1300962116 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A951B8AFA1300962116 /* logo.png */; };
 		E3B561701B7C90870051D125 /* PhotoThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B5616F1B7C90870051D125 /* PhotoThumbCell.swift */; };
+		E3B6801A1BA2C420004DF002 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B680171BA2C420004DF002 /* ChatListTableViewCell.swift */; };
+		E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B680181BA2C420004DF002 /* ChatListViewController.swift */; };
+		E3B6801C1BA2C420004DF002 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B680191BA2C420004DF002 /* ChatViewController.swift */; };
+		E3B6802F1BA2C452004DF002 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6801E1BA2C452004DF002 /* image.png */; };
+		E3B680301BA2C452004DF002 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6801F1BA2C452004DF002 /* photo.png */; };
+		E3B680311BA2C452004DF002 /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680201BA2C452004DF002 /* photo1.png */; };
+		E3B680321BA2C452004DF002 /* photo1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680211BA2C452004DF002 /* photo1@2x.png */; };
+		E3B680331BA2C452004DF002 /* photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680221BA2C452004DF002 /* photo@2x.png */; };
+		E3B680341BA2C452004DF002 /* ReceiverTextNodeBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680231BA2C452004DF002 /* ReceiverTextNodeBkg.png */; };
+		E3B680351BA2C452004DF002 /* ReceiverTextNodeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680241BA2C452004DF002 /* ReceiverTextNodeBkg@2x.png */; };
+		E3B680361BA2C452004DF002 /* ReceiverVoiceNodeDownloading.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680251BA2C452004DF002 /* ReceiverVoiceNodeDownloading.png */; };
+		E3B680371BA2C452004DF002 /* ReceiverVoiceNodeDownloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680261BA2C452004DF002 /* ReceiverVoiceNodeDownloading@2x.png */; };
+		E3B680381BA2C452004DF002 /* ReceiverVoiceNodePlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680271BA2C452004DF002 /* ReceiverVoiceNodePlaying.png */; };
+		E3B680391BA2C452004DF002 /* ReceiverVoiceNodePlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680281BA2C452004DF002 /* ReceiverVoiceNodePlaying@2x.png */; };
+		E3B6803A1BA2C452004DF002 /* SenderAppNodeBkg_HL.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680291BA2C452004DF002 /* SenderAppNodeBkg_HL.png */; };
+		E3B6803B1BA2C452004DF002 /* SenderAppNodeBkg_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802A1BA2C452004DF002 /* SenderAppNodeBkg_HL@2x.png */; };
+		E3B6803C1BA2C452004DF002 /* SenderVoiceNodeDownloading.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802B1BA2C452004DF002 /* SenderVoiceNodeDownloading.png */; };
+		E3B6803D1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802C1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png */; };
+		E3B6803E1BA2C452004DF002 /* SenderVoiceNodePlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802D1BA2C452004DF002 /* SenderVoiceNodePlaying.png */; };
+		E3B6803F1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802E1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png */; };
 		E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA83741B95794400B39311 /* UserProfileViewController.swift */; };
 		E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */; };
 		E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */; };
@@ -73,7 +93,6 @@
 		E3D4E4871B9D2E2B00016080 /* PhotoScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D4E4851B9D2E2B00016080 /* PhotoScrollViewController.xib */; };
 		E3E9C21C1B6CA66200998937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C21B1B6CA66200998937 /* AppDelegate.swift */; };
 		E3E9C21E1B6CA66200998937 /* PublicNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C21D1B6CA66200998937 /* PublicNoticeViewController.swift */; };
-		E3E9C2201B6CA66200998937 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C21F1B6CA66200998937 /* ChatViewController.swift */; };
 		E3E9C2231B6CA66200998937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2211B6CA66200998937 /* Main.storyboard */; };
 		E3E9C2251B6CA66200998937 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2241B6CA66200998937 /* Images.xcassets */; };
 		E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2261B6CA66200998937 /* LaunchScreen.xib */; };
@@ -157,6 +176,26 @@
 		E3AB7A911B8AF6B800962116 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		E3AB7A951B8AFA1300962116 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		E3B5616F1B7C90870051D125 /* PhotoThumbCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbCell.swift; sourceTree = "<group>"; };
+		E3B680171BA2C420004DF002 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
+		E3B680181BA2C420004DF002 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		E3B680191BA2C420004DF002 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E3B6801E1BA2C452004DF002 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		E3B6801F1BA2C452004DF002 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		E3B680201BA2C452004DF002 /* photo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo1.png; sourceTree = "<group>"; };
+		E3B680211BA2C452004DF002 /* photo1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo1@2x.png"; sourceTree = "<group>"; };
+		E3B680221BA2C452004DF002 /* photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo@2x.png"; sourceTree = "<group>"; };
+		E3B680231BA2C452004DF002 /* ReceiverTextNodeBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReceiverTextNodeBkg.png; sourceTree = "<group>"; };
+		E3B680241BA2C452004DF002 /* ReceiverTextNodeBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReceiverTextNodeBkg@2x.png"; sourceTree = "<group>"; };
+		E3B680251BA2C452004DF002 /* ReceiverVoiceNodeDownloading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReceiverVoiceNodeDownloading.png; sourceTree = "<group>"; };
+		E3B680261BA2C452004DF002 /* ReceiverVoiceNodeDownloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReceiverVoiceNodeDownloading@2x.png"; sourceTree = "<group>"; };
+		E3B680271BA2C452004DF002 /* ReceiverVoiceNodePlaying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReceiverVoiceNodePlaying.png; sourceTree = "<group>"; };
+		E3B680281BA2C452004DF002 /* ReceiverVoiceNodePlaying@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReceiverVoiceNodePlaying@2x.png"; sourceTree = "<group>"; };
+		E3B680291BA2C452004DF002 /* SenderAppNodeBkg_HL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderAppNodeBkg_HL.png; sourceTree = "<group>"; };
+		E3B6802A1BA2C452004DF002 /* SenderAppNodeBkg_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderAppNodeBkg_HL@2x.png"; sourceTree = "<group>"; };
+		E3B6802B1BA2C452004DF002 /* SenderVoiceNodeDownloading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderVoiceNodeDownloading.png; sourceTree = "<group>"; };
+		E3B6802C1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodeDownloading@2x.png"; sourceTree = "<group>"; };
+		E3B6802D1BA2C452004DF002 /* SenderVoiceNodePlaying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderVoiceNodePlaying.png; sourceTree = "<group>"; };
+		E3B6802E1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodePlaying@2x.png"; sourceTree = "<group>"; };
 		E3B73BFD1B71B92500E6AD96 /* JSONJoy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONJoy.framework; path = "Pods/../build/Debug-iphoneos/JSONJoy.framework"; sourceTree = "<group>"; };
 		E3BA83741B95794400B39311 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
@@ -171,7 +210,6 @@
 		E3E9C21A1B6CA66200998937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3E9C21B1B6CA66200998937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3E9C21D1B6CA66200998937 /* PublicNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicNoticeViewController.swift; sourceTree = "<group>"; };
-		E3E9C21F1B6CA66200998937 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E3E9C2221B6CA66200998937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3E9C2241B6CA66200998937 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E3E9C2271B6CA66200998937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -309,6 +347,30 @@
 			name = "API数据";
 			sourceTree = "<group>";
 		};
+		E3B6801D1BA2C452004DF002 /* bubbleImage */ = {
+			isa = PBXGroup;
+			children = (
+				E3B6801E1BA2C452004DF002 /* image.png */,
+				E3B6801F1BA2C452004DF002 /* photo.png */,
+				E3B680201BA2C452004DF002 /* photo1.png */,
+				E3B680211BA2C452004DF002 /* photo1@2x.png */,
+				E3B680221BA2C452004DF002 /* photo@2x.png */,
+				E3B680231BA2C452004DF002 /* ReceiverTextNodeBkg.png */,
+				E3B680241BA2C452004DF002 /* ReceiverTextNodeBkg@2x.png */,
+				E3B680251BA2C452004DF002 /* ReceiverVoiceNodeDownloading.png */,
+				E3B680261BA2C452004DF002 /* ReceiverVoiceNodeDownloading@2x.png */,
+				E3B680271BA2C452004DF002 /* ReceiverVoiceNodePlaying.png */,
+				E3B680281BA2C452004DF002 /* ReceiverVoiceNodePlaying@2x.png */,
+				E3B680291BA2C452004DF002 /* SenderAppNodeBkg_HL.png */,
+				E3B6802A1BA2C452004DF002 /* SenderAppNodeBkg_HL@2x.png */,
+				E3B6802B1BA2C452004DF002 /* SenderVoiceNodeDownloading.png */,
+				E3B6802C1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png */,
+				E3B6802D1BA2C452004DF002 /* SenderVoiceNodePlaying.png */,
+				E3B6802E1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png */,
+			);
+			path = bubbleImage;
+			sourceTree = "<group>";
+		};
 		E3C899931B748B1500286AC7 /* 1st Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,7 +387,9 @@
 		E3C899981B749DC500286AC7 /* 2nd Tab */ = {
 			isa = PBXGroup;
 			children = (
-				E3E9C21F1B6CA66200998937 /* ChatViewController.swift */,
+				E3B680171BA2C420004DF002 /* ChatListTableViewCell.swift */,
+				E3B680181BA2C420004DF002 /* ChatListViewController.swift */,
+				E3B680191BA2C420004DF002 /* ChatViewController.swift */,
 			);
 			name = "2nd Tab";
 			sourceTree = "<group>";
@@ -376,6 +440,7 @@
 		E3E9C2181B6CA66200998937 /* emw_demo */ = {
 			isa = PBXGroup;
 			children = (
+				E3B6801D1BA2C452004DF002 /* bubbleImage */,
 				E3E9C21B1B6CA66200998937 /* AppDelegate.swift */,
 				E3978F501B7ADF99002B54A3 /* API数据 */,
 				E3C8999A1B749E0C00286AC7 /* Welcome */,
@@ -519,7 +584,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3B680321BA2C452004DF002 /* photo1@2x.png in Resources */,
 				E38518981B7091B40063C2C2 /* 设置.png in Resources */,
+				E3B680341BA2C452004DF002 /* ReceiverTextNodeBkg.png in Resources */,
 				E304C20F1B8EE90F00A40348 /* head.jpg in Resources */,
 				E385188A1B7091B40063C2C2 /* starRank_2.png in Resources */,
 				E385189C1B7091B40063C2C2 /* 通告.png in Resources */,
@@ -533,13 +600,17 @@
 				E385188C1B7091B40063C2C2 /* starRank_4.png in Resources */,
 				E38518921B7091B40063C2C2 /* 信息.png in Resources */,
 				E385189A1B7091B40063C2C2 /* 账号绑定.png in Resources */,
+				E3B6803E1BA2C452004DF002 /* SenderVoiceNodePlaying.png in Resources */,
 				E38518931B7091B40063C2C2 /* 基本信息.png in Resources */,
 				E38518941B7091B40063C2C2 /* 我的.png in Resources */,
 				E38518891B7091B40063C2C2 /* starRank_10.png in Resources */,
 				E385188E1B7091B40063C2C2 /* starRank_6.png in Resources */,
+				E3B680311BA2C452004DF002 /* photo1.png in Resources */,
 				E38518951B7091B40063C2C2 /* 档期管理.png in Resources */,
 				E3AB7A921B8AF6B800962116 /* bg.png in Resources */,
 				E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */,
+				E3B680331BA2C452004DF002 /* photo@2x.png in Resources */,
+				E3B680391BA2C452004DF002 /* ReceiverVoiceNodePlaying@2x.png in Resources */,
 				E3E9C2251B6CA66200998937 /* Images.xcassets in Resources */,
 				E304C20D1B8EE33E00A40348 /* AlbumCover.png in Resources */,
 				E3D4E4871B9D2E2B00016080 /* PhotoScrollViewController.xib in Resources */,
@@ -547,9 +618,20 @@
 				E385188D1B7091B40063C2C2 /* starRank_5.png in Resources */,
 				E385188F1B7091B40063C2C2 /* starRank_7.png in Resources */,
 				E385189B1B7091B40063C2C2 /* 账户余额.png in Resources */,
+				E3B6803C1BA2C452004DF002 /* SenderVoiceNodeDownloading.png in Resources */,
+				E3B680381BA2C452004DF002 /* ReceiverVoiceNodePlaying.png in Resources */,
 				E3E9C2531B6CE5D700998937 /* img.jpg in Resources */,
 				E38518901B7091B40063C2C2 /* starRank_8.png in Resources */,
 				E38518911B7091B40063C2C2 /* starRank_9.png in Resources */,
+				E3B6802F1BA2C452004DF002 /* image.png in Resources */,
+				E3B6803B1BA2C452004DF002 /* SenderAppNodeBkg_HL@2x.png in Resources */,
+				E3B680301BA2C452004DF002 /* photo.png in Resources */,
+				E3B680361BA2C452004DF002 /* ReceiverVoiceNodeDownloading.png in Resources */,
+				E3B6803F1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png in Resources */,
+				E3B680351BA2C452004DF002 /* ReceiverTextNodeBkg@2x.png in Resources */,
+				E3B6803D1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png in Resources */,
+				E3B6803A1BA2C452004DF002 /* SenderAppNodeBkg_HL.png in Resources */,
+				E3B680371BA2C452004DF002 /* ReceiverVoiceNodeDownloading@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,10 +697,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3E9C2201B6CA66200998937 /* ChatViewController.swift in Sources */,
 				E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */,
 				E36937031BA16D4E00F0F04E /* ButtonTableViewCell.swift in Sources */,
 				E38556741B7C63110015285F /* AlbumViewController.swift in Sources */,
+				E3B6801C1BA2C420004DF002 /* ChatViewController.swift in Sources */,
 				E3978F661B7B1470002B54A3 /* AlbumView.swift in Sources */,
 				E3CED34C1BA1169000B0B248 /* Task.swift in Sources */,
 				E3B561701B7C90870051D125 /* PhotoThumbCell.swift in Sources */,
@@ -634,6 +716,7 @@
 				E38556761B7C63600015285F /* AlbumThumbCell.swift in Sources */,
 				E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */,
 				E3978F641B7AEAFD002B54A3 /* AlbumID.swift in Sources */,
+				E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */,
 				E3E9C2471B6CC73600998937 /* NoticeTableCell.swift in Sources */,
 				E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */,
 				E3C899921B7473AD00286AC7 /* LoginViewController.swift in Sources */,
@@ -658,6 +741,7 @@
 				E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */,
 				E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */,
 				E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */,
+				E3B6801A1BA2C420004DF002 /* ChatListTableViewCell.swift in Sources */,
 				E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */,
 				E3978F521B7ADFC6002B54A3 /* BodyInfo.swift in Sources */,
 				E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */,

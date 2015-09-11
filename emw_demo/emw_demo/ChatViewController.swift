@@ -12,7 +12,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "王羞羞"
         // Do any additional setup after loading the view.
     }
 
@@ -57,6 +57,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         returnView.addSubview(bubbleText)
         return returnView
     }
+    
     
     // MARK: - UITableViewDataSource
     

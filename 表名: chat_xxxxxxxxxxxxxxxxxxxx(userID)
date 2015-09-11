@@ -1,0 +1,6 @@
+表名: chat_xxxxxxxxxxxxxxxxxxxx(userID)
+id Int
+isFromSelf 0|1
+send_time integer
+content_string
+messageType 0-string 1-image
