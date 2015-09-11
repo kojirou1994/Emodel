@@ -65,7 +65,6 @@
 		E3B6801A1BA2C420004DF002 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B680171BA2C420004DF002 /* ChatListTableViewCell.swift */; };
 		E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B680181BA2C420004DF002 /* ChatListViewController.swift */; };
 		E3B6801C1BA2C420004DF002 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B680191BA2C420004DF002 /* ChatViewController.swift */; };
-		E3B6802F1BA2C452004DF002 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6801E1BA2C452004DF002 /* image.png */; };
 		E3B680301BA2C452004DF002 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6801F1BA2C452004DF002 /* photo.png */; };
 		E3B680311BA2C452004DF002 /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680201BA2C452004DF002 /* photo1.png */; };
 		E3B680321BA2C452004DF002 /* photo1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B680211BA2C452004DF002 /* photo1@2x.png */; };
@@ -179,7 +178,6 @@
 		E3B680171BA2C420004DF002 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		E3B680181BA2C420004DF002 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		E3B680191BA2C420004DF002 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		E3B6801E1BA2C452004DF002 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		E3B6801F1BA2C452004DF002 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		E3B680201BA2C452004DF002 /* photo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo1.png; sourceTree = "<group>"; };
 		E3B680211BA2C452004DF002 /* photo1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo1@2x.png"; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 		E3B6801D1BA2C452004DF002 /* bubbleImage */ = {
 			isa = PBXGroup;
 			children = (
-				E3B6801E1BA2C452004DF002 /* image.png */,
 				E3B6801F1BA2C452004DF002 /* photo.png */,
 				E3B680201BA2C452004DF002 /* photo1.png */,
 				E3B680211BA2C452004DF002 /* photo1@2x.png */,
@@ -623,7 +620,6 @@
 				E3E9C2531B6CE5D700998937 /* img.jpg in Resources */,
 				E38518901B7091B40063C2C2 /* starRank_8.png in Resources */,
 				E38518911B7091B40063C2C2 /* starRank_9.png in Resources */,
-				E3B6802F1BA2C452004DF002 /* image.png in Resources */,
 				E3B6803B1BA2C452004DF002 /* SenderAppNodeBkg_HL@2x.png in Resources */,
 				E3B680301BA2C452004DF002 /* photo.png in Resources */,
 				E3B680361BA2C452004DF002 /* ReceiverVoiceNodeDownloading.png in Resources */,

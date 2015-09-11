@@ -27,7 +27,7 @@ class NoticeTableCell: UITableViewCell {
         self.locationLabel?.text = task.address
         self.statusLabel?.text = task.isAllowed ? "报名中" : "已结束"
         if (task.imgUri != nil){
-            self.thumbnailImageView?.kf_setImageWithURL(NSURL(string: task.imgUri!)!)
+            self.thumbnailImageView?.kf_setImageWithURL(NSURL(string: task.imgUri! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250")!)
         }
     }
 }
