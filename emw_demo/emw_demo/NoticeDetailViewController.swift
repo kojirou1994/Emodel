@@ -63,7 +63,9 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
             if (taskData!.userHaveSignedUp(userId)) {
                 cell.enrollBtn.setTitle("你已经参加", forState: UIControlState.Normal)
+                cell.enrollBtn.userInteractionEnabled = false
             }
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
         else if (indexPath.row == 7) {
@@ -72,7 +74,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             cell.title.text = "模特要求"
             cell.detailText.text = taskData?.modelDemand
             cell.detailText.clipsToBounds = true
-            
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
         else if (indexPath.row == 8) {
@@ -81,6 +83,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             cell.title.text = "其他要求"
             cell.detailText.text = taskData?.otherDemand
             cell.detailText.clipsToBounds = true
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
         else {
@@ -89,7 +92,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             switch (indexPath.row) {
             case 0:
                 cell.textLabel?.text = "状态"
-                cell.detailTextLabel?.text = taskData?.price
+                cell.detailTextLabel?.text = taskData!.isAllowed ? "报名中" : "已结束"
             case 1:
                 cell.textLabel?.text = "工作类型"
                 cell.detailTextLabel?.text = taskData?.workType
@@ -100,8 +103,8 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
                 cell.textLabel?.text = "需要人数"
                 cell.detailTextLabel?.text = String(taskData!.workersCount!)
             case 4:
-                cell.textLabel?.text = "价格"
-                cell.detailTextLabel?.text = taskData?.price
+                cell.textLabel?.text = "截止日期"
+                cell.detailTextLabel?.text = taskData?.deadLine
             case 5:
                 cell.textLabel?.text = "预算报价"
                 cell.detailTextLabel?.text = taskData?.price
@@ -115,6 +118,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
                 cell.textLabel?.text = "null"
                 cell.detailTextLabel?.text = "default"
             }
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
         

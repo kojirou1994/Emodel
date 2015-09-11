@@ -23,14 +23,9 @@ class NoticeTableCell: UITableViewCell {
         self.thumbnailImageView?.clipsToBounds = true
         self.titleLabel?.text = task.title
         self.timeLabel?.text = task.workTime
-        self.priceLabel?.text = task.price
+        self.priceLabel?.text = task.price == "0" ? "价格面议" : task.price
         self.locationLabel?.text = task.address
-        if (task.isAllowed) {
-            self.statusLabel?.text = "报名中"
-        }
-        else {
-            self.statusLabel?.text = "已结束"
-        }
+        self.statusLabel?.text = task.isAllowed ? "报名中" : "已结束"
         if (task.imgUri != nil){
             self.thumbnailImageView?.kf_setImageWithURL(NSURL(string: task.imgUri!)!)
         }

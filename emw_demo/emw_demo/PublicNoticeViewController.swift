@@ -32,7 +32,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
-        self.topSegmentView = SMSegmentView(frame: CGRect(x: self.margin, y: 100.0, width: self.view.frame.size.width - self.margin*16, height: 30.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: Float(10.0)])
+        self.topSegmentView = SMSegmentView(frame: CGRect(x: self.margin, y: 100.0, width: self.view.frame.size.width - self.margin*16, height: 30.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(14.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: Float(10.0)])
         
         self.topSegmentView.delegate = self
         
