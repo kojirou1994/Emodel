@@ -115,11 +115,12 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     }
     
     func updateInterface() {
-        var userAvatar = UIImageView(frame: CGRectMake(0, 0, Avatar.bounds.width, Avatar.bounds.height))
-        userAvatar.contentMode = UIViewContentMode.ScaleAspectFill
-        userAvatar.kf_setImageWithURL(NSURL(string: localUser.baseInfo!.avatar!)!)
-        println(localUser.baseInfo!.avatar!)
-        Avatar.addSubview(userAvatar)
+//        var userAvatar = UIImageView(frame: CGRectMake(0, 0, Avatar.bounds.width, Avatar.bounds.height))
+//        userAvatar.contentMode = UIViewContentMode.ScaleAspectFill
+//        userAvatar.kf_setImageWithURL()
+//        println(localUser.baseInfo!.avatar!)
+//        Avatar.addSubview(userAvatar)
+        Avatar.kf_setImageWithURL(NSURL(string: localUser.baseInfo!.avatar!)!, forState: UIControlState.Normal)
         UserNameLabel.text = localUser.baseInfo?.nickName
         likeCountLabel.text = String(localUser.like!.count!)
         StarRankImage.image = UIImage(named: "starRank_\(localUser.star).png")

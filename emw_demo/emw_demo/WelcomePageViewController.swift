@@ -16,115 +16,115 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signupBtn: UIButton!
-
-    @IBAction func loginBtnPressed(sender: AnyObject) {
+    
+    @IBOutlet weak var logoImage: UIImageView!
+    var getDataCount = 0
+    
+    //展示特性的滚动视图
+    func introduceScrollView() -> UIScrollView {
+        let numOfPages = 3
+        let pageWidth = self.view.frame.width
+        let pageHeight = self.view.frame.height
+        //scrollView的初始化
+        var scrollView = UIScrollView()
+        scrollView.delegate = self
+        scrollView.frame = self.view.bounds
+        //为了让内容横向滚动，设置横向内容宽度为3个页面的宽度总和
+        scrollView.contentSize=CGSizeMake(CGFloat(pageWidth*CGFloat(numOfPages)), CGFloat(pageHeight))
+        scrollView.pagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.scrollsToTop = false
+        scrollView.bounces = false
+        
+        //添加子页面
+        for i in 0...numOfPages {
+            var myViewController = SingleFeatureViewController(number:(i+1))
+            myViewController.view.frame = CGRectMake(CGFloat(pageWidth*CGFloat(i)),
+                CGFloat(0), CGFloat(pageWidth), CGFloat(pageHeight))
+            scrollView.addSubview(myViewController.view)
+        }
+        return scrollView
     }
     
-    @IBAction func signupBtnPressed(sender: AnyObject) {
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loginBtn.setBackgroundImage(UIImage(named: "登陆Pressed"), forState: UIControlState.Highlighted)
-        signupBtn.setBackgroundImage(UIImage(named: "注册Pressed"), forState: UIControlState.Highlighted)
+    func chechIsLogIn() {
         if isLogin {
-            loginBtn.hidden = true
-            signupBtn.hidden = true
+            loadLoginView()
+            tryGetUserData()
         }
         else {
-            //没登录展示介绍界面
-            let numOfPages = 3
-            let pageWidth = self.view.frame.width
-            let pageHeight = self.view.frame.height
-            //scrollView的初始化
-            var scrollView = UIScrollView()
-            scrollView.delegate = self
-            scrollView.frame = self.view.bounds
-            //为了让内容横向滚动，设置横向内容宽度为3个页面的宽度总和
-            scrollView.contentSize=CGSizeMake(CGFloat(pageWidth*CGFloat(numOfPages)), CGFloat(pageHeight))
-            scrollView.pagingEnabled = true
-            scrollView.showsHorizontalScrollIndicator = false
-            scrollView.showsVerticalScrollIndicator = false
-            scrollView.scrollsToTop = false
-            scrollView.bounces = false
-            //添加子页面
-            for i in 0...numOfPages {
-                var myViewController = SingleFeatureViewController(number:(i+1))
-                myViewController.view.frame = CGRectMake(CGFloat(pageWidth*CGFloat(i)),
-                    CGFloat(0), CGFloat(pageWidth), CGFloat(pageHeight))
-                scrollView.addSubview(myViewController.view)
-            }
-//            self.view.addSubview(scrollView)
             
-            println("\(scrollView.contentOffset)")
-            
-            pageControll = UIPageControl(frame: CGRectMake(self.view.frame.width/2-20, self.view.frame.height-100, 40, 37))
-            pageControll.numberOfPages = 3
-            pageControll.currentPage = 0
-            self.view.addSubview(pageControll)
-            //按钮到上层来
-            self.view.sendSubviewToBack(pageControll)
-            self.view.bringSubviewToFront(signupBtn)
-            self.view.bringSubviewToFront(loginBtn)
         }
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        println("出现啦\n \(isLogin)是否登录了")
-        if isLogin {
-        //弄个动画
+    func tryGetUserData() {
+        if (getDataCount == 2) {
+            let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            notice.labelText = "无法登陆"
+            notice.hide(true, afterDelay: 1)
+            dispatch_after(1, dispatch_get_main_queue(), {
+                println("load login view")
+                self.loadWelcomeView()
+            })
+            return
+        }
+        else {
+            getDataCount++
+            //成功获取则为true
             var getUserInfo: Bool = false
             var getBaseInfo: Bool = false
+            //获取失败为false
+            var getUserInfoSuccess: Bool = true
+            var getBaseInfoSuccess: Bool = true
             let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            
-            notice.labelText = "获取数据中"
-            var request = HTTPTask()
-            request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
+            notice.labelText = getDataCount > 1 ? "重试中" : "获取数据中"
+            var userInfoRequest = HTTPTask()
+            userInfoRequest.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")
-                    
+                    getUserInfoSuccess = false
+                    if (!getBaseInfoSuccess) {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            notice.hide(true)
+                            self.tryGetUserData()
+                        })
+                    }
                     return
                 }
                 if let obj: AnyObject = response.responseObject {
                     let resp = User(JSONDecoder(obj))
-                    switch (resp.status!) {
-                    case 200:
-                        println("success")
-                        getUserInfo = true
-                        if (getBaseInfo) {
-                            var temp = localUser.baseInfo
-                            localUser = resp.data
-                            localUser.baseInfo = temp
-                            println(localUser.baseInfo?.QQ)
-                        }
-                        else {
-                            localUser = resp.data
-                        }
-                        println(localUser!.star)
-                        if (getBaseInfo && getUserInfo) {
-                            println("从user进入")
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.performSegueWithIdentifier("showMainTab", sender: self)
-                            })
-                        }
-                    default:
-                        println("get user info failed")
+                    println("success")
+                    getUserInfo = true
+                    if (getBaseInfo) {
+                        var temp = localUser.baseInfo
+                        localUser = resp.data
+                        localUser.baseInfo = temp
+                        println(localUser.baseInfo?.QQ)
+                        println("从user进入")
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.transferToMainProgram()
+                        })
+                    }
+                    else {
+                        localUser = resp.data
                     }
                 }
             }
+            
             // baseinfo额外获取一次
-            var base = HTTPTask()
-            base.requestSerializer = HTTPRequestSerializer()
-            base.requestSerializer.headers["Token"] = token
-            base.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
+            var baseInfoRequest = HTTPTask()
+            baseInfoRequest.requestSerializer = HTTPRequestSerializer()
+            baseInfoRequest.requestSerializer.headers["Token"] = token
+            baseInfoRequest.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")
+                    getBaseInfoSuccess = false
+                    if (!getUserInfoSuccess) {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            notice.hide(true)
+                            self.tryGetUserData()
+                        })
+                    }
                     return
                 }
                 if let obj: AnyObject = response.responseObject {
@@ -141,20 +141,65 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                         if (getBaseInfo && getUserInfo) {
                             println("从base进入")
                             dispatch_async(dispatch_get_main_queue(), {
-                                self.performSegueWithIdentifier("showMainTab", sender: self)
+                                self.transferToMainProgram()
                             })
                         }
                     }
                 }
             }
-            
         }
+    }
+    
+    func transferToMainProgram() {
+//        self.performSegueWithIdentifier("showMainTab", sender: self)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let mainP = sb.instantiateViewControllerWithIdentifier("MainProgram") as! UITabBarController
+        self.presentViewController(mainP, animated: true, completion: nil)
+    }
+    func loadWelcomeView() {
+        
+    }
+    func loadLoginView() {
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loginBtn.setBackgroundImage(UIImage(named: "登陆Pressed"), forState: UIControlState.Highlighted)
+        signupBtn.setBackgroundImage(UIImage(named: "注册Pressed"), forState: UIControlState.Highlighted)
+        if isLogin {
+            loginBtn.hidden = true
+            signupBtn.hidden = true
+        }
+        else {
+            //没登录展示介绍界面
+            
+//            pageControll = UIPageControl(frame: CGRectMake(self.view.frame.width/2-20, self.view.frame.height-100, 40, 37))
+//            pageControll.numberOfPages = 3
+//            pageControll.currentPage = 0
+//            self.view.addSubview(pageControll)
+            
+            //按钮到上层来
+            self.view.sendSubviewToBack(pageControll)
+            self.view.bringSubviewToFront(signupBtn)
+            self.view.bringSubviewToFront(loginBtn)
+        }
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        println("出现啦\n \(isLogin)是否登录了")
+        chechIsLogIn()
+        //弄个动画
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         var currentPage = Int(scrollView.contentOffset.x/self.view.frame.width)
         pageControll.currentPage = Int(currentPage)
-        
     }
     /*
     // MARK: - Navigation

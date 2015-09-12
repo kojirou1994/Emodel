@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var chatTableView: UITableView!
     override func viewDidLoad() {
@@ -25,10 +25,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let profileBtn = UIBarButtonItem(title: "Profile", style: UIBarButtonItemStyle.Plain, target: self, action: "pushToProfileVC")
         self.navigationItem.rightBarButtonItem = profileBtn
 //        chatTableView.contentOffset = CGPointMake(320, chatTableView.contentSize.height)
-        var toolbar = UIToolbar(frame: )
+        var toolbar = UIToolbar()
+        var inputField = UITextField(frame: CGRectMake(0, 0, 100, 20))
+        toolbar.addSubview(inputField)
+        var sendBtn = UIButton(frame: CGRectMake(0, 0, 100, 20))
+        sendBtn.titleLabel?.text = "send"
+        toolbar.addSubview(sendBtn)
+//        UIBarButtonItem(title: "发送", style: UIBarButtonItemStyle.Plain, target: self, action: "send")
+        self.view.addSubview(toolbar)
         // Do any additional setup after loading the view.
     }
-
+    func send() {
+        println("message sent")
+    }
     func pushToProfileVC() {
         println("显示用户简介")
         goToLatestMessage()
@@ -43,6 +52,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
 
+//    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+//        return nil
+//    }
+    
     func bubbleView(text: String, fromSelf: Bool, position: Int) -> UIView {
         //计算大小
         var font = UIFont.systemFontOfSize(14)
