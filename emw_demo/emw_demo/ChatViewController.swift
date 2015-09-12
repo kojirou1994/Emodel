@@ -10,14 +10,36 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var chatTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "王羞羞"
+        println("------------")
+        print(chatTableView.bounds)
+        println("------------")
+        chatTableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-30)
+        println("------------")
+        print(chatTableView.contentSize)
+        println("------------")
+        
+        let profileBtn = UIBarButtonItem(title: "Profile", style: UIBarButtonItemStyle.Plain, target: self, action: "pushToProfileVC")
+        self.navigationItem.rightBarButtonItem = profileBtn
+//        chatTableView.contentOffset = CGPointMake(320, chatTableView.contentSize.height)
+        var toolbar = UIToolbar(frame: )
         // Do any additional setup after loading the view.
     }
 
+    func pushToProfileVC() {
+        println("显示用户简介")
+        goToLatestMessage()
+    }
+    func goToLatestMessage() {
+        let index = NSIndexPath(forRow: str.count - 1, inSection: 0)
+        chatTableView.scrollToRowAtIndexPath(index, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+
         // Dispose of any resources that can be recreated.
     }
 
@@ -64,18 +86,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return str.count
     }
-    var str = ["你好","你也好","还钱","..........................................................................................长文本","超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本"]
+    var str = ["你好","你也好","还钱","..........................................................................................长文本","超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本"," "," "," "," "," "," "," "," "," "]
     
     var usertype = true
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if (indexPath.row % 2 == 0) {
-            usertype = false
-        }
-        else {
-            usertype = true
-        }
+        usertype = (indexPath.row % 2) == 0
         let cell = tableView.dequeueReusableCellWithIdentifier("chatDetailCell") as! UITableViewCell
+        for i in cell.subviews {
+            i.removeFromSuperview()
+        }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         var head: UIImageView
         if (usertype) {
@@ -83,21 +103,24 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.addSubview(head)
             head.image = UIImage(named: "photo1")
             roundHead(head)
-            cell.addSubview(bubbleView(str[indexPath.row], fromSelf: true, position: 65))
+            cell.addSubview(bubbleView(String(indexPath.row), fromSelf: true, position: 65))
+            println("celll \(indexPath.row) head1 added")
         }
         else {
             head = UIImageView(frame: CGRectMake(10, 10, 50, 50))
             cell.addSubview(head)
             head.image = UIImage(named: "head.jpg")
             roundHead(head)
-            cell.addSubview(bubbleView(str[indexPath.row], fromSelf: false, position: 65))
+            cell.addSubview(bubbleView(String(indexPath.row), fromSelf: false, position: 65))
+            println("celll \(indexPath.row) head2 added")
         }
+        println("celll \(indexPath.row) loaded")
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let font = UIFont.systemFontOfSize(14)
-        let text = str[indexPath.row] as NSString
+        let text = String(indexPath.row) as NSString
         let size = text.boundingRectWithSize(CGSizeMake(180, 20000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil)
         return size.height + 44
     }
