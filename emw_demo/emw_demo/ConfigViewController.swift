@@ -65,9 +65,7 @@ class ConfigViewController: UITableViewController {
             let user = NSUserDefaults.standardUserDefaults()
             user.removeObjectForKey("UserName")
             println("已移除用户信息")
-            let ent = UIStoryboard(name: "Main", bundle: nil)
-            let a = ent.instantiateInitialViewController() as! UIViewController
-            self.presentViewController(a, animated: true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
             
         }
     }

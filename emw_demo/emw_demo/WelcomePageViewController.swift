@@ -110,6 +110,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                         println(localUser.baseInfo?.QQ)
                         println("从user进入")
                         dispatch_async(dispatch_get_main_queue(), {
+                            notice.hide(false)
                             self.transferToMainProgram()
                         })
                     }
@@ -149,6 +150,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                         if (getBaseInfo && getUserInfo) {
                             println("从base进入")
                             dispatch_async(dispatch_get_main_queue(), {
+                                notice.hide(false)
                                 self.transferToMainProgram()
                             })
                         }
@@ -188,7 +190,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
 //            self.view.addSubview(pageControll)
             
             //按钮到上层来
-            self.view.sendSubviewToBack(pageControll)
+//            self.view.sendSubviewToBack(pageControll)
             self.view.bringSubviewToFront(signupBtn)
             self.view.bringSubviewToFront(loginBtn)
         }
