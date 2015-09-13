@@ -87,7 +87,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             notice.labelText = getDataCount > 1 ? "重试中" : "获取数据中"
             var userInfoRequest = HTTPTask()
-            userInfoRequest.GET(serverAddress + "/usr/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
+            userInfoRequest.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")
                     getUserInfoSuccess = false
@@ -123,7 +123,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             var baseInfoRequest = HTTPTask()
             baseInfoRequest.requestSerializer = HTTPRequestSerializer()
             baseInfoRequest.requestSerializer.headers["Token"] = token
-            baseInfoRequest.GET(serverAddress + "/usr/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
+            baseInfoRequest.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")
                     getBaseInfoSuccess = false

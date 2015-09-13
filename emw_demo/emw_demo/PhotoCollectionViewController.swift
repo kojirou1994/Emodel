@@ -130,8 +130,11 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
             te.photodata = self.data!
             //        te.reloadData()
             //        te.setCurrentPhotoIndex(UInt(indexPath.row))
-            var browse = PhotoBrowserViewController(photos: photoSource as [AnyObject]!)
-            self.navigationController?.pushViewController(MWPhotoBrowser(photos: photoSource), animated: true)
+            var browse = MWPhotoBrowser(photos: photoSource)
+            println(UInt(indexPath.row))
+//            PhotoBrowserViewController(photos: photoSource as [AnyObject]!)
+            browse.setCurrentPhotoIndex(UInt(indexPath.row))
+            self.navigationController?.pushViewController(browse, animated: true)
             println("选择了照片: \(indexPath)")
         }
     }
