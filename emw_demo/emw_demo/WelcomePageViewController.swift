@@ -47,7 +47,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         return scrollView
     }
     
-    func chechIsLogIn() {
+    func checkIsLogIn() {
         if isLogin {
             loadLoginView()
             tryGetUserData()
@@ -59,12 +59,20 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     
     func tryGetUserData() {
         if (getDataCount == 2) {
+            getDataCount = 0
+            isLogin = false
             let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             notice.labelText = "无法登陆"
-            notice.hide(true, afterDelay: 1)
+            notice.hide(true, afterDelay: 0.5)
             dispatch_after(1, dispatch_get_main_queue(), {
                 println("load login view")
                 self.loadWelcomeView()
+                
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let loginVC = sb.instantiateViewControllerWithIdentifier("LogIn") as! LoginViewController
+//                loginVC.mobileInput.text = username
+                self.presentViewController(loginVC, animated: true, completion: nil)
+                
             })
             return
         }
@@ -79,7 +87,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             notice.labelText = getDataCount > 1 ? "重试中" : "获取数据中"
             var userInfoRequest = HTTPTask()
-            userInfoRequest.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
+            userInfoRequest.GET(serverAddress + "/usr/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")
                     getUserInfoSuccess = false
@@ -115,7 +123,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             var baseInfoRequest = HTTPTask()
             baseInfoRequest.requestSerializer = HTTPRequestSerializer()
             baseInfoRequest.requestSerializer.headers["Token"] = token
-            baseInfoRequest.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
+            baseInfoRequest.GET(serverAddress + "/usr/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
                     println("error: \(err.localizedDescription)")
                     getBaseInfoSuccess = false
@@ -157,7 +165,8 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         self.presentViewController(mainP, animated: true, completion: nil)
     }
     func loadWelcomeView() {
-        
+        loginBtn.hidden = false
+        signupBtn.hidden = false
     }
     func loadLoginView() {
         
@@ -193,7 +202,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         println("出现啦\n \(isLogin)是否登录了")
-        chechIsLogIn()
+        checkIsLogIn()
         //弄个动画
     }
     

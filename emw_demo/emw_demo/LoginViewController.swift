@@ -84,6 +84,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let user = NSUserDefaults.standardUserDefaults()
+        if let haveData: AnyObject = user.objectForKey("UserName") {
+            mobileInput.text = user.objectForKey("UserName") as? String
+
+        }
         // Do any additional setup after loading the view.
     }
 

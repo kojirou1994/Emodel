@@ -1089,7 +1089,7 @@
         <!--Login View Controller-->
         <scene sceneID="d4O-oc-GrR">
             <objects>
-                <viewController id="DNK-kS-ltC" customClass="LoginViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogIn" id="DNK-kS-ltC" customClass="LoginViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1m6-wx-mjH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
