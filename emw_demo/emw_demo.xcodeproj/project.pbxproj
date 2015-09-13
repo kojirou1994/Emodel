@@ -20,6 +20,13 @@
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
 		E36937031BA16D4E00F0F04E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */; };
+		E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36C14381BA5D64D00D6FA4D /* arrow@2x.png */; };
+		E36C14401BA5D64D00D6FA4D /* Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C14391BA5D64D00D6FA4D /* Refresh.swift */; };
+		E36C14411BA5D64D00D6FA4D /* RefreshBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C143A1BA5D64D00D6FA4D /* RefreshBaseView.swift */; };
+		E36C14421BA5D64D00D6FA4D /* RefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C143B1BA5D64D00D6FA4D /* RefreshConst.swift */; };
+		E36C14431BA5D64D00D6FA4D /* RefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C143C1BA5D64D00D6FA4D /* RefreshFooterView.swift */; };
+		E36C14441BA5D64D00D6FA4D /* RefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C143D1BA5D64D00D6FA4D /* RefreshHeaderView.swift */; };
+		E36C14451BA5D64D00D6FA4D /* UIScrollView+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C143E1BA5D64D00D6FA4D /* UIScrollView+Refresh.swift */; };
 		E37AD5991B846BC8005DEC92 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */; };
 		E38518871B7091B40063C2C2 /* starRank_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518711B7091B40063C2C2 /* starRank_0.png */; };
 		E38518881B7091B40063C2C2 /* starRank_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518721B7091B40063C2C2 /* starRank_1.png */; };
@@ -133,6 +140,13 @@
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		E36C14381BA5D64D00D6FA4D /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		E36C14391BA5D64D00D6FA4D /* Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refresh.swift; sourceTree = "<group>"; };
+		E36C143A1BA5D64D00D6FA4D /* RefreshBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshBaseView.swift; sourceTree = "<group>"; };
+		E36C143B1BA5D64D00D6FA4D /* RefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshConst.swift; sourceTree = "<group>"; };
+		E36C143C1BA5D64D00D6FA4D /* RefreshFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshFooterView.swift; sourceTree = "<group>"; };
+		E36C143D1BA5D64D00D6FA4D /* RefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshHeaderView.swift; sourceTree = "<group>"; };
+		E36C143E1BA5D64D00D6FA4D /* UIScrollView+Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Refresh.swift"; sourceTree = "<group>"; };
 		E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E38518711B7091B40063C2C2 /* starRank_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_0.png; sourceTree = "<group>"; };
 		E38518721B7091B40063C2C2 /* starRank_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_1.png; sourceTree = "<group>"; };
@@ -276,6 +290,20 @@
 				E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */,
 			);
 			name = InfoEdit;
+			sourceTree = "<group>";
+		};
+		E36C14371BA5D64D00D6FA4D /* Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				E36C14381BA5D64D00D6FA4D /* arrow@2x.png */,
+				E36C14391BA5D64D00D6FA4D /* Refresh.swift */,
+				E36C143A1BA5D64D00D6FA4D /* RefreshBaseView.swift */,
+				E36C143B1BA5D64D00D6FA4D /* RefreshConst.swift */,
+				E36C143C1BA5D64D00D6FA4D /* RefreshFooterView.swift */,
+				E36C143D1BA5D64D00D6FA4D /* RefreshHeaderView.swift */,
+				E36C143E1BA5D64D00D6FA4D /* UIScrollView+Refresh.swift */,
+			);
+			path = Refresh;
 			sourceTree = "<group>";
 		};
 		E38518701B7091B40063C2C2 /* 图标 */ = {
@@ -446,6 +474,7 @@
 				E3C899991B749DD300286AC7 /* 3rd Tab */,
 				E3E9C2211B6CA66200998937 /* Main.storyboard */,
 				E3E9C2241B6CA66200998937 /* Images.xcassets */,
+				E36C14371BA5D64D00D6FA4D /* Refresh */,
 				E38518701B7091B40063C2C2 /* 图标 */,
 				E3E9C2261B6CA66200998937 /* LaunchScreen.xib */,
 				E3E9C23F1B6CAF5000998937 /* SMSegmentView */,
@@ -601,6 +630,7 @@
 				E38518931B7091B40063C2C2 /* 基本信息.png in Resources */,
 				E38518941B7091B40063C2C2 /* 我的.png in Resources */,
 				E38518891B7091B40063C2C2 /* starRank_10.png in Resources */,
+				E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */,
 				E385188E1B7091B40063C2C2 /* starRank_6.png in Resources */,
 				E3B680311BA2C452004DF002 /* photo1.png in Resources */,
 				E38518951B7091B40063C2C2 /* 档期管理.png in Resources */,
@@ -698,8 +728,10 @@
 				E38556741B7C63110015285F /* AlbumViewController.swift in Sources */,
 				E3B6801C1BA2C420004DF002 /* ChatViewController.swift in Sources */,
 				E3978F661B7B1470002B54A3 /* AlbumView.swift in Sources */,
+				E36C14441BA5D64D00D6FA4D /* RefreshHeaderView.swift in Sources */,
 				E3CED34C1BA1169000B0B248 /* Task.swift in Sources */,
 				E3B561701B7C90870051D125 /* PhotoThumbCell.swift in Sources */,
+				E36C14401BA5D64D00D6FA4D /* Refresh.swift in Sources */,
 				E3978F561B7AE017002B54A3 /* BaseInfo.swift in Sources */,
 				E3978F601B7AE372002B54A3 /* Login.swift in Sources */,
 				E3978F5E1B7AE12B002B54A3 /* ProductInfo.swift in Sources */,
@@ -715,8 +747,11 @@
 				E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */,
 				E3E9C2471B6CC73600998937 /* NoticeTableCell.swift in Sources */,
 				E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */,
+				E36C14421BA5D64D00D6FA4D /* RefreshConst.swift in Sources */,
 				E3C899921B7473AD00286AC7 /* LoginViewController.swift in Sources */,
+				E36C14451BA5D64D00D6FA4D /* UIScrollView+Refresh.swift in Sources */,
 				E390121D1B9BD0F400CABB9E /* Networking.swift in Sources */,
+				E36C14431BA5D64D00D6FA4D /* RefreshFooterView.swift in Sources */,
 				E3FBE9BD1B845C5500EA6440 /* User.swift in Sources */,
 				E38556711B7C622B0015285F /* AlbumList.swift in Sources */,
 				E3C899901B7473A400286AC7 /* SignupViewController.swift in Sources */,
@@ -739,6 +774,7 @@
 				E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */,
 				E3B6801A1BA2C420004DF002 /* ChatListTableViewCell.swift in Sources */,
 				E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */,
+				E36C14411BA5D64D00D6FA4D /* RefreshBaseView.swift in Sources */,
 				E3978F521B7ADFC6002B54A3 /* BodyInfo.swift in Sources */,
 				E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */,
 				E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */,

@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Public Notice View Controller-->
+        <!--通告-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController storyboardIdentifier="notice" id="9pv-A4-QxB" customClass="PublicNoticeViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notice" id="9pv-A4-QxB" userLabel="通告" customClass="PublicNoticeViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="573" y="-1626"/>
         </scene>
-        <!--Notice Detail View Controller-->
+        <!--通告详情-->
         <scene sceneID="Tca-eW-H3i">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="0t5-Zz-C2B" customClass="NoticeDetailViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="0t5-Zz-C2B" userLabel="通告详情" customClass="NoticeDetailViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fQd-gW-e1s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,10 +226,10 @@
             </objects>
             <point key="canvasLocation" x="1238" y="-1626"/>
         </scene>
-        <!--Base Info Edit View Controller-->
+        <!--基本资料-->
         <scene sceneID="Sgo-0m-DFv">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="v1b-qh-kuU" customClass="BaseInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="v1b-qh-kuU" userLabel="基本资料" customClass="BaseInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UIK-o7-pjF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,10 +242,10 @@
             </objects>
             <point key="canvasLocation" x="1266" y="125"/>
         </scene>
-        <!--Body Info Edit View Controller-->
+        <!--身材资料-->
         <scene sceneID="4Gb-vZ-Hrc">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="PwU-28-4ef" customClass="BodyInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="PwU-28-4ef" userLabel="身材资料" customClass="BodyInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sFu-VM-PtX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,10 +257,10 @@
             </objects>
             <point key="canvasLocation" x="1706" y="125"/>
         </scene>
-        <!--Business Info Edit View Controller-->
+        <!--价格信息-->
         <scene sceneID="oHK-gn-MMo">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="3eh-1S-Fcn" customClass="BusinessInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="3eh-1S-Fcn" userLabel="价格信息" customClass="BusinessInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y8a-Nk-8Av">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1026,10 +1026,10 @@
             </objects>
             <point key="canvasLocation" x="-12" y="125"/>
         </scene>
-        <!--Welcome Page View Controller-->
+        <!--欢迎界面-->
         <scene sceneID="0Ix-bN-wR0">
             <objects>
-                <viewController storyboardIdentifier="WelcomePage" id="EQz-jo-eTv" customClass="WelcomePageViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomePage" id="EQz-jo-eTv" userLabel="欢迎界面" customClass="WelcomePageViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qJU-9u-6TE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1086,10 +1086,10 @@
             </objects>
             <point key="canvasLocation" x="-1340" y="-589"/>
         </scene>
-        <!--Login View Controller-->
+        <!--登录-->
         <scene sceneID="d4O-oc-GrR">
             <objects>
-                <viewController storyboardIdentifier="LogIn" id="DNK-kS-ltC" customClass="LoginViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogIn" id="DNK-kS-ltC" userLabel="登录" customClass="LoginViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1m6-wx-mjH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1150,10 +1150,10 @@
             </objects>
             <point key="canvasLocation" x="-1548" y="125"/>
         </scene>
-        <!--Signup View Controller-->
+        <!--注册-->
         <scene sceneID="ru4-pX-lW0">
             <objects>
-                <viewController id="Ka2-vM-97y" customClass="SignupViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ka2-vM-97y" userLabel="注册" customClass="SignupViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7cx-tN-any">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1275,10 +1275,10 @@
             </objects>
             <point key="canvasLocation" x="-1128" y="125"/>
         </scene>
-        <!--聊天-->
+        <!--聊天列表-->
         <scene sceneID="mHO-WW-SHs">
             <objects>
-                <viewController id="VfG-fE-EQA" customClass="ChatListViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VfG-fE-EQA" userLabel="聊天列表" customClass="ChatListViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17w-e2-pSg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1289,7 +1289,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatListCell" rowHeight="90" id="Hd3-un-N9N" customClass="ChatListTableViewCell" customModule="emw_demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="90"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hd3-un-N9N" id="Rl1-rw-5kV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
@@ -1349,10 +1349,10 @@
             </objects>
             <point key="canvasLocation" x="573" y="-709"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--聊天详情-->
         <scene sceneID="afd-fw-enn">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="xM5-Qj-zrq" customClass="ChatViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="xM5-Qj-zrq" userLabel="聊天详情" customClass="ChatViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1q-77-KKP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1363,7 +1363,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatDetailCell" rowHeight="200" id="sZm-FR-OVR">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZm-FR-OVR" id="DGf-LK-lzN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>

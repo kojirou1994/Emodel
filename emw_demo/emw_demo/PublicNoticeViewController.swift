@@ -45,7 +45,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         self.topSegmentView.addSegmentWithTitle("我的通告", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
         self.navigationItem.titleView = topSegmentView
         topSegmentView.selectSegmentAtIndex(0)
-
+        setupRefresh()
         updateTaskInfo()
     }
 
@@ -57,11 +57,21 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     override func viewWillAppear(animated: Bool) {
         
     }
-    
+    func setupRefresh() {
+        self.tableView.addHeaderWithCallback { () -> Void in
+            println("下拉刷新啦")
+            if (self.isMy) {
+                self.updateMyTaskInfo()
+            }
+            else {
+                self.updateTaskInfo()
+            }
+        }
+    }
     func updateTaskInfo() {
         var getTask = HTTPTask()
         getTask.GET(serverAddress + "/task", parameters: nil) { (response: HTTPResponse) -> Void in
-            println(response.description)
+//            println(response.description)
             if let err = response.error {
                 println("get task list error: \(err.localizedDescription)")
                 return
@@ -70,7 +80,8 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
                 println("task list get")
                 self.taskData = TaskResp(JSONDecoder(obj)).data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView?.reloadData()
+                    self.tableView.reloadData()
+                    self.tableView.headerEndRefreshing()
                 })
             }
         }
@@ -81,7 +92,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         getMyTask.requestSerializer = HTTPRequestSerializer()
         getMyTask.requestSerializer.headers["Token"] = token
         getMyTask.GET(serverAddress + "/user/" + userId + "/taskinfo", parameters: nil) { (response: HTTPResponse) -> Void in
-            println(response.description)
+//            println(response.description)
             if let err = response.error {
                 println("get task list error: \(err.localizedDescription)")
                 return
@@ -90,7 +101,8 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
                 println("task list get")
                 self.myTaskData = TaskResp(JSONDecoder(obj)).data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView?.reloadData()
+                    self.tableView.reloadData()
+                    self.tableView.headerEndRefreshing()
                 })
             }
         }

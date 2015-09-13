@@ -40,7 +40,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func pushToProfileVC() {
         println("显示用户简介")
-        goToLatestMessage()
+//      goToLatestMessage()
+        for i in 1...10 {
+            str.append(String(i))
+        }
+        self.chatTableView.reloadData()
     }
     func goToLatestMessage() {
         let index = NSIndexPath(forRow: str.count - 1, inSection: 0)
@@ -51,7 +55,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // Dispose of any resources that can be recreated.
     }
-
+    override func viewDidAppear(animated: Bool) {
+        goToLatestMessage()
+    }
 //    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
 //        return nil
 //    }
@@ -140,7 +146,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+
+    }
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.row == str.count - 1){
+            pushToProfileVC()
+        }
+    }
     func roundHead(img: UIImageView) {
         img.layer.masksToBounds = true
         img.layer.cornerRadius = img.bounds.width / 2
