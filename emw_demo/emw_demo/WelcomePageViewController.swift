@@ -53,7 +53,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             tryGetUserData()
         }
         else {
-            
+            loadWelcomeView()
         }
     }
     
