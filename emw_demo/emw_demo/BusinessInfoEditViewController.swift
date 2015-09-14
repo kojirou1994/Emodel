@@ -46,30 +46,35 @@ class BusinessInfoEditViewController: XLFormViewController {
         row = XLFormRowDescriptor(tag: Tags.InPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "内景价位")
         row.value = localUser.businessInfo?.inPrice
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 外景价格
         row = XLFormRowDescriptor(tag: Tags.OutPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "外景价位")
         row.value = localUser.businessInfo?.outPrice
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 内衣价格
         row = XLFormRowDescriptor(tag: Tags.UnderWearPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "内衣价位")
         row.value = localUser.businessInfo?.underwearPrice
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 包日价格
         row = XLFormRowDescriptor(tag: Tags.DayPrice.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "包日价格")
         row.value = localUser.businessInfo?.dayPrice
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 起拍件数
         row = XLFormRowDescriptor(tag: Tags.StartCount.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "起拍件数")
         row.value = localUser.businessInfo?.startCount
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
 

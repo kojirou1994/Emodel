@@ -51,12 +51,15 @@ class BaseInfoEditViewController : XLFormViewController {
         row = XLFormRowDescriptor(tag: BaseInfoTag.QQ.rawValue, rowType: XLFormRowDescriptorTypeText, title: "QQ")
         row.value = localUser.baseInfo?.QQ
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+//        row.cellConfigAtConfigure["textField.textColor"] = UIColor.grayColor()
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 年龄
         row = XLFormRowDescriptor(tag: BaseInfoTag.Age.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "年龄")
         row.value = localUser.baseInfo?.age
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
 //        section.addFormRow(row)
         
         // 转换生日string to nsdate
@@ -72,10 +75,12 @@ class BaseInfoEditViewController : XLFormViewController {
         row = XLFormRowDescriptor(tag: BaseInfoTag.Email.rawValue, rowType: XLFormRowDescriptorTypeEmail, title: "邮箱")
         row.value = localUser.baseInfo?.email
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 个人简介
         row = XLFormRowDescriptor(tag: BaseInfoTag.Introduction.rawValue, rowType: XLFormRowDescriptorTypeTextView, title: "个人简介")
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         row.value = localUser.baseInfo?.introduction
 //        section.addFormRow(row)
         
@@ -83,18 +88,21 @@ class BaseInfoEditViewController : XLFormViewController {
         row = XLFormRowDescriptor(tag: BaseInfoTag.Mobile.rawValue, rowType: XLFormRowDescriptorTypeInteger, title: "手机号")
         row.value = localUser.baseInfo?.mobile
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 用户名
         row = XLFormRowDescriptor(tag: BaseInfoTag.NickName.rawValue, rowType: XLFormRowDescriptorTypeText, title: "用户名")
         row.value = localUser.baseInfo?.nickName
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 真实姓名
         row = XLFormRowDescriptor(tag: BaseInfoTag.RealName.rawValue, rowType: XLFormRowDescriptorTypeText, title: "真实姓名")
         row.value = localUser.baseInfo?.realName
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 个人服务
@@ -107,12 +115,14 @@ class BaseInfoEditViewController : XLFormViewController {
         row = XLFormRowDescriptor(tag: BaseInfoTag.Sex.rawValue, rowType: XLFormRowDescriptorTypeText, title: "性别")
         row.value = localUser.baseInfo?.sex
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 微信账号
         row = XLFormRowDescriptor(tag: BaseInfoTag.Wechat.rawValue, rowType: XLFormRowDescriptorTypeText, title: "微信账号")
         row.value = localUser.baseInfo?.wechat
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         self.form = form

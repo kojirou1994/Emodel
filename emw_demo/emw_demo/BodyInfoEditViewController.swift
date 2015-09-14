@@ -55,54 +55,63 @@ class BodyInfoEditViewController : XLFormViewController {
         row = XLFormRowDescriptor(tag: BodyInfoTag.Height.rawValue, rowType: XLFormRowDescriptorTypeText, title: "身高(CM)")
         row.value = localUser.bodyInfo?.height
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 体重
         row = XLFormRowDescriptor(tag: BodyInfoTag.Weight.rawValue, rowType: XLFormRowDescriptorTypeText, title: "体重")
         row.value = localUser.bodyInfo?.weight
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 罩杯
         row = XLFormRowDescriptor(tag: BodyInfoTag.CupSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "罩杯")
         row.value = localUser.bodyInfo?.cupSize
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 胸围
         row = XLFormRowDescriptor(tag: BodyInfoTag.Bust.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "胸围")
         row.value = localUser.bodyInfo?.bust!
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 腰围
         row = XLFormRowDescriptor(tag: BodyInfoTag.Waist.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "腰围")
         row.value = localUser.bodyInfo?.waist!
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 臀围
         row = XLFormRowDescriptor(tag: BodyInfoTag.Hip.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "臀围")
         row.value = localUser.bodyInfo?.hip!
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 衣服尺寸
         row = XLFormRowDescriptor(tag: BodyInfoTag.ClothesSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "衣服尺寸")
         row.value = localUser.bodyInfo?.clothesSize
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 裤子尺寸
         row = XLFormRowDescriptor(tag: BodyInfoTag.TrouserSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "裤子尺寸")
         row.value = localUser.bodyInfo?.trousersSize
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 鞋子尺寸
         row = XLFormRowDescriptor(tag: BodyInfoTag.ShoesSize.rawValue, rowType: XLFormRowDescriptorTypeText, title: "鞋子尺寸")
         row.value = localUser.bodyInfo?.shoesSize
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         
@@ -113,6 +122,7 @@ class BodyInfoEditViewController : XLFormViewController {
         row = XLFormRowDescriptor(tag: BodyInfoTag.Introduction.rawValue, rowType: XLFormRowDescriptorTypeTextView)
         row.cellConfigAtConfigure["textView.placeholder"] = "Introduction"
         row.value = localUser.bodyInfo?.introduction!
+        row.cellConfig.setObject(UIColor.grayColor(), forKey: "textView.textColor")
         
         section.addFormRow(row)
         
