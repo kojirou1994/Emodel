@@ -17,6 +17,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     @IBOutlet weak var UserNameLabel: UILabel!
     @IBOutlet weak var StarRankImage: UIImageView!
     @IBOutlet weak var likeCountLabel: UILabel!
+    @IBOutlet var mainTableView: UITableView!
     @IBAction func AvatarBtnPressed(sender: AnyObject) {
         println("改变头像")
         
@@ -34,9 +35,6 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         sheet.tag = 255
     }
     
-    @IBAction func updateBtnPressed(sender: AnyObject) {
-        updateUserInfo()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         //圆形头像
@@ -46,6 +44,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         
         self.clearsSelectionOnViewWillAppear = true
         //更新界面元素
+        setRefresh()
         updateInterface()
     }
 
@@ -54,6 +53,11 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         // Dispose of any resources that can be recreated.
     }
 
+    func setRefresh() {
+        self.mainTableView.addHeaderWithCallback { () -> Void in
+            self.updateUserInfo()
+        }
+    }
     func updateUserInfo() {
         var getUserInfo: Bool = false
         var getBaseInfo: Bool = false
@@ -81,6 +85,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                     println(localUser!.star)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.updateInterface()
+                        self.mainTableView.headerEndRefreshing()
                     })
                 default:
                     println("get user info failed")
@@ -124,6 +129,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         UserNameLabel.text = localUser.baseInfo?.nickName
         likeCountLabel.text = String(localUser.like!.count!)
         StarRankImage.image = UIImage(named: "starRank_\(localUser.star).png")
+        self.mainTableView.headerEndRefreshing()
     }
     
     //MARK: - UIActionSheetDelegate
@@ -170,8 +176,10 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
             println(newAvatarPath)
             println("already 保存")
         }
-        dismissViewControllerAnimated(true, completion: nil)
-        uploadAvatar()
+        dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.uploadAvatar()
+        })
+//        uploadAvatar()
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -202,6 +210,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     notice.labelText = "上传成功"
                     notice.hide(true, afterDelay: 0.5)
+                    self.updateUserInfo()
                 })
             }
             println(response)
@@ -214,14 +223,6 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         println(source.size.height)
         println(source.size.width)
         return source
-    }
-    // 没用
-    func saveImage(currentImage: UIImage, imageName: NSString) {
-        var imageData:NSData = UIImageJPEGRepresentation(currentImage, 0.5)
-        var fullPath:NSString = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent(imageName as String)
-        imageData.writeToFile(fullPath as String, atomically: false)
-        println("already 保存")
-        
     }
     
     // MARK: - Navigation

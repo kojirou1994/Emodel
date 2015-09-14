@@ -15,15 +15,6 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet var tableView: UITableView!
     
     
-    @IBAction func updateBtnPressed(sender: AnyObject) {
-        if (isMy) {
-            updateMyTaskInfo()
-        }
-        else {
-            updateTaskInfo()
-        }
-    }
-    
     var taskData: [Task]?
     var myTaskData: [Task]?
     var topSegmentView: SMSegmentView!
