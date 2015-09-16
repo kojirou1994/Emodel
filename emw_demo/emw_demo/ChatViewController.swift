@@ -11,40 +11,60 @@ import UIKit
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var chatTableView: UITableView!
+    
+    var targetUserID: String! = userId
+    
+    var inputKeyView: UIView!
+    var inputField: UITextField!
+    var sendBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
         self.navigationItem.title = "王羞羞"
-        println("------------")
         print(chatTableView.bounds)
-        println("------------")
-        chatTableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-30)
-        println("------------")
+        chatTableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-45)
         print(chatTableView.contentSize)
-        println("------------")
+        
+        inputKeyView = UIView(frame: CGRectMake(0, self.view.frame.height-45, self.view.frame.width, 45))
+        inputKeyView.backgroundColor = UIColor.redColor()
+        
+        inputField = UITextField(frame: CGRectMake(5, 5, 260, 35))
+        inputField.tag = 0
+        inputField.delegate = self
+        inputField.backgroundColor = UIColor.whiteColor()
+        inputKeyView.addSubview(inputField)
+        
+        sendBtn = UIButton(frame: CGRectMake(260, 5, 55, 35))
+        sendBtn.setTitle("发送", forState: UIControlState.Normal)
+        sendBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        sendBtn.backgroundColor = UIColor.blackColor()
+        sendBtn.addTarget(self, action: "send", forControlEvents: UIControlEvents.TouchUpInside)
+        inputKeyView.addSubview(sendBtn)
+        
+        self.view.addSubview(inputKeyView)
         
         let profileBtn = UIBarButtonItem(title: "Profile", style: UIBarButtonItemStyle.Plain, target: self, action: "pushToProfileVC")
         self.navigationItem.rightBarButtonItem = profileBtn
-//        chatTableView.contentOffset = CGPointMake(320, chatTableView.contentSize.height)
-        var toolbar = UIToolbar()
-        var inputField = UITextField(frame: CGRectMake(0, 0, 100, 20))
-        toolbar.addSubview(inputField)
-        var sendBtn = UIButton(frame: CGRectMake(0, 0, 100, 20))
-        sendBtn.titleLabel?.text = "send"
-        toolbar.addSubview(sendBtn)
-//        UIBarButtonItem(title: "发送", style: UIBarButtonItemStyle.Plain, target: self, action: "send")
-        self.view.addSubview(toolbar)
-        // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
     func send() {
         println("message sent")
+        println(inputField.text)
+        YunBaService.publishToAlias(targetUserID, data: inputField.text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                self.str.append(self.inputField.text)
+                self.chatTableView.reloadData()
+            }
+            else {
+                
+            }
+        }
     }
     func pushToProfileVC() {
         println("显示用户简介")
-//      goToLatestMessage()
-        for i in 1...10 {
-            str.append(String(i))
-        }
-        self.chatTableView.reloadData()
     }
     func goToLatestMessage() {
         let index = NSIndexPath(forRow: str.count - 1, inSection: 0)
@@ -105,7 +125,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return str.count
     }
-    var str = ["你好","你也好","还钱","..........................................................................................长文本","超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本"," "," "," "," "," "," "," "," "," "]
+    var str:Array<String> = ["","",""]
     
     var usertype = true
     
@@ -122,7 +142,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.addSubview(head)
             head.image = UIImage(named: "photo1")
             roundHead(head)
-            cell.addSubview(bubbleView(String(indexPath.row), fromSelf: true, position: 65))
+            cell.addSubview(bubbleView(str[indexPath.row], fromSelf: true, position: 65))
             println("celll \(indexPath.row) head1 added")
         }
         else {
@@ -130,7 +150,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.addSubview(head)
             head.image = UIImage(named: "head.jpg")
             roundHead(head)
-            cell.addSubview(bubbleView(String(indexPath.row), fromSelf: false, position: 65))
+            cell.addSubview(bubbleView(str[indexPath.row], fromSelf: false, position: 65))
             println("celll \(indexPath.row) head2 added")
         }
         println("celll \(indexPath.row) loaded")
@@ -147,16 +167,33 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-
     }
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.row == str.count - 1){
-            pushToProfileVC()
-        }
     }
     func roundHead(img: UIImageView) {
         img.layer.masksToBounds = true
         img.layer.cornerRadius = img.bounds.width / 2
 //        img.layer.bor
     }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        UIView.beginAnimations("Animation", context: nil)
+        UIView.setAnimationDuration(0.2)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y - 250, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height)
+        self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y - 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
+        
+        UIView.commitAnimations()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        UIView.beginAnimations("Animation", context: nil)
+        UIView.setAnimationDuration(0.2)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y + 250, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height)
+        self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y + 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
+        
+        UIView.commitAnimations()
+    }
+    
 }

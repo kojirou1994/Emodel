@@ -56,7 +56,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func clearBadgeAndNotifications() {
-        if (UIApplication.sharedApplication().)
+        if (UIApplication.sharedApplication().applicationIconBadgeNumber > 0) {
+            UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        }
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("get Device Token: \(deviceToken)")
+        // uncomment to store device token to YunBa
+        YunBaService.storeDeviceToken(deviceToken, resultBlock: { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                println("store device token to YunBa succ")
+            }
+            else {
+                println("store device token to YunBa failed due to : \(error), recovery suggestion: \(error.localizedRecoverySuggestion)")
+            }
+        })
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("didFailToRegisterForRemotenotificationWithError")
     }
 }
 

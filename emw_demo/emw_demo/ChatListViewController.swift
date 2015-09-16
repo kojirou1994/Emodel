@@ -14,9 +14,76 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var chatListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                println("注册用户名成功")
+            }
+            else {
+                println("注册用户名失败")
+            }
+        })
+        YunBaService.subscribe("iOS", resultBlock: { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                println("订阅成功")
+            }
+            else {
+                println("订阅失败")
+            }
+        })
+        self.addNotificationHandler()
+        var sendbtn = UIBarButtonItem(title: "send", style: UIBarButtonItemStyle.Plain, target: self, action: "sendMessage")
+        self.navigationItem.leftBarButtonItem = sendbtn
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    func sendMessage() {
+        var str = "touch发送"
+        YunBaService.publish("iOS", data: "touch发送测试".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)) { (succ: Bool, error: NSError!) -> Void in
+            
+        }
+        YunBaService.publishToAlias("xdPHONE", data: str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                println("发送消息成功")
+            }
+            else {
+                println("发送消息失败\(error)")
+            }
+        }
+    }
+    func addNotificationHandler() {
+        let defaultNC = NSNotificationCenter.defaultCenter()
+        defaultNC.addObserver(self, selector: "onConnectionStateChanged:", name: kYBConnectionStatusChangedNotification, object: nil)
+        defaultNC.addObserver(self, selector: "onMessageReceived:", name: kYBDidReceiveMessageNotification, object: nil)
+        defaultNC.addObserver(self, selector: "onPresenceReceived", name: kYBDidReceivePresenceNotification, object: nil)
+    }
+    func removeNotificationHandler() {
+        let defaultNC = NSNotificationCenter.defaultCenter()
+        defaultNC.removeObserver(self)
+    }
+    
+    func onConnectionStateChanged(notification: NSNotification) {
+        if (YunBaService.isConnected()) {
+            println("didConnect")
+        }
+        else {
+            println("didDisconected")
+        }
+    }
+    func onMessageReceived(notification: NSNotification) {
+        var message: YBMessage = notification.object as! YBMessage
+        println("new message \(message.data.length) bytes, topic = \(message.topic)")
+        var payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
+        println("data: \(payloadString)")
+    }
+    
+    func onPresenceReceived(notification: NSNotification) {
+        var presence: YBPresenceEvent = notification.object as! YBPresenceEvent
+        println("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
+        
+//        NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
+//        [self addMsgToTextView:curMsg];
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -65,7 +65,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             notice.labelText = "无法登陆"
             notice.hide(true, afterDelay: 0.5)
             dispatch_after(1, dispatch_get_main_queue(), {
-                println("load login view")
+//                println("load login view")
                 self.loadWelcomeView()
                 
                 let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -101,13 +101,13 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                 }
                 if let obj: AnyObject = response.responseObject {
                     let resp = User(JSONDecoder(obj))
-                    println("success")
+//                    println("success")
                     getUserInfo = true
                     if (getBaseInfo) {
                         var temp = localUser.baseInfo
                         localUser = resp.data
                         localUser.baseInfo = temp
-                        println(localUser.baseInfo?.QQ)
+//                        println(localUser.baseInfo?.QQ)
                         println("从user进入")
                         dispatch_async(dispatch_get_main_queue(), {
                             notice.hide(false)
@@ -137,16 +137,16 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                     return
                 }
                 if let obj: AnyObject = response.responseObject {
-                    println("获取到的baseinfo")
-                    println(response.description)
+//                    println("获取到的baseinfo")
+//                    println(response.description)
                     let resp = BaseInfoResp(JSONDecoder(obj))
                     if (resp.status == 200) {
-                        println("success")
+//                        println("success")
                         getBaseInfo = true
                         localUser.baseInfo = resp.data
                         println("update baseinfo ok")
-                        println(resp.data!.QQ)
-                        println("birthday \(localUser.baseInfo?.birthday)")
+//                        println(resp.data!.QQ)
+//                        println("birthday \(localUser.baseInfo?.birthday)")
                         if (getBaseInfo && getUserInfo) {
                             println("从base进入")
                             dispatch_async(dispatch_get_main_queue(), {
@@ -203,7 +203,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        println("出现啦\n \(isLogin)是否登录了")
+//        println("出现啦\n \(isLogin)是否登录了")
         checkIsLogIn()
         //弄个动画
     }
