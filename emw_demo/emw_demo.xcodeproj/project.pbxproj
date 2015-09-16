@@ -473,7 +473,6 @@
 		E3E9C2181B6CA66200998937 /* emw_demo */ = {
 			isa = PBXGroup;
 			children = (
-				E3B6801D1BA2C452004DF002 /* bubbleImage */,
 				E3E9C21B1B6CA66200998937 /* AppDelegate.swift */,
 				E368B5EA1BA91DDE00187BDE /* emw_demo-Bridging-Header.h */,
 				E3978F501B7ADF99002B54A3 /* API数据 */,
@@ -487,6 +486,7 @@
 				E38518701B7091B40063C2C2 /* 图标 */,
 				E3E9C2261B6CA66200998937 /* LaunchScreen.xib */,
 				E3E9C23F1B6CAF5000998937 /* SMSegmentView */,
+				E3B6801D1BA2C452004DF002 /* bubbleImage */,
 				E3E9C2191B6CA66200998937 /* Supporting Files */,
 				E3978F651B7B1470002B54A3 /* AlbumView.swift */,
 				E30B30E01B7857CE00864989 /* DataInit.swift */,

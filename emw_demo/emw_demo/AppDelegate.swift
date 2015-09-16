@@ -20,13 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         localUser = UserData()
         YunBaService.setupWithAppkey(appkey)
         kYBLogLevel = .Debug
-        if (NSString(string: UIDevice.currentDevice().systemVersion).floatValue >= 8.0) {
-            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Sound | UIUserNotificationType.Badge, categories: nil))
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Sound | UIUserNotificationType.Badge, categories: nil))
             UIApplication.sharedApplication().registerForRemoteNotifications()
-        }
-        else {
-            UIApplication.sharedApplication().registerForRemoteNotificationTypes(UIRemoteNotificationType.Sound | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert)
-        }
         
         // Override point for customization after application launch.
         return true

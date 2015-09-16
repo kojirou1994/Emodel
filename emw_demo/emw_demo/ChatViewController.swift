@@ -192,7 +192,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         UIView.setAnimationBeginsFromCurrentState(true)
         self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y + 250, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height)
         self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y + 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
-        
         UIView.commitAnimations()
     }
     
