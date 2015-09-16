@@ -8,6 +8,7 @@
 
 import UIKit
 
+let appkey = "55ef96c14a481fa955f39232"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         readUserData()
         localUser = UserData()
+        YunBaService.setupWithAppkey(appkey)
+        kYBLogLevel = .Debug
+        if (NSString(string: UIDevice.currentDevice().systemVersion).floatValue >= 8.0) {
+            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Sound | UIUserNotificationType.Badge, categories: nil))
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+        }
+        else {
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes(UIRemoteNotificationType.Sound | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert)
+        }
+        
         // Override point for customization after application launch.
         return true
     }
@@ -29,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -43,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func clearBadgeAndNotifications() {
+        if (UIApplication.sharedApplication().)
+    }
 }
 

@@ -88,6 +88,7 @@
 		E3B6803D1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802C1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png */; };
 		E3B6803E1BA2C452004DF002 /* SenderVoiceNodePlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802D1BA2C452004DF002 /* SenderVoiceNodePlaying.png */; };
 		E3B6803F1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802E1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png */; };
+		E3BA513C1BA91E8E00EA8034 /* libYunBa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BA513A1BA91E8E00EA8034 /* libYunBa.a */; };
 		E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA83741B95794400B39311 /* UserProfileViewController.swift */; };
 		E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */; };
 		E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */; };
@@ -133,11 +134,11 @@
 		E30B30E01B7857CE00864989 /* DataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInit.swift; sourceTree = "<group>"; };
 		E32E22361B960B6300BC0A0D /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoEditViewController.swift; sourceTree = "<group>"; };
-		E334520F1B731CCB004E6FD4 /* XLForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLForm.framework; path = "Pods/../build/Debug-iphoneos/XLForm.framework"; sourceTree = "<group>"; };
 		E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyInfoEditViewController.swift; sourceTree = "<group>"; };
 		E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessInfoEditViewController.swift; sourceTree = "<group>"; };
 		E34CC6451B96DD7F0089EED1 /* Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
+		E368B5EA1BA91DDE00187BDE /* emw_demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "emw_demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E36C14381BA5D64D00D6FA4D /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
@@ -208,7 +209,8 @@
 		E3B6802C1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodeDownloading@2x.png"; sourceTree = "<group>"; };
 		E3B6802D1BA2C452004DF002 /* SenderVoiceNodePlaying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderVoiceNodePlaying.png; sourceTree = "<group>"; };
 		E3B6802E1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodePlaying@2x.png"; sourceTree = "<group>"; };
-		E3B73BFD1B71B92500E6AD96 /* JSONJoy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONJoy.framework; path = "Pods/../build/Debug-iphoneos/JSONJoy.framework"; sourceTree = "<group>"; };
+		E3BA513A1BA91E8E00EA8034 /* libYunBa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYunBa.a; sourceTree = "<group>"; };
+		E3BA513B1BA91E8E00EA8034 /* YunBaService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YunBaService.h; sourceTree = "<group>"; };
 		E3BA83741B95794400B39311 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFeatureViewController.swift; sourceTree = "<group>"; };
@@ -236,7 +238,6 @@
 		E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTableCell.swift; sourceTree = "<group>"; };
 		E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTextTableViewCell.swift; sourceTree = "<group>"; };
 		E3F7CC3C1B704F79001D82D3 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
-		E3F7CC3E1B704FAF001D82D3 /* JSONJoy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONJoy.framework; path = "Pods/../build/Debug-iphoneos/JSONJoy.framework"; sourceTree = "<group>"; };
 		E3F83E4C1B82FD47005AD24C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E3F83E4D1B82FD47005AD24C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E3FBE9BC1B845C5500EA6440 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -249,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25CE5FB74C9AD9AE4E129F85 /* Pods.framework in Frameworks */,
+				E3BA513C1BA91E8E00EA8034 /* libYunBa.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,9 +276,6 @@
 		7123ABDA140D20092584BAD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E334520F1B731CCB004E6FD4 /* XLForm.framework */,
-				E3B73BFD1B71B92500E6AD96 /* JSONJoy.framework */,
-				E3F7CC3E1B704FAF001D82D3 /* JSONJoy.framework */,
 				796C19CCCCEFA6858136DF35 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -396,6 +395,15 @@
 			path = bubbleImage;
 			sourceTree = "<group>";
 		};
+		E3BA51391BA91E8E00EA8034 /* YunBaSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E3BA513A1BA91E8E00EA8034 /* libYunBa.a */,
+				E3BA513B1BA91E8E00EA8034 /* YunBaService.h */,
+			);
+			path = YunBaSDK;
+			sourceTree = "<group>";
+		};
 		E3C899931B748B1500286AC7 /* 1st Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +475,7 @@
 			children = (
 				E3B6801D1BA2C452004DF002 /* bubbleImage */,
 				E3E9C21B1B6CA66200998937 /* AppDelegate.swift */,
+				E368B5EA1BA91DDE00187BDE /* emw_demo-Bridging-Header.h */,
 				E3978F501B7ADF99002B54A3 /* API数据 */,
 				E3C8999A1B749E0C00286AC7 /* Welcome */,
 				E3C899931B748B1500286AC7 /* 1st Tab */,
@@ -488,6 +497,7 @@
 		E3E9C2191B6CA66200998937 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3BA51391BA91E8E00EA8034 /* YunBaSDK */,
 				E304C20C1B8EE33E00A40348 /* AlbumCover.png */,
 				E390121C1B9BD0F400CABB9E /* Networking.swift */,
 				E304C20E1B8EE90F00A40348 /* head.jpg */,
@@ -913,8 +923,15 @@
 				INFOPLIST_FILE = emw_demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/emw_demo/bubbleImage/YunBaSDK",
+					"$(PROJECT_DIR)/emw_demo/YunBaSDK",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "emw_demo-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -929,8 +946,15 @@
 				INFOPLIST_FILE = emw_demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/emw_demo/bubbleImage/YunBaSDK",
+					"$(PROJECT_DIR)/emw_demo/YunBaSDK",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "emw_demo-Bridging-Header.h";
 			};
 			name = Release;
 		};
