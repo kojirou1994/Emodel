@@ -144,7 +144,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
             }
             
             cell.config(taskData![indexPath.row])
-            println(cell.timeLabel?.text)
+//            println(cell.timeLabel?.text)
             return cell!
         }
 
@@ -190,7 +190,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
             let indexPath = self.tableView!.indexPathForSelectedRow()
             println("点击了通告\(indexPath)")
             let destinationViewController = segue.destinationViewController as! NoticeDetailViewController
-            println("taskData transfer")
+//            println("taskData transfer")
             destinationViewController.taskData = taskData![indexPath!.row]
         }
     }

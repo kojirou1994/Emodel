@@ -34,7 +34,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
         enroll.requestSerializer = HTTPRequestSerializer()
         enroll.requestSerializer.headers["Token"] = token
         enroll.POST(serverAddress + "/task/" + self.taskData!.id! + "/join", parameters: nil) { (response) -> Void in
-            println(response.description)
+//            println(response.description)
             if (response.statusCode == 200) {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     var alert = UIAlertController(title: "报名成功", message: "报名成功", preferredStyle: UIAlertControllerStyle.Alert)
@@ -57,7 +57,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if (indexPath.row == 10) {
+        if (indexPath.row == 11) {
             let identifier: String = "button"
             var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTableCell
             cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -114,6 +114,9 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             case 9:
                 cell.textLabel?.text = "发布时间"
                 cell.detailTextLabel?.text = taskData?.created_at
+            case 10:
+                cell.textLabel?.text = "联系商家"
+                cell.detailTextLabel?.text = ""
             default:
                 cell.textLabel?.text = "null"
                 cell.detailTextLabel?.text = "default"
@@ -129,7 +132,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             return 0
         }
         else {
-            return 11
+            return 12
         }
     }
     
@@ -144,6 +147,11 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if (indexPath.row == 10) {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            var chat = sb.instantiateViewControllerWithIdentifier("Chat") as! ChatViewController
+            self.navigationController?.pushViewController(chat, animated: true)
+        }
     }
 
 }
