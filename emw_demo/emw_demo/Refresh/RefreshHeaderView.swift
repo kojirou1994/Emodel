@@ -77,7 +77,7 @@ class RefreshHeaderView: RefreshBaseView {
     func updateTimeLabel(){
         //更新时间字符串
         var calendar:NSCalendar = NSCalendar.currentCalendar()
-        var unitFlags:NSCalendarUnit = NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit |  NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit
+        var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay |  NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute
         var cmp1:NSDateComponents = calendar.components(unitFlags, fromDate:lastUpdateTime)
         var cmp2:NSDateComponents = calendar.components(unitFlags, fromDate: NSDate())
         var formatter:NSDateFormatter = NSDateFormatter()
@@ -89,7 +89,7 @@ class RefreshHeaderView: RefreshBaseView {
     }
     
     //监听UIScrollView的contentOffset属性
-    override  func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+    override  func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (!self.userInteractionEnabled || self.hidden){
             return
         }

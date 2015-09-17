@@ -3,7 +3,7 @@ PODS:
   - DACircularProgress (2.3.1)
   - JSONJoy-Swift (0.9.3)
   - JTCalendar (2.1.4)
-  - Kingfisher (1.4.0)
+  - Kingfisher (1.5.0)
   - MBProgressHUD (0.9.1)
   - MWPhotoBrowser (2.1.1):
     - DACircularProgress (~> 2.3)
@@ -19,7 +19,7 @@ DEPENDENCIES:
   - Alamofire (~> 1.3)
   - JSONJoy-Swift (~> 0.9.1)
   - JTCalendar (~> 2.0)
-  - Kingfisher (= 1.4)
+  - Kingfisher (= 1.5)
   - MBProgressHUD (~> 0.9.1)
   - MWPhotoBrowser
   - SwiftHTTP (~> 0.9.4)
@@ -30,7 +30,7 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   JSONJoy-Swift: 5faf6a7c150264d606627b26d82e89a43f740c77
   JTCalendar: 9b1352c7ec41cc26b19c189d6608ba48060a53d9
-  Kingfisher: 634df75082bd517db46a8907956f96eb0f76de63
+  Kingfisher: cbb280faba0e9ae0a73d2c51072f7dd94ccfe640
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MWPhotoBrowser: ba0d0c09ffda3a7ea10093518738c502c1c7141c
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

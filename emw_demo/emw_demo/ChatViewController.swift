@@ -19,6 +19,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var sendBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("对象id： \(targetUserID)")
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationItem.title = "王羞羞"
         print(chatTableView.bounds)
@@ -45,6 +46,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let profileBtn = UIBarButtonItem(title: "Profile", style: UIBarButtonItemStyle.Plain, target: self, action: "pushToProfileVC")
         self.navigationItem.rightBarButtonItem = profileBtn
+        self.chatTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
+        
+        self.addNotificationHandler()
     }
     
     
@@ -53,16 +57,50 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func send() {
         println("message sent")
         println(inputField.text)
+        self.resignFirstResponder()
         YunBaService.publishToAlias(targetUserID, data: inputField.text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
+                println("聊天信息已发送")
                 self.str.append(self.inputField.text)
+                self.isFromSelf.append(true)
                 self.chatTableView.reloadData()
             }
             else {
-                
+                println("聊天信息发送失败")
+                println(error.description)
             }
         }
     }
+    
+    //MARK : - YunbaService
+    func addNotificationHandler() {
+        let defaultNC = NSNotificationCenter.defaultCenter()
+        defaultNC.addObserver(self, selector: "onMessageReceived:", name: kYBDidReceiveMessageNotification, object: nil)
+        defaultNC.addObserver(self, selector: "onPresenceReceived", name: kYBDidReceivePresenceNotification, object: nil)
+    }
+    func removeNotificationHandler() {
+        let defaultNC = NSNotificationCenter.defaultCenter()
+        defaultNC.removeObserver(self)
+    }
+    
+    func onMessageReceived(notification: NSNotification) {
+        var message: YBMessage = notification.object as! YBMessage
+        println("new message \(message.data.length) bytes, topic = \(message.topic)")
+        var payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
+        println("data: \(payloadString)")
+        self.str.append(payloadString as! String)
+        self.isFromSelf.append(false)
+        self.chatTableView.reloadData()
+    }
+    
+    func onPresenceReceived(notification: NSNotification) {
+        var presence: YBPresenceEvent = notification.object as! YBPresenceEvent
+        println("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
+        
+        //        NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
+        //        [self addMsgToTextView:curMsg];
+    }
+    
     func pushToProfileVC() {
         println("显示用户简介")
     }
@@ -125,25 +163,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return str.count
     }
-    var str:Array<String> = ["","",""]
-    
-    var usertype = true
+    var str:Array<String> = ["开始聊天"]
+    var isFromSelf: Array<Bool> = [true]
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        usertype = (indexPath.row % 2) == 0
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("chatDetailCell") as! UITableViewCell
         for i in cell.subviews {
             i.removeFromSuperview()
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         var head: UIImageView
-        if (usertype) {
+        if (isFromSelf[indexPath.row]) {
             head = UIImageView(frame: CGRectMake(320 - 60, 10, 50, 50))
             cell.addSubview(head)
             head.image = UIImage(named: "photo1")
             roundHead(head)
             cell.addSubview(bubbleView(str[indexPath.row], fromSelf: true, position: 65))
-            println("celll \(indexPath.row) head1 added")
+            println("cell \(indexPath.row) head1 added")
         }
         else {
             head = UIImageView(frame: CGRectMake(10, 10, 50, 50))
@@ -151,15 +189,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             head.image = UIImage(named: "head.jpg")
             roundHead(head)
             cell.addSubview(bubbleView(str[indexPath.row], fromSelf: false, position: 65))
-            println("celll \(indexPath.row) head2 added")
+            println("cell \(indexPath.row) head2 added")
         }
-        println("celll \(indexPath.row) loaded")
+        println("cell \(indexPath.row) loaded")
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let font = UIFont.systemFontOfSize(14)
-        let text = String(indexPath.row) as NSString
+        let text = str[indexPath.row] as NSString
         let size = text.boundingRectWithSize(CGSizeMake(180, 20000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil)
         return size.height + 44
     }
@@ -180,7 +218,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         UIView.beginAnimations("Animation", context: nil)
         UIView.setAnimationDuration(0.2)
         UIView.setAnimationBeginsFromCurrentState(true)
-        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y - 250, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height)
+        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height - 250)
         self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y - 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
         
         UIView.commitAnimations()
@@ -190,7 +228,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         UIView.beginAnimations("Animation", context: nil)
         UIView.setAnimationDuration(0.2)
         UIView.setAnimationBeginsFromCurrentState(true)
-        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y + 250, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height)
+        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height + 250)
         self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y + 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
         UIView.commitAnimations()
     }

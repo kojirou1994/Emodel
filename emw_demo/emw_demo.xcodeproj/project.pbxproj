@@ -88,6 +88,7 @@
 		E3B6803D1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802C1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png */; };
 		E3B6803E1BA2C452004DF002 /* SenderVoiceNodePlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802D1BA2C452004DF002 /* SenderVoiceNodePlaying.png */; };
 		E3B6803F1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6802E1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png */; };
+		E3BA45C31BAA4B780012DC40 /* emw_demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3BA45C11BAA4B780012DC40 /* emw_demo.xcdatamodeld */; };
 		E3BA513C1BA91E8E00EA8034 /* libYunBa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BA513A1BA91E8E00EA8034 /* libYunBa.a */; };
 		E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA83741B95794400B39311 /* UserProfileViewController.swift */; };
 		E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */; };
@@ -209,6 +210,7 @@
 		E3B6802C1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodeDownloading@2x.png"; sourceTree = "<group>"; };
 		E3B6802D1BA2C452004DF002 /* SenderVoiceNodePlaying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderVoiceNodePlaying.png; sourceTree = "<group>"; };
 		E3B6802E1BA2C452004DF002 /* SenderVoiceNodePlaying@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodePlaying@2x.png"; sourceTree = "<group>"; };
+		E3BA45C21BAA4B780012DC40 /* emw_demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = emw_demo.xcdatamodel; sourceTree = "<group>"; };
 		E3BA513A1BA91E8E00EA8034 /* libYunBa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYunBa.a; sourceTree = "<group>"; };
 		E3BA513B1BA91E8E00EA8034 /* YunBaService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YunBaService.h; sourceTree = "<group>"; };
 		E3BA83741B95794400B39311 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				E3E9C21B1B6CA66200998937 /* AppDelegate.swift */,
+				E3BA45C11BAA4B780012DC40 /* emw_demo.xcdatamodeld */,
 				E368B5EA1BA91DDE00187BDE /* emw_demo-Bridging-Header.h */,
 				E3978F501B7ADF99002B54A3 /* API数据 */,
 				E3C8999A1B749E0C00286AC7 /* Welcome */,
@@ -759,6 +762,7 @@
 				E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */,
 				E36C14421BA5D64D00D6FA4D /* RefreshConst.swift in Sources */,
 				E3C899921B7473AD00286AC7 /* LoginViewController.swift in Sources */,
+				E3BA45C31BAA4B780012DC40 /* emw_demo.xcdatamodeld in Sources */,
 				E36C14451BA5D64D00D6FA4D /* UIScrollView+Refresh.swift in Sources */,
 				E390121D1B9BD0F400CABB9E /* Networking.swift in Sources */,
 				E36C14431BA5D64D00D6FA4D /* RefreshFooterView.swift in Sources */,
@@ -925,7 +929,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/emw_demo/bubbleImage/YunBaSDK",
 					"$(PROJECT_DIR)/emw_demo/YunBaSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
@@ -948,7 +951,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/emw_demo/bubbleImage/YunBaSDK",
 					"$(PROJECT_DIR)/emw_demo/YunBaSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
@@ -1023,6 +1025,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E3BA45C11BAA4B780012DC40 /* emw_demo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E3BA45C21BAA4B780012DC40 /* emw_demo.xcdatamodel */,
+			);
+			currentVersion = E3BA45C21BAA4B780012DC40 /* emw_demo.xcdatamodel */;
+			path = emw_demo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E3E9C20E1B6CA66200998937 /* Project object */;
 }
