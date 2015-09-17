@@ -12,7 +12,7 @@ import Foundation
 let testServer: String! = "http://10.0.1.11"
 let publicServer: String! = "http://api.emwcn.com"
 
-let serverAddress: String! = testServer
+let serverAddress: String! = publicServer
 
 var isLogin: Bool = false
 var username: String!
