@@ -64,7 +64,7 @@ class ConfigViewController: UITableViewController {
             isLogin = false
             let user = NSUserDefaults.standardUserDefaults()
             user.removeObjectForKey("UserName")
-            println("已移除用户信息")
+            print("已移除用户信息")
             self.dismissViewControllerAnimated(true, completion: nil)
             
         }
@@ -73,7 +73,7 @@ class ConfigViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Detail", forIndexPath: indexPath) as! UITableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("Detail", forIndexPath: indexPath) 
                 cell.textLabel?.text = "cache"
                 cell.detailTextLabel?.text = "3.6MB"
                 return cell
@@ -81,19 +81,19 @@ class ConfigViewController: UITableViewController {
         }
         else if (indexPath.section == 1) {
             if (indexPath.row == 0) {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) as! UITableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) 
                 cell.textLabel?.text = "APP STORE LINK"
                 return cell
             }
             else if (indexPath.row == 1) {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) as! UITableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) 
                 cell.textLabel?.text = "ABOUT"
                 return cell
             }
         }
         else if (indexPath.section == 2){
             if (indexPath.row == 0) {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) as! UITableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) 
                 cell.textLabel?.text = "退出登录"
                 return cell
             }
@@ -101,7 +101,7 @@ class ConfigViewController: UITableViewController {
         else {
             
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) 
         cell.textLabel?.text = ""
         return cell
     }

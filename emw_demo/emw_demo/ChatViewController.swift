@@ -19,12 +19,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var sendBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("对象id： \(targetUserID)")
+        print("对象id： \(targetUserID)")
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationItem.title = "王羞羞"
-        print(chatTableView.bounds)
+        print(chatTableView.bounds, terminator: "")
         chatTableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-45)
-        print(chatTableView.contentSize)
+        print(chatTableView.contentSize, terminator: "")
         
         inputKeyView = UIView(frame: CGRectMake(0, self.view.frame.height-45, self.view.frame.width, 45))
         inputKeyView.backgroundColor = UIColor.redColor()
@@ -55,19 +55,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func send() {
-        println("message sent")
-        println(inputField.text)
+        print("message sent")
+        print(inputField.text)
         self.resignFirstResponder()
         YunBaService.publishToAlias(targetUserID, data: inputField.text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
-                println("聊天信息已发送")
+                print("聊天信息已发送")
                 self.str.append(self.inputField.text)
                 self.isFromSelf.append(true)
                 self.chatTableView.reloadData()
             }
             else {
-                println("聊天信息发送失败")
-                println(error.description)
+                print("聊天信息发送失败")
+                print(error.description)
             }
         }
     }
@@ -84,25 +84,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func onMessageReceived(notification: NSNotification) {
-        var message: YBMessage = notification.object as! YBMessage
-        println("new message \(message.data.length) bytes, topic = \(message.topic)")
-        var payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
-        println("data: \(payloadString)")
+        let message: YBMessage = notification.object as! YBMessage
+        print("new message \(message.data.length) bytes, topic = \(message.topic)")
+        let payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
+        print("data: \(payloadString)")
         self.str.append(payloadString as! String)
         self.isFromSelf.append(false)
         self.chatTableView.reloadData()
     }
     
     func onPresenceReceived(notification: NSNotification) {
-        var presence: YBPresenceEvent = notification.object as! YBPresenceEvent
-        println("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
+        let presence: YBPresenceEvent = notification.object as! YBPresenceEvent
+        print("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
         
         //        NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
         //        [self addMsgToTextView:curMsg];
     }
     
     func pushToProfileVC() {
-        println("显示用户简介")
+        print("显示用户简介")
     }
     func goToLatestMessage() {
         let index = NSIndexPath(forRow: str.count - 1, inSection: 0)
@@ -122,21 +122,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func bubbleView(text: String, fromSelf: Bool, position: Int) -> UIView {
         //计算大小
-        var font = UIFont.systemFontOfSize(14)
-        var str = NSString(string: text)
-        var size = str.boundingRectWithSize(CGSizeMake(180, 20000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        let font = UIFont.systemFontOfSize(14)
+        let str = NSString(string: text)
+        let size = str.boundingRectWithSize(CGSizeMake(180, 20000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         
-        var returnView = UIView(frame: CGRectZero)
+        let returnView = UIView(frame: CGRectZero)
         returnView.backgroundColor = UIColor.clearColor()
         
         //背景图片
-        var bubble = UIImage(named: (fromSelf ? "SenderAppNodeBkg_HL.png" : "ReceiverTextNodeBkg.png"))
-        var bubbleImageView = UIImageView(image: bubble!.stretchableImageWithLeftCapWidth(Int(bubble!.size.width / 2), topCapHeight: Int(bubble!.size.height / 2)))
-        println(size.width)
-        println(size.height)
+        let bubble = UIImage(named: (fromSelf ? "SenderAppNodeBkg_HL.png" : "ReceiverTextNodeBkg.png"))
+        let bubbleImageView = UIImageView(image: bubble!.stretchableImageWithLeftCapWidth(Int(bubble!.size.width / 2), topCapHeight: Int(bubble!.size.height / 2)))
+        print(size.width)
+        print(size.height)
         
         //添加文本
-        var bubbleText = UILabel(frame: CGRectMake(fromSelf ? 15.0 : 22.0, 20.0, size.width+10, size.height+10))
+        let bubbleText = UILabel(frame: CGRectMake(fromSelf ? 15.0 : 22.0, 20.0, size.width+10, size.height+10))
         bubbleText.backgroundColor =  UIColor.clearColor()
         bubbleText.font = font
         bubbleText.numberOfLines = 0
@@ -181,7 +181,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             head.image = UIImage(named: "photo1")
             roundHead(head)
             cell.addSubview(bubbleView(str[indexPath.row], fromSelf: true, position: 65))
-            println("cell \(indexPath.row) head1 added")
+            print("cell \(indexPath.row) head1 added")
         }
         else {
             head = UIImageView(frame: CGRectMake(10, 10, 50, 50))
@@ -189,9 +189,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             head.image = UIImage(named: "head.jpg")
             roundHead(head)
             cell.addSubview(bubbleView(str[indexPath.row], fromSelf: false, position: 65))
-            println("cell \(indexPath.row) head2 added")
+            print("cell \(indexPath.row) head2 added")
         }
-        println("cell \(indexPath.row) loaded")
+        print("cell \(indexPath.row) loaded")
         return cell
     }
     

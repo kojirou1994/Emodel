@@ -39,7 +39,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func sendMobileBtnPressed(sender: AnyObject) {
         self.view.endEditing(true)
-        if count(mobileInput.text) == 11 {
+        if mobileInput.text.characters.count == 11 {
             var request = HTTPTask()
             sendMobileBtn.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
             
@@ -47,16 +47,16 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             self.countDownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
             let params: Dictionary<String,AnyObject> = ["mobile": mobileInput.text]
             //        ["param": "param1", "array": ["first array element","second","third"], "num": 23, "dict": ["someKey": "someVal"]]
-            println("\(serverAddress)/user/confirm")
+            print("\(serverAddress)/user/confirm")
             request.POST("\(serverAddress)/user/confirm", parameters: params, completionHandler: {(response: HTTPResponse) in
                 if let err = response.error {
-                    println("error: \(err.localizedDescription)")
+                    print("error: \(err.localizedDescription)")
                     return //also notify app of failure as needed
                 }
                 else if let obj: AnyObject = response.responseObject {
                     let resp = ConfirmResp(JSONDecoder(obj))
-                    println("status is: \(resp.status!)")
-                    println("confirm token is:\(resp.data!.confirm_token!)")
+                    print("status is: \(resp.status!)")
+                    print("confirm token is:\(resp.data!.confirm_token!)")
                     self.confirmToken = resp.data!.confirm_token!
                 }
             })
@@ -70,7 +70,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func registerBtnPressed(sender: AnyObject) {
-        if isEmpty(codeInput.text) || isEmpty(passwordInput.text) || isEmpty(passwordConfirmInput.text) {
+        if codeInput.text.characters.isEmpty || passwordInput.text.characters.isEmpty || passwordConfirmInput.text.characters.isEmpty {
             //send error
             var alert = UIAlertController(title: "填写不正确", message: "请输入正确的信息", preferredStyle: UIAlertControllerStyle.Alert)
             var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -83,7 +83,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             
             request.POST("\(serverAddress)/user/signup", parameters: params, completionHandler: {(response: HTTPResponse) in
                 if let err = response.error {
-                    println("error: \(err.localizedDescription)")
+                    print("error: \(err.localizedDescription)")
                     return
                 }
                 else if let obj: AnyObject = response.responseObject {
@@ -131,7 +131,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     // MARK: - TextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        println(textField.text)
+        print(textField.text)
         return true;
     }
     

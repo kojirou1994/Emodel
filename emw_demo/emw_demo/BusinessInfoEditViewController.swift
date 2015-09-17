@@ -24,7 +24,7 @@ class BusinessInfoEditViewController: XLFormViewController {
         self.initializeForm()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initializeForm()
     }
@@ -85,7 +85,7 @@ class BusinessInfoEditViewController: XLFormViewController {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "savePressed:")
-        println(self.httpParameters())
+        print(self.httpParameters())
         // Do any additional setup after loading the view.
     }
 
@@ -134,7 +134,7 @@ class BusinessInfoEditViewController: XLFormViewController {
             "dayPrice": dayPrice,
             "startCount": startCount,
         ]
-        println(para)
+        print(para)
         
         var manager = Manager.sharedInstance
         // Add Headers
@@ -147,14 +147,14 @@ class BusinessInfoEditViewController: XLFormViewController {
         Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/businessinfo", parameters: para, encoding: encoding)
             .responseJSON { _, _, JSON, error in
                 if (error == nil) {
-                    println("HTTP Response Body: \(JSON)")
+                    print("HTTP Response Body: \(JSON)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let alertView = UIAlertView(title: "更新成功", message: "okokokok", delegate: self, cancelButtonTitle: "OK")
                         alertView.show()
                     })
                 }
                 else {
-                    println("HTTP HTTP Request failed: \(error)")
+                    print("HTTP HTTP Request failed: \(error)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let alertView = UIAlertView(title: "失败", message: "byebye", delegate: self, cancelButtonTitle: "OK")
                         alertView.show()

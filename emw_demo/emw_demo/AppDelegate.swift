@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         localUser = UserData()
         YunBaService.setupWithAppkey(appkey)
         kYBLogLevel = .Debug
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Sound | UIUserNotificationType.Badge, categories: nil))
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil))
             UIApplication.sharedApplication().registerForRemoteNotifications()
         
         // Override point for customization after application launch.
@@ -58,20 +58,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println("get Device Token: \(deviceToken)")
+        print("get Device Token: \(deviceToken)")
         // uncomment to store device token to YunBa
         YunBaService.storeDeviceToken(deviceToken, resultBlock: { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
-                println("store device token to YunBa succ")
+                print("store device token to YunBa succ")
             }
             else {
-                println("store device token to YunBa failed due to : \(error), recovery suggestion: \(error.localizedRecoverySuggestion)")
+                print("store device token to YunBa failed due to : \(error), recovery suggestion: \(error.localizedRecoverySuggestion)")
             }
         })
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        println("didFailToRegisterForRemotenotificationWithError")
+        print("didFailToRegisterForRemotenotificationWithError")
     }
     
 //    // MARK: - Core Data stack

@@ -12,7 +12,7 @@ class AlbumView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICo
     var indexPath: NSIndexPath!
     var collectionView:UICollectionView!
     let identifier = "Cell"
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override init(frame: CGRect) {
@@ -54,7 +54,7 @@ class AlbumView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICo
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         let row = indexPath.row
-        var cell: AlbumViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! AlbumViewCell
+        let cell: AlbumViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! AlbumViewCell
         cell.setData()
         cell.delegate = self
         return cell
@@ -88,7 +88,7 @@ class AlbumViewCell: UICollectionViewCell ,UIScrollViewDelegate{
         vScrollView.showsVerticalScrollIndicator = false
         vScrollView.showsHorizontalScrollIndicator = false
         //添加单击
-        var tapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewTapped:")
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewTapped:")
         vScrollView.addGestureRecognizer(tapRecognizer)
         self.addSubview(vScrollView)
     }
@@ -97,7 +97,7 @@ class AlbumViewCell: UICollectionViewCell ,UIScrollViewDelegate{
         vScrollView.zoomScale = 1
         vImage.image = UIImage(named:"IMG_1798")
     }
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {

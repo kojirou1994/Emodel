@@ -28,17 +28,17 @@ var localUser: UserData!
 func readUserData() {
     let user = NSUserDefaults.standardUserDefaults()
     if let haveData: AnyObject = user.objectForKey("UserName") {
-        println("have default for username")
+        print("have default for username")
         username = user.objectForKey("UserName") as? String
         password = (user.objectForKey("Password") as! String)
         userId = (user.objectForKey("UserID") as! String)
         token = user.objectForKey("Token") as? String
-        println("read username: \(username)")
-        println("read password \(password)")
+        print("read username: \(username)")
+        print("read password \(password)")
         isLogin = true
     }
     else {
-        println("no default data")
+        print("no default data")
         isLogin = false
     }
 }

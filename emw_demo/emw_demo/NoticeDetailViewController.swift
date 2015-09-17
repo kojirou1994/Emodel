@@ -18,7 +18,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = taskData?.title
-        println("have sign up ?")
+        print("have sign up ?")
         // Do any additional setup after loading the view.
     }
 
@@ -29,7 +29,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     
     //报名
     func enrollBtnPressed() {
-        println("报名")
+        print("报名")
         var enroll = HTTPTask()
         enroll.requestSerializer = HTTPRequestSerializer()
         enroll.requestSerializer.headers["Token"] = token
@@ -149,7 +149,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if (indexPath.row == 10) {
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            var chat = sb.instantiateViewControllerWithIdentifier("Chat") as! ChatViewController
+            let chat = sb.instantiateViewControllerWithIdentifier("Chat") as! ChatViewController
             self.navigationController?.pushViewController(chat, animated: true)
         }
     }

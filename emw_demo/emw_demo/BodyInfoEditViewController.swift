@@ -31,7 +31,7 @@ class BodyInfoEditViewController : XLFormViewController {
         self.initializeForm()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initializeForm()
     }
@@ -132,7 +132,7 @@ class BodyInfoEditViewController : XLFormViewController {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "savePressed:")
-        println(localUser.bodyInfo?.height)
+        print(localUser.bodyInfo?.height)
     }
     
     func savePressed(button: UIBarButtonItem) {
@@ -229,7 +229,7 @@ class BodyInfoEditViewController : XLFormViewController {
             "waistline": waistline,
             "weight": weight
         ]
-        println(para)
+        print(para)
         
         var manager = Manager.sharedInstance
         // Add Headers
@@ -242,14 +242,14 @@ class BodyInfoEditViewController : XLFormViewController {
         Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/bodyinfo", parameters: (para as! [String : AnyObject]), encoding: encoding)
             .responseJSON { _, _, JSON, error in
                 if (error == nil) {
-                    println("HTTP Response Body: \(JSON)")
+                    print("HTTP Response Body: \(JSON)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let alertView = UIAlertView(title: "更新成功", message: "okokokok", delegate: self, cancelButtonTitle: "OK")
                         alertView.show()
                     })
                 }
                 else {
-                    println("HTTP HTTP Request failed: \(error)")
+                    print("HTTP HTTP Request failed: \(error)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let alertView = UIAlertView(title: "失败", message: "byebye", delegate: self, cancelButtonTitle: "OK")
                         alertView.show()

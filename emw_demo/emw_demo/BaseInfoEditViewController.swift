@@ -30,7 +30,7 @@ class BaseInfoEditViewController : XLFormViewController {
         self.initializeForm()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initializeForm()
     }
@@ -63,12 +63,12 @@ class BaseInfoEditViewController : XLFormViewController {
 //        section.addFormRow(row)
         
         // 转换生日string to nsdate
-        var format = NSDateFormatter()
+        let format = NSDateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         // 生日
         row = XLFormRowDescriptor(tag: BaseInfoTag.Birthday.rawValue, rowType: XLFormRowDescriptorTypeDateInline, title: "生日")
         row.value = format.dateFromString(localUser.baseInfo!.birthday!)
-        println("生日 \(localUser.baseInfo?.birthday)")
+        print("生日 \(localUser.baseInfo?.birthday)")
         section.addFormRow(row)
         
         // 邮箱
@@ -186,7 +186,7 @@ class BaseInfoEditViewController : XLFormViewController {
             "email": email,
             "birthday": birthday
         ]
-        println(para)
+        print(para)
         
         var manager = Manager.sharedInstance
         // Add Headers
@@ -199,14 +199,14 @@ class BaseInfoEditViewController : XLFormViewController {
         Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/baseinfo", parameters: para, encoding: encoding)
             .responseJSON { _, _, JSON, error in
                 if (error == nil) {
-                    println("HTTP Response Body: \(JSON)")
+                    print("HTTP Response Body: \(JSON)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let alertView = UIAlertView(title: "更新成功", message: "okokokok", delegate: self, cancelButtonTitle: "OK")
                         alertView.show()
                     })
                 }
                 else {
-                    println("HTTP HTTP Request failed: \(error)")
+                    print("HTTP HTTP Request failed: \(error)")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let alertView = UIAlertView(title: "失败", message: "byebye", delegate: self, cancelButtonTitle: "OK")
                         alertView.show()

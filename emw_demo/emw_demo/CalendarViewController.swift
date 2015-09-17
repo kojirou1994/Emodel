@@ -26,16 +26,16 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(todayDate)")
+        print("\(todayDate)")
         calendarManager.delegate = self
         calendarManager.menuView = calendarMenuView
         calendarManager.contentView = calendarContentView
         calendarManager.setDate(NSDate())
         minDate = calendarManager.dateHelper.addToDate(todayDate, months: -3)
         maxDate = calendarManager.dateHelper.addToDate(todayDate, months: 3)
-        println("\(todayDate)")
-        println("\(minDate)")
-        println("\(maxDate)")
+        print("\(todayDate)")
+        print("\(minDate)")
+        print("\(maxDate)")
         calendarManager.reload()
         // Do any additional setup after loading the view.
     }
@@ -79,13 +79,13 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
     
     func calendar(calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {
         if let myDayView = dayView as? JTCalendarDayView {
-            var localZone = NSTimeZone.localTimeZone()
-            var interval: NSInteger = localZone.secondsFromGMTForDate(myDayView.date)
+            let localZone = NSTimeZone.localTimeZone()
+            let interval: NSInteger = localZone.secondsFromGMTForDate(myDayView.date)
             dateSelected = myDayView.date.dateByAddingTimeInterval(NSTimeInterval(interval))
-            println("\(dateSelected)")
+            print("\(dateSelected)")
             //Animation
             myDayView.circleView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.1, 0.1)
-            UIView.transitionWithView(myDayView.circleView, duration: 0.3, options: nil, animations: { () -> Void in
+            UIView.transitionWithView(myDayView.circleView, duration: 0.3, options: [], animations: { () -> Void in
                 myDayView.circleView.transform = CGAffineTransformIdentity
                 self.calendarManager.reload()
             }, completion: nil)
@@ -104,7 +104,7 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
     }
     
     func dateFormatter() -> NSDateFormatter {
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         return dateFormatter
 
@@ -123,10 +123,10 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
         return calendarManager.dateHelper.date(todayDate, isEqualOrAfter: minDate, andEqualOrBefore: maxDate)
     }
     func calendarDidLoadNextPage(calendar: JTCalendarManager!) {
-        println("calendarDidLoadNextPage")
+        print("calendarDidLoadNextPage")
     }
     func calendarDidLoadPreviousPage(calendar: JTCalendarManager!) {
-        println("calendarDidLoadPreviousPage")
+        print("calendarDidLoadPreviousPage")
     }
     
     

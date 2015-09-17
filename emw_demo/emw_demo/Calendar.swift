@@ -40,7 +40,7 @@ struct Calendar: JSONJoy {
         timeBucket = decoder["timeBucket"].integer
         var time = String(timeBucket)
         var count = 0
-        for cha in time {
+        for cha in time.characters {
             if (count == 4) {
                 if (cha == "0") {
                     isMorning = false

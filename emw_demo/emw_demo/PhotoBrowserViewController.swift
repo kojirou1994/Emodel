@@ -14,9 +14,9 @@ class PhotoBrowserViewController: MWPhotoBrowser, MWPhotoBrowserDelegate, UINavi
     var photodata:[AlbumListData] = []
     
     override func viewDidLoad() {
-        println("MWPhotoBrowser Loaded")
+        print("MWPhotoBrowser Loaded")
         super.viewDidLoad()
-        println("Photo Browser showed")
+        print("Photo Browser showed")
         // Do any additional setup after loading the view.
     }
     
@@ -32,7 +32,7 @@ class PhotoBrowserViewController: MWPhotoBrowser, MWPhotoBrowserDelegate, UINavi
     }
     func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
         let i: Int = Int(bitPattern: index)
-        var single = MWPhoto(URL: NSURL(string: photodata[i].imgUri)!)
+        let single = MWPhoto(URL: NSURL(string: photodata[i].imgUri)!)
         return single
     }
     /*

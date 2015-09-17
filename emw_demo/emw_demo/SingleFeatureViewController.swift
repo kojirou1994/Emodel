@@ -21,26 +21,26 @@ class SingleFeatureViewController: UIViewController {
         super.init(nibName:nil, bundle:nil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         if number == 1 {
-            var image = UIImage(named: "bg.png")
+            let image = UIImage(named: "bg.png")
             
-            var imagev = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+            let imagev = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
             imagev.image = image
             imagev.contentMode = UIViewContentMode.ScaleAspectFit
             self.view.addSubview(imagev)
-            var numberLabel = UILabel(frame:CGRectMake(self.view.frame.width/2-20,self.view.frame.height-200,100,100))
+            let numberLabel = UILabel(frame:CGRectMake(self.view.frame.width/2-20,self.view.frame.height-200,100,100))
             //        numberLabel.center = self.view.center
             numberLabel.text = "第\(number)页"
             numberLabel.textColor = UIColor.whiteColor()
             self.view.addSubview(numberLabel)
         }
         else {
-        var numberLabel = UILabel(frame:CGRectMake(self.view.frame.width/2-20,self.view.frame.height-200,100,100))
+        let numberLabel = UILabel(frame:CGRectMake(self.view.frame.width/2-20,self.view.frame.height-200,100,100))
         //        numberLabel.center = self.view.center
         numberLabel.text = "第\(number)页"
         numberLabel.textColor = UIColor.whiteColor()

@@ -21,7 +21,7 @@ var photos: NSMutableArray = []
 //var thumbs: NSMutableArray = []
 class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIAlertViewDelegate {
     @IBAction func EditBtnPressed(sender: AnyObject) {
-        println("show删除相册界面")
+        print("show删除相册界面")
     }
     
     @IBOutlet weak var AlbumListCollectionView: UICollectionView!
@@ -30,7 +30,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
+        let addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
         self.navigationItem.rightBarButtonItem = addBtn
         album = localUser.albumInfo!
         self.AlbumListCollectionView.reloadData()
@@ -44,8 +44,8 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     //MARK: - Func
     
     func addAlbum(barButton: UIBarButtonItem) {
-        println("add pressed")
-        var addAlert = UIAlertView(title: "添加相册", message: "请输入相册标题", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
+        print("add pressed")
+        let addAlert = UIAlertView(title: "添加相册", message: "请输入相册标题", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
         addAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
         addAlert.tag = 1
         addAlert.show()
@@ -58,7 +58,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         let params: Dictionary<String,AnyObject> = ["name": title, "userId": userId]
         request.POST(serverAddress + "/album", parameters: params, completionHandler: {(response: HTTPResponse) in
             if let err = response.error {
-                println("error: \(err.localizedDescription)")
+                print("error: \(err.localizedDescription)")
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertView(title: "添加失败", message: "请重新添加", delegate: nil, cancelButtonTitle: "确定")
                     alert.show()
@@ -66,7 +66,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
                 return
             }
             if let obj: AnyObject = response.responseObject {
-                println("相册添加成功")
+                print("相册添加成功")
                 self.updateUserInfo()
             }
         })
@@ -77,21 +77,21 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         var request = HTTPTask()
         request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
             if let err = response.error {
-                println("error: \(err.localizedDescription)")
+                print("error: \(err.localizedDescription)")
                 return
             }
             if let obj: AnyObject = response.responseObject {
                 let resp = User(JSONDecoder(obj))
                 switch (resp.status!) {
                 case 200:
-                    println("update UserInfo success")
+                    print("update UserInfo success")
                     localUser = resp.data
-                    println(localUser!.star)
+                    print(localUser!.star)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.updateInterface()
                     })
                 default:
-                    println("get user info failed")
+                    print("get user info failed")
                 }
             }
         }
@@ -123,12 +123,12 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     //MARK: - UICllectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println("did Select\(indexPath)")
+        print("did Select\(indexPath)")
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let picDimension: CGFloat = self.view.frame.width / 32.0 * 13
-        println("size: \(picDimension)")
+        print("size: \(picDimension)")
         return CGSizeMake(picDimension, picDimension)
         
     }
@@ -147,7 +147,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     //MARK: - AlertViewDelegate
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        println(buttonIndex)
+        print(buttonIndex)
         if (alertView.tag == 1 && buttonIndex == 1) {
             
             let newAlbumName = alertView.textFieldAtIndex(0)?.text
@@ -155,19 +155,19 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
             if  newAlbumName == ""{
                 let alert = UIAlertView(title: "输入错误", message: "标题不可为空！", delegate: nil, cancelButtonTitle: "确定")
                 alert.show()
-                println("alert show")
+                print("alert show")
             }
             else {
-                println("New Album Name: \(newAlbumName)")
+                print("New Album Name: \(newAlbumName)")
                 newAlbum(newAlbumName!)
             }
         }
     }
     
     //MARK: - Navigation
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "GoToAlbumDetail" {
-            println("ShouldPerformSegue")
+            print("ShouldPerformSegue")
 //            sleep(2)
             return true
         }
@@ -176,19 +176,19 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GoToAlbumDetail" {
-            println("prepareForSegue")
+            print("prepareForSegue")
             let index = self.AlbumListCollectionView.indexPathsForSelectedItems()
-            println("点击了相册 序号：")
-            println(index)
+            print("点击了相册 序号：")
+            print(index)
             let destinationViewController: PhotoCollectionViewController = segue.destinationViewController as! PhotoCollectionViewController
             var request = HTTPTask()
             request.GET(serverAddress + "/album/\(album[index[0].row].id!)/list", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
-                    println("get photo list error: \(err.localizedDescription)")
+                    print("get photo list error: \(err.localizedDescription)")
                     return
                 }
                 if let obj: AnyObject = response.responseObject {
-                    println("已获取照片列表地址")
+                    print("已获取照片列表地址")
                     dispatch_async(dispatch_get_main_queue(),{
                         let resp = AlbumList(JSONDecoder(obj))
                         destinationViewController.data = resp.data!
@@ -200,7 +200,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
                     })
                 }
             }
-            println("Request Sended")
+            print("Request Sended")
         }
     }
 

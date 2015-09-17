@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var mobileInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBAction func loginBtnPressed(sender: AnyObject) {
-        println("login pressed")
+        print("login pressed")
         
         
         if (mobileInput.text == "" || passwordInput.text == "") {
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         let params: Dictionary<String,AnyObject> = ["username": mobileInput.text, "password": passwordInput.text,"autoLogin": "1"]
         request.POST(serverAddress + "/user/login", parameters: params, completionHandler: {(response: HTTPResponse) in
             if let err = response.error {
-                println("error: \(err.localizedDescription)")
+                print("error: \(err.localizedDescription)")
                 dispatch_async(dispatch_get_main_queue(), {
                     notice.labelText = "登陆失败"
                     notice.hide(true, afterDelay: 1)
@@ -48,9 +48,9 @@ class LoginViewController: UIViewController {
                 switch resp.status! {
                 case 200:
                     isLogin = true
-                    println("status is: \(resp.status!)")
-                    println("userId is:\(resp.data!.userId!)")
-                    println("token is:\(resp.data!.token!)")
+                    print("status is: \(resp.status!)")
+                    print("userId is:\(resp.data!.userId!)")
+                    print("token is:\(resp.data!.token!)")
                     userId = resp.data?.userId!
                     token = resp.data?.token!
                     let user = NSUserDefaults.standardUserDefaults()
@@ -64,13 +64,13 @@ class LoginViewController: UIViewController {
                     })
 //
                 case 400:
-                    println("error")
+                    print("error")
                     dispatch_async(dispatch_get_main_queue(), {
                         notice.labelText = "登陆失败"
                         notice.hide(true, afterDelay: 5)
                     })
                 default:
-                    println("???")
+                    print("???")
                     dispatch_async(dispatch_get_main_queue(), {
                         notice.labelText = "登陆失败"
                         notice.hide(true, afterDelay: 5)

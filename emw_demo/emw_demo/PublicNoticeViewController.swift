@@ -50,7 +50,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     }
     func setupRefresh() {
         self.tableView.addHeaderWithCallback { () -> Void in
-            println("下拉刷新啦")
+            print("下拉刷新啦")
             if (self.isMy) {
                 self.updateMyTaskInfo()
             }
@@ -64,11 +64,11 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         getTask.GET(serverAddress + "/task", parameters: nil) { (response: HTTPResponse) -> Void in
 //            println(response.description)
             if let err = response.error {
-                println("get task list error: \(err.localizedDescription)")
+                print("get task list error: \(err.localizedDescription)")
                 return
             }
             if let obj: AnyObject = response.responseObject {
-                println("task list get")
+                print("task list get")
                 self.taskData = TaskResp(JSONDecoder(obj)).data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
@@ -85,11 +85,11 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         getMyTask.GET(serverAddress + "/user/" + userId + "/taskinfo", parameters: nil) { (response: HTTPResponse) -> Void in
 //            println(response.description)
             if let err = response.error {
-                println("get task list error: \(err.localizedDescription)")
+                print("get task list error: \(err.localizedDescription)")
                 return
             }
             if let obj: AnyObject = response.responseObject {
-                println("task list get")
+                print("task list get")
                 self.myTaskData = TaskResp(JSONDecoder(obj)).data
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
@@ -114,7 +114,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
             self.tableView.reloadData()
         }
 
-        println("Select segment at index: \(index)")
+        print("Select segment at index: \(index)")
     }
     
     
@@ -131,7 +131,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
             }
             
             cell.config(myTaskData![indexPath.row])
-            println(cell.timeLabel?.text)
+            print(cell.timeLabel?.text)
             return cell!
         }
         else {
@@ -153,21 +153,21 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (isMy) {
             if (myTaskData == nil) {
-                println("task count 0")
+                print("task count 0")
                 return 0
             }
             else {
-                println("task count \(myTaskData!.count)")
+                print("task count \(myTaskData!.count)")
                 return myTaskData!.count
             }
         }
         else {
             if (taskData == nil) {
-                println("task count 0")
+                print("task count 0")
                 return 0
             }
             else {
-                println("task count \(taskData!.count)")
+                print("task count \(taskData!.count)")
                 return taskData!.count
             }
         }
@@ -187,8 +187,8 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "noticeDetail" {
-            let indexPath = self.tableView!.indexPathForSelectedRow()
-            println("点击了通告\(indexPath)")
+            let indexPath = self.tableView!.indexPathForSelectedRow
+            print("点击了通告\(indexPath)")
             let destinationViewController = segue.destinationViewController as! NoticeDetailViewController
 //            println("taskData transfer")
             destinationViewController.taskData = taskData![indexPath!.row]

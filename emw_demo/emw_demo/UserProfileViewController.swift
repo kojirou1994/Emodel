@@ -19,9 +19,9 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet var mainTableView: UITableView!
     @IBAction func AvatarBtnPressed(sender: AnyObject) {
-        println("改变头像")
+        print("改变头像")
         
-        var sheet: UIActionSheet = UIActionSheet()
+        let sheet: UIActionSheet = UIActionSheet()
         let title: String = "选择照片"
         sheet.title  = title
         sheet.delegate = self
@@ -65,30 +65,30 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         var request = HTTPTask()
         request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
             if let err = response.error {
-                println("error: \(err.localizedDescription)")
+                print("error: \(err.localizedDescription)")
                 return
             }
             if let obj: AnyObject = response.responseObject {
                 let resp = User(JSONDecoder(obj))
                 switch (resp.status!) {
                 case 200:
-                    println("update UserInfo success")
+                    print("update UserInfo success")
                     if (getBaseInfo) {
                         var temp = localUser.baseInfo
                         localUser = resp.data
                         localUser.baseInfo = temp
-                        println(localUser.baseInfo?.QQ)
+                        print(localUser.baseInfo?.QQ)
                     }
                     else {
                         localUser = resp.data
                     }
-                    println(localUser!.star)
+                    print(localUser!.star)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.updateInterface()
                         self.mainTableView.headerEndRefreshing()
                     })
                 default:
-                    println("get user info failed")
+                    print("get user info failed")
                 }
             }
         }
@@ -99,20 +99,20 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         base.requestSerializer.headers["Token"] = token
         base.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
             if let err = response.error {
-                println("error: \(err.localizedDescription)")
+                print("error: \(err.localizedDescription)")
                 return
             }
             if let obj: AnyObject = response.responseObject {
-                println("获取到的baseinfo")
-                println(response.description)
+                print("获取到的baseinfo")
+                print(response.description)
                 let resp = BaseInfoResp(JSONDecoder(obj))
                 if (resp.status == 200) {
-                    println("success")
+                    print("success")
                     getBaseInfo = true
                     localUser.baseInfo = resp.data
-                    println("update baseinfo ok")
-                    println(resp.data!.QQ)
-                    println("birthday \(localUser.baseInfo?.birthday)")
+                    print("update baseinfo ok")
+                    print(resp.data!.QQ)
+                    print("birthday \(localUser.baseInfo?.birthday)")
                 }
             }
         }
@@ -160,7 +160,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                     imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
                 }
             }
-            println("button Index: \(buttonIndex)")
+            print("button Index: \(buttonIndex)")
             self.presentViewController(imagePicker, animated: true, completion: nil)
         }
         
@@ -169,12 +169,12 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     //MARK: - UIImagePickerControllerDelegate
     var imageData: NSData?
     let newAvatarPath:String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent("newAvatar.jpg")
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageData = UIImageJPEGRepresentation(pickedImage, 0.5)
             imageData!.writeToFile(newAvatarPath, atomically: false)
-            println(newAvatarPath)
-            println("already 保存")
+            print(newAvatarPath)
+            print("already 保存")
         }
         dismissViewControllerAnimated(true, completion: { () -> Void in
             self.uploadAvatar()
@@ -190,17 +190,17 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     func uploadAvatar() {
         let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         notice.labelText = "上传中"
-        println("地址")
-        println(serverAddress + "/user/" + userId + "/avatar")
-        println("token:\n" + token!)
+        print("地址")
+        print(serverAddress + "/user/" + userId + "/avatar")
+        print("token:\n" + token!)
         let boundary = Web.multipartBoundary()
         let request = Web.multipartRequest("PUT", NSURL(string: serverAddress + "/user/" + userId + "/avatar")!, boundary)
         request.setValue(token, forHTTPHeaderField: "Token")
         let fields = ["userId": userId as String]
         let data = Web.multipartData(boundary, fields, NSData(contentsOfFile: newAvatarPath)!)
-        let dataTask = NSURLSession.sharedSession().uploadTaskWithRequest(request, fromData: data) { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+        let dataTask = NSURLSession.sharedSession().uploadTaskWithRequest(request, fromData: data) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             if (error != nil) {
-                println(error)
+                print(error)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     notice.labelText = "上传失败，请重试！"
                     notice.hide(true, afterDelay: 1)
@@ -213,31 +213,31 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                     self.updateUserInfo()
                 })
             }
-            println(response)
+            print(response)
         }
         dataTask.resume()
-        println("uploading avatar")
+        print("uploading avatar")
     }
     
     func ajustAvatar(source: UIImage) -> UIImage {
-        println(source.size.height)
-        println(source.size.width)
+        print(source.size.height)
+        print(source.size.width)
         return source
     }
     
     // MARK: - Navigation
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "GoToCalendar" {
             var calen = HTTPTask()
             calen.GET(serverAddress + "/user/\(userId!)/calendar", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
-                    println("error: \(err.localizedDescription)")
+                    print("error: \(err.localizedDescription)")
                     return
                 }
                 if let obj: AnyObject = response.responseObject {
-                    println("获取到的baseinfo")
-                    println(obj)
+                    print("获取到的baseinfo")
+                    print(obj)
                     let resp = BaseInfoResp(JSONDecoder(obj))
                     if (resp.status == 200) {
                     }

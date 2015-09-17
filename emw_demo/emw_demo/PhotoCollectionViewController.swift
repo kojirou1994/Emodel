@@ -19,7 +19,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     @IBOutlet weak var PhotoList: UICollectionView!
     
     @IBAction func uploadPhotoBtnPressed(sender: AnyObject) {
-        var sheet: UIActionSheet = UIActionSheet()
+        let sheet: UIActionSheet = UIActionSheet()
         let title: String = "选择照片"
         sheet.title  = title
         sheet.delegate = self
@@ -39,8 +39,8 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("thumb")
-        var addBtn = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: "changeEditMode:")
+        print("thumb")
+        let addBtn = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: "changeEditMode:")
 //        (barButtonSystemItem: UIBarButtonItemSt, target: self, action: "addPhotoBtnPressed:")
         self.navigationItem.rightBarButtonItem = addBtn
         // Register cell classes
@@ -97,7 +97,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         if (deleteMode) {
             cell.deleteButton.hidden = false
         }
-        println(indexPath)
+        print(indexPath)
         return cell
     }
     
@@ -118,7 +118,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if (deleteMode) {
-            println("开始删除 \(indexPath)")
+            print("开始删除 \(indexPath)")
             deletePhoto(indexPath.row)
         }
         else {
@@ -126,16 +126,16 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
             for i in data! {
                 photoSource.append(MWPhoto(URL: NSURL(string: i.imgUri!)!))
             }
-            var te = PhotoBrowserViewController()
+            let te = PhotoBrowserViewController()
             te.photodata = self.data!
             //        te.reloadData()
             //        te.setCurrentPhotoIndex(UInt(indexPath.row))
-            var browse = MWPhotoBrowser(photos: photoSource)
-            println(UInt(indexPath.row))
+            let browse = MWPhotoBrowser(photos: photoSource)
+            print(UInt(indexPath.row))
 //            PhotoBrowserViewController(photos: photoSource as [AnyObject]!)
             browse.setCurrentPhotoIndex(UInt(indexPath.row))
             self.navigationController?.pushViewController(browse, animated: true)
-            println("选择了照片: \(indexPath)")
+            print("选择了照片: \(indexPath)")
         }
     }
     
@@ -167,7 +167,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
                     imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
                 }
             }
-            println("button Index: \(buttonIndex)")
+            print("button Index: \(buttonIndex)")
             self.presentViewController(imagePicker, animated: true, completion: nil)
         }
         
@@ -175,7 +175,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     //MARK: - UIImagePickerControllerDelegate
     var imageData: NSData?
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageData = UIImageJPEGRepresentation(pickedImage, 0.5)
         }
@@ -191,16 +191,16 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     func uploadPhoto() {
         let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         notice.labelText = "上传中"
-        println("地址")
-        println(serverAddress + "/photo")
+        print("地址")
+        print(serverAddress + "/photo")
         let boundary = Web.multipartBoundary()
         let request = Web.multipartRequest("POST", NSURL(string: serverAddress + "/photo")!, boundary)
         request.setValue(token, forHTTPHeaderField: "Token")
         let fields = ["userId": userId as String, "albumId": albumID as String]
         let data = Web.multipartData(boundary, fields, imageData!)
-        let dataTask = NSURLSession.sharedSession().uploadTaskWithRequest(request, fromData: data) { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+        let dataTask = NSURLSession.sharedSession().uploadTaskWithRequest(request, fromData: data) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             if (error != nil) {
-                println(error)
+                print(error)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     notice.labelText = "上传失败，请重试！"
                     notice.hide(true, afterDelay: 1)
@@ -213,21 +213,21 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
                     self.updatePhotoList()
                 })
             }
-            println(response)
+            print(response)
         }
         dataTask.resume()
-        println("uploading photo")
+        print("uploading photo")
     }
     
     func updatePhotoList() {
         var request = HTTPTask()
         request.GET(serverAddress + "/album/\(albumID!)/list", parameters: nil) { (response: HTTPResponse) -> Void in
             if let err = response.error {
-                println("error: \(err.localizedDescription)")
+                print("error: \(err.localizedDescription)")
                 return
             }
             if let obj: AnyObject = response.responseObject {
-                println("已获取照片列表地址")
+                print("已获取照片列表地址")
                 self.data = AlbumList(JSONDecoder(obj)).data!
                 dispatch_async(dispatch_get_main_queue(),{
                     self.PhotoList.reloadData()
@@ -245,7 +245,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         var str = data![index].id
         delete.DELETE(serverAddress + "/photo/\(str!)", parameters: nil) { (response: HTTPResponse) -> Void in
             if let err = response.error {
-                println("delete photo error \(err.localizedDescription)")
+                print("delete photo error \(err.localizedDescription)")
                 dispatch_async(dispatch_get_main_queue(),{
                     notice.labelText = "删除失败"
                     notice.hide(true, afterDelay: 0.3)
@@ -253,7 +253,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
                 return
             }
             if let obj: AnyObject = response.responseObject {
-                println(obj)
+                print(obj)
                 self.data!.removeAtIndex(index)
                 dispatch_async(dispatch_get_main_queue(),{
                     notice.labelText = "删除成功"

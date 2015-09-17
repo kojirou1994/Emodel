@@ -16,37 +16,37 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
-                println("注册用户名成功")
+                print("注册用户名成功")
             }
             else {
-                println("注册用户名失败")
+                print("注册用户名失败")
             }
         })
         YunBaService.subscribe("iOS", resultBlock: { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
-                println("订阅成功")
+                print("订阅成功")
             }
             else {
-                println("订阅失败")
+                print("订阅失败")
             }
         })
         self.addNotificationHandler()
-        var sendbtn = UIBarButtonItem(title: "send", style: UIBarButtonItemStyle.Plain, target: self, action: "sendMessage")
+        let sendbtn = UIBarButtonItem(title: "send", style: UIBarButtonItemStyle.Plain, target: self, action: "sendMessage")
         self.navigationItem.leftBarButtonItem = sendbtn
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     func sendMessage() {
-        var str = "touch发送"
+        let str = "touch发送"
         YunBaService.publish("iOS", data: "touch发送测试".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)) { (succ: Bool, error: NSError!) -> Void in
             
         }
         YunBaService.publishToAlias("xdPHONE", data: str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
-                println("发送消息成功")
+                print("发送消息成功")
             }
             else {
-                println("发送消息失败\(error)")
+                print("发送消息失败\(error)")
             }
         }
     }
@@ -65,22 +65,22 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func onConnectionStateChanged(notification: NSNotification) {
         if (YunBaService.isConnected()) {
-            println("didConnect")
+            print("didConnect")
         }
         else {
-            println("didDisconected")
+            print("didDisconected")
         }
     }
     func onMessageReceived(notification: NSNotification) {
-        var message: YBMessage = notification.object as! YBMessage
-        println("new message \(message.data.length) bytes, topic = \(message.topic)")
-        var payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
-        println("data: \(payloadString)")
+        let message: YBMessage = notification.object as! YBMessage
+        print("new message \(message.data.length) bytes, topic = \(message.topic)")
+        let payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
+        print("data: \(payloadString)")
     }
     
     func onPresenceReceived(notification: NSNotification) {
-        var presence: YBPresenceEvent = notification.object as! YBPresenceEvent
-        println("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
+        let presence: YBPresenceEvent = notification.object as! YBPresenceEvent
+        print("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
         
 //        NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
 //        [self addMsgToTextView:curMsg];
@@ -118,7 +118,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "GoToChat") {
             let cvc = segue.destinationViewController as! ChatViewController
-            let index = self.chatListTableView.indexPathForSelectedRow()
+            let index = self.chatListTableView.indexPathForSelectedRow
             cvc.targetUserID = index?.row == 0 ? "55a7abda8a5da518db646c18" : "55a7abda8a5da518db646c23"
         }
     }

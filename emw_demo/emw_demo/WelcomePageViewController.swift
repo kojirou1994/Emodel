@@ -26,7 +26,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         let pageWidth = self.view.frame.width
         let pageHeight = self.view.frame.height
         //scrollView的初始化
-        var scrollView = UIScrollView()
+        let scrollView = UIScrollView()
         scrollView.delegate = self
         scrollView.frame = self.view.bounds
         //为了让内容横向滚动，设置横向内容宽度为3个页面的宽度总和
@@ -39,7 +39,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         
         //添加子页面
         for i in 0...numOfPages {
-            var myViewController = SingleFeatureViewController(number:(i+1))
+            let myViewController = SingleFeatureViewController(number:(i+1))
             myViewController.view.frame = CGRectMake(CGFloat(pageWidth*CGFloat(i)),
                 CGFloat(0), CGFloat(pageWidth), CGFloat(pageHeight))
             scrollView.addSubview(myViewController.view)
@@ -89,7 +89,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             var userInfoRequest = HTTPTask()
             userInfoRequest.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
-                    println("error: \(err.localizedDescription)")
+                    print("error: \(err.localizedDescription)")
                     getUserInfoSuccess = false
                     if (!getBaseInfoSuccess) {
                         dispatch_async(dispatch_get_main_queue(), {
@@ -108,7 +108,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                         localUser = resp.data
                         localUser.baseInfo = temp
 //                        println(localUser.baseInfo?.QQ)
-                        println("从user进入")
+                        print("从user进入")
                         dispatch_async(dispatch_get_main_queue(), {
                             notice.hide(false)
                             self.transferToMainProgram()
@@ -126,7 +126,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             baseInfoRequest.requestSerializer.headers["Token"] = token
             baseInfoRequest.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
                 if let err = response.error {
-                    println("error: \(err.localizedDescription)")
+                    print("error: \(err.localizedDescription)")
                     getBaseInfoSuccess = false
                     if (!getUserInfoSuccess) {
                         dispatch_async(dispatch_get_main_queue(), {
@@ -144,11 +144,11 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
 //                        println("success")
                         getBaseInfo = true
                         localUser.baseInfo = resp.data
-                        println("update baseinfo ok")
+                        print("update baseinfo ok")
 //                        println(resp.data!.QQ)
 //                        println("birthday \(localUser.baseInfo?.birthday)")
                         if (getBaseInfo && getUserInfo) {
-                            println("从base进入")
+                            print("从base进入")
                             dispatch_async(dispatch_get_main_queue(), {
                                 notice.hide(false)
                                 self.transferToMainProgram()
@@ -209,7 +209,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var currentPage = Int(scrollView.contentOffset.x/self.view.frame.width)
+        let currentPage = Int(scrollView.contentOffset.x/self.view.frame.width)
         pageControll.currentPage = Int(currentPage)
     }
     /*
