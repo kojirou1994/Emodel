@@ -6,7 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import JSONJoy
 
 //登录 Login POST
 struct LoginResp: JSONJoy {

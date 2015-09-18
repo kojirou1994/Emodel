@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import JSONJoy
-
 //VideoInfo GET
 struct VideoInfoResp: JSONJoy {
     var data: VideoInfoRespData?

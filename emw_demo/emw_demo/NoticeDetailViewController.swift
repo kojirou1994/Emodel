@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftHTTP
 
 class NoticeDetailViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
     

@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import SwiftHTTP
 import MBProgressHUD
-import JSONJoy
+import Alamofire
 
 class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     var pageControll: UIPageControl!
@@ -78,85 +77,100 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         }
         else {
             getDataCount++
-            //成功获取则为true
-            var getUserInfo: Bool = false
-            var getBaseInfo: Bool = false
-            //获取失败为false
-            var getUserInfoSuccess: Bool = true
-            var getBaseInfoSuccess: Bool = true
+            //成功获取则为true,不成功false,未完成nil
+            var getUserInfo: Bool?
+            var getBaseInfo: Bool?
             let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             notice.labelText = getDataCount > 1 ? "重试中" : "获取数据中"
-            var userInfoRequest = HTTPTask()
-            userInfoRequest.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
-                if let err = response.error {
-                    print("error: \(err.localizedDescription)")
-                    getUserInfoSuccess = false
-                    if (!getBaseInfoSuccess) {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            notice.hide(true)
-                            self.tryGetUserData()
-                        })
+            
+            //获取user信息
+            Alamofire.request(.GET, serverAddress + "/user/\(userId!)")
+                .validate()
+                .responseJSON { _, _, result in
+                    switch result {
+                    case .Success:
+                        let resp = User(JSONDecoder(result.value))
+                        getUserInfo = true
+                        if (getBaseInfo == nil) {
+                            localUser = resp.data
+                            return
+                        }
+                        else if (getBaseInfo) {
+                            var temp = localUser.baseInfo
+                            localUser = resp.data
+                            localUser.baseInfo = temp
+                            print("从user进入")
+                            dispatch_async(dispatch_get_main_queue(), {
+                                notice.hide(false)
+                                self.transferToMainProgram()
+                            })
+                        }
+                        else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                notice.hide(true)
+                                self.tryGetUserData()
+                            })
+                        }
+                    case .Failure(_, let error):
+                        print(error)
+                        getUserInfo = false
+                        if (getBaseInfo == nil) {
+                            return
+                        }
+                        else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                notice.hide(true)
+                                self.tryGetUserData()
+                            })
+                        }
+                        return
                     }
-                    return
-                }
-                if let obj: AnyObject = response.responseObject {
-                    let resp = User(JSONDecoder(obj))
-//                    println("success")
-                    getUserInfo = true
-                    if (getBaseInfo) {
-                        var temp = localUser.baseInfo
-                        localUser = resp.data
-                        localUser.baseInfo = temp
-//                        println(localUser.baseInfo?.QQ)
-                        print("从user进入")
-                        dispatch_async(dispatch_get_main_queue(), {
-                            notice.hide(false)
-                            self.transferToMainProgram()
-                        })
-                    }
-                    else {
-                        localUser = resp.data
-                    }
-                }
             }
             
             // baseinfo额外获取一次
-            var baseInfoRequest = HTTPTask()
-            baseInfoRequest.requestSerializer = HTTPRequestSerializer()
-            baseInfoRequest.requestSerializer.headers["Token"] = token
-            baseInfoRequest.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
-                if let err = response.error {
-                    print("error: \(err.localizedDescription)")
-                    getBaseInfoSuccess = false
-                    if (!getUserInfoSuccess) {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            notice.hide(true)
-                            self.tryGetUserData()
-                        })
-                    }
-                    return
-                }
-                if let obj: AnyObject = response.responseObject {
-//                    println("获取到的baseinfo")
-//                    println(response.description)
-                    let resp = BaseInfoResp(JSONDecoder(obj))
-                    if (resp.status == 200) {
-//                        println("success")
+            Alamofire.request(.GET, serverAddress + "/user/\(userId!)/baseinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
+                .validate()
+                .responseJSON { _, _, result in
+                    switch result {
+                    case .Success:
+                        let resp = BaseInfoResp(JSONDecoder(result.value))
                         getBaseInfo = true
-                        localUser.baseInfo = resp.data
-                        print("update baseinfo ok")
-//                        println(resp.data!.QQ)
-//                        println("birthday \(localUser.baseInfo?.birthday)")
-                        if (getBaseInfo && getUserInfo) {
+                        if (getUserInfo == nil) {
+                            localUser.baseInfo = resp.data
+                            return
+                        }
+                        else if (getUserInfo) {
+                            localUser.baseInfo = resp.data
                             print("从base进入")
                             dispatch_async(dispatch_get_main_queue(), {
                                 notice.hide(false)
                                 self.transferToMainProgram()
                             })
                         }
+                        else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                notice.hide(true)
+                                self.tryGetUserData()
+                            })
+                        }
+                    case .Failure(_, let error):
+                        print(error)
+                        getBaseInfo = false
+                        if (getUserInfo == nil) {
+                            return
+                        }
+                        else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                notice.hide(true)
+                                self.tryGetUserData()
+                            })
+                        }
+                        return
                     }
-                }
             }
+            
+            
+
         }
     }
     

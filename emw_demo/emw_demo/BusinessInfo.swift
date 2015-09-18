@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import JSONJoy
-
 //BusinessInfo GET
 
 struct BusinessInfo: JSONJoy {

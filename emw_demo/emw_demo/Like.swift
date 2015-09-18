@@ -6,9 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import Foundation
-import JSONJoy
-
 struct Like: JSONJoy {
     var count: Int?
     var isLiked: Bool?

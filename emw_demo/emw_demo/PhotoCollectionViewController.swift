@@ -8,8 +8,6 @@
 
 import UIKit
 import Kingfisher
-import SwiftHTTP
-import JSONJoy
 import MWPhotoBrowser
 
 let reuseIdentifier = "PhotoCell"

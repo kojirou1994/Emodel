@@ -6,9 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import UIKit
-import JSONJoy
-
 struct User: JSONJoy {
     var data: UserData?
     var status: Int?

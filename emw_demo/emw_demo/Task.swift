@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import JSONJoy
 
 struct Task: JSONJoy {
     var address: String?

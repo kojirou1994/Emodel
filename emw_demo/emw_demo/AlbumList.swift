@@ -6,9 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import Foundation
-import JSONJoy
-
 
 //单个相册里的照片数据列表
 struct AlbumListData: JSONJoy {

@@ -6,9 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import Foundation
-import JSONJoy
-
 struct CalendarResp: JSONJoy {
     var status: Int?
     var message: String?

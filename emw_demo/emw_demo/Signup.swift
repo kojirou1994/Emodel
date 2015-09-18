@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import JSONJoy
-
 //注册 SignUP POST
 struct SignupResp: JSONJoy {
     var data: SignupRespData?

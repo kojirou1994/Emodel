@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import JSONJoy
-
 //PUT 更新信息结果
 
 struct PutResp: JSONJoy {

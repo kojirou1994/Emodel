@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import SwiftHTTP
-import JSONJoy
+import Alamofire
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
@@ -39,59 +38,78 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func sendMobileBtnPressed(sender: AnyObject) {
         self.view.endEditing(true)
-        if mobileInput.text.characters.count == 11 {
-            var request = HTTPTask()
+        guard let mobileText = mobileInput.text else {
+            showSimpleAlert("", message: "")
+            return
+        }
+        if mobileText.characters.count == 11 {
             sendMobileBtn.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
             
             sendMobileBtn.userInteractionEnabled = false
             self.countDownTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateTimer", userInfo: nil, repeats: true)
-            let params: Dictionary<String,AnyObject> = ["mobile": mobileInput.text]
-            //        ["param": "param1", "array": ["first array element","second","third"], "num": 23, "dict": ["someKey": "someVal"]]
-            print("\(serverAddress)/user/confirm")
-            request.POST("\(serverAddress)/user/confirm", parameters: params, completionHandler: {(response: HTTPResponse) in
-                if let err = response.error {
-                    print("error: \(err.localizedDescription)")
-                    return //also notify app of failure as needed
-                }
-                else if let obj: AnyObject = response.responseObject {
-                    let resp = ConfirmResp(JSONDecoder(obj))
-                    print("status is: \(resp.status!)")
-                    print("confirm token is:\(resp.data!.confirm_token!)")
-                    self.confirmToken = resp.data!.confirm_token!
-                }
-            })
+            Alamofire.request(.POST, serverAddress + "/user/confirm", parameters: ["mobile": mobileText], encoding: ParameterEncoding.JSON, headers: nil)
+                .validate()
+                .responseJSON { _, _, result in
+                    switch result {
+                    case .Success:
+                        let resp = ConfirmResp(JSONDecoder(result.value!))
+                        print("status is: \(resp.status!)")
+                        print("confirm token is:\(resp.data!.confirm_token!)")
+                        self.confirmToken = resp.data!.confirm_token!
+                    case .Failure(_, let error):
+                        print("error")
+
+                    }
+            }
         }
         else{
-            var alert = UIAlertController(title: "号码不正确", message: "请输入正确的手机号", preferredStyle: UIAlertControllerStyle.Alert)
-            var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
-            alert.addAction(actionYes)
-            self.presentViewController(alert, animated: true, completion: nil)
+            showSimpleAlert("手机号不正确", message: "请输入正确的手机号")
         }
     }
     
     @IBAction func registerBtnPressed(sender: AnyObject) {
-        if codeInput.text.characters.isEmpty || passwordInput.text.characters.isEmpty || passwordConfirmInput.text.characters.isEmpty {
-            //send error
-            var alert = UIAlertController(title: "填写不正确", message: "请输入正确的信息", preferredStyle: UIAlertControllerStyle.Alert)
-            var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
-            alert.addAction(actionYes)
-            self.presentViewController(alert, animated: true, completion: nil)
+        guard let mobileText = mobileInput.text else {
+            showSimpleAlert("", message: "")
+            return
         }
-        else{
-            var request = HTTPTask()
-            let params: Dictionary<String,String!> = ["mobile": mobileInput.text, "password": passwordInput.text, "confirm_token": self.confirmToken, "confirm": codeInput.text, "username": userNameInput.text]
-            
-            request.POST("\(serverAddress)/user/signup", parameters: params, completionHandler: {(response: HTTPResponse) in
-                if let err = response.error {
-                    print("error: \(err.localizedDescription)")
-                    return
-                }
-                else if let obj: AnyObject = response.responseObject {
-                    let resp = ConfirmResp(JSONDecoder(obj))
+        guard let codeText = codeInput.text else {
+            showSimpleAlert("", message: "")
+            return
+        }
+        guard let passwordText = passwordInput.text else {
+            showSimpleAlert("", message: "")
+            return
+        }
+        guard let confirmPasswordText = passwordConfirmInput.text else {
+            showSimpleAlert("", message: "")
+            return
+        }
+        guard let usernameText = userNameInput.text else {
+            showSimpleAlert("", message: "")
+            return
+        }
+        guard let confirmTokenText = confirmToken else {
+            showSimpleAlert("", message: "")
+            return
+        }
+        Alamofire.request(.POST, serverAddress + "/user/signup", parameters: ["mobile": mobileText, "password": passwordText, "confirm_token": confirmTokenText, "confirm": codeText, "username": usernameText], encoding: ParameterEncoding.JSON, headers: nil)
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    let resp = ConfirmResp(JSONDecoder(result.value!))
                     self.dismissViewControllerAnimated(true, completion: nil)
+                case .Failure(_, let error):
+                    print(error)
                 }
-            })
         }
+    }
+    
+    func showSimpleAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(actionYes)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func updateTimer(){

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SwiftHTTP
-import JSONJoy
 
 class PublicNoticeViewController: UIViewController, UINavigationControllerDelegate, SMSegmentViewDelegate, UITableViewDataSource, UITableViewDelegate {
 

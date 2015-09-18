@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
 
-import JSONJoy
-
 //基本信息 BaseInfo GET
 struct BaseInfo: JSONJoy {
     //QQ

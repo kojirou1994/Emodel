@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import JSONJoy
-import SwiftHTTP
 import MBProgressHUD
 
 class LoginViewController: UIViewController {

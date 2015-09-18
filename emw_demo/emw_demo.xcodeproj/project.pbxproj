@@ -18,6 +18,7 @@
 		E33802BD1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */; };
 		E34CC6461B96DD7F0089EED1 /* Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34CC6451B96DD7F0089EED1 /* Confirm.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
+		E350E5661BABA78B006981FF /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E5651BABA78B006981FF /* JSONJoy.swift */; settings = {ASSET_TAGS = (); }; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
 		E36937031BA16D4E00F0F04E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */; };
 		E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36C14381BA5D64D00D6FA4D /* arrow@2x.png */; };
@@ -139,6 +140,7 @@
 		E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessInfoEditViewController.swift; sourceTree = "<group>"; };
 		E34CC6451B96DD7F0089EED1 /* Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
+		E350E5651BABA78B006981FF /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
 		E368B5EA1BA91DDE00187BDE /* emw_demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "emw_demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 			children = (
 				E3BA51391BA91E8E00EA8034 /* YunBaSDK */,
 				E304C20C1B8EE33E00A40348 /* AlbumCover.png */,
+				E350E5651BABA78B006981FF /* JSONJoy.swift */,
 				E390121C1B9BD0F400CABB9E /* Networking.swift */,
 				E304C20E1B8EE90F00A40348 /* head.jpg */,
 				E3AB7A951B8AFA1300962116 /* logo.png */,
@@ -760,6 +763,7 @@
 				E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */,
 				E3978F641B7AEAFD002B54A3 /* AlbumID.swift in Sources */,
 				E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */,
+				E350E5661BABA78B006981FF /* JSONJoy.swift in Sources */,
 				E3E9C2471B6CC73600998937 /* NoticeTableCell.swift in Sources */,
 				E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */,
 				E36C14421BA5D64D00D6FA4D /* RefreshConst.swift in Sources */,
