@@ -169,8 +169,6 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                     }
             }
             
-            
-
         }
     }
     

@@ -18,7 +18,7 @@ var selectedAlbum: AlbumList = AlbumList()
 var selectedAlbumIndex:Int = 0
 var photos: NSMutableArray = []
 //var thumbs: NSMutableArray = []
-class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIAlertViewDelegate {
+class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     @IBAction func EditBtnPressed(sender: AnyObject) {
         print("show删除相册界面")
     }
@@ -44,16 +44,43 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func addAlbum(barButton: UIBarButtonItem) {
         print("add pressed")
-        let inputAlbumName = UIAlertController(title: "添加相册", message: "请输入相册标题", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let addAlert = UIAlertView(title: "添加相册", message: "请输入相册标题", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
-        addAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-        addAlert.tag = 1
-        addAlert.show()
+        let inputAlbumName = UIAlertController(title: "添加相册", message: "请输入相册标题", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        inputAlbumName.addTextFieldWithConfigurationHandler { (albumNameTextField: UITextField) -> Void in
+            albumNameTextField.placeholder = "在此输入"
+        }
+        
+        
+        
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction) -> Void in
+            print("cancle tapped")
+
+        }
+        let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
+            print("ok tapped")
+            if let albumNameTF = inputAlbumName.textFields?.first {
+                guard let title = albumNameTF.text else {
+                    return
+                }
+                self.newAlbum(title)
+            }
+            else {
+                print("????没读到")
+            }
+        }
+        inputAlbumName.addAction(cancelAction)
+        inputAlbumName.addAction(okAction)
+        self.presentViewController(inputAlbumName, animated: true, completion: nil)
+//        let addAlert = UIAlertView(title: "添加相册", message: "请输入相册标题", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
+//        addAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
+//        addAlert.tag = 1
+//        addAlert.show()
+        
     }
     
     func newAlbum(title: String) {
-        
-        Alamofire.request(.POST, serverAddress + "/album", parameters: ["name": title, "userId": userId], encoding: .JSON, headers: ["Token": token])
+        print("adding new album")
+        Alamofire.request(.POST, serverAddress + "/album", parameters: ["name": title, "userId": userId], encoding: .URL, headers: ["Token": token])
         .validate()
         .responseJSON { (_, _, result) -> Void in
             switch result {
@@ -130,25 +157,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         return 40
     }
     
-    //MARK: - AlertViewDelegate
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        print(buttonIndex)
-        if (alertView.tag == 1 && buttonIndex == 1) {
-            
-            let newAlbumName = alertView.textFieldAtIndex(0)?.text
-            
-            if  newAlbumName == ""{
-                let alert = UIAlertView(title: "输入错误", message: "标题不可为空！", delegate: nil, cancelButtonTitle: "确定")
-                alert.show()
-                print("alert show")
-            }
-            else {
-                print("New Album Name: \(newAlbumName)")
-                newAlbum(newAlbumName!)
-            }
-        }
-    }
     
     //MARK: - Navigation
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
