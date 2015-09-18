@@ -71,10 +71,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         inputAlbumName.addAction(cancelAction)
         inputAlbumName.addAction(okAction)
         self.presentViewController(inputAlbumName, animated: true, completion: nil)
-//        let addAlert = UIAlertView(title: "添加相册", message: "请输入相册标题", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
-//        addAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-//        addAlert.tag = 1
-//        addAlert.show()
         
     }
     

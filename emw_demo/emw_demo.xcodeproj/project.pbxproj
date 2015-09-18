@@ -19,6 +19,10 @@
 		E34CC6461B96DD7F0089EED1 /* Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34CC6451B96DD7F0089EED1 /* Confirm.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E350E5661BABA78B006981FF /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E5651BABA78B006981FF /* JSONJoy.swift */; settings = {ASSET_TAGS = (); }; };
+		E350E56C1BABFD94006981FF /* TaskNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E56B1BABFD94006981FF /* TaskNavi.swift */; settings = {ASSET_TAGS = (); }; };
+		E350E56E1BABFDA6006981FF /* ChatNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E56D1BABFDA6006981FF /* ChatNavi.swift */; settings = {ASSET_TAGS = (); }; };
+		E350E5701BABFDB5006981FF /* ProfileNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E56F1BABFDB5006981FF /* ProfileNavi.swift */; settings = {ASSET_TAGS = (); }; };
+		E350E5721BAC0051006981FF /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E5711BAC0051006981FF /* MainTabBar.swift */; settings = {ASSET_TAGS = (); }; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
 		E36937031BA16D4E00F0F04E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */; };
 		E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36C14381BA5D64D00D6FA4D /* arrow@2x.png */; };
@@ -141,6 +145,10 @@
 		E34CC6451B96DD7F0089EED1 /* Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E350E5651BABA78B006981FF /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
+		E350E56B1BABFD94006981FF /* TaskNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNavi.swift; sourceTree = "<group>"; };
+		E350E56D1BABFDA6006981FF /* ChatNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatNavi.swift; sourceTree = "<group>"; };
+		E350E56F1BABFDB5006981FF /* ProfileNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNavi.swift; sourceTree = "<group>"; };
+		E350E5711BAC0051006981FF /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		E368B5EA1BA91DDE00187BDE /* emw_demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "emw_demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -487,6 +495,10 @@
 				E3C899991B749DD300286AC7 /* 3rd Tab */,
 				E3E9C2211B6CA66200998937 /* Main.storyboard */,
 				E3E9C2241B6CA66200998937 /* Images.xcassets */,
+				E350E56B1BABFD94006981FF /* TaskNavi.swift */,
+				E350E56D1BABFDA6006981FF /* ChatNavi.swift */,
+				E350E5711BAC0051006981FF /* MainTabBar.swift */,
+				E350E56F1BABFDB5006981FF /* ProfileNavi.swift */,
 				E36C14371BA5D64D00D6FA4D /* Refresh */,
 				E38518701B7091B40063C2C2 /* 图标 */,
 				E3E9C2261B6CA66200998937 /* LaunchScreen.xib */,
@@ -777,6 +789,7 @@
 				E3C899901B7473A400286AC7 /* SignupViewController.swift in Sources */,
 				E3CED34A1BA10F7300B0B248 /* Like.swift in Sources */,
 				E3E9C2431B6CAF5000998937 /* SMSegmentView.swift in Sources */,
+				E350E5721BAC0051006981FF /* MainTabBar.swift in Sources */,
 				E3001B891B79DAD300F38CEC /* SwiftColors.swift in Sources */,
 				E36920B71B8700B900D8F345 /* Calendar.swift in Sources */,
 				E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */,
@@ -788,7 +801,9 @@
 				E38556791B7C79D00015285F /* PhotoCollectionViewController.swift in Sources */,
 				E3E9C21E1B6CA66200998937 /* PublicNoticeViewController.swift in Sources */,
 				E30B30E11B7857CE00864989 /* DataInit.swift in Sources */,
+				E350E5701BABFDB5006981FF /* ProfileNavi.swift in Sources */,
 				E3978F5A1B7AE0E5002B54A3 /* VideoInfo.swift in Sources */,
+				E350E56E1BABFDA6006981FF /* ChatNavi.swift in Sources */,
 				E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */,
 				E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */,
 				E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */,
@@ -797,6 +812,7 @@
 				E36C14411BA5D64D00D6FA4D /* RefreshBaseView.swift in Sources */,
 				E3978F521B7ADFC6002B54A3 /* BodyInfo.swift in Sources */,
 				E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */,
+				E350E56C1BABFD94006981FF /* TaskNavi.swift in Sources */,
 				E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

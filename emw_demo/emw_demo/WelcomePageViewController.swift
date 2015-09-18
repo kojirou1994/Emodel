@@ -174,9 +174,12 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     
     func transferToMainProgram() {
 //        self.performSegueWithIdentifier("showMainTab", sender: self)
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let mainP = sb.instantiateViewControllerWithIdentifier("MainProgram") as! UITabBarController
-        self.presentViewController(mainP, animated: true, completion: nil)
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let mainP = sb.instantiateViewControllerWithIdentifier("MainProgram") as! UITabBarController
+//        self.presentViewController(mainP, animated: true, completion: nil)
+        let main = self.storyboard?.instantiateViewControllerWithIdentifier("MainProgram") as! UITabBarController
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = main
     }
     func loadWelcomeView() {
         loginBtn.hidden = false

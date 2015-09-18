@@ -31,25 +31,11 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             }
         })
         self.addNotificationHandler()
-        let sendbtn = UIBarButtonItem(title: "send", style: UIBarButtonItemStyle.Plain, target: self, action: "sendMessage")
-        self.navigationItem.leftBarButtonItem = sendbtn
+//        let sendbtn = UIBarButtonItem(title: "send", style: UIBarButtonItemStyle.Plain, target: self, action: "sendMessage")
+//        self.navigationItem.leftBarButtonItem = sendbtn
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func sendMessage() {
-        let str = "touch发送"
-        YunBaService.publish("iOS", data: "touch发送测试".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)) { (succ: Bool, error: NSError!) -> Void in
-            
-        }
-        YunBaService.publishToAlias("xdPHONE", data: str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
-            if (succ) {
-                print("发送消息成功")
-            }
-            else {
-                print("发送消息失败\(error)")
-            }
-        }
-    }
     
     //MARK : - YunbaService
     func addNotificationHandler() {

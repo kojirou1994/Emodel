@@ -18,4 +18,6 @@ class ChatListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    var unReadCount:Int!
+    
 }
