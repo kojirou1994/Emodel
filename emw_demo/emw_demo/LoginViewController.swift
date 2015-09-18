@@ -46,9 +46,9 @@ class LoginViewController: UIViewController {
                     isLogin = true
                     print("status is: \(resp.status!)")
                     print("userId is:\(resp.data!.userId!)")
-                    print("token is:\(resp.data!.token!)")
+                    print("token is:\(resp.data!.token)")
                     userId = resp.data?.userId!
-                    token = resp.data?.token!
+                    token = resp.data?.token
                     let user = NSUserDefaults.standardUserDefaults()
                     user.setObject(mobileText, forKey: "UserName")
                     user.setObject(passwordText, forKey: "Password")

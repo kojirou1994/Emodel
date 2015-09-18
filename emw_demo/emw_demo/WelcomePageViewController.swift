@@ -128,7 +128,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             }
             
             // baseinfo额外获取一次
-            Alamofire.request(.GET, serverAddress + "/user/\(userId!)/baseinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token!])
+            Alamofire.request(.GET, serverAddress + "/user/\(userId!)/baseinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
                 .validate()
                 .responseJSON { _, _, result in
                     switch result {

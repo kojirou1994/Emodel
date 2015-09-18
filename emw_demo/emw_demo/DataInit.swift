@@ -12,14 +12,14 @@ import Foundation
 let testServer: String! = "http://10.0.1.11"
 let publicServer: String! = "http://api.emwcn.com"
 
-let serverAddress: String! = publicServer
+let serverAddress: String! = testServer
 
 var isLogin: Bool = false
 var username: String!
 var password: String!
 var userId: String! = "55a7abda8a5da518db646c24"
 //55a7abda8a5da518db646c18"
-var token: String?
+var token: String!
 var localUser: UserData!
 //var album :Array<Album>! = Array<Album>()
 
@@ -27,7 +27,7 @@ var localUser: UserData!
 
 func readUserData() {
     let user = NSUserDefaults.standardUserDefaults()
-    if let haveData: AnyObject = user.objectForKey("UserName") {
+    if let _: AnyObject = user.objectForKey("UserName") {
         print("have default for username")
         username = user.objectForKey("UserName") as? String
         password = (user.objectForKey("Password") as! String)

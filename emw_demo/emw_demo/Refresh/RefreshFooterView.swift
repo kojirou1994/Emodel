@@ -50,7 +50,7 @@ class RefreshFooterView: RefreshBaseView {
         }
         if RefreshContentSize.isEqualToString(keyPath!){
             adjustFrameWithContentSize()
-        }else if RefreshContentOffset.isEqualToString(keyPat!h) {
+        }else if RefreshContentOffset.isEqualToString(keyPath!) {
             if self.State == RefreshState.Refreshing{
                 return
             }

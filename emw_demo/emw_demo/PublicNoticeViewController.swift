@@ -78,7 +78,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     
     func updateMyTaskInfo() {
         
-        Alamofire.request(.GET, serverAddress + "/user/" + userId + "/taskinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token!])
+        Alamofire.request(.GET, serverAddress + "/user/" + userId + "/taskinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
             .validate()
             .responseJSON { _, _, result in
                 switch result {

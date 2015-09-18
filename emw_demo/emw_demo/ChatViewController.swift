@@ -58,10 +58,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("message sent")
         print(inputField.text)
         self.resignFirstResponder()
-        YunBaService.publishToAlias(targetUserID, data: inputField.text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
+        YunBaService.publishToAlias(targetUserID, data: inputField.text!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
                 print("聊天信息已发送")
-                self.str.append(self.inputField.text)
+                self.str.append(self.inputField.text!)
                 self.isFromSelf.append(true)
                 self.chatTableView.reloadData()
             }
@@ -169,7 +169,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("chatDetailCell") as! UITableViewCell
+        guard let cell = tableView.dequeueReusableCellWithIdentifier("chatDetailCell") else {
+            return UITableViewCell()
+        }
         for i in cell.subviews {
             i.removeFromSuperview()
         }

@@ -31,7 +31,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     func enrollBtnPressed() {
         print("报名")
         
-        Alamofire.request(.POST, serverAddress + "/task/" + self.taskData!.id! + "/join", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token!])
+        Alamofire.request(.POST, serverAddress + "/task/" + self.taskData!.id! + "/join", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
             .validate()
             .responseJSON { _, _, result in
                 switch result {

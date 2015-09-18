@@ -136,28 +136,20 @@ class BusinessInfoEditViewController: XLFormViewController {
         ]
         print(para)
         
-        var manager = Manager.sharedInstance
-        // Add Headers
-        manager.session.configuration.HTTPAdditionalHeaders = [
-            "Token":token!,
-        ]
-        let encoding = Alamofire.ParameterEncoding.URL
-        
         // Fetch Request
-        Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/businessinfo", parameters: para, encoding: encoding)
-            .responseJSON { _, _, JSON, error in
-                if (error == nil) {
-                    print("HTTP Response Body: \(JSON)")
+        Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/businessinfo", parameters: para, encoding: ParameterEncoding.JSON, headers: ["Token": token])
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    print("Validation Successful")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let alertView = UIAlertView(title: "更新成功", message: "okokokok", delegate: self, cancelButtonTitle: "OK")
-                        alertView.show()
+                        self.showSimpleAlert("", message: "")
                     })
-                }
-                else {
-                    print("HTTP HTTP Request failed: \(error)")
+                case .Failure(_, let error):
+                    print(error)
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let alertView = UIAlertView(title: "失败", message: "byebye", delegate: self, cancelButtonTitle: "OK")
-                        alertView.show()
+                        self.showSimpleAlert("fail", message: "")
                     })
                 }
         }

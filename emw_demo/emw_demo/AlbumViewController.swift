@@ -44,6 +44,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func addAlbum(barButton: UIBarButtonItem) {
         print("add pressed")
+        let inputAlbumName = UIAlertController(title: "添加相册", message: "请输入相册标题", preferredStyle: UIAlertControllerStyle.ActionSheet)
         let addAlert = UIAlertView(title: "添加相册", message: "请输入相册标题", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
         addAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
         addAlert.tag = 1
@@ -51,48 +52,37 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func newAlbum(title: String) {
-        var request = HTTPTask()
-        request.requestSerializer = HTTPRequestSerializer()
-        request.requestSerializer.headers["Token"] = token!
-        let params: Dictionary<String,AnyObject> = ["name": title, "userId": userId]
-        request.POST(serverAddress + "/album", parameters: params, completionHandler: {(response: HTTPResponse) in
-            if let err = response.error {
-                print("error: \(err.localizedDescription)")
-                dispatch_async(dispatch_get_main_queue(), {
-                    let alert = UIAlertView(title: "添加失败", message: "请重新添加", delegate: nil, cancelButtonTitle: "确定")
-                    alert.show()
-                })
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
+        
+        Alamofire.request(.POST, serverAddress + "/album", parameters: ["name": title, "userId": userId], encoding: .JSON, headers: ["Token": token])
+        .validate()
+        .responseJSON { (_, _, result) -> Void in
+            switch result {
+            case .Success:
                 print("相册添加成功")
-                self.updateUserInfo()
+                self.updateAlbumInfo()
+            case .Failure(_, let error):
+                print(error)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showSimpleAlert("", message: "")
+                })
             }
-        })
-
+        }
     }
     
-    func updateUserInfo() {
-        var request = HTTPTask()
-        request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                print("error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                let resp = User(JSONDecoder(obj))
-                switch (resp.status!) {
-                case 200:
-                    print("update UserInfo success")
-                    localUser = resp.data
-                    print(localUser!.star)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.updateInterface()
-                    })
-                default:
-                    print("get user info failed")
-                }
-            }
+    func updateAlbumInfo() {
+        Alamofire.request(.GET, serverAddress + "/user/\(userId!)")
+            .validate()
+            .responseJSON { _, _, result in
+        switch result {
+        case .Success:
+            let resp = User(JSONDecoder(result.value!))
+            localUser.albumInfo = resp.data?.albumInfo
+            dispatch_async(dispatch_get_main_queue(), {
+                self.updateInterface()
+            })
+        case .Failure(_, let error):
+            print(error)
+        }
         }
         
     }
@@ -102,15 +92,12 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
         self.AlbumListCollectionView.reloadData()
     }
     //MARK: - UICllectionViewDataSource
-    
+     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (album == nil) {
-            return 0
-        }
-        return album.count
+        return album == nil ? 0 : album.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         let cell = AlbumListCollectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! AlbumThumbCollectionViewCell
         cell.AlbumTitle.text = album[indexPath.row].name!
         cell.ThumbImage.contentMode = UIViewContentMode.ScaleAspectFill
@@ -179,26 +166,9 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
             let index = self.AlbumListCollectionView.indexPathsForSelectedItems()
             print("点击了相册 序号：")
             print(index)
-            let destinationViewController: PhotoCollectionViewController = segue.destinationViewController as! PhotoCollectionViewController
-            var request = HTTPTask()
-            request.GET(serverAddress + "/album/\(album[index[0].row].id!)/list", parameters: nil) { (response: HTTPResponse) -> Void in
-                if let err = response.error {
-                    print("get photo list error: \(err.localizedDescription)")
-                    return
-                }
-                if let obj: AnyObject = response.responseObject {
-                    print("已获取照片列表地址")
-                    dispatch_async(dispatch_get_main_queue(),{
-                        let resp = AlbumList(JSONDecoder(obj))
-                        destinationViewController.data = resp.data!
-                        destinationViewController.navigationItem.title = self.album[index[0].row].name!
-                        destinationViewController.count = resp.data!.count
-                        destinationViewController.albumID = self.album[index[0].row].id!
-                        destinationViewController.PhotoList.reloadData()
-//                        println(resp.data![0].imgUri)
-                    })
-                }
-            }
+            let pcvc: PhotoCollectionViewController = segue.destinationViewController as! PhotoCollectionViewController
+            pcvc.albumID = self.album[index![0].row].id!
+            pcvc.navigationItem.title = self.album[index![0].row].name
             print("Request Sended")
         }
     }

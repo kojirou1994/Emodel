@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import MBProgressHUD
+import Alamofire
 
 class UserProfileViewController: UITableViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var Avatar: UIButton!
@@ -57,62 +58,70 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         }
     }
     func updateUserInfo() {
-        var getUserInfo: Bool = false
-        var getBaseInfo: Bool = false
+        var getUserInfo: Bool?
+        var getBaseInfo: Bool?
         
-        var request = HTTPTask()
-        request.GET(serverAddress + "/user/\(userId!)", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                print("error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                let resp = User(JSONDecoder(obj))
-                switch (resp.status!) {
-                case 200:
-                    print("update UserInfo success")
-                    if (getBaseInfo) {
+        //获取user信息
+        Alamofire.request(.GET, serverAddress + "/user/\(userId!)")
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    let resp = User(JSONDecoder(result.value!))
+                    getUserInfo = true
+                    guard let getAnother = getBaseInfo else {
+                        localUser = resp.data
+                        return
+                    }
+                    if (getAnother) {
                         var temp = localUser.baseInfo
                         localUser = resp.data
                         localUser.baseInfo = temp
-                        print(localUser.baseInfo?.QQ)
+                        print("从user进入")
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.updateInterface()
+                            self.mainTableView.headerEndRefreshing()
+                        })
                     }
                     else {
-                        localUser = resp.data
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.mainTableView.headerEndRefreshing()
+                            self.showSimpleAlert("fail", message: "")
+                        })
                     }
-                    print(localUser!.star)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.updateInterface()
-                        self.mainTableView.headerEndRefreshing()
-                    })
-                default:
-                    print("get user info failed")
+                case .Failure(_, let error):
+                    return
                 }
-            }
         }
         
         // baseinfo额外获取一次
-        var base = HTTPTask()
-        base.requestSerializer = HTTPRequestSerializer()
-        base.requestSerializer.headers["Token"] = token
-        base.GET(serverAddress + "/user/\(userId!)/baseinfo", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                print("error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                print("获取到的baseinfo")
-                print(response.description)
-                let resp = BaseInfoResp(JSONDecoder(obj))
-                if (resp.status == 200) {
-                    print("success")
+        Alamofire.request(.GET, serverAddress + "/user/\(userId!)/baseinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    let resp = BaseInfoResp(JSONDecoder(result.value!))
                     getBaseInfo = true
-                    localUser.baseInfo = resp.data
-                    print("update baseinfo ok")
-                    print(resp.data!.QQ)
-                    print("birthday \(localUser.baseInfo?.birthday)")
+                    guard let getAnother = getUserInfo else {
+                        localUser.baseInfo = resp.data
+                        return
+                    }
+                    if (getAnother) {
+                        localUser.baseInfo = resp.data
+                        print("从base进入")
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.mainTableView.headerEndRefreshing()
+                        })
+                    }
+                    else {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.showSimpleAlert("fai;", message: "")
+                            self.mainTableView.headerEndRefreshing()
+                        })
+                    }
+                case .Failure(_, let error):
+                    return
                 }
-            }
         }
 
     }
@@ -166,17 +175,16 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     
     //MARK: - UIImagePickerControllerDelegate
     var imageData: NSData?
-    let newAvatarPath:String = NSHomeDirectory().stringByAppendingPathComponent("Documents").stringByAppendingPathComponent("newAvatar.jpg")
+
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            imageData = UIImageJPEGRepresentation(pickedImage, 0.5)
-            imageData!.writeToFile(newAvatarPath, atomically: false)
-            print(newAvatarPath)
-            print("already 保存")
+            imageData = UIImageJPEGRepresentation(pickedImage, 0.5)!
+//            imageData!.writeToFile(newAvatarPath, atomically: false)
+            dismissViewControllerAnimated(true, completion: { () -> Void in
+                self.uploadAvatar(self.imageData!)
+            })
         }
-        dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.uploadAvatar()
-        })
+
 //        uploadAvatar()
     }
     
@@ -185,17 +193,18 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     }
     
     //MARK: - Func
-    func uploadAvatar() {
+    func uploadAvatar(avatarData: NSData) {
         let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         notice.labelText = "上传中"
         print("地址")
         print(serverAddress + "/user/" + userId + "/avatar")
-        print("token:\n" + token!)
+        print("token:\n" + token)
         let boundary = Web.multipartBoundary()
         let request = Web.multipartRequest("PUT", NSURL(string: serverAddress + "/user/" + userId + "/avatar")!, boundary)
         request.setValue(token, forHTTPHeaderField: "Token")
         let fields = ["userId": userId as String]
-        let data = Web.multipartData(boundary, fields, NSData(contentsOfFile: newAvatarPath)!)
+        let data = Web.multipartData(boundary, fields, avatarData)
+        
         let dataTask = NSURLSession.sharedSession().uploadTaskWithRequest(request, fromData: data) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             if (error != nil) {
                 print(error)
@@ -226,23 +235,23 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
     // MARK: - Navigation
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "GoToCalendar" {
-            var calen = HTTPTask()
-            calen.GET(serverAddress + "/user/\(userId!)/calendar", parameters: nil) { (response: HTTPResponse) -> Void in
-                if let err = response.error {
-                    print("error: \(err.localizedDescription)")
-                    return
-                }
-                if let obj: AnyObject = response.responseObject {
-                    print("获取到的baseinfo")
-                    print(obj)
-                    let resp = BaseInfoResp(JSONDecoder(obj))
-                    if (resp.status == 200) {
-                    }
-                }
-            }
-            return true
-        }
+//        if identifier == "GoToCalendar" {
+//            var calen = HTTPTask()
+//            calen.GET(serverAddress + "/user/\(userId!)/calendar", parameters: nil) { (response: HTTPResponse) -> Void in
+//                if let err = response.error {
+//                    print("error: \(err.localizedDescription)")
+//                    return
+//                }
+//                if let obj: AnyObject = response.responseObject {
+//                    print("获取到的baseinfo")
+//                    print(obj)
+//                    let resp = BaseInfoResp(JSONDecoder(obj))
+//                    if (resp.status == 200) {
+//                    }
+//                }
+//            }
+//            return true
+//        }
         return true
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

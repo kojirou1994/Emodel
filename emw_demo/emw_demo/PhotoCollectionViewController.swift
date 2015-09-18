@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import MWPhotoBrowser
+import Alamofire
 
 let reuseIdentifier = "PhotoCell"
 
@@ -31,7 +32,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         sheet.tag = 255
     }
     var data:[AlbumListData]?
-    var count: Int! = 0
+    ///本相册的id，以获取数据
     var albumID: String!
     var deleteMode: Bool = false
     
@@ -41,7 +42,24 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         let addBtn = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: "changeEditMode:")
 //        (barButtonSystemItem: UIBarButtonItemSt, target: self, action: "addPhotoBtnPressed:")
         self.navigationItem.rightBarButtonItem = addBtn
+        updatePhotoCollection()
         // Register cell classes
+    }
+    
+    func updatePhotoCollection() {
+        Alamofire.request(.GET, serverAddress + "/album/\(albumID)/list")
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    print("Validation Successful")
+                    let resp = AlbumList(JSONDecoder(result.value!))
+                    self.data = resp.data
+                    self.PhotoList.reloadData()
+                case .Failure(_, let error):
+                    print(error)
+                }
+        }
     }
     
     func changeEditMode(barButton: UIBarButtonItem) {
@@ -73,16 +91,12 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     //MARK: － UICollectionViewDataSource
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
         return 1
     }
 
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (data == nil) {
-            return 0
-        }
-        return data!.count
+        return data == nil ? 0 : data!.count
     }
 
     
@@ -208,7 +222,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     notice.labelText = "上传成功"
                     notice.hide(true, afterDelay: 0.5)
-                    self.updatePhotoList()
+                    self.updatePhotoCollection()
                 })
             }
             print(response)
@@ -217,48 +231,33 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         print("uploading photo")
     }
     
-    func updatePhotoList() {
-        var request = HTTPTask()
-        request.GET(serverAddress + "/album/\(albumID!)/list", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                print("error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                print("已获取照片列表地址")
-                self.data = AlbumList(JSONDecoder(obj)).data!
-                dispatch_async(dispatch_get_main_queue(),{
-                    self.PhotoList.reloadData()
-                })
-            }
-        }
-    }
     
     func deletePhoto(index: Int) {
-        var delete = HTTPTask()
+
         let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         notice.labelText = "删除中"
-        delete.requestSerializer = HTTPRequestSerializer()
-        delete.requestSerializer.headers["Token"] = token
+
         var str = data![index].id
-        delete.DELETE(serverAddress + "/photo/\(str!)", parameters: nil) { (response: HTTPResponse) -> Void in
-            if let err = response.error {
-                print("delete photo error \(err.localizedDescription)")
-                dispatch_async(dispatch_get_main_queue(),{
-                    notice.labelText = "删除失败"
-                    notice.hide(true, afterDelay: 0.3)
-                })
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                print(obj)
-                self.data!.removeAtIndex(index)
-                dispatch_async(dispatch_get_main_queue(),{
-                    notice.labelText = "删除成功"
-                    notice.hide(true, afterDelay: 0.3)
-                    self.PhotoList.reloadData()
-                })
-            }
+
+        Alamofire.request(.DELETE, serverAddress + "/photo/\(str!)", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    debugPrint(result)
+                    self.data!.removeAtIndex(index)
+                    dispatch_async(dispatch_get_main_queue(),{
+                        notice.labelText = "删除成功"
+                        notice.hide(true, afterDelay: 0.3)
+                        self.PhotoList.reloadData()
+                    })
+                case .Failure(_, let error):
+                    print(error)
+                    dispatch_async(dispatch_get_main_queue(),{
+                        notice.labelText = "删除失败"
+                        notice.hide(true, afterDelay: 0.3)
+                    })
+                }
         }
     }
 }

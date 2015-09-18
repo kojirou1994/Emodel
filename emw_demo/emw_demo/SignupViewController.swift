@@ -54,7 +54,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                     case .Success:
                         let resp = ConfirmResp(JSONDecoder(result.value!))
                         print("status is: \(resp.status!)")
-                        print("confirm token is:\(resp.data!.confirm_token!)")
+                        print("confirm token is:\(resp.data!.confirm_token)")
                         self.confirmToken = resp.data!.confirm_token!
                     case .Failure(_, let error):
                         print("error")
