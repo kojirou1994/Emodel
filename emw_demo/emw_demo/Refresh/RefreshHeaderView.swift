@@ -96,7 +96,7 @@ class RefreshHeaderView: RefreshBaseView {
         if (self.State == RefreshState.Refreshing) {
             return
         }
-        if RefreshContentOffset.isEqualToString(keyPath){
+        if RefreshContentOffset.isEqualToString(keyPath!){
             self.adjustStateWithContentOffset()
         }
     }

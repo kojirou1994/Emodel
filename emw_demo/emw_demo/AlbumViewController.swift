@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import MWPhotoBrowser
 import MBProgressHUD
+import Alamofire
 
 var AlbumData: Array<AlbumList> = Array<AlbumList>()
 var selectedAlbum: AlbumList = AlbumList()

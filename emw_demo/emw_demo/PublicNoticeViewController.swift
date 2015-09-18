@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PublicNoticeViewController: UIViewController, UINavigationControllerDelegate, SMSegmentViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
@@ -58,42 +59,39 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         }
     }
     func updateTaskInfo() {
-        var getTask = HTTPTask()
-        getTask.GET(serverAddress + "/task", parameters: nil) { (response: HTTPResponse) -> Void in
-//            println(response.description)
-            if let err = response.error {
-                print("get task list error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                print("task list get")
-                self.taskData = TaskResp(JSONDecoder(obj)).data
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
-                    self.tableView.headerEndRefreshing()
-                })
-            }
+        Alamofire.request(.GET, serverAddress + "/task")
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    print("task list get")
+                    self.taskData = TaskResp(JSONDecoder(result.value!)).data
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                        self.tableView.headerEndRefreshing()
+                    })
+                case .Failure(_, let error):
+                    print(error)
+                }
         }
     }
     
     func updateMyTaskInfo() {
-        var getMyTask = HTTPTask()
-        getMyTask.requestSerializer = HTTPRequestSerializer()
-        getMyTask.requestSerializer.headers["Token"] = token
-        getMyTask.GET(serverAddress + "/user/" + userId + "/taskinfo", parameters: nil) { (response: HTTPResponse) -> Void in
-//            println(response.description)
-            if let err = response.error {
-                print("get task list error: \(err.localizedDescription)")
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                print("task list get")
-                self.myTaskData = TaskResp(JSONDecoder(obj)).data
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
-                    self.tableView.headerEndRefreshing()
-                })
-            }
+        
+        Alamofire.request(.GET, serverAddress + "/user/" + userId + "/taskinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token!])
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    print("mytask list get")
+                    self.myTaskData = TaskResp(JSONDecoder(result.value!)).data
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                        self.tableView.headerEndRefreshing()
+                    })
+                case .Failure(_, let error):
+                    print(error)
+                }
         }
     }
     // SMSegment Delegate

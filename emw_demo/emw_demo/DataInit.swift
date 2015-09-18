@@ -32,7 +32,7 @@ func readUserData() {
         username = user.objectForKey("UserName") as? String
         password = (user.objectForKey("Password") as! String)
         userId = (user.objectForKey("UserID") as! String)
-        token = user.objectForKey("Token") as? String
+        token = user.objectForKey("Token") as! String
         print("read username: \(username)")
         print("read password \(password)")
         isLogin = true
@@ -43,3 +43,11 @@ func readUserData() {
     }
 }
 
+public extension UIViewController {
+    public func showSimpleAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(actionYes)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+}

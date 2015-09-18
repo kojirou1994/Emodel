@@ -89,13 +89,13 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                 .responseJSON { _, _, result in
                     switch result {
                     case .Success:
-                        let resp = User(JSONDecoder(result.value))
+                        let resp = User(JSONDecoder(result.value!))
                         getUserInfo = true
-                        if (getBaseInfo == nil) {
+                        guard let getAnother = getBaseInfo else {
                             localUser = resp.data
                             return
                         }
-                        else if (getBaseInfo) {
+                        if (getAnother) {
                             var temp = localUser.baseInfo
                             localUser = resp.data
                             localUser.baseInfo = temp
@@ -128,18 +128,18 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             }
             
             // baseinfo额外获取一次
-            Alamofire.request(.GET, serverAddress + "/user/\(userId!)/baseinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
+            Alamofire.request(.GET, serverAddress + "/user/\(userId!)/baseinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token!])
                 .validate()
                 .responseJSON { _, _, result in
                     switch result {
                     case .Success:
-                        let resp = BaseInfoResp(JSONDecoder(result.value))
+                        let resp = BaseInfoResp(JSONDecoder(result.value!))
                         getBaseInfo = true
-                        if (getUserInfo == nil) {
+                        guard let getAnother = getUserInfo else {
                             localUser.baseInfo = resp.data
                             return
                         }
-                        else if (getUserInfo) {
+                        if (getAnother) {
                             localUser.baseInfo = resp.data
                             print("从base进入")
                             dispatch_async(dispatch_get_main_queue(), {
@@ -226,14 +226,5 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         let currentPage = Int(scrollView.contentOffset.x/self.view.frame.width)
         pageControll.currentPage = Int(currentPage)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

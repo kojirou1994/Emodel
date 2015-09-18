@@ -105,13 +105,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func showSimpleAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(actionYes)
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
     func updateTimer(){
         timeNum--
         if timeNum == 0 {

@@ -48,9 +48,9 @@ class RefreshFooterView: RefreshBaseView {
         if (!self.userInteractionEnabled || self.hidden){
             return
         }
-        if RefreshContentSize.isEqualToString(keyPath){
+        if RefreshContentSize.isEqualToString(keyPath!){
             adjustFrameWithContentSize()
-        }else if RefreshContentOffset.isEqualToString(keyPath) {
+        }else if RefreshContentOffset.isEqualToString(keyPat!h) {
             if self.State == RefreshState.Refreshing{
                 return
             }

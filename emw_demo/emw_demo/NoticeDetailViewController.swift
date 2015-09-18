@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class NoticeDetailViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -29,27 +30,21 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     //报名
     func enrollBtnPressed() {
         print("报名")
-        var enroll = HTTPTask()
-        enroll.requestSerializer = HTTPRequestSerializer()
-        enroll.requestSerializer.headers["Token"] = token
-        enroll.POST(serverAddress + "/task/" + self.taskData!.id! + "/join", parameters: nil) { (response) -> Void in
-//            println(response.description)
-            if (response.statusCode == 200) {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var alert = UIAlertController(title: "报名成功", message: "报名成功", preferredStyle: UIAlertControllerStyle.Alert)
-                    var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
-                    alert.addAction(actionYes)
-                    self.presentViewController(alert, animated: true, completion: nil)
-                })
-            }
-            else {
-                var alert = UIAlertController(title: "报名失败", message: "报名失败", preferredStyle: UIAlertControllerStyle.Alert)
-                var actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
-                alert.addAction(actionYes)
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
+        
+        Alamofire.request(.POST, serverAddress + "/task/" + self.taskData!.id! + "/join", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token!])
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    print("Validation Successful")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.showSimpleAlert("", message: "")
+                    })
+                case .Failure(_, let error):
+                    print(error)
+                    self.showSimpleAlert("", message: "")
+                }
         }
-
     }
 
     // MARK: - UITableViewDataSource
@@ -86,8 +81,12 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             return cell
         }
         else {
+            ///有问题
             let identifier: String = "detail"
-            var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
+            guard let cell = tableView.dequeueReusableCellWithIdentifier(identifier) else {
+                return UITableViewCell()
+            }
+            
             switch (indexPath.row) {
             case 0:
                 cell.textLabel?.text = "状态"

@@ -252,7 +252,7 @@ class SMSegmentView: UIView, SMSegmentDelegate {
     // MARK: Drawing Segment Separators
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        self.drawSeparatorWithContext(context)
+        self.drawSeparatorWithContext(context!)
     }
     
     func drawSeparatorWithContext(context: CGContextRef) {

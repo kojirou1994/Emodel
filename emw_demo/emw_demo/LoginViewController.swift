@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import Alamofire
 
 class LoginViewController: UIViewController {
 
@@ -27,24 +28,21 @@ class LoginViewController: UIViewController {
             ala.show()
             return
         }
+        guard let mobileText = mobileInput.text else {
+            return
+        }
+        guard let passwordText = passwordInput.text else {
+            return
+        }
         let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         notice.labelText = "登陆中"
-        var request = HTTPTask()
-        let params: Dictionary<String,AnyObject> = ["username": mobileInput.text, "password": passwordInput.text,"autoLogin": "1"]
-        request.POST(serverAddress + "/user/login", parameters: params, completionHandler: {(response: HTTPResponse) in
-            if let err = response.error {
-                print("error: \(err.localizedDescription)")
-                dispatch_async(dispatch_get_main_queue(), {
-                    notice.labelText = "登陆失败"
-                    notice.hide(true, afterDelay: 1)
-                })
-                return
-            }
-            if let obj: AnyObject = response.responseObject {
-                let resp = LoginResp(JSONDecoder(obj))
-                switch resp.status! {
-                case 200:
+        Alamofire.request(.POST, serverAddress + "/user/login", parameters: ["username": mobileText, "password": passwordText,"autoLogin": "1"], encoding: ParameterEncoding.JSON, headers: nil)
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    let resp = LoginResp(JSONDecoder(result.value!))
                     isLogin = true
                     print("status is: \(resp.status!)")
                     print("userId is:\(resp.data!.userId!)")
@@ -52,40 +50,29 @@ class LoginViewController: UIViewController {
                     userId = resp.data?.userId!
                     token = resp.data?.token!
                     let user = NSUserDefaults.standardUserDefaults()
-                    user.setObject(self.mobileInput.text, forKey: "UserName")
-                    user.setObject(self.passwordInput.text, forKey: "Password")
+                    user.setObject(mobileText, forKey: "UserName")
+                    user.setObject(passwordText, forKey: "Password")
                     user.setObject(userId, forKey: "UserID")
                     user.setObject(token, forKey: "Token")
                     dispatch_async(dispatch_get_main_queue(), {
                         notice.labelText = "登陆成功"
                         self.dismissViewControllerAnimated(false, completion: nil)
                     })
-//
-                case 400:
-                    print("error")
+                case .Failure(_, let error):
                     dispatch_async(dispatch_get_main_queue(), {
                         notice.labelText = "登陆失败"
-                        notice.hide(true, afterDelay: 5)
-                    })
-                default:
-                    print("???")
-                    dispatch_async(dispatch_get_main_queue(), {
-                        notice.labelText = "登陆失败"
-                        notice.hide(true, afterDelay: 5)
+                        notice.hide(true, afterDelay: 1)
                     })
                 }
-                
-            }
-        })
+        }
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let user = NSUserDefaults.standardUserDefaults()
-        if let haveData: AnyObject = user.objectForKey("UserName") {
+        if let _: AnyObject = user.objectForKey("UserName") {
             mobileInput.text = user.objectForKey("UserName") as? String
-
         }
         // Do any additional setup after loading the view.
     }
