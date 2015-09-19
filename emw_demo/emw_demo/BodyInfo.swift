@@ -11,18 +11,30 @@
 
 struct BodyInfo: JSONJoy {
     
-    var bloodType: String?//血型
-    var height: String?//身高
-    var weight: String?//体重
-    var bust: Int?//胸围
-    var waist: Int?//腰围
-    var hip: Int?//臀围
-    var cupSize: String?//罩杯
-    var introduction: String?//简介
-    var service: String?//服务
-    var clothesSize: String?//衣服尺寸
-    var shoesSize: String?//鞋子尺寸
-    var trousersSize: String?//裤子尺寸
+    ///血型
+    var bloodType: String?
+    ///身高
+    var height: String?
+    ///体重
+    var weight: String?
+    ///胸围
+    var bust: Int?
+    ///腰围
+    var waist: Int?
+    ///臀围
+    var hip: Int?
+    ///罩杯
+    var cupSize: String?
+    ///简介
+    var introduction: String?
+    ///服务
+    var service: String?
+    ///衣服尺寸
+    var clothesSize: String?
+    ///鞋子尺寸
+    var shoesSize: String?
+    ///裤子尺寸
+    var trousersSize: String?
     
     init(){}
     

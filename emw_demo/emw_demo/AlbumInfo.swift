@@ -10,13 +10,15 @@
 
 struct Album: JSONJoy {
     //    var date: String?
-    var id: String? = ""//相册ID获取照片列表
-    var imgId: String? = ""
-    var imgUri: String? = ""//相册封面
-    var name: String? = "name"
-    var num: Int? = 0
-    var updateTime: String? = ""
-    var userId: String? = ""
+    ///相册ID获取照片列表
+    var id: String?
+    var imgId: String?
+    ///相册封面
+    var imgUri: String?
+    var name: String?
+    var num: Int?
+    var updateTime: String?
+    var userId: String?
     
     init(){}
     init(_ decoder: JSONDecoder) {

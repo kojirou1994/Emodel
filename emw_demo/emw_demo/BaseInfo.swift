@@ -9,17 +9,19 @@
 //基本信息 BaseInfo GET
 struct BaseInfo: JSONJoy {
     //QQ
-    var QQ: String? = "10000"
+    var QQ: String?
     var age: Int? = 0
-    var avatar: String?  = ""//头像
+    ///头像地址
+    var avatar: String?
     var birthday: String?
-    var email: String? = "example@email.com"
+    var email: String?
     var introduction: String?
     var mobile: String?
     var nickName: String?
     var realName: String?
     var service: String?
-    var sex: String?//性别
+    ///性别
+    var sex: String?
     var wechat: String?
     
     init(){}

@@ -9,11 +9,16 @@
 //BusinessInfo GET
 
 struct BusinessInfo: JSONJoy {
-    var dayPrice: Int?//包日价格
-    var inPrice: Int?//内景价格
-    var outPrice: Int?//外拍价格
-    var startCount: Int?//起拍件数
-    var underwearPrice: Int?//内衣价格
+    ///包日价格
+    var dayPrice: Int?
+    ///内景价格
+    var inPrice: Int?
+    ///外拍价格
+    var outPrice: Int?
+    ///起拍件数
+    var startCount: Int?
+    ///内衣价格
+    var underwearPrice: Int?
     
     init(){}
     init(_ decoder: JSONDecoder) {

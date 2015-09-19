@@ -15,6 +15,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addNotificationHandler()
+        self.chatListTableView.tableFooterView = UIView(frame: CGRectZero)
 //        let sendbtn = UIBarButtonItem(title: "send", style: UIBarButtonItemStyle.Plain, target: self, action: "sendMessage")
 //        self.navigationItem.leftBarButtonItem = sendbtn
         // Do any additional setup after loading the view, typically from a nib.

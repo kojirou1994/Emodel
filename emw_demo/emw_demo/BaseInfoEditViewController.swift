@@ -133,8 +133,8 @@ class BaseInfoEditViewController : XLFormViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "savePressed:")
     }
     
+    ///提交更新PUT
     func savePressed(button: UIBarButtonItem) {
-        //提交更新PUT
         let format = NSDateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         let birth = form.formRowWithTag(BaseInfoTag.Birthday.rawValue)!.value as? NSDate

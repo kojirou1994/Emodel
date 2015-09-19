@@ -13,13 +13,20 @@ let testServer: String! = "http://10.0.1.11"
 let publicServer: String! = "http://api.emwcn.com"
 
 let serverAddress: String! = publicServer
-
+///用户是否已登录
 var isLogin: Bool = false
+///本地用户名
 var username: String!
+///本地用户密码
 var password: String!
+///本地用户userID
 var userId: String!
+///本地用户token
 var token: String!
+///本地用户资料
 var localUser: UserData!
+
+
 //var album :Array<Album>! = Array<Album>()
 
 //MARK: - 初始化
@@ -43,6 +50,7 @@ func readUserData() {
 }
 
 public extension UIViewController {
+    ///简单的通知框，两条信息
     public func showSimpleAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         let actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)

@@ -57,7 +57,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                         print("confirm token is:\(resp.data!.confirm_token)")
                         self.confirmToken = resp.data!.confirm_token!
                     case .Failure(_, let error):
-                        print("error")
+                        print(error)
 
                     }
             }
@@ -68,27 +68,31 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func registerBtnPressed(sender: AnyObject) {
+        guard let confirmTokenText = confirmToken else {
+            showSimpleAlert("请输入完整", message: "验证码发送错误，请重试")
+            return
+        }
         guard let mobileText = mobileInput.text else {
-            showSimpleAlert("", message: "")
+            showSimpleAlert("请输入完整", message: "未输入手机号")
             return
         }
         guard let codeText = codeInput.text else {
-            showSimpleAlert("", message: "")
+            showSimpleAlert("请输入完整", message: "未输入验证码")
             return
         }
         guard let passwordText = passwordInput.text else {
-            showSimpleAlert("", message: "")
+            showSimpleAlert("请输入完整", message: "未输入密码")
             return
         }
         guard let confirmPasswordText = passwordConfirmInput.text else {
-            showSimpleAlert("", message: "")
+            showSimpleAlert("请输入完整", message: "未输入验证密码")
             return
         }
         guard let usernameText = userNameInput.text else {
-            showSimpleAlert("", message: "")
+            showSimpleAlert("请输入完整", message: "未输入用户名")
             return
         }
-        guard let confirmTokenText = confirmToken else {
+        if (passwordText != confirmPasswordText) {
             showSimpleAlert("", message: "")
             return
         }
@@ -97,7 +101,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             .responseJSON { _, _, result in
                 switch result {
                 case .Success:
-                    let resp = ConfirmResp(JSONDecoder(result.value!))
                     self.dismissViewControllerAnimated(true, completion: nil)
                 case .Failure(_, let error):
                     print(error)
