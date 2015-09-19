@@ -135,7 +135,7 @@ class BaseInfoEditViewController : XLFormViewController {
     
     func savePressed(button: UIBarButtonItem) {
         //提交更新PUT
-        var format = NSDateFormatter()
+        let format = NSDateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         let birth = form.formRowWithTag(BaseInfoTag.Birthday.rawValue)!.value as? NSDate
         var sex,nickName,realName,QQ,wechat,email: String

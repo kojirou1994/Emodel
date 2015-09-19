@@ -96,7 +96,7 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
                             return
                         }
                         if (getAnother) {
-                            var temp = localUser.baseInfo
+                            let temp = localUser.baseInfo
                             localUser = resp.data
                             localUser.baseInfo = temp
                             print("从user进入")

@@ -12,7 +12,25 @@ class MainTabBar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers![1].tabBarItem.badgeValue = "10"
+        self.viewControllers![1].tabBarItem.badgeValue = "5"
+        
+        YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                print("注册用户名成功")
+            }
+            else {
+                print("注册用户名失败")
+            }
+        })
+        YunBaService.subscribe("iOS", resultBlock: { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                print("订阅成功")
+            }
+            else {
+                print("订阅失败")
+            }
+        })
+        
         // Do any additional setup after loading the view.
     }
 

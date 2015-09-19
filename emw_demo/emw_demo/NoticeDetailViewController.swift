@@ -53,7 +53,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
         
         if (indexPath.row == 11) {
             let identifier: String = "button"
-            var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTableCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTableCell
             cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
             if (taskData!.userHaveSignedUp(userId)) {
                 cell.enrollBtn.setTitle("你已经参加", forState: UIControlState.Normal)
@@ -64,7 +64,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
         }
         else if (indexPath.row == 7) {
             let identifier: String = "text"
-            var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTextTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTextTableViewCell
             cell.title.text = "模特要求"
             cell.detailText.text = taskData?.modelDemand
             cell.detailText.clipsToBounds = true
@@ -73,7 +73,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
         }
         else if (indexPath.row == 8) {
             let identifier: String = "text"
-            var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTextTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTextTableViewCell
             cell.title.text = "其他要求"
             cell.detailText.text = taskData?.otherDemand
             cell.detailText.clipsToBounds = true
@@ -84,9 +84,8 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             ///有问题
             let identifier: String = "detail"
             guard let cell = tableView.dequeueReusableCellWithIdentifier(identifier) else {
-                return UITableViewCell()
+                return UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
             }
-            
             switch (indexPath.row) {
             case 0:
                 cell.textLabel?.text = "状态"

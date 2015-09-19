@@ -14,22 +14,6 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var chatListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
-            if (succ) {
-                print("注册用户名成功")
-            }
-            else {
-                print("注册用户名失败")
-            }
-        })
-        YunBaService.subscribe("iOS", resultBlock: { (succ: Bool, error: NSError!) -> Void in
-            if (succ) {
-                print("订阅成功")
-            }
-            else {
-                print("订阅失败")
-            }
-        })
         self.addNotificationHandler()
 //        let sendbtn = UIBarButtonItem(title: "send", style: UIBarButtonItemStyle.Plain, target: self, action: "sendMessage")
 //        self.navigationItem.leftBarButtonItem = sendbtn

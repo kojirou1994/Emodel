@@ -42,6 +42,8 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
         Avatar.layer.borderColor = UIColor.whiteColor().CGColor
         
         self.clearsSelectionOnViewWillAppear = true
+        
+        self.mainTableView.tableFooterView = UIView()
         //更新界面元素
         setRefresh()
         updateInterface()
@@ -74,7 +76,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                         return
                     }
                     if (getAnother) {
-                        var temp = localUser.baseInfo
+                        let temp = localUser.baseInfo
                         localUser = resp.data
                         localUser.baseInfo = temp
                         print("从user进入")

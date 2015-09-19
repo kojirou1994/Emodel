@@ -5,7 +5,7 @@
 //  Created by 王宇 on 15/8/12.
 //  Copyright (c) 2015年 emodel. All rights reserved.
 //
-
+///此文件暂时没用
 import UIKit
 @IBDesignable
 class AlbumView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,AlbumViewDelegate{
@@ -53,7 +53,6 @@ class AlbumView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICo
     }
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        let row = indexPath.row
         let cell: AlbumViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! AlbumViewCell
         cell.setData()
         cell.delegate = self

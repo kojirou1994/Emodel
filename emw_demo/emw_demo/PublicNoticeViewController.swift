@@ -120,7 +120,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         if (isMy) {
             let identifier: String = "noticeTableCell"
             
-            var cell: NoticeTableCell! = tableView.dequeueReusableCellWithIdentifier(identifier) as? NoticeTableCell
+            var cell: NoticeTableCell! = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeTableCell
             
             if cell == nil {
                 cell = NoticeTableCell(style: UITableViewCellStyle.Value1, reuseIdentifier: identifier)
@@ -133,7 +133,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
         else {
             let identifier: String = "noticeTableCell"
             
-            var cell: NoticeTableCell! = tableView.dequeueReusableCellWithIdentifier(identifier) as? NoticeTableCell
+            var cell: NoticeTableCell! = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeTableCell
             
             if cell == nil {
                 cell = NoticeTableCell(style: UITableViewCellStyle.Value1, reuseIdentifier: identifier)

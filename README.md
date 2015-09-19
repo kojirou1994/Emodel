@@ -16,6 +16,4 @@ Token
 
 
 
-文件保存路径
-
-新头像：NSHomeDirectory / Documents / newAvatar.jpg
+云巴消息发送格式

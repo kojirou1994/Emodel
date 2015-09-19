@@ -12,13 +12,12 @@ import Foundation
 let testServer: String! = "http://10.0.1.11"
 let publicServer: String! = "http://api.emwcn.com"
 
-let serverAddress: String! = testServer
+let serverAddress: String! = publicServer
 
 var isLogin: Bool = false
 var username: String!
 var password: String!
-var userId: String! = "55a7abda8a5da518db646c24"
-//55a7abda8a5da518db646c18"
+var userId: String!
 var token: String!
 var localUser: UserData!
 //var album :Array<Album>! = Array<Album>()

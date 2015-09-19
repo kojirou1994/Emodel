@@ -232,7 +232,7 @@ class BodyInfoEditViewController : XLFormViewController {
         print(para)
         
         // Fetch Request
-        Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/bodyinfo", parameters: para as! [String : AnyObject], encoding: ParameterEncoding.JSON, headers: ["Token": token])
+        Alamofire.request(.PUT, serverAddress + "/user/" + userId + "/bodyinfo", parameters: para as? [String : AnyObject], encoding: ParameterEncoding.JSON, headers: ["Token": token])
             .validate()
             .responseJSON { _, _, result in
                 switch result {
