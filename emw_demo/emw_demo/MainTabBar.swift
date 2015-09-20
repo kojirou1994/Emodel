@@ -11,6 +11,7 @@ import UIKit
 class MainTabBar: UITabBarController {
 
     override func viewDidLoad() {
+        print("start viewDidLoad")
         super.viewDidLoad()
         self.viewControllers![1].tabBarItem.badgeValue = "5"
         
@@ -30,6 +31,9 @@ class MainTabBar: UITabBarController {
                 print("订阅失败")
             }
         })
+        print("sleep 5s")
+        sleep(5)
+        print("viewDidLoad")
         
         // Do any additional setup after loading the view.
     }
@@ -39,6 +43,15 @@ class MainTabBar: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        print("viewWillAppear")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        print("viewDidAppear")
+    }
 
     /*
     // MARK: - Navigation

@@ -3,11 +3,12 @@
     <entity name="Chat" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isFromSelf" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="localUserId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="messageType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="sendTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remoteUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Chat" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Chat" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
