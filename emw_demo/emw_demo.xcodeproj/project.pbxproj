@@ -117,6 +117,8 @@
 		E3E9C2531B6CE5D700998937 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2521B6CE5D700998937 /* img.jpg */; };
 		E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */; };
 		E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */; };
+		E3F533FA1BAFA82D003BC841 /* YunbaChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F533F91BAFA82D003BC841 /* YunbaChatMessage.swift */; settings = {ASSET_TAGS = (); }; };
+		E3F533FC1BAFBE28003BC841 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F533FB1BAFBE28003BC841 /* ChatMessage.swift */; settings = {ASSET_TAGS = (); }; };
 		E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F7CC3C1B704F79001D82D3 /* Signup.swift */; };
 		E3FBE9BD1B845C5500EA6440 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FBE9BC1B845C5500EA6440 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -249,6 +251,8 @@
 		E3E9C2521B6CE5D700998937 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTableCell.swift; sourceTree = "<group>"; };
 		E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTextTableViewCell.swift; sourceTree = "<group>"; };
+		E3F533F91BAFA82D003BC841 /* YunbaChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YunbaChatMessage.swift; sourceTree = "<group>"; };
+		E3F533FB1BAFBE28003BC841 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		E3F7CC3C1B704F79001D82D3 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		E3F83E4C1B82FD47005AD24C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E3F83E4D1B82FD47005AD24C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -432,6 +436,8 @@
 		E3C899981B749DC500286AC7 /* 2nd Tab */ = {
 			isa = PBXGroup;
 			children = (
+				E3F533F91BAFA82D003BC841 /* YunbaChatMessage.swift */,
+				E3F533FB1BAFBE28003BC841 /* ChatMessage.swift */,
 				E3B680171BA2C420004DF002 /* ChatListTableViewCell.swift */,
 				E3B680181BA2C420004DF002 /* ChatListViewController.swift */,
 				E3B680191BA2C420004DF002 /* ChatViewController.swift */,
@@ -753,6 +759,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3F533FC1BAFBE28003BC841 /* ChatMessage.swift in Sources */,
 				E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */,
 				E36937031BA16D4E00F0F04E /* ButtonTableViewCell.swift in Sources */,
 				E38556741B7C63110015285F /* AlbumViewController.swift in Sources */,
@@ -772,6 +779,7 @@
 				E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */,
 				E37AD5991B846BC8005DEC92 /* CalendarViewController.swift in Sources */,
 				E38556761B7C63600015285F /* AlbumThumbCell.swift in Sources */,
+				E3F533FA1BAFA82D003BC841 /* YunbaChatMessage.swift in Sources */,
 				E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */,
 				E3978F641B7AEAFD002B54A3 /* AlbumID.swift in Sources */,
 				E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */,

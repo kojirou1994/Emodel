@@ -25,7 +25,10 @@ var userId: String!
 var token: String!
 ///本地用户资料
 var localUser: UserData!
-
+///未读消息计数
+var unreadCount: Int! = 0
+///当前聊天用户id
+var currentChatUserId: String?
 
 //var album :Array<Album>! = Array<Album>()
 
@@ -39,6 +42,9 @@ func readUserData() {
         password = (user.objectForKey("Password") as! String)
         userId = (user.objectForKey("UserID") as! String)
         token = user.objectForKey("Token") as! String
+        if let count = user.objectForKey("UnreadCount") as? Int {
+            unreadCount = count
+        }
         print("read username: \(username)")
         print("read password \(password)")
         isLogin = true

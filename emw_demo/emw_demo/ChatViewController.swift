@@ -19,6 +19,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var sendBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("对象id： \(targetUserID)")
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationItem.title = "王羞羞"
@@ -51,17 +52,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.addNotificationHandler()
     }
     
-    
-    
-    
     func send() {
         print("message sent")
         print(inputField.text)
+        
+        //输入完先添加消息框
         self.inputField.resignFirstResponder()
         self.str.append(self.inputField.text!)
         self.isFromSelf.append(true)
         self.chatTableView.reloadData()
-        YunBaService.publishToAlias(targetUserID, data: inputField.text!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
+        
+        //预处理发送消息
+        var sendM: String
+        if let inputM = inputField.text {
+            sendM = "{\"fromUserId\":\"\(userId)\",\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
+        }
+        else {
+            sendM = "{\"fromUserId\":\"\(userId)\",\"messageType\":1,\"messageContent\":\"\"}"
+        }
+        YunBaService.publishToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
                 print("聊天信息已发送")
             }
@@ -86,11 +95,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func onMessageReceived(notification: NSNotification) {
         let message: YBMessage = notification.object as! YBMessage
         print("new message \(message.data.length) bytes, topic = \(message.topic)")
-        let payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
-        print("data: \(payloadString)")
-        self.str.append(payloadString as! String)
+        print(JSONDecoder(message.data).print())
+        let payloadString = YunbaChatMessage(JSONDecoder(message.data)).messageContent
+//        NSString(data: message.data, encoding: NSUTF8StringEncoding)
+//        print("data: \(payloadString)")
+        self.str.append(payloadString)
         self.isFromSelf.append(false)
         self.chatTableView.reloadData()
+        
     }
     
     func onPresenceReceived(notification: NSNotification) {
@@ -114,7 +126,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     override func viewDidAppear(animated: Bool) {
+        currentChatUserId = targetUserID
         goToLatestMessage()
+        
+    }
+    override func viewWillDisappear(animated: Bool) {
+        currentChatUserId = nil
     }
 //    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
 //        return nil

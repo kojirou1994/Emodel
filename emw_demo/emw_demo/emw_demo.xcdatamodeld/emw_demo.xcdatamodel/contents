@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Xcode 4.3">
-    <entity name="Chat" syncable="YES">
+    <entity name="Chat" representedClassName="ChatMessage" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isFromSelf" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="localUserId" optional="YES" attributeType="String" syncable="YES"/>

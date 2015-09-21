@@ -93,5 +93,9 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             cvc.targetUserID = index?.row == 0 ? "55a7abda8a5da518db646c18" : "55a7abda8a5da518db646c23"
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("unread Count \(unreadCount)")
+    }
 }
 
