@@ -65,7 +65,10 @@ class ConfigViewController: UITableViewController {
             let user = NSUserDefaults.standardUserDefaults()
             user.removeObjectForKey("UserName")
             print("已移除用户信息")
-            self.dismissViewControllerAnimated(true, completion: nil)
+            
+            let welcome = self.storyboard?.instantiateViewControllerWithIdentifier("WelcomePage") as! WelcomePageViewController
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = welcome
             
         }
     }

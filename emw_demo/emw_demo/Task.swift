@@ -17,7 +17,7 @@ struct Task: JSONJoy {
     var isAllowed: Bool = true
     var modelDemand: String?
     var otherDemand: String?
-    var participant: [String] = [String]()
+    var participant: [String]?
     var price: String?
     var remaining: Int?
     var title: String?
@@ -40,8 +40,9 @@ struct Task: JSONJoy {
         modelDemand = decoder["modelDemand"].string
         otherDemand = decoder["otherDemand"].string
         if let arr = decoder["participant"].array {
+            participant = [String]()
             for i in arr {
-                participant.append(i.string!)
+                participant!.append(i.string!)
             }
         }
         price = decoder["price"].string
@@ -61,7 +62,10 @@ struct Task: JSONJoy {
     }
     
     func userHaveSignedUp(inputID: String) -> Bool {
-        for user in self.participant {
+        guard let parti = self.participant else {
+            return false
+        }
+        for user in parti {
             if (user == inputID) {
                 return true
             }

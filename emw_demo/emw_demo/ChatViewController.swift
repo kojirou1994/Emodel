@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -17,9 +18,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var inputKeyView: UIView!
     var inputField: UITextField!
     var sendBtn: UIButton!
+    
+    var chatLog: Array<Dictionary<String, AnyObject>>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.initChatDatabase()
         print("对象id： \(targetUserID)")
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationItem.title = "王羞羞"
@@ -52,24 +56,47 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.addNotificationHandler()
     }
     
+    func initChatDatabase() {
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let fetch = NSFetchRequest(entityName: "Chat")
+        let pre = NSPredicate(format: "localUserId = %@ AND remoteUserId = %@", userId,targetUserID)
+        fetch.predicate = pre
+        var db: [AnyObject]?
+        do {
+            db = try context.executeFetchRequest(fetch)
+        } catch let fetchError as NSError {
+            print("retrieveAllItems error: \(fetchError.localizedDescription)")
+        }
+        chatLog = Array<Dictionary<String, AnyObject>>()
+        for i in db! {
+//            print(i)
+            chatLog?.append(["isFromSelf": i.valueForKey("isFromSelf") as! Bool, "messageType": i.valueForKey("messageType") as! Int, "time": i.valueForKey("time") as! NSDate, "content": i.valueForKey("content") as! String])
+        }
+//        print(chatLog)
+        
+        //        context.ex
+        //        var chatData = context.executeFetchRequest(fetch)
+    }
+    
     func send() {
-        print("message sent")
-        print(inputField.text)
+        guard let inputM = inputField.text else {
+            self.showSimpleAlert("", message: "消息不能为空")
+            return
+        }
+        let sendTime = NSDate()
         
         //输入完先添加消息框
         self.inputField.resignFirstResponder()
-        self.str.append(self.inputField.text!)
-        self.isFromSelf.append(true)
+        
+        //添加数据至chatlog
+        chatLog?.append(["isFromSelf": true, "messageType": 1, "time": sendTime, "content": inputM])
         self.chatTableView.reloadData()
         
         //预处理发送消息
-        var sendM: String
-        if let inputM = inputField.text {
-            sendM = "{\"fromUserId\":\"\(userId)\",\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
-        }
-        else {
-            sendM = "{\"fromUserId\":\"\(userId)\",\"messageType\":1,\"messageContent\":\"\"}"
-        }
+        let sendM = "{\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
+        saveMessageToDatabase(userId, remoteUserId: targetUserID, messageType: 1, isFromSelf: true, time: NSDate(), messageContent: inputM)
+
+        
         YunBaService.publishToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
                 print("聊天信息已发送")
@@ -96,12 +123,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let message: YBMessage = notification.object as! YBMessage
         print("new message \(message.data.length) bytes, topic = \(message.topic)")
         print(JSONDecoder(message.data).print())
-        let payloadString = YunbaChatMessage(JSONDecoder(message.data)).messageContent
-//        NSString(data: message.data, encoding: NSUTF8StringEncoding)
-//        print("data: \(payloadString)")
-        self.str.append(payloadString)
-        self.isFromSelf.append(false)
-        self.chatTableView.reloadData()
+        if (message.topic == targetUserID) {
+            //添加数据至chatlog
+            chatLog?.append(["isFromSelf": false, "messageType": 1, "time": NSDate(), "content": YunbaChatMessage(JSONDecoder(message.data)).messageContent])
+            self.chatTableView.reloadData()
+        }
         
     }
     
@@ -117,8 +143,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("显示用户简介")
     }
     func goToLatestMessage() {
-        let index = NSIndexPath(forRow: str.count - 1, inSection: 0)
-        chatTableView.scrollToRowAtIndexPath(index, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        if (self.chatLog != nil && self.chatLog!.count > 0) {
+            let index = NSIndexPath(forRow: (self.chatLog?.count)! - 1, inSection: 0)
+            chatTableView.scrollToRowAtIndexPath(index, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -126,9 +155,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     override func viewDidAppear(animated: Bool) {
+        
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         currentChatUserId = targetUserID
         goToLatestMessage()
-        
     }
     override func viewWillDisappear(animated: Bool) {
         currentChatUserId = nil
@@ -178,7 +211,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return str.count
+        return chatLog == nil ? 0 : chatLog!.count
     }
     var str:Array<String> = ["开始聊天"]
     var isFromSelf: Array<Bool> = [true]
@@ -194,12 +227,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         var head: UIImageView
-        if (isFromSelf[indexPath.row]) {
+        if (chatLog![indexPath.row]["isFromSelf"] as! Bool) {
             head = UIImageView(frame: CGRectMake(320 - 60, 10, 50, 50))
             cell.addSubview(head)
             head.image = UIImage(named: "photo1")
             roundHead(head)
-            cell.addSubview(bubbleView(str[indexPath.row], fromSelf: true, position: 65))
+            cell.addSubview(bubbleView(chatLog![indexPath.row]["content"] as! String, fromSelf: true, position: 65))
             print("cell \(indexPath.row) head1 added")
         }
         else {
@@ -207,7 +240,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.addSubview(head)
             head.image = UIImage(named: "head.jpg")
             roundHead(head)
-            cell.addSubview(bubbleView(str[indexPath.row], fromSelf: false, position: 65))
+            cell.addSubview(bubbleView(chatLog![indexPath.row]["content"] as! String, fromSelf: false, position: 65))
             print("cell \(indexPath.row) head2 added")
         }
         print("cell \(indexPath.row) loaded")
@@ -216,7 +249,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let font = UIFont.systemFontOfSize(14)
-        let text = str[indexPath.row] as NSString
+        let text = chatLog![indexPath.row]["content"] as! NSString
         let size = text.boundingRectWithSize(CGSizeMake(180, 20000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil)
         return size.height + 44
     }

@@ -51,7 +51,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if (indexPath.row == 11) {
+        if (indexPath.row == 12) {
             let identifier: String = "button"
             let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTableCell
             cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -78,6 +78,15 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             cell.detailText.text = taskData?.otherDemand
             cell.detailText.clipsToBounds = true
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            return cell
+        }
+        else if (indexPath.row == 11) {
+            let identifier = "SignedPeople"
+            let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! SignedPeopleTableViewCell
+            cell.people = self.taskData?.participant
+            cell.configCell()
+            cell.fatherVC = self
+            print(self.taskData?.participant)
             return cell
         }
         else {
@@ -114,6 +123,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             case 10:
                 cell.textLabel?.text = "联系商家"
                 cell.detailTextLabel?.text = ""
+                cell.accessoryType = UITableViewCellAccessoryType.DetailButton
             default:
                 cell.textLabel?.text = "null"
                 cell.detailTextLabel?.text = "default"
@@ -129,13 +139,16 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             return 0
         }
         else {
-            return 12
+            return 13
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (indexPath.row == 7 || indexPath.row == 8) {
             return 180
+        }
+        if (indexPath.row == 11) {
+            return 70
         }
         return 45.0
     }
@@ -145,8 +158,8 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if (indexPath.row == 10) {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let chat = sb.instantiateViewControllerWithIdentifier("Chat") as! ChatViewController
+            let chat = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Chat") as! ChatViewController
+            chat.targetUserID = self.taskData?.userId
             self.navigationController?.pushViewController(chat, animated: true)
         }
     }

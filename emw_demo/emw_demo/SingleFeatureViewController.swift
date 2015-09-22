@@ -33,7 +33,7 @@ class SingleFeatureViewController: UIViewController {
             imagev.image = image
             imagev.contentMode = UIViewContentMode.ScaleAspectFit
             self.view.addSubview(imagev)
-            let numberLabel = UILabel(frame:CGRectMake(self.view.frame.width/2-20,self.view.frame.height-200,100,100))
+            let numberLabel = UILabel(frame:CGRectMake(self.view.frame.width/2 - 20,self.view.frame.height - 200,100,100))
             //        numberLabel.center = self.view.center
             numberLabel.text = "第\(number)页"
             numberLabel.textColor = UIColor.whiteColor()

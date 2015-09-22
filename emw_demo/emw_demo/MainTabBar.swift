@@ -70,11 +70,15 @@ class MainTabBar: UITabBarController {
         print("new message \(message.data.length) bytes, topic = \(message.topic)")
         let payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
         print("data: \(payloadString)")
-        if (currentChatUserId == nil || currentChatUserId != message.topic) {
+        if (message.topic == "iOS") {
+            //是广播
+        }
+        else if (currentChatUserId == nil || currentChatUserId != message.topic) {
             unreadCount = unreadCount + 1
+            saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: 1, isFromSelf: false, time: NSDate(), messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
         }
         else {
-            
+            saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: 1, isFromSelf: false, time: NSDate(), messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
         }
         
         updateTabBarApperance()
@@ -83,9 +87,6 @@ class MainTabBar: UITabBarController {
     func onPresenceReceived(notification: NSNotification) {
         let presence: YBPresenceEvent = notification.object as! YBPresenceEvent
         print("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
-        
-        //        NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
-        //        [self addMsgToTextView:curMsg];
     }
     func updateTabBarApperance() {
         if (unreadCount != 0) {
@@ -95,27 +96,23 @@ class MainTabBar: UITabBarController {
             self.viewControllers![1].tabBarItem.badgeValue = nil
         }
     }
-    
-    func initChatDatabase() {
-        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        let fetch = NSFetchRequest(entityName: "Chat")
-        let pre = NSPredicate(format: "name = %@", userId)
-        fetch.predicate = pre
-        var fetchResult: Array<ChatMessage>?
-        do {
-            fetchResult = try context.executeFetchRequest(fetch) as! [ChatMessage]
-        } catch let fetchError as NSError {
-            print("retrieveAllItems error: \(fetchError.localizedDescription)")
-        }
-        print(fetchResult)
-//        context.ex
-//        var chatData = context.executeFetchRequest(fetch)
-    }
 }
 
 func saveMessageToDatabase(localUserId: String, remoteUserId: String, messageType: Int, isFromSelf: Bool, time: NSDate, messageContent: String) {
     let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    let entity = NSEntityDescription.entityForName("Chat", inManagedObjectContext: context)
+    let row: AnyObject = NSEntityDescription.insertNewObjectForEntityForName("Chat", inManagedObjectContext: context)
+    row.setValue(messageContent, forKey: "content")
+    row.setValue(isFromSelf, forKey: "isFromSelf")
+    row.setValue(localUserId, forKey: "localUserId")
+    row.setValue(messageType, forKey: "messageType")
+    row.setValue(remoteUserId, forKey: "remoteUserId")
+    row.setValue(time, forKey: "time")
+
+    do {
+        try context.save()
+    } catch let error as NSError {
+        print(error)
+    }
     
 //    let item = ChatMessage
 }

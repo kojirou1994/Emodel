@@ -8,13 +8,6 @@
 
 import UIKit
 import CoreData
-//struct ChatMessage {
-//    var remoteUserId: String
-//    var messageType: Int
-//    var isFromSelf: Bool
-//    var content: String
-//    var time: NSDate
-//}
 
 class ChatMessage: NSManagedObject {
     @NSManaged var remoteUserId: String
