@@ -100,9 +100,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.userNameLabel.text = listIndex[indexPath.row]["userId"] as? String
         cell.latestMessageLabel.text = recentChatList[listIndex[indexPath.row]["userId"] as! String]!["message"] as! String
         cell.timeLabel.text = "time"
-//        cell.userAvatar.contentMode = UIViewContentMode.
-        cell.userAvatar.image = UIImage(named: "head.jpg")
-        cell.configTheCell(unReadCount[listIndex[indexPath.row]["userId"] as! String]!)
+        cell.configTheCell(unReadCount[listIndex[indexPath.row]["userId"] as! String]!, id: listIndex[indexPath.row]["userId"] as! String)
         cell.clipsToBounds = true
         return cell
     }
@@ -113,7 +111,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         let tb = self.tabBarController as! MainTabBar
         tb.updateTabBarApperance()
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ChatListTableViewCell
-        cell.configTheCell(0)
+        cell.configTheCell(0, id: listIndex[indexPath.row]["userId"] as! String)
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import Kingfisher
 
 class ChatListTableViewCell: UITableViewCell {
 
@@ -20,10 +22,11 @@ class ChatListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var badgeLabel: SwiftBadge!
     
-    func configTheCell(badge: Int) {
+//    var uid:String?
+    
+    func configTheCell(badge: Int, id: String) {
         if (badge <= 0) {
             badgeLabel.hidden = true
-            return
         }
         else {
             badgeLabel.hidden = false
@@ -33,6 +36,23 @@ class ChatListTableViewCell: UITableViewCell {
 //            bd.textColor
             self.badgeLabel.addSubview(bd)
         }
+//        if (self.uid != id) {
+        Alamofire.request(.GET, serverAddress + "/user/\(id)")
+            .validate()
+            .responseJSON { _, _, result in
+                switch result {
+                case .Success:
+                    let data = User(JSONDecoder(result.value!)).data
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.userNameLabel.text = data?.baseInfo?.nickName
+                        self.userAvatar.kf_setImageWithURL(NSURL(string: (data?.baseInfo?.avatar)!)!)
+                    })
+                case .Failure(_, let error):
+                    return
+                }
+        }
+//        }
+
     }
     
 }
