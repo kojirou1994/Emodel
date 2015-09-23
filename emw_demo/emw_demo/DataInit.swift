@@ -30,6 +30,11 @@ var unreadCount: Int! = 0
 ///当前聊天用户id
 var currentChatUserId: String?
 
+var recentChatList: NSMutableDictionary!
+let recentChatPlist = NSBundle.mainBundle().pathForResource("recentChatList", ofType: ".plist")
+
+var unReadCount: Dictionary<String, Int>!
+
 //var album :Array<Album>! = Array<Album>()
 
 //MARK: - 初始化
@@ -42,9 +47,10 @@ func readUserData() {
         password = (user.objectForKey("Password") as! String)
         userId = (user.objectForKey("UserID") as! String)
         token = user.objectForKey("Token") as! String
-        if let count = user.objectForKey("UnreadCount") as? Int {
-            unreadCount = count
+        if let count = user.objectForKey("UnreadCount") as? NSDictionary {
+            unReadCount = count as? Dictionary
         }
+        recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist!)
         print("read username: \(username)")
         print("read password \(password)")
         isLogin = true

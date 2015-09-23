@@ -119,6 +119,7 @@
 		E3E9C2531B6CE5D700998937 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2521B6CE5D700998937 /* img.jpg */; };
 		E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */; };
 		E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */; };
+		E3F271F91BB269A1003A33EE /* recentChatList.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3F271F81BB269A1003A33EE /* recentChatList.plist */; settings = {ASSET_TAGS = (); }; };
 		E3F533FA1BAFA82D003BC841 /* YunbaChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F533F91BAFA82D003BC841 /* YunbaChatMessage.swift */; settings = {ASSET_TAGS = (); }; };
 		E3F533FC1BAFBE28003BC841 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F533FB1BAFBE28003BC841 /* ChatMessage.swift */; settings = {ASSET_TAGS = (); }; };
 		E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F7CC3C1B704F79001D82D3 /* Signup.swift */; };
@@ -255,6 +256,7 @@
 		E3E9C2521B6CE5D700998937 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTableCell.swift; sourceTree = "<group>"; };
 		E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTextTableViewCell.swift; sourceTree = "<group>"; };
+		E3F271F81BB269A1003A33EE /* recentChatList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = recentChatList.plist; sourceTree = "<group>"; };
 		E3F533F91BAFA82D003BC841 /* YunbaChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YunbaChatMessage.swift; sourceTree = "<group>"; };
 		E3F533FB1BAFBE28003BC841 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		E3F7CC3C1B704F79001D82D3 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				E3B6801D1BA2C452004DF002 /* bubbleImage */,
 				E3E9C2191B6CA66200998937 /* Supporting Files */,
 				E3978F651B7B1470002B54A3 /* AlbumView.swift */,
+				E3F271F81BB269A1003A33EE /* recentChatList.plist */,
 				E30B30E01B7857CE00864989 /* DataInit.swift */,
 			);
 			path = emw_demo;
@@ -678,6 +681,7 @@
 				E385189A1B7091B40063C2C2 /* 账号绑定.png in Resources */,
 				E3B6803E1BA2C452004DF002 /* SenderVoiceNodePlaying.png in Resources */,
 				E38518931B7091B40063C2C2 /* 基本信息.png in Resources */,
+				E3F271F91BB269A1003A33EE /* recentChatList.plist in Resources */,
 				E38518941B7091B40063C2C2 /* 我的.png in Resources */,
 				E38518891B7091B40063C2C2 /* starRank_10.png in Resources */,
 				E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */,

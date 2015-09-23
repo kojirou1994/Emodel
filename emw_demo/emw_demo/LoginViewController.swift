@@ -49,11 +49,13 @@ class LoginViewController: UIViewController {
                     print("token is:\(resp.data!.token)")
                     userId = resp.data?.userId!
                     token = resp.data?.token
+                    unReadCount = ["total": 0]
                     let user = NSUserDefaults.standardUserDefaults()
                     user.setObject(mobileText, forKey: "UserName")
                     user.setObject(passwordText, forKey: "Password")
                     user.setObject(userId, forKey: "UserID")
                     user.setObject(token, forKey: "Token")
+                    user.setObject(unReadCount, forKey: "UnreadCount")
                     dispatch_async(dispatch_get_main_queue(), {
                         notice.labelText = "登陆成功"
                         self.dismissViewControllerAnimated(false, completion: nil)

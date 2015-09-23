@@ -33,16 +33,11 @@ class MainTabBar: UITabBarController {
                 print("订阅失败")
             }
         })
-//        print("sleep 5s")
-//        sleep(5)
         print("viewDidLoad")
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,6 +61,7 @@ class MainTabBar: UITabBarController {
     }
     
     func onMessageReceived(notification: NSNotification) {
+        let receiveTime = NSDate()
         let message: YBMessage = notification.object as! YBMessage
         print("new message \(message.data.length) bytes, topic = \(message.topic)")
         let payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
@@ -74,13 +70,30 @@ class MainTabBar: UITabBarController {
             //是广播
         }
         else if (currentChatUserId == nil || currentChatUserId != message.topic) {
-            unreadCount = unreadCount + 1
-            saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: 1, isFromSelf: false, time: NSDate(), messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
+            //获取到的信息不是当前正在聊天的用户，更新角标
+            if (unReadCount["\(message.topic)"] == nil) {
+                unReadCount["\(message.topic)"] = 1
+                unReadCount["total"] = unReadCount["total"]! + 1
+            }
+            else {
+                unReadCount["\(message.topic)"] = unReadCount["\(message.topic)"]! + 1
+                unReadCount["total"] = unReadCount["total"]! + 1
+            }
+            
+            recentChatList[message.topic] = ["time": receiveTime,
+                                             "message": YunbaChatMessage(JSONDecoder(message.data)).messageContent
+            ]
+            
+            saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: YunbaChatMessage(JSONDecoder(message.data)).messageType, isFromSelf: false, time: receiveTime, messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
         }
         else {
-            saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: 1, isFromSelf: false, time: NSDate(), messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
+            //获取到的信息是当前正在聊天的用户，只保存
+            recentChatList[message.topic] = ["time": receiveTime,
+                                             "message": YunbaChatMessage(JSONDecoder(message.data)).messageContent
+            ]
+            
+            saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: YunbaChatMessage(JSONDecoder(message.data)).messageType, isFromSelf: false, time: receiveTime, messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
         }
-        
         updateTabBarApperance()
     }
     
@@ -88,9 +101,10 @@ class MainTabBar: UITabBarController {
         let presence: YBPresenceEvent = notification.object as! YBPresenceEvent
         print("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
     }
+    
     func updateTabBarApperance() {
-        if (unreadCount != 0) {
-            self.viewControllers![1].tabBarItem.badgeValue = String(unreadCount)
+        if (unReadCount["total"] > 0) {
+            self.viewControllers![1].tabBarItem.badgeValue = String(unReadCount["total"])
         }
         else {
             self.viewControllers![1].tabBarItem.badgeValue = nil
