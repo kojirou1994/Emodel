@@ -89,6 +89,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("setting the rows number")
+        print(recentChatList.count)
         return recentChatList.count
     }
 //    var name = ["king","Cici"]
@@ -101,11 +102,19 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.timeLabel.text = "time"
 //        cell.userAvatar.contentMode = UIViewContentMode.
         cell.userAvatar.image = UIImage(named: "head.jpg")
+        cell.configTheCell(unReadCount[listIndex[indexPath.row]["userId"] as! String]!)
         cell.clipsToBounds = true
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        unReadCount["total"] = unReadCount["total"]! - unReadCount[listIndex[indexPath.row]["userId"] as! String]!
+        unReadCount[listIndex[indexPath.row]["userId"] as! String] = 0
+        let tb = self.tabBarController as! MainTabBar
+        tb.updateTabBarApperance()
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ChatListTableViewCell
+        cell.configTheCell(0)
+        NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     

@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         self.saveContext()
         recentChatList.writeToFile(recentChatPlist!, atomically: true)
+        NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
     }
 
     // MARK: - YunbaService

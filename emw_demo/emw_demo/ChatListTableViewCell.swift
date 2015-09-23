@@ -18,6 +18,21 @@ class ChatListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     
-    var unReadCount:Int!
+    @IBOutlet weak var badgeLabel: SwiftBadge!
+    
+    func configTheCell(badge: Int) {
+        if (badge <= 0) {
+            badgeLabel.hidden = true
+            return
+        }
+        else {
+            badgeLabel.hidden = false
+            badgeLabel.text = String(badge)
+            let bd = SwiftBadge()
+            bd.text = String(badge)
+//            bd.textColor
+            self.badgeLabel.addSubview(bd)
+        }
+    }
     
 }

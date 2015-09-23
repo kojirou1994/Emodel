@@ -51,6 +51,7 @@ class MainTabBar: UITabBarController {
     
     override func viewWillAppear(animated: Bool) {
         print("viewWillAppear")
+//        self.updateTabBarApperance()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -104,7 +105,8 @@ class MainTabBar: UITabBarController {
             
             saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: YunbaChatMessage(JSONDecoder(message.data)).messageType, isFromSelf: false, time: receiveTime, messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
         }
-        print(recentChatList)
+        recentChatList.writeToFile(recentChatPlist!, atomically: true)
+        NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
 //        if (chatListVCLoaded) {
 //            let cnavi = self.storyboard?.instantiateViewControllerWithIdentifier("ChatList") as! ChatListViewController
 //            cnavi.updateChatList()

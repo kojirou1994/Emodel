@@ -18,6 +18,7 @@
 		E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */; };
 		E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */; };
 		E33802BD1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */; };
+		E33F378C1BB2FDA500E59D7C /* SwiftBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33F378B1BB2FDA500E59D7C /* SwiftBadge.swift */; settings = {ASSET_TAGS = (); }; };
 		E34CC6461B96DD7F0089EED1 /* Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34CC6451B96DD7F0089EED1 /* Confirm.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E350E5661BABA78B006981FF /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E5651BABA78B006981FF /* JSONJoy.swift */; settings = {ASSET_TAGS = (); }; };
@@ -149,6 +150,7 @@
 		E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoEditViewController.swift; sourceTree = "<group>"; };
 		E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyInfoEditViewController.swift; sourceTree = "<group>"; };
 		E33802BC1B9023C300A9ADD3 /* BusinessInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessInfoEditViewController.swift; sourceTree = "<group>"; };
+		E33F378B1BB2FDA500E59D7C /* SwiftBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBadge.swift; sourceTree = "<group>"; };
 		E34CC6451B96DD7F0089EED1 /* Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E350E5651BABA78B006981FF /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				E3E9C2241B6CA66200998937 /* Images.xcassets */,
 				E350E56B1BABFD94006981FF /* TaskNavi.swift */,
 				E350E56D1BABFDA6006981FF /* ChatNavi.swift */,
+				E33F378B1BB2FDA500E59D7C /* SwiftBadge.swift */,
 				E350E5711BAC0051006981FF /* MainTabBar.swift */,
 				E350E56F1BABFDB5006981FF /* ProfileNavi.swift */,
 				E36C14371BA5D64D00D6FA4D /* Refresh */,
@@ -842,6 +845,7 @@
 				E350E56C1BABFD94006981FF /* TaskNavi.swift in Sources */,
 				E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */,
 				E30E701C1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift in Sources */,
+				E33F378C1BB2FDA500E59D7C /* SwiftBadge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

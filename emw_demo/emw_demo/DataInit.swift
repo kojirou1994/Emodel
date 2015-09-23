@@ -53,6 +53,7 @@ func readUserData() {
             unReadCount = count as? Dictionary
         }
         recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist!)
+        print(recentChatPlist)
         print("read username: \(username)")
         print("read password \(password)")
         isLogin = true
