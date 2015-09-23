@@ -8,14 +8,23 @@
 
 import UIKit
 import CoreData
+import AudioToolbox
 
 class MainTabBar: UITabBarController {
 
+    var chatListVC: ChatListViewController!
     override func viewDidLoad() {
         print("start viewDidLoad")
         super.viewDidLoad()
+        if (unReadCount["total"] > 0) {
+            self.viewControllers![1].tabBarItem.badgeValue = String(unReadCount["total"]!)
+        }
+        else {
+            self.viewControllers![1].tabBarItem.badgeValue = nil
+        }
         self.addNotificationHandler()
-        updateTabBarApperance()
+//        updateTabBarApperance()
+        
         
         YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
@@ -61,6 +70,7 @@ class MainTabBar: UITabBarController {
     }
     
     func onMessageReceived(notification: NSNotification) {
+        AudioServicesPlaySystemSound(1007)
         let receiveTime = NSDate()
         let message: YBMessage = notification.object as! YBMessage
         print("new message \(message.data.length) bytes, topic = \(message.topic)")
@@ -94,6 +104,11 @@ class MainTabBar: UITabBarController {
             
             saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: YunbaChatMessage(JSONDecoder(message.data)).messageType, isFromSelf: false, time: receiveTime, messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
         }
+        print(recentChatList)
+//        if (chatListVCLoaded) {
+//            let cnavi = self.storyboard?.instantiateViewControllerWithIdentifier("ChatList") as! ChatListViewController
+//            cnavi.updateChatList()
+//        }
         updateTabBarApperance()
     }
     
@@ -103,12 +118,14 @@ class MainTabBar: UITabBarController {
     }
     
     func updateTabBarApperance() {
+//        chatListVC = self.tabBarController?.viewControllers![1] as! ChatListViewController
         if (unReadCount["total"] > 0) {
-            self.viewControllers![1].tabBarItem.badgeValue = String(unReadCount["total"])
+            self.viewControllers![1].tabBarItem.badgeValue = String(unReadCount["total"]!)
         }
         else {
             self.viewControllers![1].tabBarItem.badgeValue = nil
         }
+//        chatListVC.chatListTableView.reloadData()
     }
 }
 

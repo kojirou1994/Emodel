@@ -19,7 +19,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noticeTableCell" rowHeight="80" id="fTP-yN-MEh" customClass="NoticeTableCell" customModule="emw_demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fTP-yN-MEh" id="dU0-af-X1h">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="79.5"/>
@@ -1317,7 +1317,7 @@
         <!--聊天列表-->
         <scene sceneID="mHO-WW-SHs">
             <objects>
-                <viewController id="VfG-fE-EQA" userLabel="聊天列表" customClass="ChatListViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatList" id="VfG-fE-EQA" userLabel="聊天列表" customClass="ChatListViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17w-e2-pSg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1328,7 +1328,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatListCell" rowHeight="90" id="Hd3-un-N9N" customClass="ChatListTableViewCell" customModule="emw_demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="90"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hd3-un-N9N" id="Rl1-rw-5kV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>

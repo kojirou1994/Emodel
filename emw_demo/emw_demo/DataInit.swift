@@ -26,7 +26,7 @@ var token: String!
 ///本地用户资料
 var localUser: UserData!
 ///未读消息计数
-var unreadCount: Int! = 0
+//var unreadCount: Int! = 0
 ///当前聊天用户id
 var currentChatUserId: String?
 
@@ -34,6 +34,8 @@ var recentChatList: NSMutableDictionary!
 let recentChatPlist = NSBundle.mainBundle().pathForResource("recentChatList", ofType: ".plist")
 
 var unReadCount: Dictionary<String, Int>!
+
+var chatListVCLoaded: Bool = false
 
 //var album :Array<Album>! = Array<Album>()
 
