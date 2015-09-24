@@ -106,6 +106,7 @@ class MainTabBar: UITabBarController {
             saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: YunbaChatMessage(JSONDecoder(message.data)).messageType, isFromSelf: false, time: receiveTime, messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
         }
         recentChatList.writeToFile(recentChatPlist!, atomically: true)
+        NSNotificationCenter.defaultCenter().postNotificationName("updateChatListVC", object: self)
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
 //        if (chatListVCLoaded) {
 //            let cnavi = self.storyboard?.instantiateViewControllerWithIdentifier("ChatList") as! ChatListViewController

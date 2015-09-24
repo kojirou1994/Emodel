@@ -94,8 +94,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //预处理发送消息
         let sendM = "{\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
+        //保存消息到数据库
         saveMessageToDatabase(userId, remoteUserId: targetUserID, messageType: 1, isFromSelf: true, time: NSDate(), messageContent: inputM)
-
+        
+        recentChatList[self.targetUserID] = ["time": sendTime,
+            "message": inputM
+        ]
+        unReadCount[self.targetUserID] = 0
+        recentChatList.writeToFile(recentChatPlist!, atomically: true)
+        NSNotificationCenter.defaultCenter().postNotificationName("updateChatListVC", object: self)
         
         YunBaService.publishToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
             if (succ) {

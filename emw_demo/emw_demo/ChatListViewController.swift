@@ -52,9 +52,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
 //    MARK : - YunbaService
     func addNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
-        defaultNC.addObserver(self, selector: "onConnectionStateChanged:", name: kYBConnectionStatusChangedNotification, object: nil)
-        defaultNC.addObserver(self, selector: "onMessageReceived:", name: kYBDidReceiveMessageNotification, object: nil)
-        defaultNC.addObserver(self, selector: "onPresenceReceived", name: kYBDidReceivePresenceNotification, object: nil)
+        defaultNC.addObserver(self, selector: "updateChatList", name: "updateChatListVC", object: nil)
     }
     func removeNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
