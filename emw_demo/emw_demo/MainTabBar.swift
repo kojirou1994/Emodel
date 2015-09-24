@@ -63,7 +63,7 @@ class MainTabBar: UITabBarController {
     func addNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
         defaultNC.addObserver(self, selector: "onMessageReceived:", name: kYBDidReceiveMessageNotification, object: nil)
-        defaultNC.addObserver(self, selector: "onPresenceReceived", name: kYBDidReceivePresenceNotification, object: nil)
+        defaultNC.addObserver(self, selector: "onPresenceReceived:", name: kYBDidReceivePresenceNotification, object: nil)
     }
     func removeNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
@@ -108,10 +108,6 @@ class MainTabBar: UITabBarController {
         recentChatList.writeToFile(recentChatPlist!, atomically: true)
         NSNotificationCenter.defaultCenter().postNotificationName("updateChatListVC", object: self)
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
-//        if (chatListVCLoaded) {
-//            let cnavi = self.storyboard?.instantiateViewControllerWithIdentifier("ChatList") as! ChatListViewController
-//            cnavi.updateChatList()
-//        }
         updateTabBarApperance()
     }
     
