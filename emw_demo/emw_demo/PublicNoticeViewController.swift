@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class PublicNoticeViewController: UIViewController, UINavigationControllerDelegate, SMSegmentViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var tableView: UITableView!
     
@@ -182,7 +182,7 @@ class PublicNoticeViewController: UIViewController, UINavigationControllerDelega
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "noticeDetail" {
+        if segue.identifier == "NoticeDetail" {
             let indexPath = self.tableView!.indexPathForSelectedRow
             print("点击了通告\(indexPath)")
             let destinationViewController = segue.destinationViewController as! NoticeDetailViewController

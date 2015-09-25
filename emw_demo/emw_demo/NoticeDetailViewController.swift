@@ -9,15 +9,19 @@
 import UIKit
 import Alamofire
 
-class NoticeDetailViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var taskData: Task?
-    
-    
+
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = taskData?.title
+//        tableView = UITableView(frame: self.view.frame, style: UITableViewStyle.Plain)
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        self.view.addSubview(tableView)
         print("have sign up ?")
         // Do any additional setup after loading the view.
     }
@@ -95,6 +99,7 @@ class NoticeDetailViewController: UIViewController, UINavigationControllerDelega
             guard let cell = tableView.dequeueReusableCellWithIdentifier(identifier) else {
                 return UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
             }
+            cell.accessoryType = UITableViewCellAccessoryType.None
             switch (indexPath.row) {
             case 0:
                 cell.textLabel?.text = "状态"

@@ -37,6 +37,8 @@ var unReadCount: Dictionary<String, Int>!
 
 var chatListVCLoaded: Bool = false
 
+var userNameAndAvatar: Dictionary<String, AnyObject>!
+
 //var album :Array<Album>! = Array<Album>()
 
 //MARK: - 初始化

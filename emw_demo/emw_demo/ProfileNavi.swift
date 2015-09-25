@@ -12,7 +12,6 @@ class ProfileNavi: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarItem.badgeValue = "5"
         // Do any additional setup after loading the view.
     }
 

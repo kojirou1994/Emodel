@@ -20,21 +20,20 @@ class ChatListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     
-    @IBOutlet weak var badgeLabel: SwiftBadge!
+    @IBOutlet weak var badgeLabel: UILabel!
     
 //    var uid:String?
+    var round: Bool = false
     
     func configTheCell(badge: Int, id: String) {
+        badgeLabel.layer.masksToBounds = true
+        badgeLabel.layer.cornerRadius = badgeLabel.frame.width / 2
         if (badge <= 0) {
             badgeLabel.hidden = true
         }
         else {
             badgeLabel.hidden = false
             badgeLabel.text = String(badge)
-            let bd = SwiftBadge()
-            bd.text = String(badge)
-//            bd.textColor
-            self.badgeLabel.addSubview(bd)
         }
 //        if (self.uid != id) {
         Alamofire.request(.GET, serverAddress + "/user/\(id)")

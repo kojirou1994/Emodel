@@ -22,12 +22,13 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
 //        self.addNotificationHandler()
         self.chatListTableView.tableFooterView = UIView(frame: CGRectZero)
         let btn = UIBarButtonItem(title: "refresh", style: UIBarButtonItemStyle.Plain, target: self, action: "updateChatList")
-        self.navigationItem.leftBarButtonItem = btn
+//        self.navigationItem.leftBarButtonItem = btn
         if (recentChatList.count > 0){
             self.updateChatList()
         }
         self.addNotificationHandler()
     }
+    
     func updateChatList() {
         print("count: \(recentChatList.count)")
         if (recentChatList.count > 0){
@@ -49,6 +50,26 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
 //        print(listIndex)
         self.chatListTableView.reloadData()
     }
+    
+    func stringByDate(date: NSDate) -> String {
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let todayDate = format.dateFromString(format.stringFromDate(NSDate()))!
+        let interval = date.timeIntervalSinceDate(todayDate)
+        if ( interval >= 0) {
+            format.dateFormat = "HH:mm:ss"
+            return format.stringFromDate(date)
+        }
+        else if (interval < -86400) {
+            format.dateFormat = "MM-dd"
+            return format.stringFromDate(date)
+        }
+        else {
+            return "昨天"
+            
+        }
+    }
+    
 //    MARK : - YunbaService
     func addNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
@@ -68,7 +89,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
 //        }
     }
     func onMessageReceived(notification: NSNotification) {
-        let timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "updateChatList", userInfo: nil, repeats: false)
+//        let timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "updateChatList", userInfo: nil, repeats: false)
     }
     
     func onPresenceReceived(notification: NSNotification) {
@@ -97,7 +118,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = chatListTableView.dequeueReusableCellWithIdentifier("chatListCell") as! ChatListTableViewCell
         cell.userNameLabel.text = listIndex[indexPath.row]["userId"] as? String
         cell.latestMessageLabel.text = recentChatList[listIndex[indexPath.row]["userId"] as! String]!["message"] as! String
-        cell.timeLabel.text = "time"
+        cell.timeLabel.text = stringByDate(recentChatList[listIndex[indexPath.row]["userId"] as! String]!["time"] as! NSDate)
         cell.configTheCell(unReadCount[listIndex[indexPath.row]["userId"] as! String]!, id: listIndex[indexPath.row]["userId"] as! String)
         cell.clipsToBounds = true
         return cell

@@ -78,33 +78,45 @@ class MainTabBar: UITabBarController {
         let payloadString = NSString(data: message.data, encoding: NSUTF8StringEncoding)
         print("data: \(payloadString)")
         if (message.topic == "iOS") {
+            print("是广播")
             //是广播
         }
-        else if (currentChatUserId == nil || currentChatUserId != message.topic) {
-            //获取到的信息不是当前正在聊天的用户，更新角标
-            if (unReadCount["\(message.topic)"] == nil) {
-                unReadCount["\(message.topic)"] = 1
-                unReadCount["total"] = unReadCount["total"]! + 1
+        else {
+            let receivedMessage = YunbaChatMessage(JSONDecoder(message.data))
+            if (receivedMessage.fromUserId == "000000") {
+                //error
+                print("error 000000")
+            }
+            else if (receivedMessage.fromUserId != currentChatUserId || currentChatUserId == nil) {
+                //获取到的信息不是当前正在聊天的用户，更新角标
+                print("获取到的信息不是当前正在聊天的用户，更新角标")
+                if (unReadCount["\(receivedMessage.fromUserId)"] == nil) {
+                    unReadCount["\(receivedMessage.fromUserId)"] = 1
+                    unReadCount["total"] = unReadCount["total"]! + 1
+                }
+                else {
+                    unReadCount["\(receivedMessage.fromUserId)"] = unReadCount["\(receivedMessage.fromUserId)"]! + 1
+                    unReadCount["total"] = unReadCount["total"]! + 1
+                }
+                
+                recentChatList[receivedMessage.fromUserId] = ["time": receiveTime,
+                    "message": receivedMessage.messageContent
+                ]
+                
+                saveMessageToDatabase(userId, remoteUserId: receivedMessage.fromUserId, messageType: receivedMessage.messageType, isFromSelf: false, time: receiveTime, messageContent: receivedMessage.messageContent)
             }
             else {
-                unReadCount["\(message.topic)"] = unReadCount["\(message.topic)"]! + 1
-                unReadCount["total"] = unReadCount["total"]! + 1
+                //获取到的信息是当前正在聊天的用户，只保存
+                print("获取到的信息是当前正在聊天的用户，只保存")
+                recentChatList[receivedMessage.fromUserId] = ["time": receiveTime,
+                    "message": receivedMessage.messageContent
+                ]
+                
+                saveMessageToDatabase(userId, remoteUserId: receivedMessage.fromUserId, messageType: receivedMessage.messageType, isFromSelf: false, time: receiveTime, messageContent: receivedMessage.messageContent)
             }
-            
-            recentChatList[message.topic] = ["time": receiveTime,
-                                             "message": YunbaChatMessage(JSONDecoder(message.data)).messageContent
-            ]
-            
-            saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: YunbaChatMessage(JSONDecoder(message.data)).messageType, isFromSelf: false, time: receiveTime, messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
         }
-        else {
-            //获取到的信息是当前正在聊天的用户，只保存
-            recentChatList[message.topic] = ["time": receiveTime,
-                                             "message": YunbaChatMessage(JSONDecoder(message.data)).messageContent
-            ]
-            
-            saveMessageToDatabase(userId, remoteUserId: message.topic, messageType: YunbaChatMessage(JSONDecoder(message.data)).messageType, isFromSelf: false, time: receiveTime, messageContent: YunbaChatMessage(JSONDecoder(message.data)).messageContent)
-        }
+        print("接受消息后的recentChatList")
+        print(recentChatList)
         recentChatList.writeToFile(recentChatPlist!, atomically: true)
         NSNotificationCenter.defaultCenter().postNotificationName("updateChatListVC", object: self)
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")

@@ -93,9 +93,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.chatTableView.reloadData()
         
         //预处理发送消息
-        let sendM = "{\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
+        let sendM = "{\"fromUserId\":\"\(userId)\",\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
         //保存消息到数据库
-        saveMessageToDatabase(userId, remoteUserId: targetUserID, messageType: 1, isFromSelf: true, time: NSDate(), messageContent: inputM)
+        saveMessageToDatabase(userId, remoteUserId: targetUserID, messageType: 1, isFromSelf: true, time: sendTime, messageContent: inputM)
         
         recentChatList[self.targetUserID] = ["time": sendTime,
             "message": inputM
@@ -122,8 +122,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         defaultNC.addObserver(self, selector: "onPresenceReceived", name: kYBDidReceivePresenceNotification, object: nil)
     }
     func removeNotificationHandler() {
-        let defaultNC = NSNotificationCenter.defaultCenter()
-        defaultNC.removeObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func onMessageReceived(notification: NSNotification) {
@@ -176,7 +175,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 //    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
 //        return nil
 //    }
-    
+
     func bubbleView(text: String, fromSelf: Bool, position: Int) -> UIView {
         //计算大小
         let font = UIFont.systemFontOfSize(14)
