@@ -18,7 +18,7 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         self.navigationItem.title = taskData?.title
 //        tableView = UITableView(frame: self.view.frame, style: UITableViewStyle.Plain)
-        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+//        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
 //        tableView.delegate = self
 //        tableView.dataSource = self
 //        self.view.addSubview(tableView)

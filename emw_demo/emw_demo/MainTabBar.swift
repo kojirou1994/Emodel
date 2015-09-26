@@ -51,13 +51,22 @@ class MainTabBar: UITabBarController {
     
     override func viewWillAppear(animated: Bool) {
         print("viewWillAppear")
+        self.selectedViewController?.beginAppearanceTransition(true, animated: true)
+
 //        self.updateTabBarApperance()
     }
     
     override func viewDidAppear(animated: Bool) {
         print("viewDidAppear")
+        self.selectedViewController?.endAppearanceTransition()
     }
-
+    override func viewWillDisappear(animated: Bool) {
+        self.selectedViewController?.beginAppearanceTransition(false, animated: true)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.selectedViewController?.endAppearanceTransition()
+    }
 
     //MARK : - YunbaService
     func addNotificationHandler() {
@@ -158,4 +167,3 @@ func saveMessageToDatabase(localUserId: String, remoteUserId: String, messageTyp
     
 //    let item = ChatMessage
 }
-

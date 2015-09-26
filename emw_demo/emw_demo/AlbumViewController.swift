@@ -29,6 +29,9 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.AlbumListCollectionView.frame = CGRectMake(0, self.navigationController!.navigationBar.frame.height, self.view.frame.width, self.view.frame.height)
+        print(self.AlbumListCollectionView.frame)
+        print(self.AlbumListCollectionView.contentSize)
         let addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
         self.navigationItem.rightBarButtonItem = addBtn
         album = localUser.albumInfo!
