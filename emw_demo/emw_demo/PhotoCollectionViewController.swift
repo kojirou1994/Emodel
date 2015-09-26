@@ -43,6 +43,11 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
 //        (barButtonSystemItem: UIBarButtonItemSt, target: self, action: "addPhotoBtnPressed:")
         self.navigationItem.rightBarButtonItem = addBtn
         updatePhotoCollection()
+        self.PhotoList.alwaysBounceVertical = true
+        self.PhotoList.addHeaderWithCallback { () -> Void in
+            self.updatePhotoCollection()
+        }
+        
         // Register cell classes
     }
     
@@ -53,9 +58,11 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
                 switch result {
                 case .Success:
                     print("Validation Successful")
-                    let resp = AlbumList(JSONDecoder(result.value!))
-                    self.data = resp.data
-                    self.PhotoList.reloadData()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.data = AlbumList(JSONDecoder(result.value!)).data
+                        self.PhotoList.reloadData()
+                        self.PhotoList.headerEndRefreshing()
+                    })
                 case .Failure(_, let error):
                     print(error)
                 }

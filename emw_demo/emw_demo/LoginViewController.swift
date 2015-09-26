@@ -57,6 +57,8 @@ class LoginViewController: UIViewController {
                     user.setObject(token, forKey: "Token")
                     user.setObject(unReadCount, forKey: "UnreadCount")
                     recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist!)
+                    userNameAndAvatarStorage = Dictionary<String, Dictionary<String, String>>()
+                    user.setObject(userNameAndAvatarStorage, forKey: "UserNameAndAvatarStorage")
                     dispatch_async(dispatch_get_main_queue(), {
                         notice.labelText = "登陆成功"
                         self.dismissViewControllerAnimated(false, completion: nil)

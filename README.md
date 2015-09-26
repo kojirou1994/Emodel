@@ -17,3 +17,12 @@ Token
 
 
 云巴消息发送格式
+
+
+
+userNameAndAvatarStorage[id]!["NickName"] = name
+
+``` 
+userNameAndAvatarStorage[id]!["AvatarAddress"] = avatar
+```
+

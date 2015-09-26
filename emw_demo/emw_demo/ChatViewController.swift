@@ -8,12 +8,13 @@
 
 import UIKit
 import CoreData
+import Kingfisher
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var chatTableView: UITableView!
     
-    var targetUserID: String! = userId
+    var targetUserID: String!
     
     var inputKeyView: UIView!
     var inputField: UITextField!
@@ -24,12 +25,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initChatDatabase()
-        print("对象id： \(targetUserID)")
+        print("聊天对象id： \(targetUserID)")
         self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationItem.title = "王羞羞"
-        print(chatTableView.bounds, terminator: "")
+        self.navigationItem.title = userNameAndAvatarStorage[targetUserID]!["NickName"]
         chatTableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-45)
-        print(chatTableView.contentSize, terminator: "")
         
         inputKeyView = UIView(frame: CGRectMake(0, self.view.frame.height-45, self.view.frame.width, 45))
         inputKeyView.backgroundColor = UIColor.redColor()
@@ -72,10 +71,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            print(i)
             chatLog?.append(["isFromSelf": i.valueForKey("isFromSelf") as! Bool, "messageType": i.valueForKey("messageType") as! Int, "time": i.valueForKey("time") as! NSDate, "content": i.valueForKey("content") as! String])
         }
-//        print(chatLog)
-        
-        //        context.ex
-        //        var chatData = context.executeFetchRequest(fetch)
     }
     
     func send() {
@@ -157,8 +152,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
-        // Dispose of any resources that can be recreated.
     }
     override func viewDidAppear(animated: Bool) {
         
@@ -171,10 +164,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     override func viewWillDisappear(animated: Bool) {
         currentChatUserId = nil
+//        self.removeNotificationHandler()
     }
-//    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-//        return nil
-//    }
 
     func bubbleView(text: String, fromSelf: Bool, position: Int) -> UIView {
         //计算大小
@@ -234,20 +225,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         var head: UIImageView
         if (chatLog![indexPath.row]["isFromSelf"] as! Bool) {
+            //来自自己的消息，用本地用户头像
             head = UIImageView(frame: CGRectMake(320 - 60, 10, 50, 50))
             cell.addSubview(head)
-            head.image = UIImage(named: "photo1")
+            head.kf_setImageWithURL(NSURL(string: (localUser.baseInfo?.avatar)!)!)
             roundHead(head)
             cell.addSubview(bubbleView(chatLog![indexPath.row]["content"] as! String, fromSelf: true, position: 65))
-            print("cell \(indexPath.row) head1 added")
+//            print("cell \(indexPath.row) head1 added")
         }
         else {
             head = UIImageView(frame: CGRectMake(10, 10, 50, 50))
             cell.addSubview(head)
-            head.image = UIImage(named: "head.jpg")
+            head.kf_setImageWithURL(NSURL(string: userNameAndAvatarStorage[targetUserID]!["AvatarAddress"]!)!)
             roundHead(head)
             cell.addSubview(bubbleView(chatLog![indexPath.row]["content"] as! String, fromSelf: false, position: 65))
-            print("cell \(indexPath.row) head2 added")
+//            print("cell \(indexPath.row) head2 added")
         }
         print("cell \(indexPath.row) loaded")
         return cell

@@ -16,8 +16,7 @@ var AlbumData: Array<AlbumList> = Array<AlbumList>()
 var selectedAlbum: AlbumList = AlbumList()
 
 var selectedAlbumIndex:Int = 0
-var photos: NSMutableArray = []
-//var thumbs: NSMutableArray = []
+//var photos: NSMutableArray = []
 class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     @IBAction func EditBtnPressed(sender: AnyObject) {
         print("show删除相册界面")
@@ -29,6 +28,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.automaticallyAdjustsScrollViewInsets = false
 //        self.AlbumListCollectionView.frame = CGRectMake(0, self.navigationController!.navigationBar.frame.height, self.view.frame.width, self.view.frame.height)
         print(self.AlbumListCollectionView.frame)
         print(self.AlbumListCollectionView.contentSize)
@@ -40,7 +40,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: - Func

@@ -37,7 +37,7 @@ var unReadCount: Dictionary<String, Int>!
 
 var chatListVCLoaded: Bool = false
 
-var userNameAndAvatar: Dictionary<String, AnyObject>!
+var userNameAndAvatarStorage: Dictionary<String, Dictionary<String, String>>!
 
 //var album :Array<Album>! = Array<Album>()
 
@@ -52,7 +52,16 @@ func readUserData() {
         userId = (user.objectForKey("UserID") as! String)
         token = user.objectForKey("Token") as! String
         if let count = user.objectForKey("UnreadCount") as? NSDictionary {
-            unReadCount = count as? Dictionary
+            unReadCount = count as! Dictionary
+        }
+        else {
+            unReadCount = ["total": 0]
+        }
+        if let sto = user.objectForKey("UserNameAndAvatarStorage") as? NSDictionary {
+            userNameAndAvatarStorage = sto as! Dictionary
+        }
+        else {
+            userNameAndAvatarStorage = Dictionary<String, Dictionary<String, String>>()
         }
         recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist!)
         print(recentChatPlist)
@@ -66,12 +75,16 @@ func readUserData() {
     }
 }
 
+func updateUserNameAndAvatarStorage(id: String, name: String, avatar: String) {
+    userNameAndAvatarStorage[id]=["NickName": name, "AvatarAddress": avatar]
+    NSUserDefaults.standardUserDefaults().setObject(userNameAndAvatarStorage, forKey: "UserNameAndAvatarStorage")
+}
+
 public extension UIViewController {
     ///简单的通知框，两条信息
     public func showSimpleAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let actionYes = UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(actionYes)
+        alert.addAction(UIAlertAction(title: "返回", style: UIAlertActionStyle.Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
 }
