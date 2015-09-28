@@ -371,7 +371,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="档期管理" id="gYi-IJ-K0c"/>
+                    <navigationItem key="navigationItem" title="档期管理" id="gYi-IJ-K0c">
+                        <barButtonItem key="rightBarButtonItem" title="同步" id="3ja-f1-ejq">
+                            <connections>
+                                <segue destination="mH8-kh-veH" kind="push" id="13K-n8-zfd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendarContentView" destination="2fD-lN-364" id="jPA-J0-sPl"/>
                         <outlet property="calendarMenuView" destination="NyM-qa-SOZ" id="QGK-po-sgv"/>
@@ -380,6 +386,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Tc-ZF-Sxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-12" y="1036"/>
+        </scene>
+        <!--Import Calendar View Controller-->
+        <scene sceneID="pPp-o3-JB6">
+            <objects>
+                <viewController id="mH8-kh-veH" customClass="ImportCalendarViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U1G-Xx-C72">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mSs-Yc-6ya">
+                                <rect key="frame" x="130" y="150" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="导入日历"/>
+                                <connections>
+                                    <action selector="importCalendarButtonTapped:" destination="mH8-kh-veH" eventType="touchUpInside" id="D76-Np-Wkp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9hL-7c-mvf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tS8-9I-uOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-12" y="1777"/>
         </scene>
         <!--充值提现-->
         <scene sceneID="g27-Ci-LRU">
@@ -954,7 +985,7 @@
                                             <segue destination="nVt-yF-Ite" kind="push" identifier="GoToCalendar" id="Bjp-U0-OVB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="dXn-mL-G6g">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="dXn-mL-G6g">
                                         <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dXn-mL-G6g" id="nRe-Nk-QgS">

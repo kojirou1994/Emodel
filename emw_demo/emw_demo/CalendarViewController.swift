@@ -20,7 +20,7 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
     @IBAction func setThisDayFreeButtonTapped(sender: AnyObject) {
         let format = NSDateFormatter()
         format.dateFormat = "yyyy-MM-dd"
-        Alamofire.request(.POST, serverAddress + "/user/" + userId + "/calendar", parameters: ["title": "休息日","body": "", "date": format.stringFromDate(dateSelected!),"type": "custom",], encoding: ParameterEncoding.JSON, headers: ["Token": token])
+        Alamofire.request(.POST, serverAddress + "/user/" + userId + "/calendar", parameters: ["title": "休息日","body": "", "date": format.stringFromDate(dateSelected!),"type": "custom","timeBucket": 16777215], encoding: ParameterEncoding.JSON, headers: ["Token": token])
         .validate()
         .responseJSON { (_, _, result) -> Void in
             switch (result) {
@@ -37,6 +37,22 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
     }
     
     @IBAction func setThisDayFullButtonTapped(sender: AnyObject) {
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        Alamofire.request(.POST, serverAddress + "/user/" + userId + "/calendar", parameters: ["title": "其他预约","body": "", "date": format.stringFromDate(dateSelected!),"type": "work","timeBucket": 16777215], encoding: ParameterEncoding.JSON, headers: ["Token": token])
+            .validate()
+            .responseJSON { (_, _, result) -> Void in
+                switch (result) {
+                case .Success(_):
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.showSimpleAlert("succ", message: "")
+                    })
+                case .Failure(_, _):
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.showSimpleAlert("fail", message: "")
+                    })
+                }
+        }
     }
     var minDate = NSDate()
     var maxDate = NSDate()
@@ -72,6 +88,13 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
     
     func calendar(calendar: JTCalendarManager!, prepareDayView dayView: UIView!) {
         if let myDayView = dayView as? JTCalendarDayView {
+            if (self.haveEventForDay(myDayView.date.dateByAddingTimeInterval(NSTimeInterval(NSTimeZone.localTimeZone().secondsFromGMTForDate(myDayView.date))))) {
+                print(myDayView.date)
+                print("有安排")
+            }
+            else {
+                print("没有安排")
+            }
             if (calendarManager.dateHelper.date(NSDate(), isTheSameDayThan: myDayView.date)) {
                 myDayView.circleView.hidden = false
                 myDayView.circleView.backgroundColor = UIColor.blueColor()
@@ -96,8 +119,6 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
             }
         }
     }
-    
-//     NSTimeZone *localZone=[NSTimeZone localTimeZone]; NSInteger interval=[localZone secondsFromGMTForDate:date]; NSDate *mydate=[date dateByAddingTimeInterval:interval]; NSLog(@"Date: %@", mydate); } 
     
     func calendar(calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {
         if let myDayView = dayView as? JTCalendarDayView {
@@ -125,19 +146,18 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
         }
     }
     
-    func dateFormatter() -> NSDateFormatter {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        return dateFormatter
-
-    }
     var eventsByDate: NSMutableDictionary?
     func haveEventForDay(date: NSDate!) ->Bool {
-        var key: NSString = self.dateFormatter().stringFromDate(date)
-        
-//        if (eventsByDate[key] && eventsByDate[key].count > 0) {
-//            return true
-//        }
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if (localUser.calendar == nil) {
+            return false
+        }
+        for singleCalendar in localUser.calendar! {
+            if (singleCalendar.date! == dateFormatter.stringFromDate(date)) {
+                return true
+            }
+        }
         return false
     }
     //MARK: - CalendarManager Delegate  - Page Management
