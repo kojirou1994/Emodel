@@ -28,21 +28,27 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("聊天对象id： \(targetUserID)")
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationItem.title = userNameAndAvatarStorage[targetUserID]!["NickName"]
+        
         chatTableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-45)
         
         inputKeyView = UIView(frame: CGRectMake(0, self.view.frame.height-45, self.view.frame.width, 45))
-        inputKeyView.backgroundColor = UIColor.redColor()
+        inputKeyView.backgroundColor = UIColor.lightGrayColor()
+//        (red: 218, green: 218, blue: 218, alpha: 1)
+//            .grayColor()
         
-        inputField = UITextField(frame: CGRectMake(5, 5, 260, 35))
+        inputField = UITextField(frame: CGRectMake(5, 5, 250, 35))
         inputField.tag = 0
-        inputField.delegate = self
+//        inputField.delegate = self
         inputField.backgroundColor = UIColor.whiteColor()
+        inputField.borderStyle = UITextBorderStyle.RoundedRect
         inputKeyView.addSubview(inputField)
         
-        sendBtn = UIButton(frame: CGRectMake(260, 5, 55, 35))
+        sendBtn = UIButton(type: UIButtonType.RoundedRect)
+        sendBtn.frame = CGRectMake(260, 5, 55, 35)
         sendBtn.setTitle("发送", forState: UIControlState.Normal)
-        sendBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        sendBtn.backgroundColor = UIColor.blackColor()
+//        sendBtn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+//        sendBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
+//        sendBtn.backgroundColor = UIColor.blackColor()
         sendBtn.addTarget(self, action: "send", forControlEvents: UIControlEvents.TouchUpInside)
         inputKeyView.addSubview(sendBtn)
         
@@ -53,6 +59,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.chatTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
         
         self.addNotificationHandler()
+        self.goToLatestMessage()
     }
     
     func initChatDatabase() {
@@ -75,18 +82,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func send() {
         guard let inputM = inputField.text else {
-            self.showSimpleAlert("", message: "消息不能为空")
+            self.showSimpleAlert("警告", message: "消息不能为空")
             return
         }
         let sendTime = NSDate()
+        //        self.inputField.resignFirstResponder()
         
         //输入完先添加消息框
-        self.inputField.resignFirstResponder()
-        
+        inputField.text = nil
         //添加数据至chatlog
         chatLog?.append(["isFromSelf": true, "messageType": 1, "time": sendTime, "content": inputM])
-        self.chatTableView.reloadData()
-        
+//        self.chatTableView.reloadData()
+        let insert = NSIndexPath(forRow: chatLog!.count - 1, inSection: 0)
+        self.chatTableView.insertRowsAtIndexPaths([insert], withRowAnimation: UITableViewRowAnimation.Right)
+        self.goToLatestMessage()
         //预处理发送消息
         let sendM = "{\"fromUserId\":\"\(userId)\",\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
         //保存消息到数据库
@@ -115,6 +124,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let defaultNC = NSNotificationCenter.defaultCenter()
         defaultNC.addObserver(self, selector: "onMessageReceived:", name: kYBDidReceiveMessageNotification, object: nil)
         defaultNC.addObserver(self, selector: "onPresenceReceived", name: kYBDidReceivePresenceNotification, object: nil)
+        defaultNC.addObserver(self, selector: "keyboardWillAppear:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        defaultNC.addObserver(self, selector: "keyboardWillDisappear:", name: UIKeyboardWillHideNotification, object: nil)
     }
     func removeNotificationHandler() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -122,12 +133,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func onMessageReceived(notification: NSNotification) {
         let message: YBMessage = notification.object as! YBMessage
-        print("new message \(message.data.length) bytes, topic = \(message.topic)")
-        print(JSONDecoder(message.data).print())
-        if (message.topic == targetUserID) {
+        if (YunbaChatMessage(JSONDecoder(message.data)).fromUserId == targetUserID) {
             //添加数据至chatlog
             chatLog?.append(["isFromSelf": false, "messageType": 1, "time": NSDate(), "content": YunbaChatMessage(JSONDecoder(message.data)).messageContent])
             self.chatTableView.reloadData()
+            self.goToLatestMessage()
         }
         
     }
@@ -135,27 +145,43 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func onPresenceReceived(notification: NSNotification) {
         let presence: YBPresenceEvent = notification.object as! YBPresenceEvent
         print("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
+    }
+    
+    func keyboardWillAppear(notification: NSNotification) {
+        let kbHeight = self.keyboardEndingFrameHeight(notification.userInfo!)
         
-        //        NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
-        //        [self addMsgToTextView:curMsg];
+        self.inputKeyView.frame = CGRectMake(0, self.view.frame.height - kbHeight - 45, self.inputKeyView.frame.size.width, 45)
+        self.chatTableView.frame = CGRectMake(0, 0, self.chatTableView.frame.size.width, self.view.frame.size.height - kbHeight - 45)
+        print(self.inputKeyView.frame)
+        self.goToLatestMessage()
+    }
+    
+    func keyboardWillDisappear(notification: NSNotification) {
+        let kbHeight = self.keyboardEndingFrameHeight(notification.userInfo!)
+        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height + kbHeight)
+        self.inputKeyView.frame = CGRectMake(0, self.view.frame.height-45, self.view.frame.width, 45)
+        print(self.inputKeyView.frame)
+        self.goToLatestMessage()
+    }
+    func keyboardEndingFrameHeight(userinfo: NSDictionary) -> CGFloat{
+        let keyboardEndingUncorrectedFrame = userinfo.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
+        let keyboardEndingFrame = self.view.convertRect(keyboardEndingUncorrectedFrame, fromView: nil)
+        return keyboardEndingFrame.size.height
     }
     
     func pushToProfileVC() {
         print("显示用户简介")
     }
+    
     func goToLatestMessage() {
         if (self.chatLog != nil && self.chatLog!.count > 0) {
             let index = NSIndexPath(forRow: (self.chatLog?.count)! - 1, inSection: 0)
-            chatTableView.scrollToRowAtIndexPath(index, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            chatTableView.scrollToRowAtIndexPath(index, atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
         }
 
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    override func viewDidAppear(animated: Bool) {
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -251,36 +277,42 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let size = text.boundingRectWithSize(CGSizeMake(180, 20000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil)
         return size.height + 44
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
     }
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
     }
+    
     func roundHead(img: UIImageView) {
         img.layer.masksToBounds = true
         img.layer.cornerRadius = img.bounds.width / 2
 //        img.layer.bor
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
-        UIView.beginAnimations("Animation", context: nil)
-        UIView.setAnimationDuration(0.2)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height - 250)
-        self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y - 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
-        
-        UIView.commitAnimations()
-    }
+    //MARK: - TextFieldDelegate
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        UIView.beginAnimations("Animation", context: nil)
-        UIView.setAnimationDuration(0.2)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height + 250)
-        self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y + 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
-        UIView.commitAnimations()
-    }
+//    func textFieldDidBeginEditing(textField: UITextField) {
+//        UIView.beginAnimations("Animation", context: nil)
+//        UIView.setAnimationDuration(0.2)
+//        UIView.setAnimationBeginsFromCurrentState(true)
+//        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height - 250)
+//        self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y - 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
+//        
+//        UIView.commitAnimations()
+//    }
+//    
+//    func textFieldDidEndEditing(textField: UITextField) {
+//        UIView.beginAnimations("Animation", context: nil)
+//        UIView.setAnimationDuration(0.2)
+//        UIView.setAnimationBeginsFromCurrentState(true)
+//        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height + 250)
+//        self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y + 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
+//        UIView.commitAnimations()
+//    }
     
 }

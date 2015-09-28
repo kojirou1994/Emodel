@@ -144,12 +144,12 @@ class BusinessInfoEditViewController: XLFormViewController {
                 case .Success:
                     print("Validation Successful")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.showSimpleAlert("", message: "")
+                        self.showSimpleAlert("更新成功", message: "点击返回")
                     })
                 case .Failure(_, let error):
                     print(error)
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.showSimpleAlert("fail", message: "")
+                        self.showSimpleAlert("更新失败", message: "请重试或稍后再试")
                     })
                 }
         }

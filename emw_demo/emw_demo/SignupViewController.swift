@@ -39,7 +39,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBAction func sendMobileBtnPressed(sender: AnyObject) {
         self.view.endEditing(true)
         guard let mobileText = mobileInput.text else {
-            showSimpleAlert("", message: "")
+            showSimpleAlert("未输入正确手机号", message: "请重试")
             return
         }
         if mobileText.characters.count == 11 {
@@ -93,7 +93,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             return
         }
         if (passwordText != confirmPasswordText) {
-            showSimpleAlert("", message: "")
+            showSimpleAlert("密码两次输入不一样", message: "请重新输入")
             return
         }
         Alamofire.request(.POST, serverAddress + "/user/signup", parameters: ["mobile": mobileText, "password": passwordText, "confirm_token": confirmTokenText, "confirm": codeText, "username": usernameText], encoding: ParameterEncoding.JSON, headers: nil)

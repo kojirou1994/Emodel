@@ -42,11 +42,13 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 case .Success:
                     print("Validation Successful")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.showSimpleAlert("", message: "")
+                        self.showSimpleAlert("报名成功", message: "")
                     })
                 case .Failure(_, let error):
                     print(error)
-                    self.showSimpleAlert("", message: "")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.showSimpleAlert("报名失败", message: "")
+                    })
                 }
         }
     }

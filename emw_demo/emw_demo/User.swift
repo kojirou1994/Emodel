@@ -23,7 +23,7 @@ struct UserData: JSONJoy {
     var bodyInfo: BodyInfo?
     var businessInfo: BusinessInfo?
     var like: Like?
-//    var calendar
+    var calendar: Array<Calendar>?
     var cityID: Int?
     var userID: String?
     var star: Int! = 0
@@ -43,6 +43,12 @@ struct UserData: JSONJoy {
             albumInfo = Array<Album>()
             for albumDecoder in alb {
                 albumInfo?.append(Album(albumDecoder))
+            }
+        }
+        if let cal = decoder["calendar"].array {
+            calendar = Array<Calendar>()
+            for item in cal {
+                calendar?.append(Calendar(item))
             }
         }
         baseInfo = BaseInfo(decoder["baseinfo"])

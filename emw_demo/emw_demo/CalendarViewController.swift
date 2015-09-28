@@ -8,7 +8,7 @@
 
 import UIKit
 import JTCalendar
-import Foundation
+import Alamofire
 
 class CalManagerViewController: UIViewController, JTCalendarDelegate {
     
@@ -17,16 +17,38 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
     @IBOutlet weak var calendarMenuView: JTCalendarMenuView!
     
     @IBOutlet weak var calendarContentView: JTHorizontalCalendarView!
+    @IBAction func setThisDayFreeButtonTapped(sender: AnyObject) {
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        Alamofire.request(.POST, serverAddress + "/user/" + userId + "/calendar", parameters: ["title": "休息日","body": "", "date": format.stringFromDate(dateSelected!),"type": "custom",], encoding: ParameterEncoding.JSON, headers: ["Token": token])
+        .validate()
+        .responseJSON { (_, _, result) -> Void in
+            switch (result) {
+            case .Success(_):
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showSimpleAlert("succ", message: "")
+                })
+            case .Failure(_, _):
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showSimpleAlert("fail", message: "")
+                })
+            }
+        }
+    }
     
+    @IBAction func setThisDayFullButtonTapped(sender: AnyObject) {
+    }
     var minDate = NSDate()
     var maxDate = NSDate()
     var todayDate = NSDate()
     var calendarManager = JTCalendarManager()
-    var dateSelected : NSDate?
+    var dateSelected: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateSelected = todayDate
         print("\(todayDate)")
+        print(localUser.calendar)
         calendarManager.delegate = self
         calendarManager.menuView = calendarMenuView
         calendarManager.contentView = calendarContentView

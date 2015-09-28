@@ -88,7 +88,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
             case .Failure(_, let error):
                 print(error)
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.showSimpleAlert("", message: "")
+                    self.showSimpleAlert("相册添加失败", message: "请重试或稍后再试")
                 })
             }
         }
