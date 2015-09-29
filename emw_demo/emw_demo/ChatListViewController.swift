@@ -74,6 +74,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func addNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
         defaultNC.addObserver(self, selector: "updateChatList", name: "updateChatListVC", object: nil)
+        defaultNC.addObserver(self, selector: "onConnectionStateChanged:", name: kYBConnectionStatusChangedNotification, object: nil)
     }
     func removeNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
@@ -81,23 +82,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func onConnectionStateChanged(notification: NSNotification) {
-//        if (YunBaService.isConnected()) {
-//            print("didConnect")
-//        }
-//        else {
-//            print("didDisconected")
-//        }
-    }
-    func onMessageReceived(notification: NSNotification) {
-//        let timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "updateChatList", userInfo: nil, repeats: false)
-    }
-    
-    func onPresenceReceived(notification: NSNotification) {
-//        let presence: YBPresenceEvent = notification.object as! YBPresenceEvent
-//        print("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
-//    
-//        NSString *curMsg = [NSString stringWithFormat:@"[Presence] %@:%@ => %@[%@]", [presence topic], [presence alias], [presence action], [NSDateFormatter localizedStringFromDate:[NSDate dateWithTimeIntervalSince1970:[presence time]/1000] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle]];
-//        [self addMsgToTextView:curMsg];
+        if (YunBaService.isConnected()) {
+            print("didConnect")
+        }
+        else {
+            print("didDisconected")
+        }
     }
     
     override func didReceiveMemoryWarning() {

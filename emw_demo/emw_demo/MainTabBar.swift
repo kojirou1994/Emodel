@@ -126,7 +126,7 @@ class MainTabBar: UITabBarController {
         }
         print("接受消息后的recentChatList")
         print(recentChatList)
-        recentChatList.writeToFile(recentChatPlist!, atomically: true)
+        recentChatList.writeToFile(recentChatPlist, atomically: true)
         NSNotificationCenter.defaultCenter().postNotificationName("updateChatListVC", object: self)
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
         updateTabBarApperance()

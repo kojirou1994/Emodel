@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         self.saveContext()
-        recentChatList.writeToFile(recentChatPlist!, atomically: true)
+        recentChatList.writeToFile(recentChatPlist, atomically: true)
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
     }
 

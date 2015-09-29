@@ -56,7 +56,13 @@ class LoginViewController: UIViewController {
                     user.setObject(userId, forKey: "UserID")
                     user.setObject(token, forKey: "Token")
                     user.setObject(unReadCount, forKey: "UnreadCount")
-                    recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist!)
+                    let fm = NSFileManager.defaultManager()
+                    if (fm.fileExistsAtPath(recentChatPlist)) {
+                        recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist)
+                    }
+                    else {
+                        recentChatList = NSMutableDictionary()
+                    }
                     userNameAndAvatarStorage = Dictionary<String, Dictionary<String, String>>()
                     user.setObject(userNameAndAvatarStorage, forKey: "UserNameAndAvatarStorage")
                     dispatch_async(dispatch_get_main_queue(), {

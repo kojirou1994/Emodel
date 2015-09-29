@@ -31,7 +31,8 @@ var localUser: UserData!
 var currentChatUserId: String?
 
 var recentChatList: NSMutableDictionary!
-let recentChatPlist = NSBundle.mainBundle().pathForResource("recentChatList", ofType: ".plist")
+let recentChatPlist = (NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents").stringByAppendingString("recentChatList.plist")
+//NSBundle.mainBundle().pathForResource("recentChatList", ofType: ".plist")
 
 var unReadCount: Dictionary<String, Int>!
 
@@ -63,7 +64,13 @@ func readUserData() {
         else {
             userNameAndAvatarStorage = Dictionary<String, Dictionary<String, String>>()
         }
-        recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist!)
+        let fm = NSFileManager.defaultManager()
+        if (fm.fileExistsAtPath(recentChatPlist)) {
+            recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist)
+        }
+        else {
+            recentChatList = NSMutableDictionary()
+        }
         print(recentChatPlist)
         print("read username: \(username)")
         print("read password \(password)")

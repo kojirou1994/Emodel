@@ -187,7 +187,13 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
             print("点击了通告\(indexPath)")
             let destinationViewController = segue.destinationViewController as! NoticeDetailViewController
 //            println("taskData transfer")
-            destinationViewController.taskData = taskData![indexPath!.row]
+            if (isMy) {
+                destinationViewController.taskData = myTaskData![indexPath!.row]
+            }
+            else {
+                destinationViewController.taskData = taskData![indexPath!.row]
+            }
+           
         }
     }
 }

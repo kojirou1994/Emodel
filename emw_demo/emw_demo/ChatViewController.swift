@@ -36,7 +36,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        (red: 218, green: 218, blue: 218, alpha: 1)
 //            .grayColor()
         
-        inputField = UITextField(frame: CGRectMake(5, 5, 250, 35))
+        inputField = UITextField(frame: CGRectMake(5, 5, self.view.frame.size.width / 32 * 25, 35))
         inputField.tag = 0
 //        inputField.delegate = self
         inputField.backgroundColor = UIColor.whiteColor()
@@ -44,7 +44,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputKeyView.addSubview(inputField)
         
         sendBtn = UIButton(type: UIButtonType.RoundedRect)
-        sendBtn.frame = CGRectMake(260, 5, 55, 35)
+        sendBtn.frame = CGRectMake(inputField.frame.maxX + 7, 5, 55, 35)
         sendBtn.setTitle("发送", forState: UIControlState.Normal)
 //        sendBtn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
 //        sendBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
@@ -94,7 +94,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         chatLog?.append(["isFromSelf": true, "messageType": 1, "time": sendTime, "content": inputM])
 //        self.chatTableView.reloadData()
         let insert = NSIndexPath(forRow: chatLog!.count - 1, inSection: 0)
-        self.chatTableView.insertRowsAtIndexPaths([insert], withRowAnimation: UITableViewRowAnimation.Right)
+        self.chatTableView.insertRowsAtIndexPaths([insert], withRowAnimation: UITableViewRowAnimation.Automatic)
         self.goToLatestMessage()
         //预处理发送消息
         let sendM = "{\"fromUserId\":\"\(userId)\",\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
@@ -105,7 +105,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             "message": inputM
         ]
         unReadCount[self.targetUserID] = 0
-        recentChatList.writeToFile(recentChatPlist!, atomically: true)
+        recentChatList.writeToFile(recentChatPlist, atomically: true)
         NSNotificationCenter.defaultCenter().postNotificationName("updateChatListVC", object: self)
         
         YunBaService.publishToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
@@ -136,7 +136,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (YunbaChatMessage(JSONDecoder(message.data)).fromUserId == targetUserID) {
             //添加数据至chatlog
             chatLog?.append(["isFromSelf": false, "messageType": 1, "time": NSDate(), "content": YunbaChatMessage(JSONDecoder(message.data)).messageContent])
-            self.chatTableView.reloadData()
+            let insert = NSIndexPath(forRow: chatLog!.count - 1, inSection: 0)
+            self.chatTableView.insertRowsAtIndexPaths([insert], withRowAnimation: UITableViewRowAnimation.Automatic)
             self.goToLatestMessage()
         }
         
@@ -219,7 +220,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         bubbleImageView.frame = CGRectMake(0.0, 14.0, bubbleText.frame.size.width + 30.0, bubbleText.frame.size.height + 20.0)
         
         if (fromSelf) {
-            returnView.frame = CGRectMake(CGFloat(CGFloat(320 - position) - (bubbleText.frame.size.width + 30)), CGFloat(0), bubbleText.frame.size.width + 30, bubbleText.frame.size.height + 30)
+            returnView.frame = CGRectMake(CGFloat(CGFloat(self.view.frame.size.width - CGFloat(position)) - (bubbleText.frame.size.width + 30)), CGFloat(0), bubbleText.frame.size.width + 30, bubbleText.frame.size.height + 30)
         }
         else {
             returnView.frame = CGRectMake(CGFloat(position), CGFloat(0), bubbleText.frame.size.width + 30, bubbleText.frame.size.height + 30)
@@ -252,7 +253,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         var head: UIImageView
         if (chatLog![indexPath.row]["isFromSelf"] as! Bool) {
             //来自自己的消息，用本地用户头像
-            head = UIImageView(frame: CGRectMake(320 - 60, 10, 50, 50))
+            head = UIImageView(frame: CGRectMake(self.view.frame.size.width - 60, 10, 50, 50))
             cell.addSubview(head)
             head.kf_setImageWithURL(NSURL(string: (localUser.baseInfo?.avatar)!)!)
             roundHead(head)
@@ -291,28 +292,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func roundHead(img: UIImageView) {
         img.layer.masksToBounds = true
         img.layer.cornerRadius = img.bounds.width / 2
-//        img.layer.bor
     }
-    
-    //MARK: - TextFieldDelegate
-    
-//    func textFieldDidBeginEditing(textField: UITextField) {
-//        UIView.beginAnimations("Animation", context: nil)
-//        UIView.setAnimationDuration(0.2)
-//        UIView.setAnimationBeginsFromCurrentState(true)
-//        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height - 250)
-//        self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y - 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
-//        
-//        UIView.commitAnimations()
-//    }
-//    
-//    func textFieldDidEndEditing(textField: UITextField) {
-//        UIView.beginAnimations("Animation", context: nil)
-//        UIView.setAnimationDuration(0.2)
-//        UIView.setAnimationBeginsFromCurrentState(true)
-//        self.chatTableView.frame = CGRectMake(self.chatTableView.frame.origin.x, self.chatTableView.frame.origin.y, self.chatTableView.frame.size.width, self.chatTableView.frame.size.height + 250)
-//        self.inputKeyView.frame = CGRectMake(self.inputKeyView.frame.origin.x, self.inputKeyView.frame.origin.y + 250, self.inputKeyView.frame.size.width, self.inputKeyView.frame.size.height)
-//        UIView.commitAnimations()
-//    }
     
 }

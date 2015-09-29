@@ -123,7 +123,7 @@
 		E3E9C2531B6CE5D700998937 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2521B6CE5D700998937 /* img.jpg */; };
 		E3E9C2551B6CF5D500998937 /* NoticeDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */; };
 		E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */; };
-		E3F271F91BB269A1003A33EE /* recentChatList.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3F271F81BB269A1003A33EE /* recentChatList.plist */; settings = {ASSET_TAGS = (); }; };
+		E3F271F91BB269A1003A33EE /* recen.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3F271F81BB269A1003A33EE /* recen.plist */; settings = {ASSET_TAGS = (); }; };
 		E3F533FA1BAFA82D003BC841 /* YunbaChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F533F91BAFA82D003BC841 /* YunbaChatMessage.swift */; settings = {ASSET_TAGS = (); }; };
 		E3F533FC1BAFBE28003BC841 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F533FB1BAFBE28003BC841 /* ChatMessage.swift */; settings = {ASSET_TAGS = (); }; };
 		E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F7CC3C1B704F79001D82D3 /* Signup.swift */; };
@@ -248,7 +248,7 @@
 		E3D4E4851B9D2E2B00016080 /* PhotoScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoScrollViewController.xib; sourceTree = "<group>"; };
 		E3E8C4B61BBA34F9007C267E /* CacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheViewController.swift; sourceTree = "<group>"; };
 		E3E8C4B71BBA34F9007C267E /* CacheViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CacheViewController.xib; sourceTree = "<group>"; };
-		E3E9C2161B6CA66200998937 /* emw_demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emw_demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3E9C2161B6CA66200998937 /* emodel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emodel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E9C21A1B6CA66200998937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3E9C21B1B6CA66200998937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3E9C21D1B6CA66200998937 /* PublicNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicNoticeViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 		E3E9C2521B6CE5D700998937 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
 		E3E9C2541B6CF5D500998937 /* NoticeDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTableCell.swift; sourceTree = "<group>"; };
 		E3EFC1711BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeDetailTextTableViewCell.swift; sourceTree = "<group>"; };
-		E3F271F81BB269A1003A33EE /* recentChatList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = recentChatList.plist; sourceTree = "<group>"; };
+		E3F271F81BB269A1003A33EE /* recen.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = recen.plist; sourceTree = "<group>"; };
 		E3F533F91BAFA82D003BC841 /* YunbaChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YunbaChatMessage.swift; sourceTree = "<group>"; };
 		E3F533FB1BAFBE28003BC841 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		E3F7CC3C1B704F79001D82D3 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
@@ -511,7 +511,7 @@
 		E3E9C2171B6CA66200998937 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E3E9C2161B6CA66200998937 /* emw_demo.app */,
+				E3E9C2161B6CA66200998937 /* emodel.app */,
 				E3E9C22D1B6CA66200998937 /* emw_demoTests.xctest */,
 			);
 			name = Products;
@@ -542,7 +542,7 @@
 				E3B6801D1BA2C452004DF002 /* bubbleImage */,
 				E3E9C2191B6CA66200998937 /* Supporting Files */,
 				E3978F651B7B1470002B54A3 /* AlbumView.swift */,
-				E3F271F81BB269A1003A33EE /* recentChatList.plist */,
+				E3F271F81BB269A1003A33EE /* recen.plist */,
 				E30B30E01B7857CE00864989 /* DataInit.swift */,
 			);
 			path = emw_demo;
@@ -611,7 +611,7 @@
 			);
 			name = emw_demo;
 			productName = emw_demo;
-			productReference = E3E9C2161B6CA66200998937 /* emw_demo.app */;
+			productReference = E3E9C2161B6CA66200998937 /* emodel.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E3E9C22C1B6CA66200998937 /* emw_demoTests */ = {
@@ -695,7 +695,7 @@
 				E385189A1B7091B40063C2C2 /* 账号绑定.png in Resources */,
 				E3B6803E1BA2C452004DF002 /* SenderVoiceNodePlaying.png in Resources */,
 				E38518931B7091B40063C2C2 /* 基本信息.png in Resources */,
-				E3F271F91BB269A1003A33EE /* recentChatList.plist in Resources */,
+				E3F271F91BB269A1003A33EE /* recen.plist in Resources */,
 				E38518941B7091B40063C2C2 /* 我的.png in Resources */,
 				E38518891B7091B40063C2C2 /* starRank_10.png in Resources */,
 				E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */,
@@ -940,7 +940,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -978,7 +978,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -990,8 +990,8 @@
 			baseConfigurationReference = C04BBC078BC2E0637D81E084 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou E-model Network Technology Co., Ltd (LPAW9Y2YV2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou E-model Network Technology Co., Ltd (LPAW9Y2YV2)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = emw_demo/Info.plist;
@@ -1002,9 +1002,9 @@
 					"$(PROJECT_DIR)/emw_demo/YunBaSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.emodel.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.emwcn.emodel;
+				PRODUCT_NAME = emodel;
+				PROVISIONING_PROFILE = "64ced3d9-6e68-4a26-9cc5-aae20e11f39f";
 				SWIFT_OBJC_BRIDGING_HEADER = "emw_demo-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1014,8 +1014,8 @@
 			baseConfigurationReference = F3D2F2A9A29A9CFB400AAA3D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou E-model Network Technology Co., Ltd (LPAW9Y2YV2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou E-model Network Technology Co., Ltd (LPAW9Y2YV2)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = emw_demo/Info.plist;
@@ -1026,9 +1026,9 @@
 					"$(PROJECT_DIR)/emw_demo/YunBaSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.emodel.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.emwcn.emodel;
+				PRODUCT_NAME = emodel;
+				PROVISIONING_PROFILE = "64ced3d9-6e68-4a26-9cc5-aae20e11f39f";
 				SWIFT_OBJC_BRIDGING_HEADER = "emw_demo-Bridging-Header.h";
 			};
 			name = Release;
@@ -1037,6 +1037,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou E-model Network Technology Co., Ltd (LPAW9Y2YV2)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1046,6 +1047,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.emodel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "64ced3d9-6e68-4a26-9cc5-aae20e11f39f";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/emw_demo.app/emw_demo";
 			};
 			name = Debug;
@@ -1054,11 +1056,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou E-model Network Technology Co., Ltd (LPAW9Y2YV2)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = emw_demoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.emodel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "64ced3d9-6e68-4a26-9cc5-aae20e11f39f";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/emw_demo.app/emw_demo";
 			};
 			name = Release;

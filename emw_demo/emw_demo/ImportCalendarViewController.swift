@@ -72,9 +72,9 @@ class ImportCalendarViewController: UIViewController {
         let newCalendar = EKCalendar(forEntityType: .Event, eventStore: eventStore)
         newCalendar.title = "艺模网"
         let sourcesInEventStore = eventStore.sources
-        newCalendar.source = sourcesInEventStore.filter({ (source) -> Bool in
-            source.sourceType == EKSourceType.Local
-        }).first!
+//        newCalendar.source = sourcesInEventStore.filter({ (source) -> Bool in
+//            source.sourceType == EKSourceType.Local
+//        }).first!
         
         var calendarWasSaved: Bool
         do {
@@ -95,8 +95,11 @@ class ImportCalendarViewController: UIViewController {
                 }catch let error as NSError {
                     print(error)
                 }
+                print("did remove")
+                return
             }
         }
+        print("remove not find")
     }
     
     func insertEvent(store: EKEventStore) {
