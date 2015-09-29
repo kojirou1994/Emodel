@@ -26,11 +26,11 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
             switch (result) {
             case .Success(_):
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.showSimpleAlert("succ", message: "")
+                    self.showSimpleAlert("成功", message: "")
                 })
             case .Failure(_, _):
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.showSimpleAlert("fail", message: "")
+                    self.showSimpleAlert("失败", message: "")
                 })
             }
         }
@@ -45,15 +45,16 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate {
                 switch (result) {
                 case .Success(_):
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.showSimpleAlert("succ", message: "")
+                        self.showSimpleAlert("成功", message: "")
                     })
                 case .Failure(_, _):
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.showSimpleAlert("fail", message: "")
+                        self.showSimpleAlert("失败", message: "")
                     })
                 }
         }
     }
+    
     var minDate = NSDate()
     var maxDate = NSDate()
     var todayDate = NSDate()

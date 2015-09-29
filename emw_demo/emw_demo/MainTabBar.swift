@@ -67,6 +67,10 @@ class MainTabBar: UITabBarController {
     override func viewDidDisappear(animated: Bool) {
         self.selectedViewController?.endAppearanceTransition()
     }
+    
+    func registerYunba() {
+        
+    }
 
     //MARK : - YunbaService
     func addNotificationHandler() {

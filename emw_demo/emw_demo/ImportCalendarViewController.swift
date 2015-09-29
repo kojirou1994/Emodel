@@ -126,9 +126,11 @@ class ImportCalendarViewController: UIViewController {
                     
                     let newEvent = EKEvent(eventStore: store)
                     newEvent.title = event.schedule!.title == "" ? "艺模网事件" : event.schedule!.title
+                    newEvent.allDay = true
                     newEvent.calendar = calendar
                     newEvent.startDate = startDate
                     newEvent.endDate = endDate
+                    newEvent.addAlarm(EKAlarm(relativeOffset: NSTimeInterval(-24 * 60 * 60)))
                     newEvent.notes = "本日历由艺模网同步，请不要添加私人日历"
                     do {
                         try store.saveEvent(newEvent, span: .ThisEvent)

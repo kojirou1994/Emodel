@@ -11,4 +11,11 @@ import UIKit
 class NoticeDetailTableCell: UITableViewCell {
     
     @IBOutlet weak var enrollBtn: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.enrollBtn.layer.masksToBounds = true
+        self.enrollBtn.layer.cornerRadius = 5
+        // Initialization code
+    }
 }

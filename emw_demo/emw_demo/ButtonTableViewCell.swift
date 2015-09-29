@@ -13,6 +13,8 @@ class ButtonTableViewCell: UITableViewCell {
     @IBOutlet weak var signUpBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.signUpBtn.layer.masksToBounds = true
+        self.signUpBtn.layer.cornerRadius = 5
         // Initialization code
     }
 
