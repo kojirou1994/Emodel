@@ -57,7 +57,7 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if (indexPath.row == 12) {
+        if (indexPath.row == 13) {
             let identifier: String = "button"
             let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTableCell
             cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -68,7 +68,7 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
-        else if (indexPath.row == 7) {
+        else if (indexPath.row == 8) {
             let identifier: String = "text"
             let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTextTableViewCell
             cell.title.text = "模特要求"
@@ -77,7 +77,7 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
-        else if (indexPath.row == 8) {
+        else if (indexPath.row == 9) {
             let identifier: String = "text"
             let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! NoticeDetailTextTableViewCell
             cell.title.text = "其他要求"
@@ -86,7 +86,7 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
-        else if (indexPath.row == 11) {
+        else if (indexPath.row == 12) {
             let identifier = "SignedPeople"
             let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! SignedPeopleTableViewCell
             cell.people = self.taskData?.participant
@@ -110,24 +110,27 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 cell.textLabel?.text = "工作类型"
                 cell.detailTextLabel?.text = taskData?.workType
             case 2:
+                cell.textLabel?.text = "模特类型"
+                cell.detailTextLabel?.text = modelTypeString()
+            case 3:
                 cell.textLabel?.text = "工作时间"
                 cell.detailTextLabel?.text = taskData?.workTime
-            case 3:
+            case 4:
                 cell.textLabel?.text = "需要人数"
                 cell.detailTextLabel?.text = String(taskData!.workersCount!)
-            case 4:
+            case 5:
                 cell.textLabel?.text = "截止日期"
                 cell.detailTextLabel?.text = taskData?.deadLine
-            case 5:
+            case 6:
                 cell.textLabel?.text = "预算报价"
                 cell.detailTextLabel?.text = taskData?.price
-            case 6:
+            case 7:
                 cell.textLabel?.text = "工作地址"
                 cell.detailTextLabel?.text = taskData?.address
-            case 9:
+            case 10:
                 cell.textLabel?.text = "发布时间"
                 cell.detailTextLabel?.text = taskData?.created_at
-            case 10:
+            case 11:
                 cell.textLabel?.text = "联系商家"
                 cell.detailTextLabel?.text = ""
                 cell.accessoryType = UITableViewCellAccessoryType.DetailButton
@@ -138,7 +141,6 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             return cell
         }
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,15 +148,15 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
             return 0
         }
         else {
-            return 13
+            return 14
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (indexPath.row == 7 || indexPath.row == 8) {
+        if (indexPath.row == 8 || indexPath.row == 9) {
             return 180
         }
-        if (indexPath.row == 11) {
+        if (indexPath.row == 12) {
             return 70
         }
         return 45.0
@@ -169,6 +171,32 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
             chat.targetUserID = self.taskData?.userId
             self.navigationController?.pushViewController(chat, animated: true)
         }
+    }
+    
+    func modelTypeString() -> String {
+        var str = ""
+        if (taskData == nil) {
+            return str
+        }
+        for type in self.taskData!.userTypeId! {
+            switch (type) {
+            case 1:
+                str = str + "国内女模 "
+            case 2:
+                str = str + "国内男模 "
+            case 3:
+                str = str + "外籍女模 "
+            case 4:
+                str = str + "外籍男模 "
+            case 5:
+                str = str + "儿童模特 "
+            case 6:
+                str = str + "大龄模特 "
+            default:
+                return str
+            }
+        }
+        return str
     }
 
 }

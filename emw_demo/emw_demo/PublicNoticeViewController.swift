@@ -69,6 +69,7 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.tableView.reloadData()
                         self.tableView.headerEndRefreshing()
+                        print(self.taskData!)
                     })
                 case .Failure(_, let error):
                     print(error)

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3E9C2151B6CA66200998937"
-               BuildableName = "emw_demo.app"
+               BuildableName = "emodel.app"
                BlueprintName = "emw_demo"
                ReferencedContainer = "container:emw_demo.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3E9C2151B6CA66200998937"
-            BuildableName = "emw_demo.app"
+            BuildableName = "emodel.app"
             BlueprintName = "emw_demo"
             ReferencedContainer = "container:emw_demo.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3E9C2151B6CA66200998937"
-            BuildableName = "emw_demo.app"
+            BuildableName = "emodel.app"
             BlueprintName = "emw_demo"
             ReferencedContainer = "container:emw_demo.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3E9C2151B6CA66200998937"
-            BuildableName = "emw_demo.app"
+            BuildableName = "emodel.app"
             BlueprintName = "emw_demo"
             ReferencedContainer = "container:emw_demo.xcodeproj">
          </BuildableReference>
