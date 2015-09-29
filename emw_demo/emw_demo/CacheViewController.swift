@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CacheViewController: UIViewController {
 
+    @IBAction func clearCache(sender: AnyObject) {
+        KingfisherManager.sharedManager.cache.clearDiskCache()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

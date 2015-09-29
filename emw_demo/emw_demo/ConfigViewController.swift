@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ConfigViewController: UITableViewController {
 
@@ -23,7 +24,9 @@ class ConfigViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -49,7 +52,8 @@ class ConfigViewController: UITableViewController {
         case 0:
             return 1
         case 1:
-            return 2
+            return 0
+//            2
         case 2:
             return 1
         default:
@@ -69,7 +73,9 @@ class ConfigViewController: UITableViewController {
             let welcome = self.storyboard?.instantiateViewControllerWithIdentifier("WelcomePage") as! WelcomePageViewController
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.window?.rootViewController = welcome
-            
+        }
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            self.navigationController?.pushViewController(CacheViewController(), animated: true)
         }
     }
     
@@ -77,8 +83,10 @@ class ConfigViewController: UITableViewController {
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCellWithIdentifier("Detail", forIndexPath: indexPath) 
-                cell.textLabel?.text = "cache"
-                cell.detailTextLabel?.text = "3.6MB"
+                cell.textLabel?.text = "本地缓存"
+                KingfisherManager.sharedManager.cache.calculateDiskCacheSizeWithCompletionHandler({ (size) -> () in
+                    cell.detailTextLabel?.text = "\(Float(size) / 1024.0 / 1024.0) MB"
+                })
                 return cell
             }
         }
@@ -113,10 +121,7 @@ class ConfigViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if (segue.identifier == "LogOut") {
-            isLogin = false
-            
-        }
+
     }
 
 

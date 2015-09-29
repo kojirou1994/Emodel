@@ -76,7 +76,6 @@
 		E3978F661B7B1470002B54A3 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3978F651B7B1470002B54A3 /* AlbumView.swift */; };
 		E3AB7A921B8AF6B800962116 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A911B8AF6B800962116 /* bg.png */; };
 		E3AB7A961B8AFA1300962116 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A951B8AFA1300962116 /* logo.png */; };
-		E3AF617E1BB4DDBE005CE35B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AF617D1BB4DDBE005CE35B /* AVFoundation.framework */; };
 		E3B561701B7C90870051D125 /* PhotoThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B5616F1B7C90870051D125 /* PhotoThumbCell.swift */; };
 		E3B6801A1BA2C420004DF002 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B680171BA2C420004DF002 /* ChatListTableViewCell.swift */; };
 		E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B680181BA2C420004DF002 /* ChatListViewController.swift */; };
@@ -109,6 +108,8 @@
 		E3CED34C1BA1169000B0B248 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CED34B1BA1169000B0B248 /* Task.swift */; };
 		E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4E4841B9D2E2B00016080 /* PhotoScrollViewController.swift */; };
 		E3D4E4871B9D2E2B00016080 /* PhotoScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D4E4851B9D2E2B00016080 /* PhotoScrollViewController.xib */; };
+		E3E8C4B81BBA34F9007C267E /* CacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E8C4B61BBA34F9007C267E /* CacheViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E3E8C4B91BBA34F9007C267E /* CacheViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E8C4B71BBA34F9007C267E /* CacheViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		E3E9C21C1B6CA66200998937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C21B1B6CA66200998937 /* AppDelegate.swift */; };
 		E3E9C21E1B6CA66200998937 /* PublicNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C21D1B6CA66200998937 /* PublicNoticeViewController.swift */; };
 		E3E9C2231B6CA66200998937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2211B6CA66200998937 /* Main.storyboard */; };
@@ -245,6 +246,8 @@
 		E3CED34B1BA1169000B0B248 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E3D4E4841B9D2E2B00016080 /* PhotoScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoScrollViewController.swift; sourceTree = "<group>"; };
 		E3D4E4851B9D2E2B00016080 /* PhotoScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoScrollViewController.xib; sourceTree = "<group>"; };
+		E3E8C4B61BBA34F9007C267E /* CacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheViewController.swift; sourceTree = "<group>"; };
+		E3E8C4B71BBA34F9007C267E /* CacheViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CacheViewController.xib; sourceTree = "<group>"; };
 		E3E9C2161B6CA66200998937 /* emw_demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emw_demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E9C21A1B6CA66200998937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3E9C21B1B6CA66200998937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -277,7 +280,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3AF617E1BB4DDBE005CE35B /* AVFoundation.framework in Frameworks */,
 				25CE5FB74C9AD9AE4E129F85 /* Pods.framework in Frameworks */,
 				E3BA513C1BA91E8E00EA8034 /* libYunBa.a in Frameworks */,
 			);
@@ -474,6 +476,8 @@
 			children = (
 				E3BA83741B95794400B39311 /* UserProfileViewController.swift */,
 				E32E22361B960B6300BC0A0D /* ConfigViewController.swift */,
+				E3E8C4B61BBA34F9007C267E /* CacheViewController.swift */,
+				E3E8C4B71BBA34F9007C267E /* CacheViewController.xib */,
 				E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */,
 				E3C7EB5F1BB9252900311781 /* ImportCalendarViewController.swift */,
 				E38556721B7C62CD0015285F /* Album */,
@@ -696,6 +700,7 @@
 				E38518891B7091B40063C2C2 /* starRank_10.png in Resources */,
 				E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */,
 				E385188E1B7091B40063C2C2 /* starRank_6.png in Resources */,
+				E3E8C4B91BBA34F9007C267E /* CacheViewController.xib in Resources */,
 				E3B680311BA2C452004DF002 /* photo1.png in Resources */,
 				E38518951B7091B40063C2C2 /* 档期管理.png in Resources */,
 				E3AB7A921B8AF6B800962116 /* bg.png in Resources */,
@@ -834,6 +839,7 @@
 				E3C7EB601BB9252900311781 /* ImportCalendarViewController.swift in Sources */,
 				E3E9C2511B6CE4A200998937 /* NoticeDetailViewController.swift in Sources */,
 				E3978F5C1B7AE106002B54A3 /* ModelCard.swift in Sources */,
+				E3E8C4B81BBA34F9007C267E /* CacheViewController.swift in Sources */,
 				E3E9C2421B6CAF5000998937 /* SMSegment.swift in Sources */,
 				E38556791B7C79D00015285F /* PhotoCollectionViewController.swift in Sources */,
 				E3E9C21E1B6CA66200998937 /* PublicNoticeViewController.swift in Sources */,
