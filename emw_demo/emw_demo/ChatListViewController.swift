@@ -21,12 +21,24 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         chatListVCLoaded = true
 //        self.addNotificationHandler()
         self.chatListTableView.tableFooterView = UIView(frame: CGRectZero)
-        let btn = UIBarButtonItem(title: "refresh", style: UIBarButtonItemStyle.Plain, target: self, action: "updateChatList")
-//        self.navigationItem.leftBarButtonItem = btn
+        let btn = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: "editButtonTapped:")
+//        (barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editButtonTapped:")
+//        (title: "refresh", style: UIBarButtonItemStyle.Plain, target: self, action: "updateChatList")
+        self.navigationItem.rightBarButtonItem = btn
         if (recentChatList.count > 0){
             self.updateChatList()
         }
         self.addNotificationHandler()
+    }
+    func editButtonTapped(button: UIBarButtonItem) {
+        if (self.chatListTableView.editing == true) {
+            button.title = "编辑"
+            self.chatListTableView.setEditing(false, animated: true)
+        }
+        else {
+            button.title = "完成"
+            self.chatListTableView.setEditing(true, animated: true)
+        }
     }
     
     func updateChatList() {
@@ -84,9 +96,11 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func onConnectionStateChanged(notification: NSNotification) {
         if (YunBaService.isConnected()) {
             print("didConnect")
+            self.navigationItem.title = "聊天(在线)"
         }
         else {
             print("didDisconected")
+            self.navigationItem.title = "聊天(离线)"
         }
     }
     
@@ -123,6 +137,39 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.configTheCell(0, id: listIndex[indexPath.row]["userId"] as! String)
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    
+    
+    
+    // Editing
+    
+    // Allows customization of the editingStyle for a particular cell located at 'indexPath'. If not implemented, all editable cells will have UITableViewCellEditingStyleDelete set for them when the table has editing property set to YES.
+//    @available(iOS 2.0, *)
+//    optional public func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
+//    @available(iOS 3.0, *)
+//    optional public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String?
+//    @available(iOS 8.0, *)
+//    optional public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? // supercedes -tableView:titleForDeleteConfirmationButtonForRowAtIndexPath: if return value is non-nil
+//    
+//    // Controls whether the background is indented while editing.  If not implemented, the default is YES.  This is unrelated to the indentation level below.  This method only applies to grouped style table views.
+//    @available(iOS 2.0, *)
+//    optional public func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool
+//    
+//    // The willBegin/didEnd methods are called whenever the 'editing' property is automatically changed by the table (allowing insert/delete/move). This is done by a swipe activating a single row
+//    @available(iOS 2.0, *)
+//    optional public func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath)
+//    @available(iOS 2.0, *)
+//    optional public func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            self.chatListTableView.beginUpdates()
+            self.chatListTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            recentChatList.removeObjectForKey((listIndex[indexPath.row]["userId"] as? String)!)
+            listIndex.removeAtIndex(indexPath.row)
+            recentChatList.writeToFile(recentChatPlist, atomically: true)
+            self.chatListTableView.endUpdates()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

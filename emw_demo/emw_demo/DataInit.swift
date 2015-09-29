@@ -31,7 +31,7 @@ var localUser: UserData!
 var currentChatUserId: String?
 
 var recentChatList: NSMutableDictionary!
-let recentChatPlist = (NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents").stringByAppendingString("recentChatList.plist")
+let recentChatPlist = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("recentChatList.plist")
 //NSBundle.mainBundle().pathForResource("recentChatList", ofType: ".plist")
 
 var unReadCount: Dictionary<String, Int>!

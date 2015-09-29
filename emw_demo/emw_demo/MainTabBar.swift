@@ -24,16 +24,7 @@ class MainTabBar: UITabBarController {
         }
         self.addNotificationHandler()
 //        updateTabBarApperance()
-        
-        
-        YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
-            if (succ) {
-                print("注册用户名成功")
-            }
-            else {
-                print("注册用户名失败")
-            }
-        })
+        registerYunbaAlias()
         YunBaService.subscribe("iOS", resultBlock: { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
                 print("订阅成功")
@@ -68,8 +59,16 @@ class MainTabBar: UITabBarController {
         self.selectedViewController?.endAppearanceTransition()
     }
     
-    func registerYunba() {
-        
+    func registerYunbaAlias() {
+        YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                print("注册用户名成功")
+            }
+            else {
+                print("注册用户名失败,重试")
+                self.registerYunbaAlias()
+            }
+        })
     }
 
     //MARK : - YunbaService
