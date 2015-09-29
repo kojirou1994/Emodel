@@ -19,7 +19,12 @@ class ImportCalendarViewController: UIViewController {
             self.showSimpleAlert("fail", message: "no right")
         }
     }
+    @IBAction func removeCalendarButtonTapped(sender: AnyObject) {
+        self.removeEMWCalendar()
+    }
+    @IBOutlet weak var importCalendarButton: UIButton!
     
+    @IBOutlet weak var removeCalendarButton: UIButton!
     var calendars: [EKCalendar]?
     let eventStore = EKEventStore()
     var gotAccessToCalendar: Bool = false
@@ -27,6 +32,10 @@ class ImportCalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.checkCalendarAuthorizationStatus()
+        importCalendarButton.layer.masksToBounds = true
+        importCalendarButton.layer.cornerRadius = 5
+        removeCalendarButton.layer.masksToBounds = true
+        removeCalendarButton.layer.cornerRadius = 5
         // Do any additional setup after loading the view.
     }
 
@@ -72,9 +81,9 @@ class ImportCalendarViewController: UIViewController {
         let newCalendar = EKCalendar(forEntityType: .Event, eventStore: eventStore)
         newCalendar.title = "艺模网"
         let sourcesInEventStore = eventStore.sources
-//        newCalendar.source = sourcesInEventStore.filter({ (source) -> Bool in
-//            source.sourceType == EKSourceType.Local
-//        }).first!
+        newCalendar.source = sourcesInEventStore.filter({ (source) -> Bool in
+            source.sourceType == EKSourceType.Local
+        }).first!
         
         var calendarWasSaved: Bool
         do {

@@ -13,6 +13,7 @@ class CacheViewController: UIViewController {
 
     @IBAction func clearCache(sender: AnyObject) {
         KingfisherManager.sharedManager.cache.clearDiskCache()
+        self.navigationController?.popViewControllerAnimated(true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

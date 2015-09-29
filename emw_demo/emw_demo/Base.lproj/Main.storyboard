@@ -8,7 +8,7 @@
         <!--通告-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController storyboardIdentifier="notice" id="9pv-A4-QxB" userLabel="通告" customClass="PublicNoticeViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notice" id="9pv-A4-QxB" userLabel="通告" customClass="PublicNoticeViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,7 +18,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noticeTableCell" rowHeight="80" id="fTP-yN-MEh" customClass="NoticeTableCell" customModule="emw_demo" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noticeTableCell" rowHeight="80" id="fTP-yN-MEh" customClass="NoticeTableCell" customModule="emodel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fTP-yN-MEh" id="dU0-af-X1h">
@@ -97,7 +97,7 @@
         <!--通告详情-->
         <scene sceneID="Tca-eW-H3i">
             <objects>
-                <viewController storyboardIdentifier="NoticeDetail" hidesBottomBarWhenPushed="YES" id="0t5-Zz-C2B" userLabel="通告详情" customClass="NoticeDetailViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoticeDetail" hidesBottomBarWhenPushed="YES" id="0t5-Zz-C2B" userLabel="通告详情" customClass="NoticeDetailViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fQd-gW-e1s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +131,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="text" rowHeight="180" id="cFk-nf-HwO" userLabel="textView" customClass="NoticeDetailTextTableViewCell" customModule="emw_demo" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="text" rowHeight="180" id="cFk-nf-HwO" userLabel="textView" customClass="NoticeDetailTextTableViewCell" customModule="emodel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="130" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cFk-nf-HwO" id="PkN-pT-cNb">
@@ -149,7 +149,8 @@
                                                     <rect key="frame" x="12" y="40" width="297" height="124"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
@@ -159,7 +160,7 @@
                                             <outlet property="title" destination="kMN-HC-ngN" id="aXx-Mm-HNS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SignedPeople" rowHeight="70" id="WaI-n0-8Ss" userLabel="SignedPeople" customClass="SignedPeopleTableViewCell" customModule="emw_demo" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SignedPeople" rowHeight="70" id="WaI-n0-8Ss" userLabel="SignedPeople" customClass="SignedPeopleTableViewCell" customModule="emodel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="310" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WaI-n0-8Ss" id="JwS-5v-E7o">
@@ -184,7 +185,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SignedPeopleCell" id="B1d-WY-VN9" customClass="SignedPeopleCollectionViewCell" customModule="emw_demo" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SignedPeopleCell" id="B1d-WY-VN9" customClass="SignedPeopleCollectionViewCell" customModule="emodel" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -222,7 +223,7 @@
                                             <outlet property="peopleCollectionView" destination="7kI-5o-ADl" id="bOS-tN-y2X"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="button" id="XL9-4V-UXO" userLabel="报名" customClass="NoticeDetailTableCell" customModule="emw_demo" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="button" id="XL9-4V-UXO" userLabel="报名" customClass="NoticeDetailTableCell" customModule="emodel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="380" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XL9-4V-UXO" id="ZJ6-aH-b73">
@@ -272,7 +273,7 @@
         <!--基本资料-->
         <scene sceneID="Sgo-0m-DFv">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="v1b-qh-kuU" userLabel="基本资料" customClass="BaseInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="v1b-qh-kuU" userLabel="基本资料" customClass="BaseInfoEditViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UIK-o7-pjF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,7 +289,7 @@
         <!--身材资料-->
         <scene sceneID="4Gb-vZ-Hrc">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="PwU-28-4ef" userLabel="身材资料" customClass="BodyInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="PwU-28-4ef" userLabel="身材资料" customClass="BodyInfoEditViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sFu-VM-PtX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -303,7 +304,7 @@
         <!--价格信息-->
         <scene sceneID="oHK-gn-MMo">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="3eh-1S-Fcn" userLabel="价格信息" customClass="BusinessInfoEditViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="3eh-1S-Fcn" userLabel="价格信息" customClass="BusinessInfoEditViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y8a-Nk-8Av">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -318,7 +319,7 @@
         <!--档期管理-->
         <scene sceneID="Spi-pC-iiH">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="nVt-yF-Ite" customClass="CalManagerViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="nVt-yF-Ite" customClass="CalManagerViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WDe-p5-pIL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -337,18 +338,18 @@
                                 <rect key="frame" x="0.0" y="324" width="320" height="160"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本日无安排" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SWr-J5-htC">
-                                        <rect key="frame" x="86" y="55" width="149" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <color key="textColor" red="0.61176472902297974" green="0.92941182851791382" blue="0.81568634510040283" alpha="1" colorSpace="deviceRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" id="Z7J-gJ-FxA">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本日无安排" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SWr-J5-htC">
+                                        <rect key="frame" x="86" y="47" width="149" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <color key="textColor" red="0.61176472902297974" green="0.92941182851791382" blue="0.81568634510040283" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -390,23 +391,51 @@
         <!--Import Calendar View Controller-->
         <scene sceneID="pPp-o3-JB6">
             <objects>
-                <viewController id="mH8-kh-veH" customClass="ImportCalendarViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mH8-kh-veH" customClass="ImportCalendarViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U1G-Xx-C72">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mSs-Yc-6ya">
-                                <rect key="frame" x="130" y="150" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="导入日历"/>
+                                <rect key="frame" x="42" y="118" width="237" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.58819901315789469" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="导入日历">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="importCalendarButtonTapped:" destination="mH8-kh-veH" eventType="touchUpInside" id="D76-Np-Wkp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v2L-Rv-9Jp">
+                                <rect key="frame" x="42" y="320" width="237" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.65350020559210531" blue="0.21941817434210525" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="移除日历">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="importCalendarButtonTapped:" destination="mH8-kh-veH" eventType="touchUpInside" id="lqa-1g-bfb"/>
+                                    <action selector="removeCalendarButtonTapped:" destination="mH8-kh-veH" eventType="touchUpInside" id="Ohw-Na-M9y"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="导入日历后会在系统日历中添加艺模网标题的日历，请勿将个人数据存在其中。" textAlignment="natural" selectable="NO" id="b1H-WP-iXK">
+                                <rect key="frame" x="42" y="251" width="237" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="9hL-7c-mvf"/>
+                    <connections>
+                        <outlet property="importCalendarButton" destination="mSs-Yc-6ya" id="oPl-Yr-bk8"/>
+                        <outlet property="removeCalendarButton" destination="v2L-Rv-9Jp" id="aIM-06-sWy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tS8-9I-uOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -567,7 +596,7 @@
         <!--账户设置-->
         <scene sceneID="nvn-cJ-knq">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="vZB-dT-2eQ" customClass="ConfigViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="vZB-dT-2eQ" customClass="ConfigViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ffd-Oo-01d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -631,7 +660,7 @@
         <!--相册列表-->
         <scene sceneID="w9o-Ij-fNf">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="1Yx-qL-RrF" customClass="AlbumViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="1Yx-qL-RrF" customClass="AlbumViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HCb-FM-pcv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -647,8 +676,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="TTT-vQ-5z5" customClass="AlbumThumbCollectionViewCell" customModule="emw_demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="TTT-vQ-5z5" customClass="AlbumThumbCollectionViewCell" customModule="emodel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="64" width="130" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -712,7 +741,7 @@
         <!--thumb-->
         <scene sceneID="M0V-Ai-RhF">
             <objects>
-                <viewController id="57m-pf-rT3" customClass="PhotoCollectionViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="57m-pf-rT3" customClass="PhotoCollectionViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t1P-qN-iFm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -728,8 +757,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="Lb1-HY-Wmy" customClass="PhotoThumbCollectionViewCell" customModule="emw_demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="Lb1-HY-Wmy" customClass="PhotoThumbCollectionViewCell" customModule="emodel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="64" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -797,7 +826,7 @@
         <!--个人主页-->
         <scene sceneID="umD-zL-HoC">
             <objects>
-                <tableViewController id="soj-K6-7yl" customClass="UserProfileViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="soj-K6-7yl" customClass="UserProfileViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="20" sectionFooterHeight="22" id="cC2-kE-FJc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -807,7 +836,7 @@
                             <tableViewSection id="yUi-t1-FIs">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="136" id="ref-fb-ZTc">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
+                                        <rect key="frame" x="0.0" y="64" width="320" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ref-fb-ZTc" id="7ta-iD-Zsc">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
@@ -862,7 +891,7 @@
                             <tableViewSection headerTitle="      " id="iSc-5d-zVs">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="GP3-ON-w41">
-                                        <rect key="frame" x="0.0" y="156" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="220" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GP3-ON-w41" id="0hs-mq-HvQ">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -886,7 +915,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="j6A-lH-CMa">
-                                        <rect key="frame" x="0.0" y="200" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="264" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j6A-lH-CMa" id="DcX-il-X5k">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -910,7 +939,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="6WK-ia-Y0P">
-                                        <rect key="frame" x="0.0" y="244" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="308" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6WK-ia-Y0P" id="k7q-nL-2hB">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -938,7 +967,7 @@
                             <tableViewSection headerTitle="       " id="fns-Rn-xgO">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="BpD-nA-gN8">
-                                        <rect key="frame" x="0.0" y="308" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BpD-nA-gN8" id="kNM-m1-ZU4">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -962,7 +991,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="g0T-VZ-GLq">
-                                        <rect key="frame" x="0.0" y="352" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g0T-VZ-GLq" id="MvT-6d-12U">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -986,7 +1015,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="dXn-mL-G6g">
-                                        <rect key="frame" x="0.0" y="396" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dXn-mL-G6g" id="nRe-Nk-QgS">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -1039,7 +1068,7 @@
         <!--mainTab-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="MainProgram" title="mainTab" modalTransitionStyle="flipHorizontal" id="49e-Tb-3d3" userLabel="mainTab" customClass="MainTabBar" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainProgram" title="mainTab" modalTransitionStyle="flipHorizontal" id="49e-Tb-3d3" userLabel="mainTab" customClass="MainTabBar" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -1060,8 +1089,8 @@
         <!--通告-->
         <scene sceneID="Z20-U3-lrM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TCz-QX-4Vc" customClass="TaskNavi" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="通告" image="通告.png" id="acW-dT-cKf"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TCz-QX-4Vc" customClass="TaskNavi" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="通告" image="80 - Spotlight Copy" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8dz-2c-8Ji">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1079,8 +1108,8 @@
         <!--消息-->
         <scene sceneID="axF-dE-voe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qsi-vU-IRi" customClass="ChatNavi" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="消息" image="信息.png" id="cPa-gy-q4n"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qsi-vU-IRi" customClass="ChatNavi" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="消息" image="80 - Spotlight Copy 2" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yBz-Vy-If9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1098,8 +1127,8 @@
         <!--我-->
         <scene sceneID="elW-If-Ddg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RkE-gF-3Gg" customClass="ProfileNavi" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我" image="我的.png" id="eTN-Hg-Mro"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RkE-gF-3Gg" customClass="ProfileNavi" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我" image="80 - Spotlight" id="eTN-Hg-Mro"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ra5-Ng-DBc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1117,7 +1146,7 @@
         <!--欢迎界面-->
         <scene sceneID="0Ix-bN-wR0">
             <objects>
-                <viewController storyboardIdentifier="WelcomePage" id="EQz-jo-eTv" userLabel="欢迎界面" customClass="WelcomePageViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomePage" id="EQz-jo-eTv" userLabel="欢迎界面" customClass="WelcomePageViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qJU-9u-6TE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1177,7 +1206,7 @@
         <!--登录-->
         <scene sceneID="d4O-oc-GrR">
             <objects>
-                <viewController storyboardIdentifier="LogIn" id="DNK-kS-ltC" userLabel="登录" customClass="LoginViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogIn" id="DNK-kS-ltC" userLabel="登录" customClass="LoginViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1m6-wx-mjH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1241,7 +1270,7 @@
         <!--注册-->
         <scene sceneID="ru4-pX-lW0">
             <objects>
-                <viewController id="Ka2-vM-97y" userLabel="注册" customClass="SignupViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ka2-vM-97y" userLabel="注册" customClass="SignupViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7cx-tN-any">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1366,7 +1395,7 @@
         <!--聊天列表-->
         <scene sceneID="mHO-WW-SHs">
             <objects>
-                <viewController storyboardIdentifier="ChatList" id="VfG-fE-EQA" userLabel="聊天列表" customClass="ChatListViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatList" id="VfG-fE-EQA" userLabel="聊天列表" customClass="ChatListViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17w-e2-pSg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1376,7 +1405,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatListCell" rowHeight="90" id="Hd3-un-N9N" customClass="ChatListTableViewCell" customModule="emw_demo" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatListCell" rowHeight="90" id="Hd3-un-N9N" customClass="ChatListTableViewCell" customModule="emodel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hd3-un-N9N" id="Rl1-rw-5kV">
@@ -1449,7 +1478,7 @@
         <!--聊天详情-->
         <scene sceneID="afd-fw-enn">
             <objects>
-                <viewController storyboardIdentifier="Chat" hidesBottomBarWhenPushed="YES" id="xM5-Qj-zrq" userLabel="聊天详情" customClass="ChatViewController" customModule="emw_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" hidesBottomBarWhenPushed="YES" id="xM5-Qj-zrq" userLabel="聊天详情" customClass="ChatViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1q-77-KKP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1488,6 +1517,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="80 - Spotlight" width="26" height="26"/>
+        <image name="80 - Spotlight Copy" width="26" height="26"/>
+        <image name="80 - Spotlight Copy 2" width="26" height="26"/>
         <image name="AlbumCover.png" width="443" height="443"/>
         <image name="Rectangle 1" width="320" height="568"/>
         <image name="User" width="39" height="34"/>
@@ -1503,8 +1535,5 @@
         <image name="phone" width="31" height="46"/>
         <image name="sms" width="36" height="31"/>
         <image name="wallet" width="48" height="48"/>
-        <image name="信息.png" width="50" height="50"/>
-        <image name="我的.png" width="50" height="50"/>
-        <image name="通告.png" width="50" height="50"/>
     </resources>
 </document>
