@@ -36,7 +36,7 @@ class PhotoScrollViewController: UIViewController, UIScrollViewDelegate {
         let pageWidth = self.view.frame.width
         let pageHeight = self.view.frame.height
         for photo in photoData! {
-            var iv = UIImageView(frame: CGRectMake(0, 0, pageWidth, pageHeight))
+            let iv = UIImageView(frame: CGRectMake(0, 0, pageWidth, pageHeight))
             iv.kf_setImageWithURL(NSURL(string: photo.imgUri)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
                 if (error == nil) {
                     

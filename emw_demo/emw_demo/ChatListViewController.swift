@@ -121,7 +121,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         print("setting the cell")
         let cell = chatListTableView.dequeueReusableCellWithIdentifier("chatListCell") as! ChatListTableViewCell
         cell.userNameLabel.text = listIndex[indexPath.row]["userId"] as? String
-        cell.latestMessageLabel.text = recentChatList[listIndex[indexPath.row]["userId"] as! String]!["message"] as! String
+        cell.latestMessageLabel.text = recentChatList[listIndex[indexPath.row]["userId"] as! String]!["message"] as? String
         cell.timeLabel.text = stringByDate(recentChatList[listIndex[indexPath.row]["userId"] as! String]!["time"] as! NSDate)
         cell.configTheCell(unReadCount[listIndex[indexPath.row]["userId"] as! String]!, id: listIndex[indexPath.row]["userId"] as! String)
         cell.clipsToBounds = true

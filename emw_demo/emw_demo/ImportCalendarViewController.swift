@@ -135,8 +135,8 @@ class ImportCalendarViewController: UIViewController {
                     newEvent.notes = "本日历由艺模网同步，请不要添加私人日历"
                     do {
                         try store.saveEvent(newEvent, span: .ThisEvent)
-                    } catch let _ {
-                        
+                    } catch let error {
+                        print(error)
                     }
                 }
                 return
