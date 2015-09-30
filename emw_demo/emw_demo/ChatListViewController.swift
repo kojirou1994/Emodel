@@ -96,7 +96,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func onConnectionStateChanged(notification: NSNotification) {
         if (YunBaService.isConnected()) {
             print("didConnect")
-            self.navigationItem.title = "聊天(在线)"
+            self.navigationItem.title = "聊天"
         }
         else {
             print("didDisconected")

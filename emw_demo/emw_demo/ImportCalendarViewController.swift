@@ -21,6 +21,7 @@ class ImportCalendarViewController: UIViewController {
     }
     @IBAction func removeCalendarButtonTapped(sender: AnyObject) {
         self.removeEMWCalendar()
+        self.showSimpleAlert("日历已移除", message: "如需再次添加请点击 导入日历")
     }
     @IBOutlet weak var importCalendarButton: UIButton!
     
@@ -75,15 +76,15 @@ class ImportCalendarViewController: UIViewController {
         removeEMWCalendar()
         addEMWCalendar()
         insertEvent(eventStore)
+        self.showSimpleAlert("同步完毕", message: "日程信息已导入手机")
     }
 
     func addEMWCalendar() {
         let newCalendar = EKCalendar(forEntityType: .Event, eventStore: eventStore)
         newCalendar.title = "艺模网"
         let sourcesInEventStore = eventStore.sources
-        newCalendar.source = sourcesInEventStore.filter({ (source) -> Bool in
-            source.sourceType == EKSourceType.Local
-        }).first!
+        print(sourcesInEventStore)
+        newCalendar.source = eventStore.defaultCalendarForNewEvents.source
         
         var calendarWasSaved: Bool
         do {
@@ -125,7 +126,7 @@ class ImportCalendarViewController: UIViewController {
                     let endDate = startDate.dateByAddingTimeInterval(9 * 60 * 60)
                     
                     let newEvent = EKEvent(eventStore: store)
-                    newEvent.title = event.schedule!.title == "" ? "艺模网事件" : event.schedule!.title
+                    newEvent.title = event.schedule!.title == "" ? "艺模网活动" : event.schedule!.title
                     newEvent.allDay = true
                     newEvent.calendar = calendar
                     newEvent.startDate = startDate

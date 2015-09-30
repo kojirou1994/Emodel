@@ -29,6 +29,8 @@ class ChatListTableViewCell: UITableViewCell {
     func configTheCell(badge: Int, id: String) {
         badgeLabel.layer.masksToBounds = true
         badgeLabel.layer.cornerRadius = badgeLabel.frame.width / 2
+        userAvatar.layer.masksToBounds = true
+        userAvatar.layer.cornerRadius = userAvatar.frame.size.width / 2
         if (badge <= 0) {
             badgeLabel.hidden = true
         }
@@ -36,11 +38,10 @@ class ChatListTableViewCell: UITableViewCell {
             badgeLabel.hidden = false
             badgeLabel.text = String(badge)
         }
-//        if (self.uid != id) {
         if let cache = userNameAndAvatarStorage[id] {
             //有缓存数据，不获取
             self.userNameLabel.text = cache["NickName"]
-            self.userAvatar.kf_setImageWithURL(NSURL(string: (cache["AvatarAddress"])!)!)
+            self.userAvatar.kf_setImageWithURL(NSURL(string: (cache["AvatarAddress"])! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250")!)
         }
         else {
             Alamofire.request(.GET, serverAddress + "/user/\(id)")
@@ -52,7 +53,7 @@ class ChatListTableViewCell: UITableViewCell {
                         updateUserNameAndAvatarStorage(id, name: (data?.baseInfo?.nickName)!, avatar: (data?.baseInfo?.avatar)!)
                         dispatch_async(dispatch_get_main_queue(), {
                             self.userNameLabel.text = data?.baseInfo?.nickName
-                            self.userAvatar.kf_setImageWithURL(NSURL(string: (data?.baseInfo?.avatar)!)!)
+                            self.userAvatar.kf_setImageWithURL(NSURL(string: (data?.baseInfo?.avatar)! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250")!)
                         })
                     case .Failure(_, let error):
                         return

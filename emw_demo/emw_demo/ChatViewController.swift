@@ -44,11 +44,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputKeyView.addSubview(inputField)
         
         sendBtn = UIButton(type: UIButtonType.RoundedRect)
-        sendBtn.frame = CGRectMake(inputField.frame.maxX + 7, 5, 55, 35)
+        sendBtn.frame = CGRectMake(inputField.frame.maxX + 6, 5, 55, 35)
         sendBtn.setTitle("发送", forState: UIControlState.Normal)
 //        sendBtn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
 //        sendBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
 //        sendBtn.backgroundColor = UIColor.blackColor()
+        sendBtn.backgroundColor = UIColor(hex: 0x2065FF)
+        sendBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+//        (red: 128, green: 123, blue: 245, alpha: 1)
+        sendBtn.layer.masksToBounds = true
+        sendBtn.layer.cornerRadius = 5
         sendBtn.addTarget(self, action: "send", forControlEvents: UIControlEvents.TouchUpInside)
         inputKeyView.addSubview(sendBtn)
         

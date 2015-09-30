@@ -133,7 +133,7 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
             case 11:
                 cell.textLabel?.text = "联系商家"
                 cell.detailTextLabel?.text = ""
-                cell.accessoryType = UITableViewCellAccessoryType.DetailButton
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             default:
                 cell.textLabel?.text = "null"
                 cell.detailTextLabel?.text = "default"
@@ -166,7 +166,7 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if (indexPath.row == 10) {
+        if (indexPath.row == 11) {
             let chat = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Chat") as! ChatViewController
             chat.targetUserID = self.taskData?.userId
             self.navigationController?.pushViewController(chat, animated: true)

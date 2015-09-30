@@ -15,9 +15,11 @@ class CacheViewController: UIViewController {
         KingfisherManager.sharedManager.cache.clearDiskCache()
         self.navigationController?.popViewControllerAnimated(true)
     }
+    @IBOutlet weak var clearCacheButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        clearCacheButton.layer.masksToBounds = true
+        clearCacheButton.layer.cornerRadius = 5
         // Do any additional setup after loading the view.
     }
 
