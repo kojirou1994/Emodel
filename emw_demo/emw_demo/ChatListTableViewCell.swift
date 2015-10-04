@@ -56,6 +56,7 @@ class ChatListTableViewCell: UITableViewCell {
                             self.userAvatar.kf_setImageWithURL(NSURL(string: (data?.baseInfo?.avatar)! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250")!)
                         })
                     case .Failure(_, let error):
+                        print(error)
                         return
                     }
             }

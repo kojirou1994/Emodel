@@ -76,15 +76,15 @@ class RefreshHeaderView: RefreshBaseView {
     
     func updateTimeLabel(){
         //更新时间字符串
-        let calendar:NSCalendar = NSCalendar.currentCalendar()
-        let unitFlags:NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute]
-        var cmp1:NSDateComponents = calendar.components(unitFlags, fromDate:lastUpdateTime)
-        var cmp2:NSDateComponents = calendar.components(unitFlags, fromDate: NSDate())
+//        let calendar:NSCalendar = NSCalendar.currentCalendar()
+//        let unitFlags:NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute]
+//        var cmp1:NSDateComponents = calendar.components(unitFlags, fromDate:lastUpdateTime)
+//        var cmp2:NSDateComponents = calendar.components(unitFlags, fromDate: NSDate())
         let formatter:NSDateFormatter = NSDateFormatter()
         
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         let time:String = formatter.stringFromDate(self.lastUpdateTime)
-        self.lastUpdateTimeLabel.text = "最后刷新时间:"+time
+        self.lastUpdateTimeLabel.text = "最后刷新时间:" + time
         
     }
     

@@ -33,6 +33,7 @@ class SignedPeopleCollectionViewCell: UICollectionViewCell {
                             self.avatar.kf_setImageWithURL(NSURL(string: (data?.baseInfo?.avatar)!)!)
                         })
                     case .Failure(_, let error):
+                        print(error)
                         print("Failed to get Avatar")
                         return
                     }

@@ -59,7 +59,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.view.addSubview(inputKeyView)
         
-        let profileBtn = UIBarButtonItem(title: "Profile", style: UIBarButtonItemStyle.Plain, target: self, action: "pushToProfileVC")
+//        let profileBtn = UIBarButtonItem(title: "Profile", style: UIBarButtonItemStyle.Plain, target: self, action: "pushToProfileVC")
 //        self.navigationItem.rightBarButtonItem = profileBtn
         self.chatTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
         

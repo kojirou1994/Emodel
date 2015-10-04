@@ -137,7 +137,8 @@ class BodyInfoEditViewController : XLFormViewController {
     
     func savePressed(button: UIBarButtonItem) {
         //提交更新PUT
-        var bloodType,height,weight,cup,introduction,service,clothesSize,shoeSize,trousers: String
+        var height,weight,cup,introduction,clothesSize,shoeSize,trousers: String
+//        bloodType,service
         var bust, hips, waistline: Int
         //血型
 //        if let temp = (form.formRowWithTag(BodyInfoTag.BloodType.rawValue)!.value as? String) {

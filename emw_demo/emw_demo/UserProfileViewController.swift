@@ -92,6 +92,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                         })
                     }
                 case .Failure(_, let error):
+                    print(error)
                     return
                 }
         }
@@ -122,6 +123,7 @@ class UserProfileViewController: UITableViewController, UIActionSheetDelegate, U
                         })
                     }
                 case .Failure(_, let error):
+                    print(error)
                     return
                 }
         }

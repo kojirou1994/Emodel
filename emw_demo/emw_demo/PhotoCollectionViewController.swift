@@ -244,7 +244,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         notice.labelText = "删除中"
 
-        var str = data![index].id
+        let str = data![index].id
 
         Alamofire.request(.DELETE, serverAddress + "/photo/\(str!)", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
             .validate()

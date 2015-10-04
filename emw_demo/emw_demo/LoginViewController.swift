@@ -70,6 +70,7 @@ class LoginViewController: UIViewController {
                         self.dismissViewControllerAnimated(false, completion: nil)
                     })
                 case .Failure(_, let error):
+                    print(error)
                     dispatch_async(dispatch_get_main_queue(), {
                         notice.labelText = "登陆失败"
                         notice.hide(true, afterDelay: 1)

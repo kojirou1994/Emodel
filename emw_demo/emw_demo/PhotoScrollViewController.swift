@@ -16,7 +16,7 @@ class PhotoScrollViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var loadingview: UIView!
     
     var photoData:[AlbumListData]?
-    
+    var numOfPages: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,7 +32,6 @@ class PhotoScrollViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadImage() {
-        let numOfPages = 3
         let pageWidth = self.view.frame.width
         let pageHeight = self.view.frame.height
         for photo in photoData! {

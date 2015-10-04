@@ -91,6 +91,7 @@ class ImportCalendarViewController: UIViewController {
             try eventStore.saveCalendar(newCalendar, commit: true)
             calendarWasSaved = true
         } catch let error as NSError {
+            print(error)
             calendarWasSaved = false
         }
         print("add Calendar")
