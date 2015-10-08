@@ -11,6 +11,8 @@
 		E3001B891B79DAD300F38CEC /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3001B881B79DAD300F38CEC /* SwiftColors.swift */; };
 		E304C20D1B8EE33E00A40348 /* AlbumCover.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* AlbumCover.png */; };
 		E304C20F1B8EE90F00A40348 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E304C20E1B8EE90F00A40348 /* head.jpg */; };
+		E30AAF111BC637C300D3BEFB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AF617D1BB4DDBE005CE35B /* AVFoundation.framework */; };
+		E30AAF141BC6547F00D3BEFB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E30AAF131BC6547F00D3BEFB /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		E30B30E11B7857CE00864989 /* DataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* DataInit.swift */; };
 		E30E70181BB16CE50084EDFB /* SignedPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E70161BB16CE50084EDFB /* SignedPeopleTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E30E701C1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -135,6 +137,8 @@
 		E3001B881B79DAD300F38CEC /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColors.swift; sourceTree = "<group>"; };
 		E304C20C1B8EE33E00A40348 /* AlbumCover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlbumCover.png; sourceTree = "<group>"; };
 		E304C20E1B8EE90F00A40348 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
+		E30AAF121BC6547F00D3BEFB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		E30AAF131BC6547F00D3BEFB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E30B30E01B7857CE00864989 /* DataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInit.swift; sourceTree = "<group>"; };
 		E30E70161BB16CE50084EDFB /* SignedPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E30AAF111BC637C300D3BEFB /* AVFoundation.framework in Frameworks */,
 				25CE5FB74C9AD9AE4E129F85 /* Pods.framework in Frameworks */,
 				E3BA513C1BA91E8E00EA8034 /* libYunBa.a in Frameworks */,
 			);
@@ -290,6 +295,15 @@
 				796C19CCCCEFA6858136DF35 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E30AAF151BC6548400D3BEFB /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E30AAF121BC6547F00D3BEFB /* MBProgressHUD.h */,
+				E30AAF131BC6547F00D3BEFB /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		E30E701A1BB172B00084EDFB /* 已报名人头 */ = {
@@ -531,6 +545,7 @@
 				E3C899991B749DD300286AC7 /* 3rd Tab */,
 				E3E9C2211B6CA66200998937 /* Main.storyboard */,
 				E3E9C2241B6CA66200998937 /* Images.xcassets */,
+				E30AAF151BC6548400D3BEFB /* MBProgressHUD */,
 				E35AF4A11BBA728F003D223D /* NaviAndBar */,
 				E35AF4A21BBA72B0003D223D /* func */,
 				E38518701B7091B40063C2C2 /* 图标 */,
@@ -603,7 +618,7 @@
 				TargetAttributes = {
 					E3E9C2151B6CA66200998937 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = LPAW9Y2YV2;
+						DevelopmentTeam = R8LT9M7XB2;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -617,7 +632,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = E3E9C20D1B6CA66200998937;
@@ -769,6 +783,7 @@
 				E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */,
 				E350E5661BABA78B006981FF /* JSONJoy.swift in Sources */,
 				E3E9C2471B6CC73600998937 /* NoticeTableCell.swift in Sources */,
+				E30AAF141BC6547F00D3BEFB /* MBProgressHUD.m in Sources */,
 				E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */,
 				E36C14421BA5D64D00D6FA4D /* RefreshConst.swift in Sources */,
 				E3C899921B7473AD00286AC7 /* LoginViewController.swift in Sources */,
@@ -855,8 +870,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xu dong (5FV3B29KG9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu dong (5FV3B29KG9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -879,7 +894,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "965a94ca-ad45-4159-97e9-e0a646d72484";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -902,8 +917,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xu dong (5FV3B29KG9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu dong (5FV3B29KG9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -918,7 +933,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "965a94ca-ad45-4159-97e9-e0a646d72484";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -929,8 +944,8 @@
 			baseConfigurationReference = C04BBC078BC2E0637D81E084 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xu dong (5FV3B29KG9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu dong (5FV3B29KG9)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -944,7 +959,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.emwcn.emodel;
 				PRODUCT_NAME = emodel;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "965a94ca-ad45-4159-97e9-e0a646d72484";
 				SWIFT_OBJC_BRIDGING_HEADER = "emw_demo-Bridging-Header.h";
 			};
 			name = Debug;
@@ -954,8 +969,8 @@
 			baseConfigurationReference = F3D2F2A9A29A9CFB400AAA3D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xu dong (5FV3B29KG9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu dong (5FV3B29KG9)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -969,7 +984,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.emwcn.emodel;
 				PRODUCT_NAME = emodel;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "965a94ca-ad45-4159-97e9-e0a646d72484";
 				SWIFT_OBJC_BRIDGING_HEADER = "emw_demo-Bridging-Header.h";
 			};
 			name = Release;

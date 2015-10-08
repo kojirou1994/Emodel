@@ -64,15 +64,5 @@ class SignedPeopleTableViewCell: UITableViewCell, UICollectionViewDataSource, UI
         return UIEdgeInsetsMake(5, 5, 5, 10)
         
     }
-//        @available(iOS 6.0, *)
-//        optional public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets
-//        @available(iOS 6.0, *)
-//        optional public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat
-//        @available(iOS 6.0, *)
-//        optional public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat
-//        @available(iOS 6.0, *)
-//        optional public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
-//        @available(iOS 6.0, *)
-//        optional public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
     
 }

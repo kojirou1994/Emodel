@@ -18,7 +18,6 @@ DEPENDENCIES:
   - Alamofire (~> 2.0)
   - JTCalendar (~> 2.0)
   - Kingfisher (~> 1.6)
-  - MBProgressHUD (~> 0.9.1)
   - MWPhotoBrowser
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - XLForm (~> 3.0.0)

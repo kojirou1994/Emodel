@@ -44,7 +44,7 @@ class BaseInfoEditViewController : XLFormViewController {
         form.assignFirstResponderOnShow = false
         
         section = XLFormSectionDescriptor.formSectionWithTitle("修改完成后请点击提交")
-        section.footerTitle = "footer"
+        section.footerTitle = ""
         form.addFormSection(section)
         
         // QQ

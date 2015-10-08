@@ -115,7 +115,6 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         print(recentChatList.count)
         return recentChatList.count
     }
-//    var name = ["king","Cici"]
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         print("setting the cell")
