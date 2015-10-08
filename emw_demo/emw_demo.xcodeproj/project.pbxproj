@@ -116,7 +116,6 @@
 		E3E9C2231B6CA66200998937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2211B6CA66200998937 /* Main.storyboard */; };
 		E3E9C2251B6CA66200998937 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2241B6CA66200998937 /* Images.xcassets */; };
 		E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E9C2261B6CA66200998937 /* LaunchScreen.xib */; };
-		E3E9C2341B6CA66200998937 /* emw_demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2331B6CA66200998937 /* emw_demoTests.swift */; };
 		E3E9C2421B6CAF5000998937 /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2401B6CAF5000998937 /* SMSegment.swift */; };
 		E3E9C2431B6CAF5000998937 /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2411B6CAF5000998937 /* SMSegmentView.swift */; };
 		E3E9C2471B6CC73600998937 /* NoticeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */; };
@@ -129,16 +128,6 @@
 		E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F7CC3C1B704F79001D82D3 /* Signup.swift */; };
 		E3FBE9BD1B845C5500EA6440 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FBE9BC1B845C5500EA6440 /* User.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E3E9C22E1B6CA66200998937 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3E9C20E1B6CA66200998937 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E3E9C2151B6CA66200998937;
-			remoteInfo = emw_demo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		796C19CCCCEFA6858136DF35 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,9 +245,6 @@
 		E3E9C2221B6CA66200998937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3E9C2241B6CA66200998937 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E3E9C2271B6CA66200998937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		E3E9C22D1B6CA66200998937 /* emw_demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emw_demoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3E9C2321B6CA66200998937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3E9C2331B6CA66200998937 /* emw_demoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emw_demoTests.swift; sourceTree = "<group>"; };
 		E3E9C2401B6CAF5000998937 /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
 		E3E9C2411B6CAF5000998937 /* SMSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentView.swift; sourceTree = "<group>"; };
 		E3E9C2461B6CC73600998937 /* NoticeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeTableCell.swift; sourceTree = "<group>"; };
@@ -282,13 +268,6 @@
 			files = (
 				25CE5FB74C9AD9AE4E129F85 /* Pods.framework in Frameworks */,
 				E3BA513C1BA91E8E00EA8034 /* libYunBa.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3E9C22A1B6CA66200998937 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,7 +504,6 @@
 			isa = PBXGroup;
 			children = (
 				E3E9C2181B6CA66200998937 /* emw_demo */,
-				E3E9C2301B6CA66200998937 /* emw_demoTests */,
 				E3E9C2171B6CA66200998937 /* Products */,
 				7123ABDA140D20092584BAD8 /* Frameworks */,
 				4338E03C5A1A63FFCF3A4AE6 /* Pods */,
@@ -536,7 +514,6 @@
 			isa = PBXGroup;
 			children = (
 				E3E9C2161B6CA66200998937 /* emodel.app */,
-				E3E9C22D1B6CA66200998937 /* emw_demoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -581,23 +558,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E3E9C2301B6CA66200998937 /* emw_demoTests */ = {
-			isa = PBXGroup;
-			children = (
-				E3E9C2331B6CA66200998937 /* emw_demoTests.swift */,
-				E3E9C2311B6CA66200998937 /* Supporting Files */,
-			);
-			path = emw_demoTests;
-			sourceTree = "<group>";
-		};
-		E3E9C2311B6CA66200998937 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E3E9C2321B6CA66200998937 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		E3E9C23F1B6CAF5000998937 /* SMSegmentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,24 +590,6 @@
 			productReference = E3E9C2161B6CA66200998937 /* emodel.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E3E9C22C1B6CA66200998937 /* emw_demoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E3E9C23A1B6CA66200998937 /* Build configuration list for PBXNativeTarget "emw_demoTests" */;
-			buildPhases = (
-				E3E9C2291B6CA66200998937 /* Sources */,
-				E3E9C22A1B6CA66200998937 /* Frameworks */,
-				E3E9C22B1B6CA66200998937 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E3E9C22F1B6CA66200998937 /* PBXTargetDependency */,
-			);
-			name = emw_demoTests;
-			productName = emw_demoTests;
-			productReference = E3E9C22D1B6CA66200998937 /* emw_demoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -662,11 +604,11 @@
 					E3E9C2151B6CA66200998937 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = LPAW9Y2YV2;
-					};
-					E3E9C22C1B6CA66200998937 = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 4ZZE46STPH;
-						TestTargetID = E3E9C2151B6CA66200998937;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -684,7 +626,6 @@
 			projectRoot = "";
 			targets = (
 				E3E9C2151B6CA66200998937 /* emw_demo */,
-				E3E9C22C1B6CA66200998937 /* emw_demoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -743,13 +684,6 @@
 				E3B6803D1BA2C452004DF002 /* SenderVoiceNodeDownloading@2x.png in Resources */,
 				E3B6803A1BA2C452004DF002 /* SenderAppNodeBkg_HL.png in Resources */,
 				E3B680371BA2C452004DF002 /* ReceiverVoiceNodeDownloading@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E3E9C22B1B6CA66200998937 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,23 +814,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3E9C2291B6CA66200998937 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E3E9C2341B6CA66200998937 /* emw_demoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E3E9C22F1B6CA66200998937 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E3E9C2151B6CA66200998937 /* emw_demo */;
-			targetProxy = E3E9C22E1B6CA66200998937 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E3E9C2211B6CA66200998937 /* Main.storyboard */ = {
@@ -937,6 +855,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -960,7 +879,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "b8c0c4b0-42c6-4f18-b30c-52bff98fbdd0";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -983,6 +902,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -998,7 +918,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "b8c0c4b0-42c6-4f18-b30c-52bff98fbdd0";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1011,10 +931,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = emw_demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1035,10 +956,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = emw_demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1049,42 +971,6 @@
 				PRODUCT_NAME = emodel;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "emw_demo-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		E3E9C23B1B6CA66200998937 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = emw_demoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.emodel.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/emw_demo.app/emw_demo";
-			};
-			name = Debug;
-		};
-		E3E9C23C1B6CA66200998937 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = emw_demoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.emodel.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/emw_demo.app/emw_demo";
 			};
 			name = Release;
 		};
@@ -1105,15 +991,6 @@
 			buildConfigurations = (
 				E3E9C2381B6CA66200998937 /* Debug */,
 				E3E9C2391B6CA66200998937 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E3E9C23A1B6CA66200998937 /* Build configuration list for PBXNativeTarget "emw_demoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3E9C23B1B6CA66200998937 /* Debug */,
-				E3E9C23C1B6CA66200998937 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

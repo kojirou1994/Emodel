@@ -13,23 +13,30 @@ import Alamofire
 
 let reuseIdentifier = "PhotoCell"
 
-class PhotoCollectionViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate{
+class PhotoCollectionViewController: UIViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate{
     
     @IBOutlet weak var PhotoList: UICollectionView!
     
     @IBAction func uploadPhotoBtnPressed(sender: AnyObject) {
-        let sheet: UIActionSheet = UIActionSheet()
-        let title: String = "选择照片"
-        sheet.title  = title
-        sheet.delegate = self
-        sheet.addButtonWithTitle("取消")
-        sheet.addButtonWithTitle("从相册选择")
+        let selectPhotoSourceAlert = UIAlertController(title: "选择照片", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        selectPhotoSourceAlert.addAction(UIAlertAction(title: "从相册选择", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            let imagePicker:UIImagePickerController = UIImagePickerController();
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }))
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            sheet.addButtonWithTitle("拍照")
+            selectPhotoSourceAlert.addAction(UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+                let imagePicker:UIImagePickerController = UIImagePickerController();
+                imagePicker.delegate = self
+                imagePicker.allowsEditing = false
+                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }))
         }
-        sheet.cancelButtonIndex = 0
-        sheet.showInView(self.view)
-        sheet.tag = 255
+        selectPhotoSourceAlert.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(selectPhotoSourceAlert, animated: true, completion: nil)
     }
     var data:[AlbumListData]?
     ///本相册的id，以获取数据
@@ -158,39 +165,6 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
         }
     }
     
-    //MARK: - UIActionSheetDelegate
-    
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        if actionSheet.tag == 255 {
-            let imagePicker:UIImagePickerController = UIImagePickerController();
-            imagePicker.delegate = self
-            imagePicker.allowsEditing = false
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-                switch (buttonIndex) {
-                case 0:
-                    return
-                case 1:
-                    imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-                case 2:
-                    imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-                    imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
-                default:
-                    break;
-                }
-            }
-            else {
-                if (buttonIndex == 0) {
-                    return
-                }
-                else {
-                    imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-                }
-            }
-            print("button Index: \(buttonIndex)")
-            self.presentViewController(imagePicker, animated: true, completion: nil)
-        }
-        
-    }
     
     //MARK: - UIImagePickerControllerDelegate
     var imageData: NSData?
