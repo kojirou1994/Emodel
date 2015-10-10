@@ -618,7 +618,7 @@
 				TargetAttributes = {
 					E3E9C2151B6CA66200998937 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = R8LT9M7XB2;
+						DevelopmentTeam = LPAW9Y2YV2;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -944,7 +944,7 @@
 			baseConfigurationReference = C04BBC078BC2E0637D81E084 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xu dong (5FV3B29KG9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu dong (5FV3B29KG9)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
@@ -969,7 +969,7 @@
 			baseConfigurationReference = F3D2F2A9A29A9CFB400AAA3D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xu dong (5FV3B29KG9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu dong (5FV3B29KG9)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
