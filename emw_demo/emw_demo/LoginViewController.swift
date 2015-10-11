@@ -24,8 +24,7 @@ class LoginViewController: UIViewController {
         
         if (mobileInput.text == "" || passwordInput.text == "") {
 //            mobileInput.text = "请输入信息"
-            let ala = UIAlertView(title: "fuck u", message: "shit", delegate: nil, cancelButtonTitle: "ok")
-            ala.show()
+            self.showSimpleAlert("输入有误", message: "请重试")
             return
         }
         guard let mobileText = mobileInput.text else {

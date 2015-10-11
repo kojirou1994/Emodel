@@ -21,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         localUser = UserData()
         YunBaService.setupWithAppkey(appkey)
         kYBLogLevel = .Debug
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil))
-            UIApplication.sharedApplication().registerForRemoteNotifications()
+        //推送以后做
+//        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil))
+//            UIApplication.sharedApplication().registerForRemoteNotifications()
         
         // Override point for customization after application launch.
         return true
@@ -64,14 +65,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("get Device Token: \(deviceToken)")
         // uncomment to store device token to YunBa
-        YunBaService.storeDeviceToken(deviceToken, resultBlock: { (succ: Bool, error: NSError!) -> Void in
-            if (succ) {
-                print("store device token to YunBa succ")
-            }
-            else {
-                print("store device token to YunBa failed due to : \(error), recovery suggestion: \(error.localizedRecoverySuggestion)")
-            }
-        })
+//        YunBaService.storeDeviceToken(deviceToken, resultBlock: { (succ: Bool, error: NSError!) -> Void in
+//            if (succ) {
+//                print("store device token to YunBa succ")
+//            }
+//            else {
+//                print("store device token to YunBa failed due to : \(error), recovery suggestion: \(error.localizedRecoverySuggestion)")
+//            }
+//        })
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

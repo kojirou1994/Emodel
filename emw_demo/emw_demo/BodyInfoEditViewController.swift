@@ -48,7 +48,7 @@ class BodyInfoEditViewController : XLFormViewController {
         form.assignFirstResponderOnShow = false
         
         section = XLFormSectionDescriptor.formSectionWithTitle("基本信息")
-        section.footerTitle = "footer"
+        section.footerTitle = ""
         form.addFormSection(section)
         
         // 身高

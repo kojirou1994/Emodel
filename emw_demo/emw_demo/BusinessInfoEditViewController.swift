@@ -39,7 +39,7 @@ class BusinessInfoEditViewController: XLFormViewController {
         form.assignFirstResponderOnShow = false
         
         section = XLFormSectionDescriptor.formSectionWithTitle("身价")
-        section.footerTitle = "footer"
+        section.footerTitle = ""
         form.addFormSection(section)
         
         // 内景价位

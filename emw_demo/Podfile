@@ -6,6 +6,5 @@ pod 'XLForm', '~> 3.0.0'
 pod 'JTCalendar', '~> 2.0'
 pod 'Kingfisher', '~> 1.6'
 pod "MWPhotoBrowser"
-pod 'MBProgressHUD', '~> 0.9.1'
 pod 'Alamofire', '~> 2.0'
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
