@@ -111,7 +111,8 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoThumbCollectionViewCell
-        cell.PhotoThumbImage.kf_setImageWithURL(NSURL(string: data![indexPath.row].thumbUri!)!)
+        cell.PhotoThumbImage.kf_showIndicatorWhenLoading = true
+        cell.PhotoThumbImage.kf_setImageWithURL(NSURL(string: data![indexPath.row].thumbUri!)!, placeholderImage: nil, optionsInfo: [.Transition: ImageTransition.Fade(0.5)])
         cell.PhotoThumbImage.clipsToBounds = true
         if (deleteMode) {
             cell.deleteButton.hidden = false
