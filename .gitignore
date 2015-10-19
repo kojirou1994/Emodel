@@ -1,9 +1,8 @@
 .DS_Store
 Pods/
-#Podfile.lock 
+Podfile.lock
 # changed my mind on Podfile.lock
 emw_demo.xcworkspace
 xcschememanagement.plist
 UserInterfaceState.xcuserstate
-e-Model.xcscheme
 /emw_demo/build/
