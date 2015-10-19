@@ -15,6 +15,7 @@ let publicServer: String! = "http://api.emwcn.com"
 let serverAddress: String! = publicServer
 ///用户是否已登录
 var isLogin: Bool = false
+var isOnline: Bool = false
 ///本地用户名
 var username: String!
 ///本地用户密码
@@ -85,6 +86,32 @@ func readUserData() {
 func updateUserNameAndAvatarStorage(id: String, name: String, avatar: String) {
     userNameAndAvatarStorage[id]=["NickName": name, "AvatarAddress": avatar]
     NSUserDefaults.standardUserDefaults().setObject(userNameAndAvatarStorage, forKey: "UserNameAndAvatarStorage")
+}
+
+func registerYunbaAlias() {
+    YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
+        if (succ) {
+            print("注册用户名成功")
+            isOnline = true
+        }
+        else {
+            print("注册用户名失败,重试")
+            isOnline = false
+            registerYunbaAlias()
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName("AliasStateChanged", object: nil)
+    })
+}
+func subscribeYBTopic() {
+    YunBaService.subscribe("iOS", resultBlock: { (succ: Bool, error: NSError!) -> Void in
+        if (succ) {
+            print("订阅成功")
+        }
+        else {
+            subscribeYBTopic()
+            print("订阅失败")
+        }
+    })
 }
 
 public extension UIViewController {

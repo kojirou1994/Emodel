@@ -103,7 +103,6 @@ class UserProfileViewController: UITableViewController, UIImagePickerControllerD
                     return
                 }
         }
-        
         // baseinfo额外获取一次
         Alamofire.request(.GET, serverAddress + "/user/\(userId!)/baseinfo", parameters: nil, encoding: ParameterEncoding.URL, headers: ["Token": token])
             .validate()
@@ -215,23 +214,6 @@ class UserProfileViewController: UITableViewController, UIImagePickerControllerD
     // MARK: - Navigation
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-//        if identifier == "GoToCalendar" {
-//            var calen = HTTPTask()
-//            calen.GET(serverAddress + "/user/\(userId!)/calendar", parameters: nil) { (response: HTTPResponse) -> Void in
-//                if let err = response.error {
-//                    print("error: \(err.localizedDescription)")
-//                    return
-//                }
-//                if let obj: AnyObject = response.responseObject {
-//                    print("获取到的baseinfo")
-//                    print(obj)
-//                    let resp = BaseInfoResp(JSONDecoder(obj))
-//                    if (resp.status == 200) {
-//                    }
-//                }
-//            }
-//            return true
-//        }
         return true
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

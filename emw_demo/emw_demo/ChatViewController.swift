@@ -128,7 +128,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func addNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
         defaultNC.addObserver(self, selector: "onMessageReceived:", name: kYBDidReceiveMessageNotification, object: nil)
-        defaultNC.addObserver(self, selector: "onPresenceReceived", name: kYBDidReceivePresenceNotification, object: nil)
+        defaultNC.addObserver(self, selector: "onPresenceReceived:", name: kYBDidReceivePresenceNotification, object: nil)
         defaultNC.addObserver(self, selector: "keyboardWillAppear:", name: UIKeyboardWillChangeFrameNotification, object: nil)
         defaultNC.addObserver(self, selector: "keyboardWillDisappear:", name: UIKeyboardWillHideNotification, object: nil)
     }
@@ -196,7 +196,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     override func viewWillDisappear(animated: Bool) {
         currentChatUserId = nil
-//        self.removeNotificationHandler()
+        self.removeNotificationHandler()
     }
 
     func bubbleView(text: String, fromSelf: Bool, position: Int) -> UIView {

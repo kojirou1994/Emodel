@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-let appkey = "55ef96c14a481fa955f39232"
+private let YunBaAppKey = "55b82a19bf8c0106158c6bc2"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         readUserData()
         localUser = UserData()
-        YunBaService.setupWithAppkey(appkey)
-        kYBLogLevel = .Debug
+        YunBaService.setupWithAppkey(YunBaAppKey)
+        kYBLogLevel = .NoLog
         //推送以后做
-//        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil))
-//            UIApplication.sharedApplication().registerForRemoteNotifications()
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil))
+        UIApplication.sharedApplication().registerForRemoteNotifications()
         
         // Override point for customization after application launch.
         return true
@@ -65,20 +65,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("get Device Token: \(deviceToken)")
         // uncomment to store device token to YunBa
-//        YunBaService.storeDeviceToken(deviceToken, resultBlock: { (succ: Bool, error: NSError!) -> Void in
-//            if (succ) {
-//                print("store device token to YunBa succ")
-//            }
-//            else {
-//                print("store device token to YunBa failed due to : \(error), recovery suggestion: \(error.localizedRecoverySuggestion)")
-//            }
-//        })
+        YunBaService.storeDeviceToken(deviceToken, resultBlock: { (succ: Bool, error: NSError!) -> Void in
+            if (succ) {
+                print("store device token to YunBa succ")
+            }
+            else {
+                print("store device token to YunBa failed due to : \(error), recovery suggestion: \(error.localizedRecoverySuggestion)")
+            }
+        })
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("didFailToRegisterForRemotenotificationWithError")
     }
-    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
+    }
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {

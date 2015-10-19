@@ -87,6 +87,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         let defaultNC = NSNotificationCenter.defaultCenter()
         defaultNC.addObserver(self, selector: "updateChatList", name: "updateChatListVC", object: nil)
         defaultNC.addObserver(self, selector: "onConnectionStateChanged:", name: kYBConnectionStatusChangedNotification, object: nil)
+        defaultNC.addObserver(self, selector: "onOnlineStateChanged", name: "AliasStateChanged", object: nil)
     }
     func removeNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
@@ -100,12 +101,27 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else {
             print("didDisconected")
+            self.navigationItem.title = "聊天(断网)"
+        }
+    }
+    func onOnlineStateChanged() {
+        if (isOnline) {
+            print("online")
+            self.navigationItem.title = "聊天"
+            self.navigationItem.leftBarButtonItem = nil
+        }
+        else {
+            print("offline")
             self.navigationItem.title = "聊天(离线)"
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "重连", style: UIBarButtonItemStyle.Plain, target: self, action: "showReloginMenu")
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    func showReloginMenu() {
+        registerYunbaAlias()
     }
     
     // MARK: - UITableViewDataSource

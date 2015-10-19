@@ -13,6 +13,7 @@ import AudioToolbox
 class MainTabBar: UITabBarController {
 
     var chatListVC: ChatListViewController!
+    var checkOnline: NSTimer!
     override func viewDidLoad() {
         print("start viewDidLoad")
         super.viewDidLoad()
@@ -25,14 +26,8 @@ class MainTabBar: UITabBarController {
         self.addNotificationHandler()
 //        updateTabBarApperance()
         registerYunbaAlias()
-        YunBaService.subscribe("iOS", resultBlock: { (succ: Bool, error: NSError!) -> Void in
-            if (succ) {
-                print("订阅成功")
-            }
-            else {
-                print("订阅失败")
-            }
-        })
+
+        checkOnline = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "updateState", userInfo: nil, repeats: true)
         print("viewDidLoad")
     }
 
@@ -58,17 +53,20 @@ class MainTabBar: UITabBarController {
     override func viewDidDisappear(animated: Bool) {
         self.selectedViewController?.endAppearanceTransition()
     }
-    
-    func registerYunbaAlias() {
-        YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in
-            if (succ) {
-                print("注册用户名成功")
+    func updateState() {
+        YunBaService.getAlias { (result, err) -> Void in
+            if (result == nil) {
+//                print(err.localizedDescription)
+                print("offline")
+                isOnline = false
             }
             else {
-                print("注册用户名失败,重试")
-                self.registerYunbaAlias()
+                print("online")
+                isOnline = true
+//                print(result)
             }
-        })
+            NSNotificationCenter.defaultCenter().postNotificationName("AliasStateChanged", object: self)
+        }
     }
 
     //MARK : - YunbaService

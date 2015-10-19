@@ -69,7 +69,7 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.tableView.reloadData()
                         self.tableView.headerEndRefreshing()
-                        print(self.taskData!)
+//                        print(self.taskData!)
                     })
                 case .Failure(_, let error):
                     print(error)
@@ -128,7 +128,7 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
             }
             
             cell.config(myTaskData![indexPath.row])
-            print(cell.timeLabel?.text)
+//            print(cell.timeLabel?.text)
             return cell!
         }
         else {
@@ -150,11 +150,11 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (isMy) {
             if (myTaskData == nil) {
-                print("task count 0")
+//                print("task count 0")
                 return 0
             }
             else {
-                print("task count \(myTaskData!.count)")
+//                print("task count \(myTaskData!.count)")
                 return myTaskData!.count
             }
         }
@@ -185,7 +185,7 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "NoticeDetail" {
             let indexPath = self.tableView!.indexPathForSelectedRow
-            print("点击了通告\(indexPath)")
+//            print("点击了通告\(indexPath)")
             let destinationViewController = segue.destinationViewController as! NoticeDetailViewController
 //            println("taskData transfer")
             if (isMy) {
