@@ -28,14 +28,9 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.automaticallyAdjustsScrollViewInsets = false
-//        self.AlbumListCollectionView.frame = CGRectMake(0, self.navigationController!.navigationBar.frame.height, self.view.frame.width, self.view.frame.height)
-        print(self.AlbumListCollectionView.frame)
-        print(self.AlbumListCollectionView.contentSize)
         let addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
         self.navigationItem.rightBarButtonItem = addBtn
         album = localUser.albumInfo!
-        self.AlbumListCollectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,11 +47,8 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
             albumNameTextField.placeholder = "在此输入"
         }
         
-        
-        
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (action: UIAlertAction) -> Void in
             print("cancle tapped")
-
         }
         let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
             print("ok tapped")
@@ -159,8 +151,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     //MARK: - Navigation
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "GoToAlbumDetail" {
-            print("ShouldPerformSegue")
-//            sleep(2)
             return true
         }
         return true

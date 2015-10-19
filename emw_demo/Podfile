@@ -2,8 +2,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
+pod 'CVCalendar', '~> 1.2.7'
 pod 'XLForm', '~> 3.0'
-pod 'JTCalendar', '~> 2.0'
 pod 'Kingfisher', '~> 1.6'
 pod "MWPhotoBrowser"
 pod 'Alamofire', '~> 2.0'

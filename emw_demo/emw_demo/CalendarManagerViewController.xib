@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarManagerViewController" customModule="emodel" customModuleProvider="target">
+            <connections>
+                <outlet property="calendarView" destination="oD9-bC-0NW" id="BYh-GC-gsC"/>
+                <outlet property="freeDateButton" destination="5Zo-Yg-936" id="PiM-rx-nzv"/>
+                <outlet property="fullDateButton" destination="BOm-uk-Pi4" id="2Nd-f9-c3g"/>
+                <outlet property="menuView" destination="pWb-ZD-MSu" id="RP9-lU-v9L"/>
+                <outlet property="tableView" destination="Dil-ku-xxq" id="gzc-cy-IyZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWb-ZD-MSu" customClass="CVCalendarMenuView" customModule="CVCalendar">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="zZE-TP-caf"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oD9-bC-0NW" customClass="CVCalendarView" customModule="CVCalendar">
+                    <rect key="frame" x="0.0" y="60" width="600" height="300"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="vEy-Zt-1Yh"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dil-ku-xxq">
+                    <rect key="frame" x="0.0" y="368" width="600" height="180"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="d2x-bU-po6"/>
+                        <outlet property="delegate" destination="-1" id="BkI-Ox-0rB"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zo-Yg-936">
+                    <rect key="frame" x="8" y="562" width="75" height="30"/>
+                    <animations/>
+                    <state key="normal" title="设为休息日"/>
+                    <connections>
+                        <action selector="freeDateButtonTapped:" destination="-1" eventType="touchUpInside" id="02b-ij-az6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOm-uk-Pi4">
+                    <rect key="frame" x="517" y="562" width="75" height="30"/>
+                    <animations/>
+                    <state key="normal" title="设为已约满"/>
+                    <connections>
+                        <action selector="fullDateButtonTapped:" destination="-1" eventType="touchUpInside" id="5uH-Q2-I06"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="oD9-bC-0NW" firstAttribute="top" secondItem="pWb-ZD-MSu" secondAttribute="bottom" id="3gf-QY-CyQ"/>
+                <constraint firstItem="Dil-ku-xxq" firstAttribute="top" secondItem="oD9-bC-0NW" secondAttribute="bottom" constant="8" id="4Fg-bm-wvC"/>
+                <constraint firstItem="Dil-ku-xxq" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="6wH-xs-EUw"/>
+                <constraint firstItem="oD9-bC-0NW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="EzE-tl-k2m"/>
+                <constraint firstAttribute="bottom" secondItem="BOm-uk-Pi4" secondAttribute="bottom" constant="8" id="NYR-j1-AwM"/>
+                <constraint firstItem="pWb-ZD-MSu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UHe-de-m2t"/>
+                <constraint firstItem="oD9-bC-0NW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UjL-O8-dpJ"/>
+                <constraint firstItem="oD9-bC-0NW" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="YDi-Dg-bjc"/>
+                <constraint firstAttribute="bottom" secondItem="Dil-ku-xxq" secondAttribute="bottom" constant="52" id="aDD-pn-7yW"/>
+                <constraint firstAttribute="trailing" secondItem="BOm-uk-Pi4" secondAttribute="trailing" constant="8" id="bGJ-f0-kWH"/>
+                <constraint firstItem="Dil-ku-xxq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ewu-ef-plN"/>
+                <constraint firstAttribute="bottom" secondItem="5Zo-Yg-936" secondAttribute="bottom" constant="8" id="kWZ-Tt-UGl"/>
+                <constraint firstAttribute="trailing" secondItem="oD9-bC-0NW" secondAttribute="trailing" id="nnx-FW-bqk"/>
+                <constraint firstItem="pWb-ZD-MSu" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="sF2-xM-jHl"/>
+                <constraint firstItem="pWb-ZD-MSu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="u5A-df-OM9"/>
+                <constraint firstItem="5Zo-Yg-936" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="wM5-Ty-1cD"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

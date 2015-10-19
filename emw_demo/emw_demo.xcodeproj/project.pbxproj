@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25CE5FB74C9AD9AE4E129F85 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796C19CCCCEFA6858136DF35 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		25CE5FB74C9AD9AE4E129F85 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796C19CCCCEFA6858136DF35 /* Pods.framework */; };
 		E3001B891B79DAD300F38CEC /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3001B881B79DAD300F38CEC /* SwiftColors.swift */; };
 		E304C20D1B8EE33E00A40348 /* AlbumCover.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* AlbumCover.png */; };
 		E304C20F1B8EE90F00A40348 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E304C20E1B8EE90F00A40348 /* head.jpg */; };
@@ -17,6 +17,10 @@
 		E30E70181BB16CE50084EDFB /* SignedPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E70161BB16CE50084EDFB /* SignedPeopleTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E30E701C1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E31519A91BD4B2DF00199E1C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31519A81BD4B2DF00199E1C /* DataManager.swift */; settings = {ASSET_TAGS = (); }; };
+		E31519CE1BD4DFA600199E1C /* CalendarManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31519CC1BD4DFA600199E1C /* CalendarManagerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E31519CF1BD4DFA600199E1C /* CalendarManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31519CD1BD4DFA600199E1C /* CalendarManagerViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		E31519D21BD4E34000199E1C /* CMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31519D01BD4E34000199E1C /* CMTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E31519D31BD4E34000199E1C /* CMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31519D11BD4E34000199E1C /* CMTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E22361B960B6300BC0A0D /* ConfigViewController.swift */; };
 		E334520E1B73191B004E6FD4 /* BaseInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */; };
 		E33802BB1B9023B200A9ADD3 /* BodyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */; };
@@ -146,6 +150,10 @@
 		E30E70161BB16CE50084EDFB /* SignedPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E31519A81BD4B2DF00199E1C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		E31519CC1BD4DFA600199E1C /* CalendarManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManagerViewController.swift; sourceTree = "<group>"; };
+		E31519CD1BD4DFA600199E1C /* CalendarManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarManagerViewController.xib; sourceTree = "<group>"; };
+		E31519D01BD4E34000199E1C /* CMTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMTableViewCell.swift; sourceTree = "<group>"; };
+		E31519D11BD4E34000199E1C /* CMTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMTableViewCell.xib; sourceTree = "<group>"; };
 		E32E22361B960B6300BC0A0D /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		E334520D1B73191B004E6FD4 /* BaseInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoEditViewController.swift; sourceTree = "<group>"; };
 		E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyInfoEditViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +327,17 @@
 				E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */,
 			);
 			name = "已报名人头";
+			sourceTree = "<group>";
+		};
+		E31519CB1BD4DF8300199E1C /* Calenadar */ = {
+			isa = PBXGroup;
+			children = (
+				E31519CC1BD4DFA600199E1C /* CalendarManagerViewController.swift */,
+				E31519D01BD4E34000199E1C /* CMTableViewCell.swift */,
+				E31519D11BD4E34000199E1C /* CMTableViewCell.xib */,
+				E31519CD1BD4DFA600199E1C /* CalendarManagerViewController.xib */,
+			);
+			name = Calenadar;
 			sourceTree = "<group>";
 		};
 		E34CC6471B96E4300089EED1 /* InfoEdit */ = {
@@ -504,6 +523,7 @@
 				E37AD5981B846BC8005DEC92 /* CalendarViewController.swift */,
 				E3697B271BBB74EC0024F07F /* CalendarTableViewCell.swift */,
 				E3C7EB5F1BB9252900311781 /* ImportCalendarViewController.swift */,
+				E31519CB1BD4DF8300199E1C /* Calenadar */,
 				E38556721B7C62CD0015285F /* Album */,
 				E34CC6471B96E4300089EED1 /* InfoEdit */,
 			);
@@ -659,6 +679,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3B680321BA2C452004DF002 /* photo1@2x.png in Resources */,
+				E31519D31BD4E34000199E1C /* CMTableViewCell.xib in Resources */,
 				E38518981B7091B40063C2C2 /* 设置.png in Resources */,
 				E3B680341BA2C452004DF002 /* ReceiverTextNodeBkg.png in Resources */,
 				E304C20F1B8EE90F00A40348 /* head.jpg in Resources */,
@@ -682,6 +703,7 @@
 				E385188E1B7091B40063C2C2 /* starRank_6.png in Resources */,
 				E3E8C4B91BBA34F9007C267E /* CacheViewController.xib in Resources */,
 				E3B680311BA2C452004DF002 /* photo1.png in Resources */,
+				E31519CF1BD4DFA600199E1C /* CalendarManagerViewController.xib in Resources */,
 				E38518951B7091B40063C2C2 /* 档期管理.png in Resources */,
 				E3AB7A921B8AF6B800962116 /* bg.png in Resources */,
 				E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */,
@@ -796,6 +818,7 @@
 				E30AAF141BC6547F00D3BEFB /* MBProgressHUD.m in Sources */,
 				E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */,
 				E36C14421BA5D64D00D6FA4D /* RefreshConst.swift in Sources */,
+				E31519D21BD4E34000199E1C /* CMTableViewCell.swift in Sources */,
 				E3C899921B7473AD00286AC7 /* LoginViewController.swift in Sources */,
 				E3BA45C31BAA4B780012DC40 /* emw_demo.xcdatamodeld in Sources */,
 				E36C14451BA5D64D00D6FA4D /* UIScrollView+Refresh.swift in Sources */,
@@ -813,6 +836,7 @@
 				E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */,
 				E3978F581B7AE09C002B54A3 /* AlbumInfo.swift in Sources */,
 				E3E9C21C1B6CA66200998937 /* AppDelegate.swift in Sources */,
+				E31519CE1BD4DFA600199E1C /* CalendarManagerViewController.swift in Sources */,
 				E398AF411BC8F71D00A921B4 /* EMWApiAddress.swift in Sources */,
 				E3C7EB601BB9252900311781 /* ImportCalendarViewController.swift in Sources */,
 				E3E9C2511B6CE4A200998937 /* NoticeDetailViewController.swift in Sources */,

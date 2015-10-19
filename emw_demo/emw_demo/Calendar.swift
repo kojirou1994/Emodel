@@ -25,13 +25,20 @@ struct CalendarResp: JSONJoy {
 }
 
 struct Calendar: JSONJoy {
-    var date: String?
-    var schedule: Schedule?
+    var date: NSDate?
+    var schedule: [Schedule]?
     var timeBucket: String?
     
     init(_ decoder: JSONDecoder) {
-        date = decoder["date"].string
-        schedule = Schedule(decoder["schedule"])
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        date = format.dateFromString(decoder["date"].string!)
+        if let s = decoder["schedule"].array {
+            schedule = [Schedule]()
+            for item in s {
+                schedule?.append(Schedule(item))
+            }
+        }
         timeBucket = decoder["timeBucket"].string
     }
 }
@@ -40,9 +47,29 @@ struct Schedule: JSONJoy {
     var body: String?
     var title: String?
     var type: String?
+    var timeBucket: TimeBucket
     init(_ decoder: JSONDecoder) {
         body = decoder["body"].string
         title = decoder["title"].string
         type = decoder["type"].string
+        if let bucket = decoder["timeBucket"].integer {
+            switch bucket {
+            case 61440:
+                timeBucket = .Morning
+            case 3840:
+                timeBucket = .Afternoon
+            case 16777215:
+                timeBucket = .Allday
+            default:
+                timeBucket = .Morning
+            }
+        }
+        else {
+            timeBucket = .Morning
+        }
     }
+}
+
+enum TimeBucket: String {
+    case Morning = "Morning",Afternoon = "Afternoon",Allday = "Allday"
 }

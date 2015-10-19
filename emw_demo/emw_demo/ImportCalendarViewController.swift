@@ -85,7 +85,6 @@ class ImportCalendarViewController: UIViewController {
         let sourcesInEventStore = eventStore.sources
         print(sourcesInEventStore)
         newCalendar.source = eventStore.defaultCalendarForNewEvents.source
-        
         var calendarWasSaved: Bool
         do {
             try eventStore.saveCalendar(newCalendar, commit: true)
@@ -117,27 +116,38 @@ class ImportCalendarViewController: UIViewController {
         for calendar in store.calendarsForEntityType(.Event) {
             if (calendar.title == "艺模网") {
                 print("有艺模网")
-                if (localUser.calendar == nil) {
+                guard let calendarData = localUser.calendar else {
                     return
                 }
-                for event in localUser.calendar! {
-                    let format = NSDateFormatter()
-                    format.dateFormat = "yyyy-MM-dd"
-                    let startDate = format.dateFromString(event.date!)!.dateByAddingTimeInterval(8 * 60 * 60)
-                    let endDate = startDate.dateByAddingTimeInterval(9 * 60 * 60)
-                    
-                    let newEvent = EKEvent(eventStore: store)
-                    newEvent.title = event.schedule!.title == nil ? "艺模网活动" : event.schedule!.title!
-                    newEvent.allDay = true
-                    newEvent.calendar = calendar
-                    newEvent.startDate = startDate
-                    newEvent.endDate = endDate
-                    newEvent.addAlarm(EKAlarm(relativeOffset: NSTimeInterval(-24 * 60 * 60)))
-                    newEvent.notes = "本日历由艺模网同步，请不要添加私人日历"
-                    do {
-                        try store.saveEvent(newEvent, span: .ThisEvent)
-                    } catch let error {
-                        print(error)
+                for date in calendarData {
+                    guard let schedule = date.schedule else {
+                        break
+                    }
+                    for event in schedule {
+                        let newEvent = EKEvent(eventStore: store)
+                        switch event.timeBucket {
+                        case .Morning:
+                            newEvent.allDay = false
+                            newEvent.startDate = date.date!.dateByAddingTimeInterval(8 * 60 * 60)
+                            newEvent.endDate = date.date!.dateByAddingTimeInterval(12 * 60 * 60)
+                        case .Afternoon:
+                            newEvent.allDay = false
+                            newEvent.startDate = date.date!.dateByAddingTimeInterval(12 * 60 * 60)
+                            newEvent.endDate = date.date!.dateByAddingTimeInterval(16 * 60 * 60)
+                        case .Allday:
+                            newEvent.allDay = true
+                            newEvent.startDate = date.date!
+                            newEvent.endDate = date.date!.dateByAddingTimeInterval(24 * 60 * 60)
+                        }
+                        newEvent.addAlarm(EKAlarm(relativeOffset: NSTimeInterval(-24 * 60 * 60)))
+                        newEvent.title = event.title == nil ? "艺模网活动" : event.title!
+                        newEvent.calendar = calendar
+                        newEvent.notes = "本日历由艺模网同步，请不要添加私人日历"
+                        do {
+                            try store.saveEvent(newEvent, span: .ThisEvent)
+                        } catch let error {
+                            print(error)
+                        }
                     }
                 }
                 return

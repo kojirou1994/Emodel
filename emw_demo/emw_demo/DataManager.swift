@@ -54,7 +54,6 @@ class DataManager {
         row.setValue(messageType, forKey: "messageType")
         row.setValue(remoteUserId, forKey: "remoteUserId")
         row.setValue(time, forKey: "time")
-        
         do {
             try context.save()
         } catch let error as NSError {
@@ -63,3 +62,12 @@ class DataManager {
     }
 }
 public typealias DMReadUserDataCompletionHandler = (Bool, [String]) -> Void
+
+extension NSDate {
+    func isTheSameDay(anotherDate: NSDate) -> Bool {
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        
+        return format.stringFromDate(self) == format.stringFromDate(anotherDate)
+    }
+}

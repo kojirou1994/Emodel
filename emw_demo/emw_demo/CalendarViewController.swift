@@ -83,7 +83,7 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate, UITableVie
             localUser.calendar!.sortInPlace({ (T, U) -> Bool in
                 let format = NSDateFormatter()
                 format.dateFormat = "yyyy-MM-dd"
-                return format.dateFromString(T.date!)!.timeIntervalSinceDate(format.dateFromString(U.date!)!) < 0
+                return T.date!.timeIntervalSinceDate(U.date!) < 0
             })
         }
         self.calendarTableView.reloadData()
@@ -107,7 +107,7 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate, UITableVie
                     localUser.calendar!.sortInPlace({ (T, U) -> Bool in
                         let format = NSDateFormatter()
                         format.dateFormat = "yyyy-MM-dd"
-                        return format.dateFromString(T.date!)!.timeIntervalSinceDate(format.dateFromString(U.date!)!) < 0
+                        return T.date!.timeIntervalSinceDate(U.date!) < 0
                     })
                 }
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -208,8 +208,15 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate, UITableVie
     
     //MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return localUser.calendar == nil ? 0 : (localUser.calendar?.count)!
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let calendar = localUser.calendar?[section] else {
+            return 0
+        }
+        return calendar.schedule == nil ? 0 : (calendar.schedule?.count)!
     }
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -217,9 +224,9 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CalendarCell") as! CalendarTableViewCell
-        cell.timeLabel.text = "时间: " + (localUser.calendar![indexPath.row].date == nil ? "无" : localUser.calendar![indexPath.row].date!)
-        cell.titleLabel.text = "安排: " + (localUser.calendar![indexPath.row].schedule?.title == nil ? "工作" : (localUser.calendar![indexPath.row].schedule?.title)!)
-        cell.bodyLabel.text = "备注: " + (localUser.calendar![indexPath.row].schedule?.body == nil ? "无" : (localUser.calendar![indexPath.row].schedule?.body)!)
+//        cell.timeLabel.text = (localUser.calendar![indexPath.row].date == nil ? "无" : localUser.calendar![indexPath.row].date!)
+//        cell.titleLabel.text = "安排: " + (localUser.calendar![indexPath.row].schedule?.title == nil ? "工作" : (localUser.calendar![indexPath.row].schedule?.title)!)
+//        cell.bodyLabel.text = "备注: " + (localUser.calendar![indexPath.row].schedule?.body == nil ? "无" : (localUser.calendar![indexPath.row].schedule?.body)!)
         cell.userInteractionEnabled = false
         return cell
     }

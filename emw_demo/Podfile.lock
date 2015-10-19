@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (2.0.2)
+  - CVCalendar (1.2.7)
   - DACircularProgress (2.3.1)
-  - JTCalendar (2.1.4)
   - Kingfisher (1.6.0)
   - MBProgressHUD (0.9.1)
   - MWPhotoBrowser (2.1.1):
@@ -16,11 +16,11 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 2.0)
-  - JTCalendar (~> 2.0)
+  - CVCalendar (~> 1.2.7)
   - Kingfisher (~> 1.6)
   - MWPhotoBrowser
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
-  - XLForm (~> 3.0.0)
+  - XLForm (~> 3.0)
 
 EXTERNAL SOURCES:
   SwiftyJSON:
@@ -33,8 +33,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  CVCalendar: 1ae6ee62dd7fd4c6a6703a43c641e11dfd32276e
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  JTCalendar: 9b1352c7ec41cc26b19c189d6608ba48060a53d9
   Kingfisher: 3308d487e5c2a0fba9c1054fc3b8c45923e03c40
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MWPhotoBrowser: ba0d0c09ffda3a7ea10093518738c502c1c7141c
@@ -42,4 +42,4 @@ SPEC CHECKSUMS:
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
   XLForm: 7817ce29f3f259186e837bb7309ac7e5b7e9b883
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
