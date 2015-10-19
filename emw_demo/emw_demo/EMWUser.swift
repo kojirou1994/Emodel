@@ -24,17 +24,17 @@ class EMWUser {
     }
     
     init(username: String, password: String) {
-        Alamofire.request(request(.POST, serverAddress + "/user/login", parameters: ["username": username, "password": password,"autoLogin": "1"], encoding: .JSON, headers: nil)
-        .validate()
-        .responseJSON(completionHandler: { (_, _, result) -> Void in
-            switch result {
-            case .Success:
-//                JSON(result.value!)["token"]
-                print("ok")
-            case .Failure(_, let err):
-                print(err)
-            }
-        })
+//        Alamofire.request(request(.POST, serverAddress + "/user/login", parameters: ["username": username, "password": password,"autoLogin": "1"], encoding: .JSON, headers: nil)
+//        .validate()
+//        .responseJSON(completionHandler: { (_, _, result) -> Void in
+//            switch result {
+//            case .Success:
+////                JSON(result.value!)["token"]
+//                print("ok")
+//            case .Failure(_, let err):
+//                print(err)
+//            }
+//        })
         
     }
     
