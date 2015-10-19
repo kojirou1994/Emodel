@@ -17,6 +17,32 @@ class SignedPeopleCollectionViewCell: UICollectionViewCell {
     func setAvatarImage(id: String) {
 //        self.avatar.contentMode = UIViewContentMode
         avatar.clipsToBounds = true
+        DataManager.readUserData(id) { (succ, result) -> Void in
+            if (succ) {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.avatar.kf_setImageWithURL(NSURL(string: result[1])!)
+                })
+            }
+            else {
+                Alamofire.request(.GET, serverAddress + "/user/\(id)")
+                    .validate()
+                    .responseJSON { _, _, result in
+                        switch result {
+                        case .Success:
+                            let data = User(JSONDecoder(result.value!)).data
+//                            updateUserNameAndAvatarStorage(id, name: (data?.baseInfo?.nickName)!, avatar: (data?.baseInfo?.avatar)!)
+                            DataManager.saveUserData(id, nickName: (data?.baseInfo?.nickName)!, avatarUrl: (data?.baseInfo?.avatar)!)
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.avatar.kf_setImageWithURL(NSURL(string: (data?.baseInfo?.avatar)!)!)
+                            })
+                        case .Failure(_, let error):
+                            print(error)
+                            return
+                        }
+                }
+            }
+        }
+        /*
         if let cache = userNameAndAvatarStorage[id] {
             //有缓存数据，不获取
             self.avatar.kf_setImageWithURL(NSURL(string: (cache["AvatarAddress"])!)!)
@@ -39,6 +65,6 @@ class SignedPeopleCollectionViewCell: UICollectionViewCell {
                     }
             }
         }
-
+*/
     }
 }

@@ -138,7 +138,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.userNameLabel.text = listIndex[indexPath.row]["userId"] as? String
         cell.latestMessageLabel.text = recentChatList[listIndex[indexPath.row]["userId"] as! String]!["message"] as? String
         cell.timeLabel.text = stringByDate(recentChatList[listIndex[indexPath.row]["userId"] as! String]!["time"] as! NSDate)
-        cell.configTheCell(unReadCount[listIndex[indexPath.row]["userId"] as! String]!, id: listIndex[indexPath.row]["userId"] as! String)
+        cell.configTheCell(unReadCount[listIndex[indexPath.row]["userId"] as! String], id: listIndex[indexPath.row]["userId"] as! String)
         cell.clipsToBounds = true
         return cell
     }
@@ -153,29 +153,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    
-    
-    
-    // Editing
-    
-    // Allows customization of the editingStyle for a particular cell located at 'indexPath'. If not implemented, all editable cells will have UITableViewCellEditingStyleDelete set for them when the table has editing property set to YES.
-//    @available(iOS 2.0, *)
-//    optional public func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
-//    @available(iOS 3.0, *)
-//    optional public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String?
-//    @available(iOS 8.0, *)
-//    optional public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? // supercedes -tableView:titleForDeleteConfirmationButtonForRowAtIndexPath: if return value is non-nil
-//    
-//    // Controls whether the background is indented while editing.  If not implemented, the default is YES.  This is unrelated to the indentation level below.  This method only applies to grouped style table views.
-//    @available(iOS 2.0, *)
-//    optional public func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool
-//    
-//    // The willBegin/didEnd methods are called whenever the 'editing' property is automatically changed by the table (allowing insert/delete/move). This is done by a swipe activating a single row
-//    @available(iOS 2.0, *)
-//    optional public func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath)
-//    @available(iOS 2.0, *)
-//    optional public func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath)
+
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             self.chatListTableView.beginUpdates()

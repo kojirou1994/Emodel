@@ -127,7 +127,7 @@ class ImportCalendarViewController: UIViewController {
                     let endDate = startDate.dateByAddingTimeInterval(9 * 60 * 60)
                     
                     let newEvent = EKEvent(eventStore: store)
-                    newEvent.title = event.schedule!.title == "" ? "艺模网活动" : event.schedule!.title
+                    newEvent.title = event.schedule!.title == nil ? "艺模网活动" : event.schedule!.title!
                     newEvent.allDay = true
                     newEvent.calendar = calendar
                     newEvent.startDate = startDate

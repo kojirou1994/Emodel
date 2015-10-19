@@ -15,7 +15,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var chatTableView: UITableView!
     
     var targetUserID: String!
-    
+    var targetUserNickName: String!
+    var targetUserAvatar: String!
     var inputKeyView: UIView!
     var inputField: UITextField!
     var sendBtn: UIButton!
@@ -27,7 +28,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.initChatDatabase()
         print("聊天对象id： \(targetUserID)")
         self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationItem.title = userNameAndAvatarStorage[targetUserID]?["NickName"]
+        DataManager.readUserData(targetUserID) { (succ, result) -> Void in
+            if (succ) {
+                print(result)
+                dispatch_async(dispatch_get_main_queue(), {
+                self.navigationItem.title = result[0]
+                    })
+                self.targetUserAvatar = result[1]
+            }
+            else {
+                print(result)
+                print("fail")
+                self.targetUserAvatar = ""
+            }
+        }
+//        self.navigationItem.title = userNameAndAvatarStorage[targetUserID]?["NickName"]
         
         chatTableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-45)
         
@@ -80,7 +95,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         chatLog = Array<Dictionary<String, AnyObject>>()
         for i in db! {
-//            print(i)
             chatLog?.append(["isFromSelf": i.valueForKey("isFromSelf") as! Bool, "messageType": i.valueForKey("messageType") as! Int, "time": i.valueForKey("time") as! NSDate, "content": i.valueForKey("content") as! String])
         }
     }
@@ -104,7 +118,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //预处理发送消息
         let sendM = "{\"fromUserId\":\"\(userId)\",\"messageType\":1,\"messageContent\":\"\(inputM)\"}"
         //保存消息到数据库
-        saveMessageToDatabase(userId, remoteUserId: targetUserID, messageType: 1, isFromSelf: true, time: sendTime, messageContent: inputM)
+        DataManager.saveMessageToDatabase(userId, remoteUserId: targetUserID, messageType: 1, isFromSelf: true, time: sendTime, messageContent: inputM)
         
         recentChatList[self.targetUserID] = ["time": sendTime,
             "message": inputM
@@ -268,7 +282,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         else {
             head = UIImageView(frame: CGRectMake(10, 10, 50, 50))
             cell.addSubview(head)
-            head.kf_setImageWithURL(NSURL(string: userNameAndAvatarStorage[targetUserID]!["AvatarAddress"]!)!)
+            head.kf_setImageWithURL(NSURL(string: targetUserAvatar)!)
             roundHead(head)
             cell.addSubview(bubbleView(chatLog![indexPath.row]["content"] as! String, fromSelf: false, position: 65))
 //            print("cell \(indexPath.row) head2 added")

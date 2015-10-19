@@ -63,7 +63,7 @@ class MainTabBar: UITabBarController {
             else {
                 print("online")
                 isOnline = true
-//                print(result)
+                print(result)
             }
             NSNotificationCenter.defaultCenter().postNotificationName("AliasStateChanged", object: self)
         }
@@ -113,7 +113,7 @@ class MainTabBar: UITabBarController {
                     "message": receivedMessage.messageContent
                 ]
                 
-                saveMessageToDatabase(userId, remoteUserId: receivedMessage.fromUserId, messageType: receivedMessage.messageType, isFromSelf: false, time: receiveTime, messageContent: receivedMessage.messageContent)
+                DataManager.saveMessageToDatabase(userId, remoteUserId: receivedMessage.fromUserId, messageType: receivedMessage.messageType, isFromSelf: false, time: receiveTime, messageContent: receivedMessage.messageContent)
             }
             else {
                 //获取到的信息是当前正在聊天的用户，只保存
@@ -122,7 +122,7 @@ class MainTabBar: UITabBarController {
                     "message": receivedMessage.messageContent
                 ]
                 
-                saveMessageToDatabase(userId, remoteUserId: receivedMessage.fromUserId, messageType: receivedMessage.messageType, isFromSelf: false, time: receiveTime, messageContent: receivedMessage.messageContent)
+                DataManager.saveMessageToDatabase(userId, remoteUserId: receivedMessage.fromUserId, messageType: receivedMessage.messageType, isFromSelf: false, time: receiveTime, messageContent: receivedMessage.messageContent)
             }
         }
         print("接受消息后的recentChatList")
@@ -150,21 +150,6 @@ class MainTabBar: UITabBarController {
     }
 }
 
-func saveMessageToDatabase(localUserId: String, remoteUserId: String, messageType: Int, isFromSelf: Bool, time: NSDate, messageContent: String) {
-    let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    let row: AnyObject = NSEntityDescription.insertNewObjectForEntityForName("Chat", inManagedObjectContext: context)
-    row.setValue(messageContent, forKey: "content")
-    row.setValue(isFromSelf, forKey: "isFromSelf")
-    row.setValue(localUserId, forKey: "localUserId")
-    row.setValue(messageType, forKey: "messageType")
-    row.setValue(remoteUserId, forKey: "remoteUserId")
-    row.setValue(time, forKey: "time")
 
-    do {
-        try context.save()
-    } catch let error as NSError {
-        print(error)
-    }
-    
-//    let item = ChatMessage
-}
+
+

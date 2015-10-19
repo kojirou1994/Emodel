@@ -37,9 +37,9 @@ struct Calendar: JSONJoy {
 }
 
 struct Schedule: JSONJoy {
-    var body: String!
-    var title: String!
-    var type: String!
+    var body: String?
+    var title: String?
+    var type: String?
     init(_ decoder: JSONDecoder) {
         body = decoder["body"].string
         title = decoder["title"].string

@@ -218,8 +218,8 @@ class CalManagerViewController: UIViewController, JTCalendarDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CalendarCell") as! CalendarTableViewCell
         cell.timeLabel.text = "时间: " + (localUser.calendar![indexPath.row].date == nil ? "无" : localUser.calendar![indexPath.row].date!)
-        cell.titleLabel.text = "安排: " + (localUser.calendar![indexPath.row].schedule?.title! == "" ? "工作" : (localUser.calendar![indexPath.row].schedule?.title)!)
-        cell.bodyLabel.text = "备注: " + (localUser.calendar![indexPath.row].schedule?.body! == "" ? "无" : (localUser.calendar![indexPath.row].schedule?.body)!)
+        cell.titleLabel.text = "安排: " + (localUser.calendar![indexPath.row].schedule?.title == nil ? "工作" : (localUser.calendar![indexPath.row].schedule?.title)!)
+        cell.bodyLabel.text = "备注: " + (localUser.calendar![indexPath.row].schedule?.body == nil ? "无" : (localUser.calendar![indexPath.row].schedule?.body)!)
         cell.userInteractionEnabled = false
         return cell
     }
