@@ -8,6 +8,7 @@
 
 import UIKit
 import CVCalendar
+import Alamofire
 
 class CalendarManagerViewController: UIViewController {
 
@@ -22,9 +23,11 @@ class CalendarManagerViewController: UIViewController {
     @IBOutlet weak var fullDateButton: UIButton!
     
     @IBAction func freeDateButtonTapped(sender: AnyObject) {
+        
     }
     
     @IBAction func fullDateButtonTapped(sender: AnyObject) {
+        
     }
     
     var monthLabel: UILabel!
@@ -36,7 +39,16 @@ class CalendarManagerViewController: UIViewController {
         self.edgesForExtendedLayout = UIRectEdge.None
         monthLabel = UILabel()
         self.navigationItem.titleView = monthLabel
-        // Do any additional setup after loading the view.
+        self.presentedDateUpdated(CVDate(date: NSDate()))
+        if (localUser.calendar != nil) {
+            localUser.calendar!.sortInPlace({ (T, U) -> Bool in
+                let format = NSDateFormatter()
+                format.dateFormat = "yyyy-MM-dd"
+                return T.date!.timeIntervalSinceDate(U.date!) < 0
+            })
+        }
+        self.tableView.registerNib(UINib(nibName: "CMTableViewCell", bundle: nil), forCellReuseIdentifier: "EventCell")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,23 +56,42 @@ class CalendarManagerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        calendarView.commitCalendarViewUpdate()
+        menuView.commitMenuViewUpdate()
     }
-    */
+    
+    func updateCalendarInfo() {
+        Alamofire.request(.GET, serverAddress + "/user/" + userId + "/calendar")
+        .validate()
+        .responseJSON { (_, _, result) -> Void in
+            switch (result) {
+            case .Success(_):
+                localUser.calendar = CalendarResp(JSONDecoder(result.value!)).data
+                if (localUser.calendar != nil) {
+                    localUser.calendar!.sortInPlace({ (T, U) -> Bool in
+                        let format = NSDateFormatter()
+                        format.dateFormat = "yyyy-MM-dd"
+                        return T.date!.timeIntervalSinceDate(U.date!) < 0
+                    })
+                }
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            case .Failure(_, _):
+                print("error")
+            }
+        }
+    }
 
 }
 
 
 // MARK: - CVCalendarViewDelegate & CVCalendarMenuViewDelegate
 
-extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+extension CalendarManagerViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
@@ -181,7 +212,7 @@ extension CalendarViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
 
 // MARK: - CVCalendarViewAppearanceDelegate
 
-extension CalendarViewController: CVCalendarViewAppearanceDelegate {
+extension CalendarManagerViewController: CVCalendarViewAppearanceDelegate {
     func dayLabelPresentWeekdayInitallyBold() -> Bool {
         return false
     }
@@ -193,7 +224,7 @@ extension CalendarViewController: CVCalendarViewAppearanceDelegate {
 
 // MARK: - IB Actions
 
-extension CalendarViewController {
+extension CalendarManagerViewController {
     @IBAction func switchChanged(sender: UISwitch) {
         if sender.on {
             calendarView.changeDaysOutShowingState(false)
@@ -230,7 +261,7 @@ extension CalendarViewController {
 
 // MARK: - Convenience API Demo
 
-extension CalendarViewController {
+extension CalendarManagerViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
         let calendarManager = calendarView.manager
@@ -246,19 +277,29 @@ extension CalendarViewController {
 
 
 // MARK: - UITableViewDelegate
-extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
+extension CalendarManagerViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return localUser.calendar == nil ? 0 : (localUser.calendar?.count)!
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        guard let calendar = localUser.calendar?[section] else {
+            return 0
+        }
+        return calendar.schedule == nil ? 0 : (calendar.schedule?.count)!
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Event") as! CalendarEventTableViewCell
-        let btn = UIButton(frame: CGRectMake(0, 0, 100, 100))
-        btn.setTitle("new", forState: .Normal)
-        cell.addSubview(btn)
+        let cell = tableView.dequeueReusableCellWithIdentifier("EventCell") as! CMTableViewCell
+        cell.eventTimeLabel.text = localUser.calendar![indexPath.section].schedule![indexPath.row].timeBucket.rawValue
+        cell.eventTitleLabel.text = localUser.calendar![indexPath.section].schedule![indexPath.row].title == nil ? "无标题" : localUser.calendar![indexPath.section].schedule![indexPath.row].title
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 44
+    }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy年MM月dd日"
+        return format.stringFromDate(localUser.calendar![section].date!)
     }
 }

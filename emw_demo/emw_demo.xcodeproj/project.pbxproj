@@ -18,7 +18,6 @@
 		E30E701C1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E31519A91BD4B2DF00199E1C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31519A81BD4B2DF00199E1C /* DataManager.swift */; settings = {ASSET_TAGS = (); }; };
 		E31519CE1BD4DFA600199E1C /* CalendarManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31519CC1BD4DFA600199E1C /* CalendarManagerViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E31519CF1BD4DFA600199E1C /* CalendarManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31519CD1BD4DFA600199E1C /* CalendarManagerViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		E31519D21BD4E34000199E1C /* CMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31519D01BD4E34000199E1C /* CMTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E31519D31BD4E34000199E1C /* CMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31519D11BD4E34000199E1C /* CMTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E32E22371B960B6300BC0A0D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E22361B960B6300BC0A0D /* ConfigViewController.swift */; };
@@ -33,6 +32,7 @@
 		E350E56E1BABFDA6006981FF /* ChatNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E56D1BABFDA6006981FF /* ChatNavi.swift */; settings = {ASSET_TAGS = (); }; };
 		E350E5701BABFDB5006981FF /* ProfileNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E56F1BABFDB5006981FF /* ProfileNavi.swift */; settings = {ASSET_TAGS = (); }; };
 		E350E5721BAC0051006981FF /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E5711BAC0051006981FF /* MainTabBar.swift */; settings = {ASSET_TAGS = (); }; };
+		E3658A1E1BD5DA5B00575039 /* CalendarManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3658A1D1BD5DA5B00575039 /* CalendarManagerViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		E36920B71B8700B900D8F345 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36920B61B8700B900D8F345 /* Calendar.swift */; };
 		E36937031BA16D4E00F0F04E /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */; };
 		E3697B281BBB74EC0024F07F /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3697B271BBB74EC0024F07F /* CalendarTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -151,7 +151,6 @@
 		E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E31519A81BD4B2DF00199E1C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		E31519CC1BD4DFA600199E1C /* CalendarManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManagerViewController.swift; sourceTree = "<group>"; };
-		E31519CD1BD4DFA600199E1C /* CalendarManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarManagerViewController.xib; sourceTree = "<group>"; };
 		E31519D01BD4E34000199E1C /* CMTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMTableViewCell.swift; sourceTree = "<group>"; };
 		E31519D11BD4E34000199E1C /* CMTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMTableViewCell.xib; sourceTree = "<group>"; };
 		E32E22361B960B6300BC0A0D /* ConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +165,7 @@
 		E350E56D1BABFDA6006981FF /* ChatNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatNavi.swift; sourceTree = "<group>"; };
 		E350E56F1BABFDB5006981FF /* ProfileNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNavi.swift; sourceTree = "<group>"; };
 		E350E5711BAC0051006981FF /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
+		E3658A1D1BD5DA5B00575039 /* CalendarManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarManagerViewController.xib; sourceTree = "<group>"; };
 		E368B5EA1BA91DDE00187BDE /* emw_demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "emw_demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E36920B61B8700B900D8F345 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E36937021BA16D4E00F0F04E /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -333,9 +333,9 @@
 			isa = PBXGroup;
 			children = (
 				E31519CC1BD4DFA600199E1C /* CalendarManagerViewController.swift */,
+				E3658A1D1BD5DA5B00575039 /* CalendarManagerViewController.xib */,
 				E31519D01BD4E34000199E1C /* CMTableViewCell.swift */,
 				E31519D11BD4E34000199E1C /* CMTableViewCell.xib */,
-				E31519CD1BD4DFA600199E1C /* CalendarManagerViewController.xib */,
 			);
 			name = Calenadar;
 			sourceTree = "<group>";
@@ -697,13 +697,13 @@
 				E385189A1B7091B40063C2C2 /* 账号绑定.png in Resources */,
 				E3B6803E1BA2C452004DF002 /* SenderVoiceNodePlaying.png in Resources */,
 				E38518931B7091B40063C2C2 /* 基本信息.png in Resources */,
+				E3658A1E1BD5DA5B00575039 /* CalendarManagerViewController.xib in Resources */,
 				E38518941B7091B40063C2C2 /* 我的.png in Resources */,
 				E38518891B7091B40063C2C2 /* starRank_10.png in Resources */,
 				E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */,
 				E385188E1B7091B40063C2C2 /* starRank_6.png in Resources */,
 				E3E8C4B91BBA34F9007C267E /* CacheViewController.xib in Resources */,
 				E3B680311BA2C452004DF002 /* photo1.png in Resources */,
-				E31519CF1BD4DFA600199E1C /* CalendarManagerViewController.xib in Resources */,
 				E38518951B7091B40063C2C2 /* 档期管理.png in Resources */,
 				E3AB7A921B8AF6B800962116 /* bg.png in Resources */,
 				E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */,

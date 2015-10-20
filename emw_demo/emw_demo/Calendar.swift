@@ -71,5 +71,5 @@ struct Schedule: JSONJoy {
 }
 
 enum TimeBucket: String {
-    case Morning = "Morning",Afternoon = "Afternoon",Allday = "Allday"
+    case Morning = "上午",Afternoon = "下午",Allday = "全天"
 }

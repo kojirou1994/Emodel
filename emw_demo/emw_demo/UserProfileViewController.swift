@@ -49,7 +49,7 @@ class UserProfileViewController: UITableViewController, UIImagePickerControllerD
         Avatar.layer.borderColor = UIColor.whiteColor().CGColor
         
         self.clearsSelectionOnViewWillAppear = true
-        
+        self.hidesBottomBarWhenPushed = true
         self.mainTableView.tableFooterView = UIView()
         //更新界面元素
         setRefresh()
@@ -170,6 +170,9 @@ class UserProfileViewController: UITableViewController, UIImagePickerControllerD
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if (indexPath.section == 2 && indexPath.row == 1) {
+            self.navigationController?.pushViewController(CalendarManagerViewController(), animated: true)
+        }
     }
     //MARK: - Func
     func uploadAvatar(avatarData: NSData) {

@@ -27,6 +27,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="zZE-TP-caf"/>
                     </constraints>
+                    <connections>
+                        <outlet property="menuViewDelegate" destination="-1" id="7bJ-qd-TRC"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oD9-bC-0NW" customClass="CVCalendarView" customModule="CVCalendar">
                     <rect key="frame" x="0.0" y="60" width="600" height="300"/>
@@ -35,6 +38,11 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="vEy-Zt-1Yh"/>
                     </constraints>
+                    <connections>
+                        <outlet property="animatorDelegate" destination="-1" id="Int-T4-oDW"/>
+                        <outlet property="calendarAppearanceDelegate" destination="-1" id="lzd-vL-1ou"/>
+                        <outlet property="calendarDelegate" destination="-1" id="vVP-N8-Daj"/>
+                    </connections>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dil-ku-xxq">
                     <rect key="frame" x="0.0" y="368" width="600" height="180"/>
@@ -69,19 +77,21 @@
                 <constraint firstItem="Dil-ku-xxq" firstAttribute="top" secondItem="oD9-bC-0NW" secondAttribute="bottom" constant="8" id="4Fg-bm-wvC"/>
                 <constraint firstItem="Dil-ku-xxq" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="6wH-xs-EUw"/>
                 <constraint firstItem="oD9-bC-0NW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="EzE-tl-k2m"/>
+                <constraint firstItem="5Zo-Yg-936" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="N7b-uY-Qpb"/>
                 <constraint firstAttribute="bottom" secondItem="BOm-uk-Pi4" secondAttribute="bottom" constant="8" id="NYR-j1-AwM"/>
+                <constraint firstItem="oD9-bC-0NW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="P5Z-ys-qn5"/>
                 <constraint firstItem="pWb-ZD-MSu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UHe-de-m2t"/>
                 <constraint firstItem="oD9-bC-0NW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UjL-O8-dpJ"/>
                 <constraint firstItem="oD9-bC-0NW" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="YDi-Dg-bjc"/>
                 <constraint firstAttribute="bottom" secondItem="Dil-ku-xxq" secondAttribute="bottom" constant="52" id="aDD-pn-7yW"/>
                 <constraint firstAttribute="trailing" secondItem="BOm-uk-Pi4" secondAttribute="trailing" constant="8" id="bGJ-f0-kWH"/>
-                <constraint firstItem="Dil-ku-xxq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ewu-ef-plN"/>
                 <constraint firstAttribute="bottom" secondItem="5Zo-Yg-936" secondAttribute="bottom" constant="8" id="kWZ-Tt-UGl"/>
                 <constraint firstAttribute="trailing" secondItem="oD9-bC-0NW" secondAttribute="trailing" id="nnx-FW-bqk"/>
                 <constraint firstItem="pWb-ZD-MSu" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="sF2-xM-jHl"/>
                 <constraint firstItem="pWb-ZD-MSu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="u5A-df-OM9"/>
-                <constraint firstItem="5Zo-Yg-936" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="wM5-Ty-1cD"/>
+                <constraint firstItem="Dil-ku-xxq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xgs-Yq-3Qo"/>
             </constraints>
+            <point key="canvasLocation" x="241" y="337"/>
         </view>
     </objects>
 </document>
