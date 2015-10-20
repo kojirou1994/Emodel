@@ -351,154 +351,10 @@
             </objects>
             <point key="canvasLocation" x="2138" y="125"/>
         </scene>
-        <!--Animator Delegate-->
-        <scene sceneID="Spi-pC-iiH">
-            <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="nVt-yF-Ite" customClass="CalendarManagerViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WDe-p5-pIL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="11K-v3-EiC" userLabel="Calendar Event">
-                                <rect key="frame" x="0.0" y="324" width="320" height="160"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" id="Z7J-gJ-FxA">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本日无安排" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SWr-J5-htC">
-                                        <rect key="frame" x="86" y="47" width="149" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <color key="textColor" red="0.61176472902297974" green="0.92941182851791382" blue="0.81568634510040283" alpha="1" colorSpace="deviceRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="4jn-pn-paZ" userLabel="日历内容">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarCell" rowHeight="80" id="OcK-Pf-AiM" customClass="CalendarTableViewCell" customModule="emodel" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="320" height="80"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OcK-Pf-AiM" id="ZaR-2O-8ed">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uFD-PW-6PV">
-                                                            <rect key="frame" x="10" y="5" width="288" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <animations/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KZG-Ud-IBz">
-                                                            <rect key="frame" x="10" y="55" width="288" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <animations/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安排：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4GK-ut-o3u">
-                                                            <rect key="frame" x="10" y="30" width="288" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <animations/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <animations/>
-                                                </tableViewCellContentView>
-                                                <animations/>
-                                                <connections>
-                                                    <outlet property="bodyLabel" destination="KZG-Ud-IBz" id="vw6-rX-QNp"/>
-                                                    <outlet property="timeLabel" destination="uFD-PW-6PV" id="VaQ-ko-KQY"/>
-                                                    <outlet property="titleLabel" destination="4GK-ut-o3u" id="LJ1-NN-qEu"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="nVt-yF-Ite" id="uMw-Xc-7Ax"/>
-                                            <outlet property="delegate" destination="nVt-yF-Ite" id="ged-5P-gZd"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CYa-3D-Wn0">
-                                <rect key="frame" x="225" y="500" width="75" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <state key="normal" title="设为已约满"/>
-                                <connections>
-                                    <action selector="fullDateButtonTapped:" destination="nVt-yF-Ite" eventType="touchUpInside" id="mKl-fJ-lNJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sl8-xh-mWm">
-                                <rect key="frame" x="20" y="500" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <state key="normal" title="设为休息日"/>
-                                <connections>
-                                    <action selector="freeDateButtonTapped:" destination="nVt-yF-Ite" eventType="touchUpInside" id="Bjh-xR-X2Q"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" id="2Sj-O4-XrJ" customClass="CVCalendarMenuView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="65" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="menuViewDelegate" destination="nVt-yF-Ite" id="VEd-Y2-eOA"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" id="o5M-VX-MYg" customClass="CVCalendarView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="125" width="320" height="185"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="animatorDelegate" destination="nVt-yF-Ite" id="RZG-Lm-oMu"/>
-                                    <outlet property="calendarAppearanceDelegate" destination="nVt-yF-Ite" id="TvN-Ax-ewA"/>
-                                    <outlet property="calendarDelegate" destination="nVt-yF-Ite" id="zfT-Lf-6TV"/>
-                                </connections>
-                            </view>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="gYi-IJ-K0c">
-                        <barButtonItem key="rightBarButtonItem" title="同步" id="3ja-f1-ejq">
-                            <connections>
-                                <segue destination="mH8-kh-veH" kind="push" id="13K-n8-zfd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="calendarView" destination="o5M-VX-MYg" id="TfI-TN-tmv"/>
-                        <outlet property="freeDateButton" destination="sl8-xh-mWm" id="XEw-ZD-tNn"/>
-                        <outlet property="fullDateButton" destination="CYa-3D-Wn0" id="KPN-3K-09z"/>
-                        <outlet property="menuView" destination="2Sj-O4-XrJ" id="TWG-zd-NcU"/>
-                        <outlet property="tableView" destination="4jn-pn-paZ" id="1ND-xO-mTn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Tc-ZF-Sxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-12" y="1036"/>
-        </scene>
         <!--Import Calendar View Controller-->
         <scene sceneID="pPp-o3-JB6">
             <objects>
-                <viewController id="mH8-kh-veH" customClass="ImportCalendarViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImportCalendarViewController" id="mH8-kh-veH" customClass="ImportCalendarViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U1G-Xx-C72">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -549,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tS8-9I-uOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="1777"/>
+            <point key="canvasLocation" x="7" y="1694"/>
         </scene>
         <!--充值提现-->
         <scene sceneID="g27-Ci-LRU">
@@ -907,7 +763,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="Lb1-HY-Wmy" customClass="PhotoThumbCollectionViewCell" customModule="emodel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <rect key="frame" x="0.0" y="64" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -1255,7 +1111,7 @@
         <!--mainTab-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="MainProgram" title="mainTab" modalTransitionStyle="flipHorizontal" id="49e-Tb-3d3" userLabel="mainTab" customClass="MainTabBar" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainProgram" title="mainTab" modalTransitionStyle="flipHorizontal" id="49e-Tb-3d3" userLabel="mainTab" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -1626,7 +1482,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatListCell" rowHeight="90" id="Hd3-un-N9N" customClass="ChatListTableViewCell" customModule="emodel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="90"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hd3-un-N9N" id="Rl1-rw-5kV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
@@ -1718,7 +1574,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatDetailCell" rowHeight="200" id="sZm-FR-OVR">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZm-FR-OVR" id="DGf-LK-lzN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>

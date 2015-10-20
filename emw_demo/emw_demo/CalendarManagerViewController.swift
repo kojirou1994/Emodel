@@ -36,6 +36,8 @@ class CalendarManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hidesBottomBarWhenPushed = true
+        self.view.backgroundColor = UIColor.whiteColor()
         self.edgesForExtendedLayout = UIRectEdge.None
         monthLabel = UILabel()
         self.navigationItem.titleView = monthLabel
@@ -48,7 +50,9 @@ class CalendarManagerViewController: UIViewController {
             })
         }
         self.tableView.registerNib(UINib(nibName: "CMTableViewCell", bundle: nil), forCellReuseIdentifier: "EventCell")
-        
+        let btn = UIBarButtonItem(title: "同步", style: UIBarButtonItemStyle.Plain, target: self, action: "toSyncVC")
+        self.navigationItem.rightBarButtonItem = btn
+//        self.tabBarController?.tab
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,11 +60,20 @@ class CalendarManagerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+//        self.tabBarController?.setTabBarVisible(true, animated: true)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
+    }
+    
+    func toSyncVC() {
+        self.navigationController?.pushViewController(CalendarSyncViewController(), animated: true)
     }
     
     func updateCalendarInfo() {
@@ -301,5 +314,19 @@ extension CalendarManagerViewController: UITableViewDelegate, UITableViewDataSou
         let format = NSDateFormatter()
         format.dateFormat = "yyyy年MM月dd日"
         return format.stringFromDate(localUser.calendar![section].date!)
+    }
+}
+
+extension UITabBarController {
+    func setTabBarVisible(visible:Bool, animated:Bool) {
+        let frame = self.tabBar.frame
+        let height = frame.size.height
+        let offsetY = (visible ? -height : height)
+        UIView.animateWithDuration(animated ? 0.3 : 0.0) {
+            self.tabBar.frame = CGRectOffset(frame, 0, offsetY)
+            self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height + offsetY)
+            self.view.setNeedsDisplay()
+            self.view.layoutIfNeeded()
+        }
     }
 }

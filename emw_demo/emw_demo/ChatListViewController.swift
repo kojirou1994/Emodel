@@ -146,8 +146,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         unReadCount["total"] = unReadCount["total"]! - unReadCount[listIndex[indexPath.row]["userId"] as! String]!
         unReadCount[listIndex[indexPath.row]["userId"] as! String] = 0
-        let tb = self.tabBarController as! MainTabBar
-        tb.updateTabBarApperance()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.updateTabBarBadge()
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ChatListTableViewCell
         cell.configTheCell(0, id: listIndex[indexPath.row]["userId"] as! String)
         NSUserDefaults.standardUserDefaults().setObject(unReadCount, forKey: "UnreadCount")

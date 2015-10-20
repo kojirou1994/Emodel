@@ -6,4 +6,13 @@
 //  Copyright © 2015年 emodel. All rights reserved.
 //
 
-import Foundation
+import UIKit
+extension AppDelegate {
+    
+    func setTabbarColor() {
+        guard let tabbar = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+//        tabbar.tabBar.tintColor = UIColor.purpleColor()
+    }
+}

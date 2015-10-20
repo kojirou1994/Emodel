@@ -180,7 +180,10 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         let main = self.storyboard?.instantiateViewControllerWithIdentifier("MainProgram") as! UITabBarController
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = main
+        appDelegate.setupChatService()
+        appDelegate.setTabbarColor()
     }
+    
     func loadWelcomeView() {
         loginBtn.hidden = false
         signupBtn.hidden = false
