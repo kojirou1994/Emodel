@@ -8,7 +8,7 @@
 import UIKit
 
 /*
-  Keys for segment properties
+Keys for segment properties
 */
 
 // This is mainly for the top/bottom margin of the imageView
@@ -251,8 +251,8 @@ class SMSegmentView: UIView, SMSegmentDelegate {
     
     // MARK: Drawing Segment Separators
     override func drawRect(rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        self.drawSeparatorWithContext(context!)
+        let context = UIGraphicsGetCurrentContext()!
+        self.drawSeparatorWithContext(context)
     }
     
     func drawSeparatorWithContext(context: CGContextRef) {

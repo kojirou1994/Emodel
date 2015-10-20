@@ -13,6 +13,6 @@ extension AppDelegate {
         guard let tabbar = self.window?.rootViewController as? UITabBarController else {
             return
         }
-//        tabbar.tabBar.tintColor = UIColor.purpleColor()
+        tabbar.tabBar.tintColor = UIColor(hexString: "#ff3f85")!
     }
 }

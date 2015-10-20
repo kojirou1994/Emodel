@@ -20,15 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#if os(iOS)
-  import UIKit
-  typealias SWColor = UIColor
-#else
-  import Cocoa
-  typealias SWColor = NSColor
-#endif
+import UIKit
 
-public extension SWColor {
+
+public extension UIColor {
   /**
     Create non-autoreleased color with in the given hex string
     Alpha will be set as 1 by default

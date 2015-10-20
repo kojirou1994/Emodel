@@ -12,7 +12,6 @@
 		E304C20D1B8EE33E00A40348 /* AlbumCover.png in Resources */ = {isa = PBXBuildFile; fileRef = E304C20C1B8EE33E00A40348 /* AlbumCover.png */; };
 		E304C20F1B8EE90F00A40348 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E304C20E1B8EE90F00A40348 /* head.jpg */; };
 		E30AAF111BC637C300D3BEFB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AF617D1BB4DDBE005CE35B /* AVFoundation.framework */; };
-		E30AAF141BC6547F00D3BEFB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E30AAF131BC6547F00D3BEFB /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		E30B30E11B7857CE00864989 /* DataInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B30E01B7857CE00864989 /* DataInit.swift */; };
 		E30E70181BB16CE50084EDFB /* SignedPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E70161BB16CE50084EDFB /* SignedPeopleTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E30E701C1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -146,8 +145,6 @@
 		E3001B881B79DAD300F38CEC /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColors.swift; sourceTree = "<group>"; };
 		E304C20C1B8EE33E00A40348 /* AlbumCover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlbumCover.png; sourceTree = "<group>"; };
 		E304C20E1B8EE90F00A40348 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
-		E30AAF121BC6547F00D3BEFB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		E30AAF131BC6547F00D3BEFB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E30B30E01B7857CE00864989 /* DataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInit.swift; sourceTree = "<group>"; };
 		E30E70161BB16CE50084EDFB /* SignedPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -313,15 +310,6 @@
 				796C19CCCCEFA6858136DF35 /* Pods.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E30AAF151BC6548400D3BEFB /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				E30AAF121BC6547F00D3BEFB /* MBProgressHUD.h */,
-				E30AAF131BC6547F00D3BEFB /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		E30E701A1BB172B00084EDFB /* 已报名人头 */ = {
@@ -578,7 +566,6 @@
 				E3C899991B749DD300286AC7 /* 3rd Tab */,
 				E3E9C2211B6CA66200998937 /* Main.storyboard */,
 				E3E9C2241B6CA66200998937 /* Images.xcassets */,
-				E30AAF151BC6548400D3BEFB /* MBProgressHUD */,
 				E35AF4A11BBA728F003D223D /* NaviAndBar */,
 				E35AF4A21BBA72B0003D223D /* func */,
 				E38518701B7091B40063C2C2 /* 图标 */,
@@ -823,7 +810,6 @@
 				E350E5661BABA78B006981FF /* JSONJoy.swift in Sources */,
 				E398AF3F1BC8EDCC00A921B4 /* EMWUser.swift in Sources */,
 				E3E9C2471B6CC73600998937 /* NoticeTableCell.swift in Sources */,
-				E30AAF141BC6547F00D3BEFB /* MBProgressHUD.m in Sources */,
 				E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */,
 				E36C14421BA5D64D00D6FA4D /* RefreshConst.swift in Sources */,
 				E31519D21BD4E34000199E1C /* CMTableViewCell.swift in Sources */,
