@@ -14,5 +14,6 @@ extension AppDelegate {
             return
         }
         tabbar.tabBar.tintColor = UIColor(hexString: "#ff3f85")!
+        tabbar.tabBar.backgroundColor = UIColor.whiteColor()
     }
 }

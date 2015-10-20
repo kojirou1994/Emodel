@@ -110,7 +110,6 @@
 		E3BA45C31BAA4B780012DC40 /* emw_demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3BA45C11BAA4B780012DC40 /* emw_demo.xcdatamodeld */; };
 		E3BA513C1BA91E8E00EA8034 /* libYunBa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BA513A1BA91E8E00EA8034 /* libYunBa.a */; };
 		E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BA83741B95794400B39311 /* UserProfileViewController.swift */; };
-		E3C7EB601BB9252900311781 /* ImportCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C7EB5F1BB9252900311781 /* ImportCalendarViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E3C899861B744FE000286AC7 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */; };
 		E3C899881B744FFB00286AC7 /* SingleFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */; };
 		E3C899901B7473A400286AC7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C8998F1B7473A400286AC7 /* SignupViewController.swift */; };
@@ -246,7 +245,6 @@
 		E3BA513A1BA91E8E00EA8034 /* libYunBa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYunBa.a; sourceTree = "<group>"; };
 		E3BA513B1BA91E8E00EA8034 /* YunBaService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YunBaService.h; sourceTree = "<group>"; };
 		E3BA83741B95794400B39311 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		E3C7EB5F1BB9252900311781 /* ImportCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportCalendarViewController.swift; sourceTree = "<group>"; };
 		E3C899851B744FE000286AC7 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		E3C899871B744FFB00286AC7 /* SingleFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFeatureViewController.swift; sourceTree = "<group>"; };
 		E3C8998F1B7473A400286AC7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 				E31519D11BD4E34000199E1C /* CMTableViewCell.xib */,
 				E3658A1F1BD5E8B600575039 /* CalendarSyncViewController.swift */,
 				E3658A201BD5E8B600575039 /* CalendarSyncViewController.xib */,
-				E3C7EB5F1BB9252900311781 /* ImportCalendarViewController.swift */,
 			);
 			name = Calenadar;
 			sourceTree = "<group>";
@@ -831,7 +828,6 @@
 				E3E9C21C1B6CA66200998937 /* AppDelegate.swift in Sources */,
 				E31519CE1BD4DFA600199E1C /* CalendarManagerViewController.swift in Sources */,
 				E398AF411BC8F71D00A921B4 /* EMWApiAddress.swift in Sources */,
-				E3C7EB601BB9252900311781 /* ImportCalendarViewController.swift in Sources */,
 				E3E9C2511B6CE4A200998937 /* NoticeDetailViewController.swift in Sources */,
 				E3978F5C1B7AE106002B54A3 /* ModelCard.swift in Sources */,
 				E3E8C4B81BBA34F9007C267E /* CacheViewController.swift in Sources */,

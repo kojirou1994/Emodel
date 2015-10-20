@@ -36,7 +36,7 @@ class CalendarManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hidesBottomBarWhenPushed = true
+        self.automaticallyAdjustsScrollViewInsets = true
         self.view.backgroundColor = UIColor.whiteColor()
         self.edgesForExtendedLayout = UIRectEdge.None
         monthLabel = UILabel()
@@ -58,11 +58,6 @@ class CalendarManagerViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
-//        self.tabBarController?.setTabBarVisible(true, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -127,6 +122,7 @@ extension CalendarManagerViewController: CVCalendarViewDelegate, CVCalendarMenuV
     }
     
     func didSelectDayView(dayView: CVCalendarDayView) {
+        print(calendarView.manager.currentDate)
         let date = dayView.date
         print("\(calendarView.presentedDate.commonDescription) is selected!")
     }
@@ -232,43 +228,6 @@ extension CalendarManagerViewController: CVCalendarViewAppearanceDelegate {
     
     func spaceBetweenDayViews() -> CGFloat {
         return 2
-    }
-}
-
-// MARK: - IB Actions
-
-extension CalendarManagerViewController {
-    @IBAction func switchChanged(sender: UISwitch) {
-        if sender.on {
-            calendarView.changeDaysOutShowingState(false)
-            shouldShowDaysOut = true
-        } else {
-            calendarView.changeDaysOutShowingState(true)
-            shouldShowDaysOut = false
-        }
-    }
-    
-    @IBAction func todayMonthView() {
-        calendarView.toggleCurrentDayView()
-    }
-    
-    /// Switch to WeekView mode.
-    @IBAction func toWeekView(sender: AnyObject) {
-        calendarView.changeMode(.WeekView)
-    }
-    
-    /// Switch to MonthView mode.
-    @IBAction func toMonthView(sender: AnyObject) {
-        calendarView.changeMode(.MonthView)
-    }
-    
-    @IBAction func loadPrevious(sender: AnyObject) {
-        calendarView.loadPreviousView()
-    }
-    
-    
-    @IBAction func loadNext(sender: AnyObject) {
-        calendarView.loadNextView()
     }
 }
 

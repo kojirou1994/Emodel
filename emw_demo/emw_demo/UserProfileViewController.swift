@@ -55,11 +55,6 @@ class UserProfileViewController: UITableViewController, UIImagePickerControllerD
         updateInterface()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func setRefresh() {
         self.mainTableView.addHeaderWithCallback { () -> Void in
             self.updateUserInfo()
