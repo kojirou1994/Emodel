@@ -23,16 +23,49 @@ class CalendarManagerViewController: UIViewController {
     @IBOutlet weak var fullDateButton: UIButton!
     
     @IBAction func freeDateButtonTapped(sender: AnyObject) {
-        
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        Alamofire.request(.POST, serverAddress + "/user/" + userId + "/calendar", parameters: ["title": "休息日","body": "", "date": format.stringFromDate(calendarView.presentedDate.convertedDate()!.dateByAddingTimeInterval(8 * 60 * 60)),"type": "custom","timeBucket": 16777215], encoding: ParameterEncoding.JSON, headers: ["Token": token])
+        .validate()
+        .responseJSON { (_, _, result) -> Void in
+            switch (result) {
+            case .Success(_):
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.updateCalendarInfo()
+                    self.showSimpleAlert("设置成功", message: "")
+                })
+            case .Failure(_, _):
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showSimpleAlert("设置失败", message: "")
+                })
+            }
+        }
     }
     
     @IBAction func fullDateButtonTapped(sender: AnyObject) {
-        
+        let format = NSDateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        Alamofire.request(.POST, serverAddress + "/user/" + userId + "/calendar", parameters: ["title": "其他预约","body": "", "date": format.stringFromDate(calendarView.presentedDate.convertedDate()!.dateByAddingTimeInterval(8 * 60 * 60)), "type": "work", "timeBucket": 16777215], encoding: ParameterEncoding.JSON, headers: ["Token": token])
+            .validate()
+            .responseJSON { (_, _, result) -> Void in
+                switch (result) {
+                case .Success(_):
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.updateCalendarInfo()
+                        self.showSimpleAlert("设置成功", message: "")
+                    })
+                case .Failure(_, _):
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.showSimpleAlert("设置失败", message: "")
+                    })
+                }
+        }
     }
     
     var monthLabel: UILabel!
     var shouldShowDaysOut = true
     var animationFinished = true
+    var selectedDate: NSDate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,9 +155,10 @@ extension CalendarManagerViewController: CVCalendarViewDelegate, CVCalendarMenuV
     }
     
     func didSelectDayView(dayView: CVCalendarDayView) {
-        print(calendarView.manager.currentDate)
         let date = dayView.date
-        print("\(calendarView.presentedDate.commonDescription) is selected!")
+//        print(calendarView.presentedDate.convertedDate())
+//        print(date.convertedDate()!.dateByAddingTimeInterval(8 * 60 * 60))
+//        print("\(calendarView.presentedDate.commonDescription) is selected!")
     }
     
     func shouldAutoSelectDayOnMonthChange() -> Bool {
@@ -250,42 +284,35 @@ extension CalendarManagerViewController {
 
 // MARK: - UITableViewDelegate
 extension CalendarManagerViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return localUser.calendar == nil ? 0 : (localUser.calendar?.count)!
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let calendar = localUser.calendar?[section] else {
             return 0
         }
         return calendar.schedule == nil ? 0 : (calendar.schedule?.count)!
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell") as! CMTableViewCell
         cell.eventTimeLabel.text = localUser.calendar![indexPath.section].schedule![indexPath.row].timeBucket.rawValue
         cell.eventTitleLabel.text = localUser.calendar![indexPath.section].schedule![indexPath.row].title == nil ? "无标题" : localUser.calendar![indexPath.section].schedule![indexPath.row].title
+        if (cell.eventTitleLabel.text == "") {
+            cell.eventTitleLabel.text = "无标题"
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
     }
+    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let format = NSDateFormatter()
         format.dateFormat = "yyyy年MM月dd日"
         return format.stringFromDate(localUser.calendar![section].date!)
-    }
-}
-
-extension UITabBarController {
-    func setTabBarVisible(visible:Bool, animated:Bool) {
-        let frame = self.tabBar.frame
-        let height = frame.size.height
-        let offsetY = (visible ? -height : height)
-        UIView.animateWithDuration(animated ? 0.3 : 0.0) {
-            self.tabBar.frame = CGRectOffset(frame, 0, offsetY)
-            self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height + offsetY)
-            self.view.setNeedsDisplay()
-            self.view.layoutIfNeeded()
-        }
     }
 }

@@ -51,7 +51,7 @@ extension AppDelegate: UITabBarDelegate {
             return
         }
         if (unReadCount["total"] > 0) {
-            tabbar.viewControllers![1].tabBarItem.badgeValue = String(unReadCount["total"])
+            tabbar.viewControllers![1].tabBarItem.badgeValue = String(unReadCount["total"]!)
         }
         else {
             tabbar.viewControllers![1].tabBarItem.badgeValue = nil

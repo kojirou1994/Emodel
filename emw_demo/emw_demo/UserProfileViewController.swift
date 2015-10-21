@@ -167,6 +167,7 @@ class UserProfileViewController: UITableViewController, UIImagePickerControllerD
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if (indexPath.section == 2 && indexPath.row == 1) {
             let vc = CalendarManagerViewController()
+            vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

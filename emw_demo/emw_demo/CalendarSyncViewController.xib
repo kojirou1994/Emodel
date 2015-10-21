@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="895-Yb-FYj">
-                    <rect key="frame" x="175" y="105" width="250" height="130"/>
+                    <rect key="frame" x="175" y="80" width="250" height="130"/>
                     <animations/>
                     <color key="backgroundColor" red="0.34901960780000002" green="0.70588235290000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -34,7 +34,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1G-CZ-qhj">
-                    <rect key="frame" x="175" y="359" width="250" height="130"/>
+                    <rect key="frame" x="175" y="334" width="250" height="130"/>
                     <animations/>
                     <color key="backgroundColor" red="0.0" green="0.65350020559999999" blue="0.21941817429999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -50,14 +50,14 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导入日历后会在系统日历中添加艺模网标题的日历，请勿将个人数据存在其中。" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gI-jY-dfj">
-                    <rect key="frame" x="175" y="261" width="250" height="61"/>
+                    <rect key="frame" x="175" y="236" width="250" height="61"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请确认艺模网日历中没有个人信息" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omw-xi-uxw">
-                    <rect key="frame" x="175" y="516" width="250" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请确认艺模网日历没有个人信息" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omw-xi-uxw">
+                    <rect key="frame" x="175" y="491" width="250" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,7 +71,7 @@
                 <constraint firstItem="4gI-jY-dfj" firstAttribute="centerX" secondItem="895-Yb-FYj" secondAttribute="centerX" id="DRR-3h-3gf"/>
                 <constraint firstItem="895-Yb-FYj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IjQ-8z-ZzR"/>
                 <constraint firstItem="Omw-xi-uxw" firstAttribute="top" secondItem="U1G-CZ-qhj" secondAttribute="bottom" constant="27" id="OHT-W4-udt"/>
-                <constraint firstItem="895-Yb-FYj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="105" id="Pn6-eC-cit"/>
+                <constraint firstItem="895-Yb-FYj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="Pn6-eC-cit"/>
                 <constraint firstItem="Omw-xi-uxw" firstAttribute="width" secondItem="U1G-CZ-qhj" secondAttribute="width" id="WOG-kJ-Uyq"/>
                 <constraint firstItem="4gI-jY-dfj" firstAttribute="top" secondItem="895-Yb-FYj" secondAttribute="bottom" constant="26" id="WXY-cu-3nZ"/>
                 <constraint firstItem="U1G-CZ-qhj" firstAttribute="top" secondItem="4gI-jY-dfj" secondAttribute="bottom" constant="37" id="Zsc-On-qBh"/>
