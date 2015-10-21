@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var mobileInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginBtnPressed(sender: AnyObject) {
         print("login pressed")
         
@@ -85,6 +86,8 @@ class LoginViewController: UIViewController {
         if let _: AnyObject = user.objectForKey("UserName") {
             mobileInput.text = user.objectForKey("UserName") as? String
         }
+        loginButton.layer.masksToBounds = true
+        loginButton.layer.cornerRadius = 5
         // Do any additional setup after loading the view.
     }
 

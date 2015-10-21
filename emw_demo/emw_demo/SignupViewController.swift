@@ -133,6 +133,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         passwordInput.delegate = self
         passwordConfirmInput.delegate = self
         mobileInput.keyboardType = UIKeyboardType.PhonePad
+        sendMobileBtn.layer.masksToBounds = true
+        sendMobileBtn.layer.cornerRadius = 5
+        registerBtn.layer.masksToBounds = true
+        registerBtn.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
 

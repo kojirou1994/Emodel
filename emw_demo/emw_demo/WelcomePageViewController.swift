@@ -193,8 +193,12 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginBtn.setBackgroundImage(UIImage(named: "登陆Pressed"), forState: UIControlState.Highlighted)
-        signupBtn.setBackgroundImage(UIImage(named: "注册Pressed"), forState: UIControlState.Highlighted)
+        loginBtn.layer.masksToBounds = true
+        loginBtn.layer.cornerRadius = 5
+        signupBtn.layer.masksToBounds = true
+        signupBtn.layer.cornerRadius = 5
+//        loginBtn.setBackgroundImage(UIImage(named: "登陆Pressed"), forState: UIControlState.Highlighted)
+//        signupBtn.setBackgroundImage(UIImage(named: "注册Pressed"), forState: UIControlState.Highlighted)
         if isLogin {
             loginBtn.hidden = true
             signupBtn.hidden = true

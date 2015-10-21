@@ -27,9 +27,6 @@
 		E34CC6461B96DD7F0089EED1 /* Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34CC6451B96DD7F0089EED1 /* Confirm.swift */; };
 		E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */; };
 		E350E5661BABA78B006981FF /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E5651BABA78B006981FF /* JSONJoy.swift */; settings = {ASSET_TAGS = (); }; };
-		E350E56C1BABFD94006981FF /* TaskNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E56B1BABFD94006981FF /* TaskNavi.swift */; settings = {ASSET_TAGS = (); }; };
-		E350E56E1BABFDA6006981FF /* ChatNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E56D1BABFDA6006981FF /* ChatNavi.swift */; settings = {ASSET_TAGS = (); }; };
-		E350E5701BABFDB5006981FF /* ProfileNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350E56F1BABFDB5006981FF /* ProfileNavi.swift */; settings = {ASSET_TAGS = (); }; };
 		E3658A1E1BD5DA5B00575039 /* CalendarManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3658A1D1BD5DA5B00575039 /* CalendarManagerViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		E3658A211BD5E8B600575039 /* CalendarSyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3658A1F1BD5E8B600575039 /* CalendarSyncViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E3658A221BD5E8B600575039 /* CalendarSyncViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3658A201BD5E8B600575039 /* CalendarSyncViewController.xib */; settings = {ASSET_TAGS = (); }; };
@@ -147,6 +144,7 @@
 		E30B30E01B7857CE00864989 /* DataInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInit.swift; sourceTree = "<group>"; };
 		E30E70161BB16CE50084EDFB /* SignedPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		E30E701B1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedPeopleCollectionViewCell.swift; sourceTree = "<group>"; };
+		E311B6D71BD75FCF001E86E7 /* 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.1.xcdatamodel; sourceTree = "<group>"; };
 		E31519A81BD4B2DF00199E1C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		E31519CC1BD4DFA600199E1C /* CalendarManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManagerViewController.swift; sourceTree = "<group>"; };
 		E31519D01BD4E34000199E1C /* CMTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMTableViewCell.swift; sourceTree = "<group>"; };
@@ -159,9 +157,6 @@
 		E34CC6451B96DD7F0089EED1 /* Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		E35080CD1B81892F000D6B65 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		E350E5651BABA78B006981FF /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
-		E350E56B1BABFD94006981FF /* TaskNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNavi.swift; sourceTree = "<group>"; };
-		E350E56D1BABFDA6006981FF /* ChatNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatNavi.swift; sourceTree = "<group>"; };
-		E350E56F1BABFDB5006981FF /* ProfileNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNavi.swift; sourceTree = "<group>"; };
 		E3658A1D1BD5DA5B00575039 /* CalendarManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarManagerViewController.xib; sourceTree = "<group>"; };
 		E3658A1F1BD5E8B600575039 /* CalendarSyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSyncViewController.swift; sourceTree = "<group>"; };
 		E3658A201BD5E8B600575039 /* CalendarSyncViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarSyncViewController.xib; sourceTree = "<group>"; };
@@ -342,17 +337,6 @@
 				E33802BA1B9023B200A9ADD3 /* BodyInfoEditViewController.swift */,
 			);
 			name = InfoEdit;
-			sourceTree = "<group>";
-		};
-		E35AF4A11BBA728F003D223D /* NaviAndBar */ = {
-			isa = PBXGroup;
-			children = (
-				E350E56F1BABFDB5006981FF /* ProfileNavi.swift */,
-				E350E56D1BABFDA6006981FF /* ChatNavi.swift */,
-				E350E56B1BABFD94006981FF /* TaskNavi.swift */,
-				E31519A81BD4B2DF00199E1C /* DataManager.swift */,
-			);
-			name = NaviAndBar;
 			sourceTree = "<group>";
 		};
 		E35AF4A21BBA72B0003D223D /* func */ = {
@@ -565,7 +549,7 @@
 				E3C899991B749DD300286AC7 /* 3rd Tab */,
 				E3E9C2211B6CA66200998937 /* Main.storyboard */,
 				E3E9C2241B6CA66200998937 /* Images.xcassets */,
-				E35AF4A11BBA728F003D223D /* NaviAndBar */,
+				E31519A81BD4B2DF00199E1C /* DataManager.swift */,
 				E35AF4A21BBA72B0003D223D /* func */,
 				E38518701B7091B40063C2C2 /* 图标 */,
 				E3E9C2261B6CA66200998937 /* LaunchScreen.xib */,
@@ -837,9 +821,7 @@
 				E38556791B7C79D00015285F /* PhotoCollectionViewController.swift in Sources */,
 				E3E9C21E1B6CA66200998937 /* PublicNoticeViewController.swift in Sources */,
 				E30B30E11B7857CE00864989 /* DataInit.swift in Sources */,
-				E350E5701BABFDB5006981FF /* ProfileNavi.swift in Sources */,
 				E3978F5A1B7AE0E5002B54A3 /* VideoInfo.swift in Sources */,
-				E350E56E1BABFDA6006981FF /* ChatNavi.swift in Sources */,
 				E35080CE1B81892F000D6B65 /* PhotoBrowserViewController.swift in Sources */,
 				E3BA83751B95794400B39311 /* UserProfileViewController.swift in Sources */,
 				E3EFC1721BA1601D0088F24C /* NoticeDetailTextTableViewCell.swift in Sources */,
@@ -850,7 +832,6 @@
 				E30E70181BB16CE50084EDFB /* SignedPeopleTableViewCell.swift in Sources */,
 				E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */,
 				E3658A241BD5F2E600575039 /* Chat.swift in Sources */,
-				E350E56C1BABFD94006981FF /* TaskNavi.swift in Sources */,
 				E3F7CC3D1B704F79001D82D3 /* Signup.swift in Sources */,
 				E30E701C1BB172E00084EDFB /* SignedPeopleCollectionViewCell.swift in Sources */,
 				E33F378C1BB2FDA500E59D7C /* SwiftBadge.swift in Sources */,
@@ -1044,6 +1025,7 @@
 		E3BA45C11BAA4B780012DC40 /* emw_demo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E311B6D71BD75FCF001E86E7 /* 1.1.xcdatamodel */,
 				E3774BA61BD6A08700EB0D60 /* 1.0.2.xcdatamodel */,
 				E3774BA51BD69FB400EB0D60 /* 1.0.1.xcdatamodel */,
 				E3BA45C21BAA4B780012DC40 /* emw_demo.xcdatamodel */,

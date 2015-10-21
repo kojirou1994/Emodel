@@ -15,7 +15,7 @@
 "5R5-kI-LP4.text" = "Label";
 
 /* Class = "UITextField"; placeholder = "手机号码"; ObjectID = "6JA-en-L17"; */
-"6JA-en-L17.placeholder" = "手机号码";
+"6JA-en-L17.placeholder" = "手机或用户名";
 
 /* Class = "UIButton"; normalTitle = "取消"; ObjectID = "6SS-5b-FS5"; */
 "6SS-5b-FS5.normalTitle" = "取消";

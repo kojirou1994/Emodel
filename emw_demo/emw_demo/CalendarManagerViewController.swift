@@ -117,10 +117,11 @@ class CalendarManagerViewController: UIViewController {
                         format.dateFormat = "yyyy-MM-dd"
                         return T.date!.timeIntervalSinceDate(U.date!) < 0
                     })
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        print(localUser.calendar)
+                        self.tableView.reloadData()
+                    })
                 }
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
-                })
             case .Failure(_, _):
                 print("error")
             }

@@ -20,14 +20,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noticeTableCell" rowHeight="80" id="fTP-yN-MEh" customClass="NoticeTableCell" customModule="emodel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fTP-yN-MEh" id="dU0-af-X1h">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O1J-ZM-Kcb">
-                                                    <rect key="frame" x="90" y="5" width="140" height="30"/>
+                                                    <rect key="frame" x="90" y="5" width="189" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
@@ -50,16 +50,8 @@
                                                     <color key="textColor" red="1" green="0.24705882352941178" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IbV-Ch-8sH">
-                                                    <rect key="frame" x="234" y="15" width="45" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Zy2-0A-QqT">
-                                                    <rect key="frame" x="10" y="5" width="70" height="70"/>
+                                                    <rect key="frame" x="15" y="5" width="70" height="70"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                 </imageView>
@@ -69,6 +61,14 @@
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IbV-Ch-8sH">
+                                                    <rect key="frame" x="234" y="30" width="45" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -119,7 +119,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detail" textLabel="aaf-Qz-UpG" detailTextLabel="oPP-12-fj3" style="IBUITableViewCellStyleValue1" id="dxx-e1-osL">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dxx-e1-osL" id="Wys-n7-5pX">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -147,7 +147,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="text" rowHeight="180" id="cFk-nf-HwO" userLabel="textView" customClass="NoticeDetailTextTableViewCell" customModule="emodel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="180"/>
+                                        <rect key="frame" x="0.0" y="130" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cFk-nf-HwO" id="PkN-pT-cNb">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
@@ -180,7 +180,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SignedPeople" rowHeight="70" id="WaI-n0-8Ss" userLabel="SignedPeople" customClass="SignedPeopleTableViewCell" customModule="emodel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="246" width="320" height="70"/>
+                                        <rect key="frame" x="0.0" y="310" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WaI-n0-8Ss" id="JwS-5v-E7o">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
@@ -251,7 +251,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="button" id="XL9-4V-UXO" userLabel="报名" customClass="NoticeDetailTableCell" customModule="emodel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="316" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="380" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XL9-4V-UXO" id="ZJ6-aH-b73">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1077,7 +1077,7 @@
         <!--通告-->
         <scene sceneID="Z20-U3-lrM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TCz-QX-4Vc" customClass="TaskNavi" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TCz-QX-4Vc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="通告" image="80 - Spotlight Copy" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8dz-2c-8Ji">
@@ -1097,7 +1097,7 @@
         <!--消息-->
         <scene sceneID="axF-dE-voe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qsi-vU-IRi" customClass="ChatNavi" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qsi-vU-IRi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="消息" image="80 - Spotlight Copy 2" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yBz-Vy-If9">
@@ -1117,7 +1117,7 @@
         <!--我-->
         <scene sceneID="elW-If-Ddg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RkE-gF-3Gg" customClass="ProfileNavi" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RkE-gF-3Gg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我" image="80 - Spotlight" id="eTN-Hg-Mro"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ra5-Ng-DBc">
@@ -1262,6 +1262,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="LEC-lf-4OC" id="Za1-m7-qjV"/>
                         <outlet property="mobileInput" destination="6JA-en-L17" id="74B-Bu-BHa"/>
                         <outlet property="passwordInput" destination="pvd-mg-BOf" id="z9H-yK-X7B"/>
                     </connections>
@@ -1278,11 +1279,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 1" id="J40-da-5QC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="576"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" id="VyO-ZG-qJ7">
                                 <rect key="frame" x="-7" y="0.0" width="327" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -1295,7 +1291,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  电话号码" minimumFontSize="17" id="dGo-3u-z8j" userLabel="phoneNumField">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  手机号码" minimumFontSize="17" id="dGo-3u-z8j" userLabel="phoneNumField">
                                         <rect key="frame" x="65" y="85" width="230" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <animations/>
@@ -1391,6 +1387,7 @@
                                     </button>
                                 </subviews>
                                 <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
                         <animations/>
@@ -1426,7 +1423,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatListCell" rowHeight="90" id="Hd3-un-N9N" customClass="ChatListTableViewCell" customModule="emodel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="90"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hd3-un-N9N" id="Rl1-rw-5kV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
@@ -1518,7 +1515,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatDetailCell" rowHeight="200" id="sZm-FR-OVR">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZm-FR-OVR" id="DGf-LK-lzN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
@@ -1553,7 +1550,6 @@
         <image name="80 - Spotlight Copy" width="26" height="26"/>
         <image name="80 - Spotlight Copy 2" width="26" height="26"/>
         <image name="AlbumCover.png" width="443" height="443"/>
-        <image name="Rectangle 1" width="320" height="568"/>
         <image name="User" width="39" height="34"/>
         <image name="album" width="48" height="48"/>
         <image name="base" width="48" height="48"/>
