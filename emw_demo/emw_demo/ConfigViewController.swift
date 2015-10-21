@@ -72,7 +72,11 @@ class ConfigViewController: UITableViewController {
             
             let welcome = self.storyboard?.instantiateViewControllerWithIdentifier("WelcomePage") as! WelcomePageViewController
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.removeNotificationHandler()
+            recentChatList.removeAllObjects()
+            recentChatList.writeToFile(recentChatPlist, atomically: true)
             appDelegate.window?.rootViewController = welcome
+            
         }
         if (indexPath.section == 0 && indexPath.row == 0) {
             self.navigationController?.pushViewController(CacheViewController(), animated: true)
