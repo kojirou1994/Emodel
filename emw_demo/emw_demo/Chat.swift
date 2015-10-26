@@ -15,6 +15,7 @@ extension AppDelegate: UITabBarDelegate {
     func setupChatService() {
         //定时检查是否在线
         registerYunbaAlias()
+        subscribeYBTopic()
         addNotificationHandler()
         updateTabBarBadge()
         _ = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "updateOnlineState", userInfo: nil, repeats: true)

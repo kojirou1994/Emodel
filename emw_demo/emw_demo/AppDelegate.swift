@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-private let YunBaAppKey = "55b82a19bf8c0106158c6bc2"
+private let YunBaAppKey = "562d963bbe17bc415cfbf5f2"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -77,9 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("didFailToRegisterForRemotenotificationWithError")
+        print(error)
     }
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
+        print(userInfo)
     }
     // MARK: - Core Data stack
     
