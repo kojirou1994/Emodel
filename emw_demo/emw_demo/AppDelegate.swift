@@ -81,6 +81,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         print(userInfo)
+        let no = UILocalNotification()
+        no.alertBody = userInfo["badge"] as? String
+        if #available(iOS 8.2, *) {
+            no.alertTitle = "alert"
+        } else {
+            // Fallback on earlier versions
+        }
+        no.soundName = UILocalNotificationDefaultSoundName
+        no.applicationIconBadgeNumber = 1
+        UIApplication.sharedApplication().presentLocalNotificationNow(no)
     }
     // MARK: - Core Data stack
     
