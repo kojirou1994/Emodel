@@ -12,11 +12,6 @@ import MWPhotoBrowser
 import MBProgressHUD
 import Alamofire
 
-var AlbumData: Array<AlbumList> = Array<AlbumList>()
-var selectedAlbum: AlbumList = AlbumList()
-
-var selectedAlbumIndex:Int = 0
-//var photos: NSMutableArray = []
 class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     @IBAction func EditBtnPressed(sender: AnyObject) {
         print("show删除相册界面")
@@ -24,7 +19,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     @IBOutlet weak var AlbumListCollectionView: UICollectionView!
     
-    var album :Array<Album>!
+    var album :[Album]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +96,6 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
             print(error)
         }
         }
-        
     }
     
     func updateInterface() {

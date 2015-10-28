@@ -13,7 +13,7 @@ struct Ad: JSONJoy {
     var users: [String]?
     
     init(_ decoder: JSONDecoder) {
-        if let data = decoder["data"]["26"].array {
+        if let data = decoder["data"]["27"].array {
             users = [String]()
             print(data)
             for user in data {

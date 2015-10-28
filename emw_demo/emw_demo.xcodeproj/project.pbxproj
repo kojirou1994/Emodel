@@ -255,6 +255,8 @@
 		E3CED34B1BA1169000B0B248 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E3D4E4841B9D2E2B00016080 /* PhotoScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoScrollViewController.swift; sourceTree = "<group>"; };
 		E3D4E4851B9D2E2B00016080 /* PhotoScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoScrollViewController.xib; sourceTree = "<group>"; };
+		E3E697DD1BE0639500450A62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		E3E697DE1BE0639500450A62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E3E8C4B61BBA34F9007C267E /* CacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheViewController.swift; sourceTree = "<group>"; };
 		E3E8C4B71BBA34F9007C267E /* CacheViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CacheViewController.xib; sourceTree = "<group>"; };
 		E3E9C2161B6CA66200998937 /* emodel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emodel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -866,6 +868,7 @@
 			children = (
 				E3E9C2221B6CA66200998937 /* Base */,
 				E3F83E4C1B82FD47005AD24C /* zh-Hans */,
+				E3E697DD1BE0639500450A62 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 			children = (
 				E3E9C2271B6CA66200998937 /* Base */,
 				E3F83E4D1B82FD47005AD24C /* zh-Hans */,
+				E3E697DE1BE0639500450A62 /* en */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";

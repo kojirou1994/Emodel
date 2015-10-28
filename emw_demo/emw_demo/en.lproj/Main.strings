@@ -1,0 +1,234 @@
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "327-Yk-F5v"; */
+"327-Yk-F5v.text" = "Time";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "3Ix-ZY-zHQ"; */
+"3Ix-ZY-zHQ.normalTitle" = "取消";
+
+/* Class = "UITabBarController"; title = "mainTab"; ObjectID = "49e-Tb-3d3"; */
+"49e-Tb-3d3.title" = "mainTab";
+
+/* Class = "UINavigationItem"; title = "聊天"; ObjectID = "4Ho-Od-qgf"; */
+"4Ho-Od-qgf.title" = "聊天";
+
+/* Class = "UITextField"; placeholder = "手机或用户名"; ObjectID = "6JA-en-L17"; */
+"6JA-en-L17.placeholder" = "手机或用户名";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "6SS-5b-FS5"; */
+"6SS-5b-FS5.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "6X4-aF-rhN"; */
+"6X4-aF-rhN.text" = "Price";
+
+/* Class = "UILabel"; text = "艺模网"; ObjectID = "6ej-xm-WQQ"; */
+"6ej-xm-WQQ.text" = "艺模网";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "8Hx-ht-oAb"; */
+"8Hx-ht-oAb.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "个人主页"; ObjectID = "8fl-wq-LIi"; */
+"8fl-wq-LIi.title" = "个人主页";
+
+/* Class = "UINavigationItem"; title = "模特展示"; ObjectID = "9rK-br-i7r"; */
+"9rK-br-i7r.title" = "模特展示";
+
+/* Class = "UILabel"; text = "状态"; ObjectID = "9ue-Fp-7DJ"; */
+"9ue-Fp-7DJ.text" = "状态";
+
+/* Class = "UILabel"; text = "危机处理"; ObjectID = "AwJ-2Y-PGS"; */
+"AwJ-2Y-PGS.text" = "危机处理";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "BuQ-Me-Ii7"; */
+"BuQ-Me-Ii7.normalTitle" = "登录";
+
+/* Class = "UITableViewSection"; footerTitle = "  "; ObjectID = "Cdt-Oe-A7c"; */
+"Cdt-Oe-A7c.footerTitle" = "  ";
+
+/* Class = "UITableViewSection"; headerTitle = "诚信体系"; ObjectID = "Cdt-Oe-A7c"; */
+"Cdt-Oe-A7c.headerTitle" = "诚信体系";
+
+/* Class = "UITextField"; placeholder = "  用户名"; ObjectID = "Dui-X6-U7s"; */
+"Dui-X6-U7s.placeholder" = "  用户名";
+
+/* Class = "UILabel"; text = "价格信息"; ObjectID = "Ey4-pb-3ev"; */
+"Ey4-pb-3ev.text" = "价格信息";
+
+/* Class = "UIBarButtonItem"; title = "上传照片"; ObjectID = "FMx-M9-kao"; */
+"FMx-M9-kao.title" = "上传照片";
+
+/* Class = "UILabel"; text = "相册"; ObjectID = "Fcd-Ub-WUf"; */
+"Fcd-Ub-WUf.text" = "相册";
+
+/* Class = "UITextField"; placeholder = "  密码"; ObjectID = "Gbv-ug-s3b"; */
+"Gbv-ug-s3b.placeholder" = "  密码";
+
+/* Class = "UILabel"; text = "❤️"; ObjectID = "I05-Qp-9AF"; */
+"I05-Qp-9AF.text" = "❤️";
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "IbV-Ch-8sH"; */
+"IbV-Ch-8sH.text" = "Status";
+
+/* Class = "UILabel"; text = "62.8¥"; ObjectID = "KgW-FW-C4y"; */
+"KgW-FW-C4y.text" = "62.8¥";
+
+/* Class = "UILabel"; text = "相册"; ObjectID = "L5m-ar-n48"; */
+"L5m-ar-n48.text" = "相册";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "LEC-lf-4OC"; */
+"LEC-lf-4OC.normalTitle" = "登录";
+
+/* Class = "UILabel"; text = "赞"; ObjectID = "N3X-1F-bKT"; */
+"N3X-1F-bKT.text" = "赞";
+
+/* Class = "UINavigationItem"; title = "充值提现"; ObjectID = "N5j-8y-31L"; */
+"N5j-8y-31L.title" = "充值提现";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "O1J-ZM-Kcb"; */
+"O1J-ZM-Kcb.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "账户设置"; ObjectID = "Oou-87-RAp"; */
+"Oou-87-RAp.title" = "账户设置";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "OyA-ux-g6R"; */
+"OyA-ux-g6R.text" = "0";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "QfH-lO-6Sw"; */
+"QfH-lO-6Sw.text" = "Time";
+
+/* Class = "UILabel"; text = "LatestMessage"; ObjectID = "WcX-jP-zVE"; */
+"WcX-jP-zVE.text" = "LatestMessage";
+
+/* Class = "UILabel"; text = "已报名模特："; ObjectID = "Wsj-VU-T1K"; */
+"Wsj-VU-T1K.text" = "已报名模特：";
+
+/* Class = "UILabel"; text = "250$"; ObjectID = "Wsl-am-bge"; */
+"Wsl-am-bge.text" = "250$";
+
+/* Class = "UILabel"; text = "日历"; ObjectID = "XAV-iK-MCS"; */
+"XAV-iK-MCS.text" = "日历";
+
+/* Class = "UILabel"; text = "基本资料"; ObjectID = "Xyz-oC-HVZ"; */
+"Xyz-oC-HVZ.text" = "基本资料";
+
+/* Class = "UILabel"; text = "充值"; ObjectID = "ZFb-qU-uO5"; */
+"ZFb-qU-uO5.text" = "充值";
+
+/* Class = "UILabel"; text = "保证金"; ObjectID = "ZJ7-D8-s2x"; */
+"ZJ7-D8-s2x.text" = "保证金";
+
+/* Class = "UILabel"; text = "NickName"; ObjectID = "a4V-05-Axm"; */
+"a4V-05-Axm.text" = "NickName";
+
+/* Class = "UIButton"; normalTitle = "聊天"; ObjectID = "aZD-3I-et9"; */
+"aZD-3I-et9.normalTitle" = "聊天";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "aaf-Qz-UpG"; */
+"aaf-Qz-UpG.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "通告"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "通告";
+
+/* Class = "UILabel"; text = "用户名"; ObjectID = "bOc-7V-rjx"; */
+"bOc-7V-rjx.text" = "用户名";
+
+/* Class = "UITextField"; placeholder = "  输入验证码"; ObjectID = "be2-a8-VZQ"; */
+"be2-a8-VZQ.placeholder" = "  输入验证码";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "bju-Ch-VPT"; */
+"bju-Ch-VPT.text" = "Username";
+
+/* Class = "UITabBarItem"; title = "消息"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "消息";
+
+/* Class = "UILabel"; text = "加载中"; ObjectID = "cdb-YU-g2X"; */
+"cdb-YU-g2X.text" = "加载中";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "d0O-cO-NiJ"; */
+"d0O-cO-NiJ.normalTitle" = "注册";
+
+/* Class = "UINavigationItem"; title = "相册列表"; ObjectID = "dGS-Kl-YcN"; */
+"dGS-Kl-YcN.title" = "相册列表";
+
+/* Class = "UITextField"; placeholder = "  手机号码"; ObjectID = "dGo-3u-z8j"; */
+"dGo-3u-z8j.placeholder" = "  手机号码";
+
+/* Class = "UILabel"; text = "基本资料"; ObjectID = "dPT-yv-kOX"; */
+"dPT-yv-kOX.text" = "基本资料";
+
+/* Class = "UIButton"; normalTitle = "发送验证码"; ObjectID = "eF9-My-j2M"; */
+"eF9-My-j2M.normalTitle" = "发送验证码";
+
+/* Class = "UITabBarItem"; title = "我"; ObjectID = "eTN-Hg-Mro"; */
+"eTN-Hg-Mro.title" = "我";
+
+/* Class = "UILabel"; text = "转出"; ObjectID = "f2a-pi-HPc"; */
+"f2a-pi-HPc.text" = "转出";
+
+/* Class = "UITableViewSection"; headerTitle = "       "; ObjectID = "fns-Rn-xgO"; */
+"fns-Rn-xgO.headerTitle" = "       ";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "gkt-g9-VQF"; */
+"gkt-g9-VQF.text" = "Detail";
+
+/* Class = "UILabel"; text = "当前无人报名"; ObjectID = "hKB-WA-lgO"; */
+"hKB-WA-lgO.text" = "当前无人报名";
+
+/* Class = "UILabel"; text = "充值"; ObjectID = "hv4-IP-3U5"; */
+"hv4-IP-3U5.text" = "充值";
+
+/* Class = "UITableViewSection"; headerTitle = "      "; ObjectID = "iSc-5d-zVs"; */
+"iSc-5d-zVs.headerTitle" = "      ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "kMN-HC-ngN"; */
+"kMN-HC-ngN.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "mBX-oR-htX"; */
+"mBX-oR-htX.text" = "Title";
+
+/* Class = "UILabel"; text = "身材资料"; ObjectID = "mNP-lr-OGr"; */
+"mNP-lr-OGr.text" = "身材资料";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "meg-pp-FRU"; */
+"meg-pp-FRU.normalTitle" = "注册";
+
+/* Class = "UIButton"; normalTitle = "报名"; ObjectID = "n15-ck-bRd"; */
+"n15-ck-bRd.normalTitle" = "报名";
+
+/* Class = "UINavigationItem"; title = "thumb"; ObjectID = "nCy-Rd-R0A"; */
+"nCy-Rd-R0A.title" = "thumb";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "oPP-12-fj3"; */
+"oPP-12-fj3.text" = "Detail";
+
+/* Class = "UITextField"; placeholder = "密码"; ObjectID = "pvd-mg-BOf"; */
+"pvd-mg-BOf.placeholder" = "密码";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "q7Z-Mj-RJ2"; */
+"q7Z-Mj-RJ2.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "交易明细"; ObjectID = "qm9-v6-C77"; */
+"qm9-v6-C77.text" = "交易明细";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "u9X-oL-oNN"; */
+"u9X-oL-oNN.text" = "Location";
+
+/* Class = "UITextView"; text = "巴拉科夫的萨妇女节多少；反对毕加索；经历的萨冠军南非队是吉林份 i 叫阿布女生来说的风 i 地脚螺丝能否理解可是当今啊但是；老公 i 老师；当地时间里你是经过那是垃圾"; ObjectID = "ucF-CW-Kgz"; */
+"ucF-CW-Kgz.text" = "巴拉科夫的萨妇女节多少；反对毕加索；经历的萨冠军南非队是吉林份 i 叫阿布女生来说的风 i 地脚螺丝能否理解可是当今啊但是；老公 i 老师；当地时间里你是经过那是垃圾";
+
+/* Class = "UITableViewSection"; headerTitle = "账户信息"; ObjectID = "vlR-r4-d8m"; */
+"vlR-r4-d8m.headerTitle" = "账户信息";
+
+/* Class = "UITextField"; placeholder = "  再次输入密码"; ObjectID = "vtx-vd-rtp"; */
+"vtx-vd-rtp.placeholder" = "  再次输入密码";
+
+/* Class = "UILabel"; text = "余额"; ObjectID = "wV1-og-8yG"; */
+"wV1-og-8yG.text" = "余额";
+
+/* Class = "UILabel"; text = "标题"; ObjectID = "xgG-z4-hmd"; */
+"xgG-z4-hmd.text" = "标题";
+
+/* Class = "UILabel"; text = "专业度"; ObjectID = "yX6-Co-Fah"; */
+"yX6-Co-Fah.text" = "专业度";
+
+/* Class = "UINavigationItem"; title = "账户设置"; ObjectID = "zht-SY-Zef"; */
+"zht-SY-Zef.title" = "账户设置";

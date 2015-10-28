@@ -69,7 +69,7 @@ class ModalCollectionViewController: UICollectionViewController {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let picDimension: CGFloat = ( self.view.frame.width - 40) / 3
         print("size setted")
-        return CGSizeMake(picDimension, picDimension)
+        return CGSizeMake(picDimension, picDimension * 1.5)
         
     }
 
