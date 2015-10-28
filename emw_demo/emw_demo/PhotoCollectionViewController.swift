@@ -17,6 +17,7 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     
     @IBOutlet weak var PhotoList: UICollectionView!
     
+    @IBOutlet weak var toolBar: UIToolbar!
     @IBAction func uploadPhotoBtnPressed(sender: AnyObject) {
         let selectPhotoSourceAlert = UIAlertController(title: "选择照片", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         selectPhotoSourceAlert.addAction(UIAlertAction(title: "从相册选择", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
@@ -42,20 +43,23 @@ class PhotoCollectionViewController: UIViewController, UINavigationControllerDel
     ///本相册的id，以获取数据
     var albumID: String!
     var deleteMode: Bool = false
+    var editEnabled: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("thumb")
-        let addBtn = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: "changeEditMode:")
-//        (barButtonSystemItem: UIBarButtonItemSt, target: self, action: "addPhotoBtnPressed:")
-        self.navigationItem.rightBarButtonItem = addBtn
+        if (editEnabled) {
+            let addBtn = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: "changeEditMode:")
+            self.navigationItem.rightBarButtonItem = addBtn
+        }
+        else {
+            self.toolBar.hidden = true
+        }
         updatePhotoCollection()
         self.PhotoList.alwaysBounceVertical = true
         self.PhotoList.addHeaderWithCallback { () -> Void in
             self.updatePhotoCollection()
         }
-        
-        // Register cell classes
     }
     
     func updatePhotoCollection() {

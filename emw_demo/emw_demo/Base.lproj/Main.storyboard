@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--模特展示-->
+        <!--Modal Collection View Controller-->
         <scene sceneID="6YT-lt-hTX">
             <objects>
                 <collectionViewController id="USx-TW-j9V" customClass="ModalCollectionViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qSN-Vh-EMS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@@" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" id="qSN-Vh-EMS">
                                             <rect key="frame" x="0.0" y="105" width="100" height="21"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <animations/>
@@ -41,7 +41,7 @@
                                             <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iJj-dX-tR9">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cm／¥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" id="iJj-dX-tR9">
                                             <rect key="frame" x="0.0" y="129" width="100" height="21"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <animations/>
@@ -68,7 +68,29 @@
                             <outlet property="delegate" destination="USx-TW-j9V" id="I2V-6y-yeu"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="模特展示" id="9rK-br-i7r"/>
+                    <navigationItem key="navigationItem" id="9rK-br-i7r">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="O8v-vI-MCD">
+                            <rect key="frame" x="8" y="8" width="304" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segments>
+                                <segment title="女模"/>
+                                <segment title="男模"/>
+                                <segment title="外女模"/>
+                                <segment title="外男模"/>
+                                <segment title="童装"/>
+                                <segment title="大龄"/>
+                            </segments>
+                            <color key="tintColor" red="1" green="0.24705882352941178" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="modalTypeChanged:" destination="USx-TW-j9V" eventType="valueChanged" id="Lqb-7y-xy0"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="modalTypeSegment" destination="O8v-vI-MCD" id="N0r-7f-NqH"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Diu-ZL-CUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,7 +100,7 @@
         <scene sceneID="Vkp-Zu-eMN">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="Mb3-EU-UUm" customClass="ModalProfileTableViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rhv-fo-uTh">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rhv-fo-uTh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -159,6 +181,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="1Yx-qL-RrF" kind="push" identifier="ToModalAlbum" id="XP0-JV-Iic"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ModalProfileCell" textLabel="dPT-yv-kOX" imageView="GUU-cE-2yZ" style="IBUITableViewCellStyleDefault" id="PIl-B9-gbT">
                                 <rect key="frame" x="0.0" y="334" width="320" height="44"/>
@@ -185,7 +210,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="lB1-rQ-eNP" kind="push" id="m2x-fN-W1k"/>
+                                    <segue destination="lB1-rQ-eNP" kind="push" identifier="ToModalBaseinfo" id="m2x-fN-W1k"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -203,17 +228,23 @@
             </objects>
             <point key="canvasLocation" x="316" y="-1614"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Modal Baseinfo Table View Controller-->
         <scene sceneID="BDe-Jd-k8R">
             <objects>
-                <tableViewController id="lB1-rQ-eNP" sceneMemberID="viewController">
+                <tableViewController id="lB1-rQ-eNP" customClass="ModalBaseinfoTableViewController" customModule="emodel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QJR-02-B68">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="ZNc-td-h6F">
+                            <rect key="frame" x="0.0" y="136" width="320" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="1xr-eE-kUy" detailTextLabel="hZc-4g-3tj" style="IBUITableViewCellStyleValue1" id="Row-Ic-mWt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ModalBaseInfo" selectionStyle="default" indentationWidth="10" reuseIdentifier="ModalBaseInfo" textLabel="1xr-eE-kUy" detailTextLabel="hZc-4g-3tj" style="IBUITableViewCellStyleValue1" id="Row-Ic-mWt">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Row-Ic-mWt" id="E8j-tH-B91">
@@ -350,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="-1386"/>
+            <point key="canvasLocation" x="213" y="-962"/>
         </scene>
         <!--通告详情-->
         <scene sceneID="Tca-eW-H3i">
@@ -360,7 +391,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lC5-0k-Urw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lC5-0k-Urw">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -548,7 +579,7 @@
                     </state>
                 </button>
             </objects>
-            <point key="canvasLocation" x="2069" y="-1626"/>
+            <point key="canvasLocation" x="781" y="-942"/>
         </scene>
         <!--基本资料-->
         <scene sceneID="Sgo-0m-DFv">
@@ -565,7 +596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6V-pY-5RL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1266" y="125"/>
+            <point key="canvasLocation" x="702" y="449"/>
         </scene>
         <!--身材资料-->
         <scene sceneID="4Gb-vZ-Hrc">
@@ -581,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGl-4B-66B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="125"/>
+            <point key="canvasLocation" x="1290" y="449"/>
         </scene>
         <!--价格信息-->
         <scene sceneID="oHK-gn-MMo">
@@ -597,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NiL-sv-Q5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138" y="125"/>
+            <point key="canvasLocation" x="1846" y="449"/>
         </scene>
         <!--充值提现-->
         <scene sceneID="g27-Ci-LRU">
@@ -771,7 +802,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iDV-O4-J0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1266" y="1049"/>
+            <point key="canvasLocation" x="1142" y="1317"/>
         </scene>
         <!--账户设置-->
         <scene sceneID="nvn-cJ-knq">
@@ -843,7 +874,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1B-k8-pkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="1049"/>
+            <point key="canvasLocation" x="1654" y="1353"/>
         </scene>
         <!--相册列表-->
         <scene sceneID="w9o-Ij-fNf">
@@ -932,7 +963,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ho2-60-TyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="1036"/>
+            <point key="canvasLocation" x="130" y="1296"/>
         </scene>
         <!--thumb-->
         <scene sceneID="M0V-Ai-RhF">
@@ -1022,11 +1053,12 @@
                     <navigationItem key="navigationItem" title="thumb" id="nCy-Rd-R0A"/>
                     <connections>
                         <outlet property="PhotoList" destination="UeL-sg-mhc" id="fQx-7t-mmM"/>
+                        <outlet property="toolBar" destination="Vjl-DY-XCX" id="jXZ-aH-QAm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLv-VV-2oJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="1829"/>
+            <point key="canvasLocation" x="626" y="1296"/>
         </scene>
         <!--个人主页-->
         <scene sceneID="umD-zL-HoC">
@@ -1298,7 +1330,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAo-Nb-T8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="125"/>
+            <point key="canvasLocation" x="174" y="473"/>
         </scene>
         <!--mainTab-->
         <scene sceneID="yl2-sM-qoP">
@@ -1361,7 +1393,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTu-a7-lDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="-510"/>
+            <point key="canvasLocation" x="-344" y="-246"/>
         </scene>
         <!--我-->
         <scene sceneID="elW-If-Ddg">
@@ -1381,7 +1413,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uC0-34-j84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-341" y="-136"/>
+            <point key="canvasLocation" x="-381" y="464"/>
         </scene>
         <!--欢迎界面-->
         <scene sceneID="0Ix-bN-wR0">
@@ -1747,7 +1779,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFB-vm-LYY" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="573" y="-709"/>
+            <point key="canvasLocation" x="185" y="-246"/>
         </scene>
         <!--聊天详情-->
         <scene sceneID="afd-fw-enn">
@@ -1791,7 +1823,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRy-SG-RjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="-709"/>
+            <point key="canvasLocation" x="774" y="-233"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5hO-2p-3Ep">
@@ -1834,4 +1866,7 @@
         <image name="wallet" width="48" height="48"/>
         <image name="我的.png" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XP0-JV-Iic"/>
+    </inferredMetricsTieBreakers>
 </document>

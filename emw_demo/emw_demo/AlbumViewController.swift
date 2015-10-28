@@ -13,26 +13,48 @@ import MBProgressHUD
 import Alamofire
 
 class AlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
+    
     @IBAction func EditBtnPressed(sender: AnyObject) {
         print("show删除相册界面")
     }
     
     @IBOutlet weak var AlbumListCollectionView: UICollectionView!
     
-    var album :[Album]!
+    var albumData :[Album]?
+    var editEnabled: Bool = false
+    var targetUserId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
-        self.navigationItem.rightBarButtonItem = addBtn
-        album = localUser.albumInfo!
+        if (targetUserId == userId) {
+            editEnabled = true
+            let addBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addAlbum:")
+            self.navigationItem.rightBarButtonItem = addBtn
+            albumData = localUser.albumInfo
+        }
+        else {
+            Alamofire.request(.GET, serverAddress + "/user/\(targetUserId)")
+                .validate()
+                .responseJSON { _, _, result in
+                    switch result {
+                    case .Success:
+                        let resp = User(JSONDecoder(result.value!))
+                        self.albumData = resp.data?.albumInfo
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.AlbumListCollectionView.reloadData()
+                        })
+                    case .Failure(_, let error):
+                        print(error)
+                    }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: - Func
+    //MARK: - editEnabled Func
     
     func addAlbum(barButton: UIBarButtonItem) {
         print("add pressed")
@@ -99,21 +121,21 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func updateInterface() {
-        album = localUser.albumInfo!
+        albumData = localUser.albumInfo!
         self.AlbumListCollectionView.reloadData()
     }
     //MARK: - UICllectionViewDataSource
      
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return album == nil ? 0 : album.count
+        return albumData == nil ? 0 : albumData!.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         let cell = AlbumListCollectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! AlbumThumbCollectionViewCell
-        cell.AlbumTitle.text = album[indexPath.row].name!
+        cell.AlbumTitle.text = albumData?[indexPath.row].name
         cell.ThumbImage.contentMode = UIViewContentMode.ScaleAspectFill
         cell.ThumbImage.clipsToBounds = true
-        cell.ThumbImage.kf_setImageWithURL(NSURL(string: album[indexPath.row].imgUri!)!)
+        cell.ThumbImage.kf_setImageWithURL(NSURL(string: albumData![indexPath.row].imgUri!)!)
         return cell
     }
     
@@ -152,14 +174,11 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GoToAlbumDetail" {
-            print("prepareForSegue")
             let index = self.AlbumListCollectionView.indexPathsForSelectedItems()
-            print("点击了相册 序号：")
-            print(index)
             let pcvc: PhotoCollectionViewController = segue.destinationViewController as! PhotoCollectionViewController
-            pcvc.albumID = self.album[index![0].row].id!
-            pcvc.navigationItem.title = self.album[index![0].row].name
-            print("Request Sended")
+            pcvc.albumID = albumData![index![0].row].id!
+            pcvc.navigationItem.title = albumData![index![0].row].name
+            pcvc.editEnabled = editEnabled
         }
     }
 
