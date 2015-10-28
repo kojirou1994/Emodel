@@ -22,7 +22,7 @@ class AlbumViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var albumData :[Album]?
     var editEnabled: Bool = false
-    var targetUserId: String!
+    var targetUserId: String! = userId
     
     override func viewDidLoad() {
         super.viewDidLoad()
