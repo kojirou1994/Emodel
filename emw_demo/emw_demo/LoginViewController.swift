@@ -9,6 +9,7 @@
 import UIKit
 import MBProgressHUD
 import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
 
@@ -19,12 +20,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var mobileInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    
+    var notice: MBProgressHUD!
+    
     @IBAction func loginBtnPressed(sender: AnyObject) {
         print("login pressed")
-        
-        
         if (mobileInput.text == "" || passwordInput.text == "") {
-//            mobileInput.text = "请输入信息"
             self.showSimpleAlert("输入有误", message: "请重试")
             return
         }
@@ -34,25 +35,40 @@ class LoginViewController: UIViewController {
         guard let passwordText = passwordInput.text else {
             return
         }
-        let notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
+        notice = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         notice.labelText = "登陆中"
         Alamofire.request(.POST, serverAddress + "/user/login", parameters: ["username": mobileText, "password": passwordText,"autoLogin": "1"], encoding: ParameterEncoding.JSON, headers: nil)
             .validate()
             .responseJSON { _, _, result in
                 switch result {
                 case .Success:
+                    let user = NSUserDefaults.standardUserDefaults()
+                    user.setObject(mobileText, forKey: "UserName")
+                    user.setObject(passwordText, forKey: "Password")
                     let resp = LoginResp(JSONDecoder(result.value!))
+                    self.checkUserRole(resp)
+                case .Failure(_, let error):
+                    print(error)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.notice.labelText = "登陆失败"
+                        self.notice.hide(true, afterDelay: 1)
+                    })
+                }
+        }
+
+    }
+    
+    func checkUserRole(resp: LoginResp) {
+        Alamofire.request(.GET, serverAddress + "/user/login", parameters:nil, encoding: ParameterEncoding.JSON, headers: ["Token": resp.data!.token!])
+        .validate()
+        .responseJSON {_, _, result in
+                switch result {
+                case .Success:
                     isLogin = true
-                    print("status is: \(resp.status!)")
-                    print("userId is:\(resp.data!.userId!)")
-                    print("token is:\(resp.data!.token)")
                     userId = resp.data?.userId!
                     token = resp.data?.token
                     unReadCount = ["total": 0]
                     let user = NSUserDefaults.standardUserDefaults()
-                    user.setObject(mobileText, forKey: "UserName")
-                    user.setObject(passwordText, forKey: "Password")
                     user.setObject(userId, forKey: "UserID")
                     user.setObject(token, forKey: "Token")
                     user.setObject(unReadCount, forKey: "UnreadCount")
@@ -63,21 +79,38 @@ class LoginViewController: UIViewController {
                     else {
                         recentChatList = NSMutableDictionary()
                     }
-                    userNameAndAvatarStorage = Dictionary<String, Dictionary<String, String>>()
-                    user.setObject(userNameAndAvatarStorage, forKey: "UserNameAndAvatarStorage")
                     dispatch_async(dispatch_get_main_queue(), {
-                        notice.labelText = "登陆成功"
+                        self.notice.labelText = "登陆成功"
                         self.dismissViewControllerAnimated(false, completion: nil)
                     })
+                    
+                    let json = JSON(result.value!)
+                    if let role = json["data"]["role"].string {
+                        print("role: \(role)")
+                        switch role {
+                        case "guest":
+                            userType = .Guest
+                        case "model":
+                            userType = .Modal
+                        case "company":
+                            userType = .Company
+                        default:
+                            userType = .Guest
+                        }
+                    }
+                    else {
+                        print("Guest")
+                        userType = .Guest
+                    }
+                    user.setObject(userType.rawValue, forKey: "UserType")
                 case .Failure(_, let error):
                     print(error)
                     dispatch_async(dispatch_get_main_queue(), {
-                        notice.labelText = "登陆失败"
-                        notice.hide(true, afterDelay: 1)
+                        self.notice.labelText = "登陆失败"
+                        self.notice.hide(true, afterDelay: 1)
                     })
-                }
         }
-
+        }
     }
     
     override func viewDidLoad() {

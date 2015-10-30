@@ -85,15 +85,19 @@ class ModalProfileTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if (section == 2) {
-            return 40
+        switch section {
+        case 0:
+            return 10
+        case 1:
+            return 10
+        case 2:
+            return 10
+        default:
+            return 0
         }
-        return 0
     }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
@@ -105,6 +109,9 @@ class ModalProfileTableViewController: UITableViewController {
         default:
             return 0
         }
+    }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

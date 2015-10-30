@@ -9,12 +9,12 @@
 import UIKit
 import CoreData
 class DataManager {
-    class func saveUserData(userId: String, nickName: String, avatarUrl: String) {
+    class func saveUserData(userId: String, nickName: String?, avatarUrl: String?) {
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         let row: AnyObject = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context)
         row.setValue(userId, forKey: "userId")
-        row.setValue(nickName, forKey: "nickName")
-        row.setValue(avatarUrl, forKey: "avatar")
+        row.setValue(nickName == nil ? "" : nickName, forKey: "nickName")
+        row.setValue(avatarUrl == nil ? "" : avatarUrl, forKey: "avatar")
         do {
             try context.save()
         } catch let error as NSError {

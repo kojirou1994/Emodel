@@ -42,18 +42,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.targetUserAvatar = ""
             }
         }
-//        self.navigationItem.title = userNameAndAvatarStorage[targetUserID]?["NickName"]
-        
+
         chatTableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-45)
         
         inputKeyView = UIView(frame: CGRectMake(0, self.view.frame.height-45, self.view.frame.width, 45))
         inputKeyView.backgroundColor = UIColor.lightGrayColor()
-//        (red: 218, green: 218, blue: 218, alpha: 1)
-//            .grayColor()
-        
+
         inputField = UITextField(frame: CGRectMake(5, 5, self.view.frame.size.width / 32 * 25, 35))
         inputField.tag = 0
-//        inputField.delegate = self
         inputField.backgroundColor = UIColor.whiteColor()
         inputField.borderStyle = UITextBorderStyle.RoundedRect
         inputKeyView.addSubview(inputField)
@@ -61,21 +57,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         sendBtn = UIButton(type: UIButtonType.RoundedRect)
         sendBtn.frame = CGRectMake(inputField.frame.maxX + 6, 5, 55, 35)
         sendBtn.setTitle("发送", forState: UIControlState.Normal)
-//        sendBtn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-//        sendBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
-//        sendBtn.backgroundColor = UIColor.blackColor()
         sendBtn.backgroundColor = UIColor(hex: 0x2065FF)
         sendBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        (red: 128, green: 123, blue: 245, alpha: 1)
         sendBtn.layer.masksToBounds = true
         sendBtn.layer.cornerRadius = 5
         sendBtn.addTarget(self, action: "send", forControlEvents: UIControlEvents.TouchUpInside)
         inputKeyView.addSubview(sendBtn)
         
         self.view.addSubview(inputKeyView)
-        
-//        let profileBtn = UIBarButtonItem(title: "Profile", style: UIBarButtonItemStyle.Plain, target: self, action: "pushToProfileVC")
-//        self.navigationItem.rightBarButtonItem = profileBtn
         self.chatTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
         
         self.addNotificationHandler()
@@ -105,13 +94,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
         let sendTime = NSDate()
-        //        self.inputField.resignFirstResponder()
         
         //输入完先添加消息框
         inputField.text = nil
         //添加数据至chatlog
         chatLog?.append(["isFromSelf": true, "messageType": 1, "time": sendTime, "content": inputM])
-//        self.chatTableView.reloadData()
+
         let insert = NSIndexPath(forRow: chatLog!.count - 1, inSection: 0)
         self.chatTableView.insertRowsAtIndexPaths([insert], withRowAnimation: UITableViewRowAnimation.None)
         self.goToLatestMessage()

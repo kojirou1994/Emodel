@@ -63,3 +63,8 @@ struct UserData: JSONJoy {
     }
     
 }
+
+
+enum UserType: Int {
+    case Guest = 0,Modal = 1,Company = 2
+}

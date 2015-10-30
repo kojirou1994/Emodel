@@ -74,21 +74,21 @@ class BodyInfoEditViewController : XLFormViewController {
         
         // 胸围
         row = XLFormRowDescriptor(tag: BodyInfoTag.Bust.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "胸围")
-        row.value = localUser.bodyInfo?.bust!
+        row.value = localUser.bodyInfo?.bust
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 腰围
         row = XLFormRowDescriptor(tag: BodyInfoTag.Waist.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "腰围")
-        row.value = localUser.bodyInfo?.waist!
+        row.value = localUser.bodyInfo?.waist
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
         
         // 臀围
         row = XLFormRowDescriptor(tag: BodyInfoTag.Hip.rawValue, rowType: XLFormRowDescriptorTypeDecimal, title: "臀围")
-        row.value = localUser.bodyInfo?.hip!
+        row.value = localUser.bodyInfo?.hip
         row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.Right.rawValue
         row.cellConfig.setObject(UIColor.grayColor(), forKey: "textField.textColor")
         section.addFormRow(row)
@@ -121,7 +121,7 @@ class BodyInfoEditViewController : XLFormViewController {
         
         row = XLFormRowDescriptor(tag: BodyInfoTag.Introduction.rawValue, rowType: XLFormRowDescriptorTypeTextView)
         row.cellConfigAtConfigure["textView.placeholder"] = "Introduction"
-        row.value = localUser.bodyInfo?.introduction!
+        row.value = localUser.bodyInfo?.introduction
         row.cellConfig.setObject(UIColor.grayColor(), forKey: "textView.textColor")
         
         section.addFormRow(row)
@@ -140,13 +140,7 @@ class BodyInfoEditViewController : XLFormViewController {
         var height,weight,cup,introduction,clothesSize,shoeSize,trousers: String
 //        bloodType,service
         var bust, hips, waistline: Int
-        //血型
-//        if let temp = (form.formRowWithTag(BodyInfoTag.BloodType.rawValue)!.value as? String) {
-//            bloodType = temp
-//        }
-//        else {
-//            bloodType = ""
-//        }
+
         if let temp = (form.formRowWithTag(BodyInfoTag.Height.rawValue)!.value as? String) {
             height = temp
         }
@@ -189,13 +183,6 @@ class BodyInfoEditViewController : XLFormViewController {
         else {
             introduction = ""
         }
-
-//        if let temp = (form.formRowWithTag(BodyInfoTag.Service.rawValue)!.value as? String) {
-//            service = temp
-//        }
-//        else {
-//            service = ""
-//        }
         if let temp = (form.formRowWithTag(BodyInfoTag.ClothesSize.rawValue)!.value as? String) {
             clothesSize = temp
         }

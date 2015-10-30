@@ -26,7 +26,7 @@ class ModalCollectionViewCell: UICollectionViewCell {
                 switch result {
                 case .Success:
                     let uData = User(JSONDecoder(result.value!)).data
-                    DataManager.saveUserData(id, nickName: (uData?.baseInfo?.nickName)!, avatarUrl: (uData?.baseInfo?.avatar)!)
+                    DataManager.saveUserData(id, nickName: uData?.baseInfo?.nickName, avatarUrl: uData?.baseInfo?.avatar)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.nickNameLabel.text = uData?.baseInfo?.nickName
                         self.priceLabel.text = "\(uData?.bodyInfo?.height == nil ? "??" : uData!.bodyInfo!.height!)cm／¥\(uData?.businessInfo?.inPrice == nil ? 0 : uData!.businessInfo!.inPrice!)"

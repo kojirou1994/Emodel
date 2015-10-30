@@ -19,6 +19,7 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
     var topSegmentView: SMSegmentView!
     var isMy: Bool = false
     var margin: CGFloat = 10.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let font = UIFont.systemFontOfSize(14.0)

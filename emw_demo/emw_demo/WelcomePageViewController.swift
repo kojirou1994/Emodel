@@ -64,12 +64,10 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
             notice.labelText = "无法登陆"
             notice.hide(true, afterDelay: 0.5)
             dispatch_after(1, dispatch_get_main_queue(), {
-//                println("load login view")
                 self.loadWelcomeView()
                 
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let loginVC = sb.instantiateViewControllerWithIdentifier("LogIn") as! LoginViewController
-//                loginVC.mobileInput.text = username
                 self.presentViewController(loginVC, animated: true, completion: nil)
                 
             })
@@ -173,13 +171,10 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func transferToMainProgram() {
-//        self.performSegueWithIdentifier("showMainTab", sender: self)
-//        let sb = UIStoryboard(name: "Main", bundle: nil)
-//        let mainP = sb.instantiateViewControllerWithIdentifier("MainProgram") as! UITabBarController
-//        self.presentViewController(mainP, animated: true, completion: nil)
         let main = self.storyboard?.instantiateViewControllerWithIdentifier("MainProgram") as! UITabBarController
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = main
+        appDelegate.window?.backgroundColor = .whiteColor()
         appDelegate.setupChatService()
         appDelegate.setTabbarColor()
     }
@@ -197,8 +192,6 @@ class WelcomePageViewController: UIViewController, UIScrollViewDelegate {
         loginBtn.layer.cornerRadius = 5
         signupBtn.layer.masksToBounds = true
         signupBtn.layer.cornerRadius = 5
-//        loginBtn.setBackgroundImage(UIImage(named: "登陆Pressed"), forState: UIControlState.Highlighted)
-//        signupBtn.setBackgroundImage(UIImage(named: "注册Pressed"), forState: UIControlState.Highlighted)
         if isLogin {
             loginBtn.hidden = true
             signupBtn.hidden = true

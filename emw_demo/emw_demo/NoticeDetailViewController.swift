@@ -17,13 +17,6 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = taskData?.title
-//        tableView = UITableView(frame: self.view.frame, style: UITableViewStyle.Plain)
-//        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        self.view.addSubview(tableView)
-        print("have sign up ?")
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,6 +56,10 @@ class NoticeDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.enrollBtn.addTarget(self, action: Selector("enrollBtnPressed"), forControlEvents: UIControlEvents.TouchUpInside)
             if (taskData!.userHaveSignedUp(userId)) {
                 cell.enrollBtn.setTitle("你已经参加", forState: UIControlState.Normal)
+                cell.enrollBtn.userInteractionEnabled = false
+            }
+            if (userType == .Company) {
+                cell.enrollBtn.setTitle("商家无法报名", forState: UIControlState.Normal)
                 cell.enrollBtn.userInteractionEnabled = false
             }
             cell.selectionStyle = UITableViewCellSelectionStyle.None

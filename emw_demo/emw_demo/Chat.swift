@@ -26,10 +26,12 @@ extension AppDelegate: UITabBarDelegate {
         defaultNC.addObserver(self, selector: "onMessageReceived:", name: kYBDidReceiveMessageNotification, object: nil)
         defaultNC.addObserver(self, selector: "onPresenceReceived:", name: kYBDidReceivePresenceNotification, object: nil)
     }
+    
     func removeNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
         defaultNC.removeObserver(self)
     }
+    
     func updateOnlineState() {
         YunBaService.getAlias { (result, err) -> Void in
             if (result == nil) {
@@ -52,10 +54,10 @@ extension AppDelegate: UITabBarDelegate {
             return
         }
         if (unReadCount["total"] > 0) {
-            tabbar.viewControllers![1].tabBarItem.badgeValue = String(unReadCount["total"]!)
+            tabbar.viewControllers![2].tabBarItem.badgeValue = String(unReadCount["total"]!)
         }
         else {
-            tabbar.viewControllers![1].tabBarItem.badgeValue = nil
+            tabbar.viewControllers![2].tabBarItem.badgeValue = nil
 
         }
     }

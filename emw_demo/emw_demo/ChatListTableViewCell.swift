@@ -53,8 +53,7 @@ class ChatListTableViewCell: UITableViewCell {
                         switch result {
                         case .Success:
                             let data = User(JSONDecoder(result.value!)).data
-//                            updateUserNameAndAvatarStorage(id, name: (data?.baseInfo?.nickName)!, avatar: (data?.baseInfo?.avatar)!)
-                            DataManager.saveUserData(id, nickName: (data?.baseInfo?.nickName)!, avatarUrl: (data?.baseInfo?.avatar)!)
+                            DataManager.saveUserData(id, nickName: data?.baseInfo?.nickName, avatarUrl: data?.baseInfo?.avatar)
                             dispatch_async(dispatch_get_main_queue(), {
                                 self.userNameLabel.text = data?.baseInfo?.nickName
                                 self.userAvatar.kf_setImageWithURL(NSURL(string: (data?.baseInfo?.avatar)! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250")!)
@@ -66,34 +65,6 @@ class ChatListTableViewCell: UITableViewCell {
                 }
             }
         }
-        /*
-        if let cache = userNameAndAvatarStorage[id] {
-            //有缓存数据，不获取
-            self.userNameLabel.text = cache["NickName"]
-            self.userAvatar.kf_setImageWithURL(NSURL(string: (cache["AvatarAddress"])! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250")!)
-        }
-        else {
-            Alamofire.request(.GET, serverAddress + "/user/\(id)")
-                .validate()
-                .responseJSON { _, _, result in
-                    switch result {
-                    case .Success:
-                        let data = User(JSONDecoder(result.value!)).data
-                        updateUserNameAndAvatarStorage(id, name: (data?.baseInfo?.nickName)!, avatar: (data?.baseInfo?.avatar)!)
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.userNameLabel.text = data?.baseInfo?.nickName
-                            self.userAvatar.kf_setImageWithURL(NSURL(string: (data?.baseInfo?.avatar)! + "?imageMogr2/thumbnail/!250x250r/gravity/North/crop/250x250")!)
-                        })
-                    case .Failure(_, let error):
-                        print(error)
-                        return
-                    }
-            }
-        }
-*/
-
-//        }
-
     }
     
 }

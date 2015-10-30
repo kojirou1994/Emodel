@@ -67,8 +67,12 @@ class BaseInfoEditViewController : XLFormViewController {
         format.dateFormat = "yyyy-MM-dd"
         // 生日
         row = XLFormRowDescriptor(tag: BaseInfoTag.Birthday.rawValue, rowType: XLFormRowDescriptorTypeDateInline, title: "生日")
-        row.value = format.dateFromString(localUser.baseInfo!.birthday!)
-        print("生日 \(localUser.baseInfo?.birthday)")
+        if (localUser.baseInfo?.birthday == nil) {
+            row.value = NSDate()
+        }
+        else {
+            row.value = format.dateFromString(localUser.baseInfo!.birthday!)
+        }
         section.addFormRow(row)
         
         // 邮箱

@@ -26,22 +26,18 @@ var userId: String!
 var token: String!
 ///本地用户资料
 var localUser: UserData!
-///未读消息计数
-//var unreadCount: Int! = 0
+///用户类型
+var userType: UserType!
 ///当前聊天用户id
 var currentChatUserId: String?
 
 var recentChatList: NSMutableDictionary!
 let recentChatPlist = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString).stringByAppendingPathComponent("recentChatList.plist")
-//NSBundle.mainBundle().pathForResource("recentChatList", ofType: ".plist")
 
 var unReadCount: Dictionary<String, Int>!
 
 var chatListVCLoaded: Bool = false
 
-var userNameAndAvatarStorage: Dictionary<String, Dictionary<String, String>>!
-
-//var album :Array<Album>! = Array<Album>()
 
 //MARK: - 初始化
 
@@ -59,12 +55,7 @@ func readUserData() {
         else {
             unReadCount = ["total": 0]
         }
-        if let sto = user.objectForKey("UserNameAndAvatarStorage") as? NSDictionary {
-            userNameAndAvatarStorage = sto as! Dictionary
-        }
-        else {
-            userNameAndAvatarStorage = Dictionary<String, Dictionary<String, String>>()
-        }
+
         let fm = NSFileManager.defaultManager()
         if (fm.fileExistsAtPath(recentChatPlist)) {
             recentChatList = NSMutableDictionary(contentsOfFile: recentChatPlist)
@@ -72,21 +63,29 @@ func readUserData() {
         else {
             recentChatList = NSMutableDictionary()
         }
-        print(recentChatPlist)
-        print("read username: \(username)")
-        print("read password \(password)")
+        if let type = user.objectForKey("UserType") as? Int {
+            switch type {
+            case 0:
+                userType = .Guest
+            case 1:
+                userType = .Modal
+            case 2:
+                userType = .Company
+            default:
+                userType = .Modal
+            }
+        }
+        else {
+            userType = .Modal
+        }
+        user.setObject(userType.rawValue, forKey: "UserType")
         isLogin = true
     }
     else {
-        print("no default data")
         isLogin = false
     }
 }
 
-func updateUserNameAndAvatarStorage(id: String, name: String, avatar: String) {
-    userNameAndAvatarStorage[id]=["NickName": name, "AvatarAddress": avatar]
-    NSUserDefaults.standardUserDefaults().setObject(userNameAndAvatarStorage, forKey: "UserNameAndAvatarStorage")
-}
 
 func registerYunbaAlias() {
     YunBaService.setAlias(userId, resultBlock: { (succ: Bool, error: NSError!) -> Void in

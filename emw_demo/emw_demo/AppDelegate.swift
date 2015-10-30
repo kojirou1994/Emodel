@@ -116,7 +116,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(url)
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-//            NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption:@YES,NSInferMappingModelAutomaticallyOption:@YES};
             let options: [NSObject : AnyObject] = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
         } catch {
