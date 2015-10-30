@@ -82,22 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(error)
     }
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        print(userInfo)
-        let no = UILocalNotification()
-        no.alertBody = userInfo["badge"] as? String
-        if #available(iOS 8.2, *) {
-            no.alertTitle = "alert"
-        } else {
-            // Fallback on earlier versions
-        }
-        no.soundName = UILocalNotificationDefaultSoundName
-        no.applicationIconBadgeNumber = 1
-        UIApplication.sharedApplication().presentLocalNotificationNow(no)
+        self.window?.rootViewController?.showSimpleAlert("didReceive", message: userInfo as! String)
     }
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.emodel.COredata" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
         }()

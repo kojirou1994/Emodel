@@ -53,17 +53,7 @@
 		E385188F1B7091B40063C2C2 /* starRank_7.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518791B7091B40063C2C2 /* starRank_7.png */; };
 		E38518901B7091B40063C2C2 /* starRank_8.png in Resources */ = {isa = PBXBuildFile; fileRef = E385187A1B7091B40063C2C2 /* starRank_8.png */; };
 		E38518911B7091B40063C2C2 /* starRank_9.png in Resources */ = {isa = PBXBuildFile; fileRef = E385187B1B7091B40063C2C2 /* starRank_9.png */; };
-		E38518921B7091B40063C2C2 /* 信息.png in Resources */ = {isa = PBXBuildFile; fileRef = E385187C1B7091B40063C2C2 /* 信息.png */; };
-		E38518931B7091B40063C2C2 /* 基本信息.png in Resources */ = {isa = PBXBuildFile; fileRef = E385187D1B7091B40063C2C2 /* 基本信息.png */; };
-		E38518941B7091B40063C2C2 /* 我的.png in Resources */ = {isa = PBXBuildFile; fileRef = E385187E1B7091B40063C2C2 /* 我的.png */; };
-		E38518951B7091B40063C2C2 /* 档期管理.png in Resources */ = {isa = PBXBuildFile; fileRef = E385187F1B7091B40063C2C2 /* 档期管理.png */; };
-		E38518961B7091B40063C2C2 /* 相册管理里.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518801B7091B40063C2C2 /* 相册管理里.png */; };
-		E38518971B7091B40063C2C2 /* 视频模卡.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518811B7091B40063C2C2 /* 视频模卡.png */; };
-		E38518981B7091B40063C2C2 /* 设置.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518821B7091B40063C2C2 /* 设置.png */; };
 		E38518991B7091B40063C2C2 /* 设置图标-11.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518831B7091B40063C2C2 /* 设置图标-11.png */; };
-		E385189A1B7091B40063C2C2 /* 账号绑定.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518841B7091B40063C2C2 /* 账号绑定.png */; };
-		E385189B1B7091B40063C2C2 /* 账户余额.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518851B7091B40063C2C2 /* 账户余额.png */; };
-		E385189C1B7091B40063C2C2 /* 通告.png in Resources */ = {isa = PBXBuildFile; fileRef = E38518861B7091B40063C2C2 /* 通告.png */; };
 		E38556711B7C622B0015285F /* AlbumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38556701B7C622B0015285F /* AlbumList.swift */; };
 		E38556741B7C63110015285F /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38556731B7C63110015285F /* AlbumViewController.swift */; };
 		E38556761B7C63600015285F /* AlbumThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38556751B7C63600015285F /* AlbumThumbCell.swift */; };
@@ -192,17 +182,7 @@
 		E38518791B7091B40063C2C2 /* starRank_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_7.png; sourceTree = "<group>"; };
 		E385187A1B7091B40063C2C2 /* starRank_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_8.png; sourceTree = "<group>"; };
 		E385187B1B7091B40063C2C2 /* starRank_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starRank_9.png; sourceTree = "<group>"; };
-		E385187C1B7091B40063C2C2 /* 信息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "信息.png"; sourceTree = "<group>"; };
-		E385187D1B7091B40063C2C2 /* 基本信息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "基本信息.png"; sourceTree = "<group>"; };
-		E385187E1B7091B40063C2C2 /* 我的.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的.png"; sourceTree = "<group>"; };
-		E385187F1B7091B40063C2C2 /* 档期管理.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "档期管理.png"; sourceTree = "<group>"; };
-		E38518801B7091B40063C2C2 /* 相册管理里.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相册管理里.png"; sourceTree = "<group>"; };
-		E38518811B7091B40063C2C2 /* 视频模卡.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频模卡.png"; sourceTree = "<group>"; };
-		E38518821B7091B40063C2C2 /* 设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置.png"; sourceTree = "<group>"; };
 		E38518831B7091B40063C2C2 /* 设置图标-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置图标-11.png"; sourceTree = "<group>"; };
-		E38518841B7091B40063C2C2 /* 账号绑定.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "账号绑定.png"; sourceTree = "<group>"; };
-		E38518851B7091B40063C2C2 /* 账户余额.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "账户余额.png"; sourceTree = "<group>"; };
-		E38518861B7091B40063C2C2 /* 通告.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "通告.png"; sourceTree = "<group>"; };
 		E38556701B7C622B0015285F /* AlbumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumList.swift; sourceTree = "<group>"; };
 		E38556731B7C63110015285F /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		E38556751B7C63600015285F /* AlbumThumbCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumThumbCell.swift; sourceTree = "<group>"; };
@@ -393,17 +373,7 @@
 				E38518791B7091B40063C2C2 /* starRank_7.png */,
 				E385187A1B7091B40063C2C2 /* starRank_8.png */,
 				E385187B1B7091B40063C2C2 /* starRank_9.png */,
-				E385187C1B7091B40063C2C2 /* 信息.png */,
-				E385187D1B7091B40063C2C2 /* 基本信息.png */,
-				E385187E1B7091B40063C2C2 /* 我的.png */,
-				E385187F1B7091B40063C2C2 /* 档期管理.png */,
-				E38518801B7091B40063C2C2 /* 相册管理里.png */,
-				E38518811B7091B40063C2C2 /* 视频模卡.png */,
-				E38518821B7091B40063C2C2 /* 设置.png */,
 				E38518831B7091B40063C2C2 /* 设置图标-11.png */,
-				E38518841B7091B40063C2C2 /* 账号绑定.png */,
-				E38518851B7091B40063C2C2 /* 账户余额.png */,
-				E38518861B7091B40063C2C2 /* 通告.png */,
 			);
 			path = "图标";
 			sourceTree = "<group>";
@@ -677,31 +647,22 @@
 				E3B680321BA2C452004DF002 /* photo1@2x.png in Resources */,
 				E3658A221BD5E8B600575039 /* CalendarSyncViewController.xib in Resources */,
 				E31519D31BD4E34000199E1C /* CMTableViewCell.xib in Resources */,
-				E38518981B7091B40063C2C2 /* 设置.png in Resources */,
 				E3B680341BA2C452004DF002 /* ReceiverTextNodeBkg.png in Resources */,
 				E304C20F1B8EE90F00A40348 /* head.jpg in Resources */,
 				E385188A1B7091B40063C2C2 /* starRank_2.png in Resources */,
-				E385189C1B7091B40063C2C2 /* 通告.png in Resources */,
 				E38518991B7091B40063C2C2 /* 设置图标-11.png in Resources */,
 				E3AB7A961B8AFA1300962116 /* logo.png in Resources */,
-				E38518961B7091B40063C2C2 /* 相册管理里.png in Resources */,
 				E38518871B7091B40063C2C2 /* starRank_0.png in Resources */,
 				E3E9C2231B6CA66200998937 /* Main.storyboard in Resources */,
 				E38518881B7091B40063C2C2 /* starRank_1.png in Resources */,
-				E38518971B7091B40063C2C2 /* 视频模卡.png in Resources */,
 				E385188C1B7091B40063C2C2 /* starRank_4.png in Resources */,
-				E38518921B7091B40063C2C2 /* 信息.png in Resources */,
-				E385189A1B7091B40063C2C2 /* 账号绑定.png in Resources */,
 				E3B6803E1BA2C452004DF002 /* SenderVoiceNodePlaying.png in Resources */,
-				E38518931B7091B40063C2C2 /* 基本信息.png in Resources */,
 				E3658A1E1BD5DA5B00575039 /* CalendarManagerViewController.xib in Resources */,
-				E38518941B7091B40063C2C2 /* 我的.png in Resources */,
 				E38518891B7091B40063C2C2 /* starRank_10.png in Resources */,
 				E36C143F1BA5D64D00D6FA4D /* arrow@2x.png in Resources */,
 				E385188E1B7091B40063C2C2 /* starRank_6.png in Resources */,
 				E3E8C4B91BBA34F9007C267E /* CacheViewController.xib in Resources */,
 				E3B680311BA2C452004DF002 /* photo1.png in Resources */,
-				E38518951B7091B40063C2C2 /* 档期管理.png in Resources */,
 				E3AB7A921B8AF6B800962116 /* bg.png in Resources */,
 				E3E9C2281B6CA66200998937 /* LaunchScreen.xib in Resources */,
 				E3B680331BA2C452004DF002 /* photo@2x.png in Resources */,
@@ -712,7 +673,6 @@
 				E385188B1B7091B40063C2C2 /* starRank_3.png in Resources */,
 				E385188D1B7091B40063C2C2 /* starRank_5.png in Resources */,
 				E385188F1B7091B40063C2C2 /* starRank_7.png in Resources */,
-				E385189B1B7091B40063C2C2 /* 账户余额.png in Resources */,
 				E3B6803C1BA2C452004DF002 /* SenderVoiceNodeDownloading.png in Resources */,
 				E3B680381BA2C452004DF002 /* ReceiverVoiceNodePlaying.png in Resources */,
 				E3E9C2531B6CE5D700998937 /* img.jpg in Resources */,
