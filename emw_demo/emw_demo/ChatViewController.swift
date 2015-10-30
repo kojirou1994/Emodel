@@ -114,8 +114,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         unReadCount[self.targetUserID] = 0
         recentChatList.writeToFile(recentChatPlist, atomically: true)
         NSNotificationCenter.defaultCenter().postNotificationName("updateChatListVC", object: self)
-        
-        YunBaService.publishToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
+        YunBaService.publish2ToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublish2Option(apnOption: YBApnOption(alert: "\(localUser.baseInfo!.nickName!): \(inputM)"), timeToLive: 99999), resultBlock: { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
                 print("聊天信息已发送")
             }
@@ -123,7 +122,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("聊天信息发送失败")
                 print(error.description)
             }
-        }
+        })
+//        YunBaService.publishToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
+//            if (succ) {
+//                print("聊天信息已发送")
+//            }
+//            else {
+//                print("聊天信息发送失败")
+//                print(error.description)
+//            }
+//        }
     }
     
     //MARK : - YunbaService
