@@ -23,7 +23,6 @@ class ChatListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var badgeLabel: UILabel!
     
-//    var uid:String?
     var round: Bool = false
     
     func configTheCell(badgeNumber: Int?, id: String) {

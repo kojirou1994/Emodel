@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil))
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
-        // Override point for customization after application launch.
         self.clearBadgeAndNotifications()
         return true
     }
@@ -66,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("get Device Token: \(deviceToken)")
-        // uncomment to store device token to YunBa
         YunBaService.storeDeviceToken(deviceToken, resultBlock: { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
                 print("store device token to YunBa succ")
@@ -78,11 +76,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print("didFailToRegisterForRemotenotificationWithError")
-        print(error)
+        
     }
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        self.window?.rootViewController?.showSimpleAlert("didReceive", message: userInfo as! String)
+        
     }
     // MARK: - Core Data stack
     

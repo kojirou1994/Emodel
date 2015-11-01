@@ -50,16 +50,11 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             print(keys)
             for (var i = 0; i < recentChatList.count; i++) {
                 listIndex.append(["userId": keys[i],"time": recentChatList[keys[i]]!.valueForKey("time")!])
-//                    addObject(["userId": "","time": recentChatList[keys[i]]!.valueForKey("time")!])
             }
             listIndex = listIndex.sort { (T, U) -> Bool in
-                print("sorted")
                 return (T["time"] as! NSDate).timeIntervalSinceDate(U["time"] as! NSDate) > 0.0
             }
         }
-        print(recentChatList)
-        print("listIndex")
-//        print(listIndex)
         self.chatListTableView.reloadData()
     }
     

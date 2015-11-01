@@ -17,6 +17,11 @@ struct Ad: JSONJoy {
     var maleW: [String]?
     var old: [String]?
     var young: [String]?
+    subscript (index: Int) -> [String]? {
+        get {
+            return nil
+        }
+    }
     func users(index: Int) -> [String]? {
         switch index {
         case 0:

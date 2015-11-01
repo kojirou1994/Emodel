@@ -44,7 +44,7 @@ extension AppDelegate: UITabBarDelegate {
                 isOnline = true
                 print(result)
             }
-            NSNotificationCenter.defaultCenter().postNotificationName("AliasStateChanged", object: self)
+            NSNotificationCenter.defaultCenter().postNotificationName ("AliasStateChanged", object: self)
         }
         
     }
@@ -76,7 +76,6 @@ extension AppDelegate: UITabBarDelegate {
         else {
             let receivedMessage = YunbaChatMessage(JSONDecoder(message.data))
             if (receivedMessage.fromUserId == "000000") {
-                //error
                 print("error 000000")
             }
             else if (receivedMessage.fromUserId != currentChatUserId || currentChatUserId == nil) {
@@ -103,7 +102,7 @@ extension AppDelegate: UITabBarDelegate {
                 recentChatList[receivedMessage.fromUserId] = ["time": receiveTime,
                     "message": receivedMessage.messageContent
                 ]
-                
+                NSNotificationCenter.defaultCenter().postNotificationName("updateChatVC", object: nil, userInfo: ["Type": receivedMessage.messageType, "Message": receivedMessage.messageContent])
                 DataManager.saveMessageToDatabase(userId, remoteUserId: receivedMessage.fromUserId, messageType: receivedMessage.messageType, isFromSelf: false, time: receiveTime, messageContent: receivedMessage.messageContent)
             }
         }

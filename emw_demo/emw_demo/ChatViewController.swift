@@ -137,30 +137,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK : - YunbaService
     func addNotificationHandler() {
         let defaultNC = NSNotificationCenter.defaultCenter()
-        defaultNC.addObserver(self, selector: "onMessageReceived:", name: kYBDidReceiveMessageNotification, object: nil)
-        defaultNC.addObserver(self, selector: "onPresenceReceived:", name: kYBDidReceivePresenceNotification, object: nil)
+        defaultNC.addObserver(self, selector: "onMessageReceived:", name: "updateChatVC", object: nil)
         defaultNC.addObserver(self, selector: "keyboardWillAppear:", name: UIKeyboardWillChangeFrameNotification, object: nil)
         defaultNC.addObserver(self, selector: "keyboardWillDisappear:", name: UIKeyboardWillHideNotification, object: nil)
     }
+    
     func removeNotificationHandler() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func onMessageReceived(notification: NSNotification) {
-        let message: YBMessage = notification.object as! YBMessage
-        if (YunbaChatMessage(JSONDecoder(message.data)).fromUserId == targetUserID) {
-            //添加数据至chatlog
-            chatLog?.append(["isFromSelf": false, "messageType": 1, "time": NSDate(), "content": YunbaChatMessage(JSONDecoder(message.data)).messageContent])
-            let insert = NSIndexPath(forRow: chatLog!.count - 1, inSection: 0)
-            self.chatTableView.insertRowsAtIndexPaths([insert], withRowAnimation: UITableViewRowAnimation.None)
-            self.goToLatestMessage()
-        }
+        let messageC = notification.userInfo!["Message"] as? String
+        //添加数据至chatlog
+        chatLog?.append(["isFromSelf": false, "messageType": 1, "time": NSDate(), "content": messageC == nil ? "" : messageC!])
+        let insert = NSIndexPath(forRow: chatLog!.count - 1, inSection: 0)
+        self.chatTableView.insertRowsAtIndexPaths([insert], withRowAnimation: UITableViewRowAnimation.None)
+        self.goToLatestMessage()
         
-    }
-    
-    func onPresenceReceived(notification: NSNotification) {
-        let presence: YBPresenceEvent = notification.object as! YBPresenceEvent
-        print("new presence, action = \(presence.action), topic = \(presence.topic), alias = \(presence.alias), time = \(presence.time)")
     }
     
     func keyboardWillAppear(notification: NSNotification) {
@@ -179,6 +172,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(self.inputKeyView.frame)
         self.goToLatestMessage()
     }
+    
     func keyboardEndingFrameHeight(userinfo: NSDictionary) -> CGFloat{
         let keyboardEndingUncorrectedFrame = userinfo.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
         let keyboardEndingFrame = self.view.convertRect(keyboardEndingUncorrectedFrame, fromView: nil)
@@ -196,6 +190,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
 
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -264,7 +259,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         for i in cell.subviews {
             i.removeFromSuperview()
         }
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = .None
         var head: UIImageView
         if (chatLog![indexPath.row]["isFromSelf"] as! Bool) {
             //来自自己的消息，用本地用户头像
@@ -273,7 +268,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             head.kf_setImageWithURL(NSURL(string: (localUser.baseInfo?.avatar)!)!)
             roundHead(head)
             cell.addSubview(bubbleView(chatLog![indexPath.row]["content"] as! String, fromSelf: true, position: 65))
-//            print("cell \(indexPath.row) head1 added")
         }
         else {
             head = UIImageView(frame: CGRectMake(10, 10, 50, 50))
@@ -281,9 +275,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             head.kf_setImageWithURL(NSURL(string: targetUserAvatar)!)
             roundHead(head)
             cell.addSubview(bubbleView(chatLog![indexPath.row]["content"] as! String, fromSelf: false, position: 65))
-//            print("cell \(indexPath.row) head2 added")
         }
-        print("cell \(indexPath.row) loaded")
         return cell
     }
     
