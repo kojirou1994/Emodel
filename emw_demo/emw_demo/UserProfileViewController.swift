@@ -17,9 +17,8 @@ class UserProfileViewController: UITableViewController, UIImagePickerControllerD
     @IBOutlet weak var StarRankImage: UIImageView!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet var mainTableView: UITableView!
+    @IBOutlet weak var calendarCell: UITableViewCell!
     @IBAction func AvatarBtnPressed(sender: AnyObject) {
-        print("改变头像")
-        
         let selectPhotoSourceAlert = UIAlertController(title: "选择照片", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         selectPhotoSourceAlert.addAction(UIAlertAction(title: "从相册选择", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
             let imagePicker:UIImagePickerController = UIImagePickerController();
@@ -43,6 +42,9 @@ class UserProfileViewController: UITableViewController, UIImagePickerControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (userType == .Company) {
+            calendarCell.hidden = true
+        }
         //圆形头像
         Avatar.layer.masksToBounds = true
         Avatar.layer.cornerRadius = Avatar.frame.height / 2

@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil))
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
-        self.clearBadgeAndNotifications()
+        self.updateBadgeAndNotifications()
         return true
     }
 
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        self.clearBadgeAndNotifications()
+        self.updateBadgeAndNotifications()
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -57,10 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - YunbaService
-    func clearBadgeAndNotifications() {
-        if (UIApplication.sharedApplication().applicationIconBadgeNumber > 0) {
-            UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-        }
+    func updateBadgeAndNotifications() {
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -78,8 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         
     }
+    
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
     }
     // MARK: - Core Data stack
     

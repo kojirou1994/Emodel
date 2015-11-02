@@ -52,6 +52,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputField.tag = 0
         inputField.backgroundColor = UIColor.whiteColor()
         inputField.borderStyle = UITextBorderStyle.RoundedRect
+        inputField.delegate = self
         inputKeyView.addSubview(inputField)
         
         sendBtn = UIButton(type: UIButtonType.RoundedRect)
@@ -114,24 +115,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         unReadCount[self.targetUserID] = 0
         recentChatList.writeToFile(recentChatPlist, atomically: true)
         NSNotificationCenter.defaultCenter().postNotificationName("updateChatListVC", object: self)
-        YunBaService.publish2ToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublish2Option(apnOption: YBApnOption(alert: "\(localUser.baseInfo!.nickName!): \(inputM)"), timeToLive: 99999), resultBlock: { (succ: Bool, error: NSError!) -> Void in
+        YunBaService.publish2ToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublish2Option(apnOption: YBApnOption(alert: "\(localUser.baseInfo!.nickName!): \(inputM)", badge: 1, sound: "bingbong.aiff"), timeToLive: 10*24*3600), resultBlock: { (succ: Bool, error: NSError!) -> Void in
             if (succ) {
                 print("聊天信息已发送")
             }
             else {
                 print("聊天信息发送失败")
-                print(error.description)
             }
         })
-//        YunBaService.publishToAlias(targetUserID, data: sendM.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), option: YBPublishOption(qos: YBQosLevel.Level1, retained: false)) { (succ: Bool, error: NSError!) -> Void in
-//            if (succ) {
-//                print("聊天信息已发送")
-//            }
-//            else {
-//                print("聊天信息发送失败")
-//                print(error.description)
-//            }
-//        }
     }
     
     //MARK : - YunbaService
@@ -301,4 +292,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         img.layer.cornerRadius = img.bounds.width / 2
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        send()
+        return true
+    }
+    // called when 'return' key pressed. return NO to ignore.
 }

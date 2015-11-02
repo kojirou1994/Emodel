@@ -55,14 +55,12 @@ class ModalCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ModalCell", forIndexPath: indexPath) as! ModalCollectionViewCell
         cell.configTheCell((modalData?.users(modalTypeSegment.selectedSegmentIndex)?[indexPath.row])!)
-        // Configure the cell
     
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let picDimension: CGFloat = ( self.view.frame.width - 40) / 3
-        print("size setted")
+        let picDimension: CGFloat = ( self.view.frame.width - 40) / 3 - 5
         return CGSizeMake(picDimension, picDimension * 1.45)
         
     }
