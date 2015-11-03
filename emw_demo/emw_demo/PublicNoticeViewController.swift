@@ -50,6 +50,7 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
     override func viewWillAppear(animated: Bool) {
         
     }
+    
     func setupRefresh() {
         self.tableView.addHeaderWithCallback { () -> Void in
             print("下拉刷新啦")
@@ -72,7 +73,6 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.tableView.reloadData()
                         self.tableView.headerEndRefreshing()
-//                        print(self.taskData!)
                     })
                 case .Failure(_, let error):
                     print(error)
@@ -101,7 +101,6 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
     // SMSegment Delegate
     func segmentView(segmentView: SMSegmentView, didSelectSegmentAtIndex index: Int) {
         if index == 0 {
-//            initializeTheNotices()
             //通告广场
             isMy = false
             updateTaskInfo()
@@ -114,7 +113,6 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
             self.tableView.reloadData()
         }
 
-        print("Select segment at index: \(index)")
     }
     
     
@@ -129,9 +127,8 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
             if cell == nil {
                 cell = NoticeTableCell(style: UITableViewCellStyle.Value1, reuseIdentifier: identifier)
             }
-            
+            print(myTaskData![indexPath.row])
             cell.config(myTaskData![indexPath.row])
-//            print(cell.timeLabel?.text)
             return cell!
         }
         else {
@@ -144,7 +141,6 @@ class PublicNoticeViewController: UIViewController, SMSegmentViewDelegate, UITab
             }
             
             cell.config(taskData![indexPath.row])
-//            println(cell.timeLabel?.text)
             return cell!
         }
 

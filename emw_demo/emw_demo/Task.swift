@@ -34,8 +34,23 @@ struct Task: JSONJoy {
         deadLine = decoder["deadLine"].string
         id = decoder["id"].string
         imgUri = decoder["imgUri"].string
-        if let allowed = decoder["isAllowed"].string {
-            isAllowed = (allowed == "True")
+        if let timeString = deadLine {
+            let format = NSDateFormatter()
+            format.dateFormat = "yyyy-MM-dd"
+            if let time = format.dateFromString(timeString) {
+                if (time.timeIntervalSinceDate(format.dateFromString(format.stringFromDate(NSDate()))!) >= 0) {
+                    isAllowed = true
+                }
+                else {
+                    isAllowed = false
+                }
+            }
+            else {
+                isAllowed = true
+            }
+        }
+        else {
+            isAllowed = true
         }
         modelDemand = decoder["modelDemand"].string
         otherDemand = decoder["otherDemand"].string

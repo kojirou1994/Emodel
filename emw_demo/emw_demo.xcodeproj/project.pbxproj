@@ -70,8 +70,6 @@
 		E3978F621B7AE3A1002B54A3 /* PUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3978F611B7AE3A1002B54A3 /* PUT.swift */; };
 		E3978F641B7AEAFD002B54A3 /* AlbumID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3978F631B7AEAFD002B54A3 /* AlbumID.swift */; };
 		E3978F661B7B1470002B54A3 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3978F651B7B1470002B54A3 /* AlbumView.swift */; };
-		E398AF3F1BC8EDCC00A921B4 /* EMWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E398AF3E1BC8EDCC00A921B4 /* EMWUser.swift */; };
-		E398AF411BC8F71D00A921B4 /* EMWApiAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E398AF401BC8F71D00A921B4 /* EMWApiAddress.swift */; };
 		E3AB7A921B8AF6B800962116 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A911B8AF6B800962116 /* bg.png */; };
 		E3AB7A961B8AFA1300962116 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AB7A951B8AFA1300962116 /* logo.png */; };
 		E3B561701B7C90870051D125 /* PhotoThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B5616F1B7C90870051D125 /* PhotoThumbCell.swift */; };
@@ -199,8 +197,6 @@
 		E3978F611B7AE3A1002B54A3 /* PUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PUT.swift; sourceTree = "<group>"; };
 		E3978F631B7AEAFD002B54A3 /* AlbumID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumID.swift; sourceTree = "<group>"; };
 		E3978F651B7B1470002B54A3 /* AlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
-		E398AF3E1BC8EDCC00A921B4 /* EMWUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMWUser.swift; sourceTree = "<group>"; };
-		E398AF401BC8F71D00A921B4 /* EMWApiAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMWApiAddress.swift; sourceTree = "<group>"; };
 		E3AB7A911B8AF6B800962116 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		E3AB7A951B8AFA1300962116 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		E3AF617D1BB4DDBE005CE35B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -547,8 +543,6 @@
 				E3E9C2191B6CA66200998937 /* Supporting Files */,
 				E3978F651B7B1470002B54A3 /* AlbumView.swift */,
 				E30B30E01B7857CE00864989 /* DataInit.swift */,
-				E398AF3E1BC8EDCC00A921B4 /* EMWUser.swift */,
-				E398AF401BC8F71D00A921B4 /* EMWApiAddress.swift */,
 			);
 			path = emw_demo;
 			sourceTree = "<group>";
@@ -775,7 +769,6 @@
 				E3978F641B7AEAFD002B54A3 /* AlbumID.swift in Sources */,
 				E3B6801B1BA2C420004DF002 /* ChatListViewController.swift in Sources */,
 				E350E5661BABA78B006981FF /* JSONJoy.swift in Sources */,
-				E398AF3F1BC8EDCC00A921B4 /* EMWUser.swift in Sources */,
 				E3E9C2471B6CC73600998937 /* NoticeTableCell.swift in Sources */,
 				E3D4E4861B9D2E2B00016080 /* PhotoScrollViewController.swift in Sources */,
 				E36C14421BA5D64D00D6FA4D /* RefreshConst.swift in Sources */,
@@ -797,7 +790,6 @@
 				E3978F581B7AE09C002B54A3 /* AlbumInfo.swift in Sources */,
 				E3E9C21C1B6CA66200998937 /* AppDelegate.swift in Sources */,
 				E31519CE1BD4DFA600199E1C /* CalendarManagerViewController.swift in Sources */,
-				E398AF411BC8F71D00A921B4 /* EMWApiAddress.swift in Sources */,
 				E3E9C2511B6CE4A200998937 /* NoticeDetailViewController.swift in Sources */,
 				E3978F5C1B7AE106002B54A3 /* ModelCard.swift in Sources */,
 				E3E8C4B81BBA34F9007C267E /* CacheViewController.swift in Sources */,
